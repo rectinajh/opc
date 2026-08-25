@@ -370,7 +370,7 @@ export function FileTree({
           </div>
           {error.retry && (
             <Button type="button" size="xs" variant="outline" onClick={error.retry}>
-              Retry
+              重试
             </Button>
           )}
         </div>

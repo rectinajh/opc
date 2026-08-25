@@ -1,6 +1,6 @@
 ---
 name: doc-maintenance
-description: Keep project docs aligned with recent code and feature changes — detect drift, update affected pages, and add release-relevant notes without rewriting unchanged sections.
+description: 保持项目文档与最新代码及功能变更同步——检测文档偏差，更新受影响页面，并添加与版本发布相关的说明，同时避免重写未变更部分。
 key: paperclipai/bundled/docs/doc-maintenance
 recommendedForRoles:
   - engineer

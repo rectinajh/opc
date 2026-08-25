@@ -66,18 +66,18 @@ export function OverviewPanel({
         <div className="rounded-lg border border-border p-4">
           <div className="text-xs font-medium text-muted-foreground">{on ? "On" : "Off"}</div>
           <div className="mt-2">
-            <ToggleSwitch checked={on} disabled={toggleDisabled} onCheckedChange={onToggle} aria-label="Toggle gateway" />
+            <ToggleSwitch checked={on} disabled={toggleDisabled} onCheckedChange={onToggle} aria-label="切换网关" />
           </div>
-          <p className="mt-2 text-xs text-muted-foreground">Toggle the whole gateway off here.</p>
+          <p className="mt-2 text-xs text-muted-foreground">在此处关闭整个网关。</p>
         </div>
-        <StatCard label="Apps">
+        <StatCard label="应用">
           {apps.length} {apps.length === 1 ? "app" : "apps"}
           {profile ? ` · ${allowedToolsLabel(profile)}` : ""}
         </StatCard>
-        <StatCard label="Tokens">
+        <StatCard label="令牌">
           {active} active{expiring > 0 ? ` · ${expiring} expiring` : ""}
         </StatCard>
-        <StatCard label="Health">
+        <StatCard label="健康">
           {needsAttention.length === 0 ? "All green" : `${needsAttention.length} needs attention`}
         </StatCard>
       </div>
@@ -85,9 +85,9 @@ export function OverviewPanel({
       <section className="rounded-lg border border-border p-4">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Who can use it</h3>
+            <h3 className="text-sm font-semibold text-foreground">谁可以使用</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              Anyone holding an active token below, restricted by the rules in the bound profile.
+              持有下方有效令牌的任何人都受绑定配置文件中的规则限制。
             </p>
           </div>
         </div>
@@ -99,7 +99,7 @@ export function OverviewPanel({
       </section>
 
       <section className="rounded-lg border border-border p-4">
-        <h3 className="text-sm font-semibold text-foreground">Apps in this gateway</h3>
+        <h3 className="text-sm font-semibold text-foreground">此网关中的应用</h3>
         {apps.length === 0 ? (
           <p className="mt-2 text-sm text-muted-foreground">
             This gateway’s profile doesn’t include any apps yet.
@@ -115,10 +115,10 @@ export function OverviewPanel({
 
       <section className="rounded-lg border border-border bg-muted/30 p-4">
         <div className="flex items-center justify-between gap-2">
-          <h3 className="text-sm font-semibold text-foreground">How clients connect</h3>
+          <h3 className="text-sm font-semibold text-foreground">客户端如何连接</h3>
           <Button variant="outline" size="sm" onClick={() => void copy(snippet, "Client config")}>
             <Copy className="mr-1 h-3.5 w-3.5" />
-            Copy
+            复制
           </Button>
         </div>
         <pre className="mt-3 overflow-auto whitespace-pre-wrap break-words rounded bg-background p-3 font-mono text-xs text-muted-foreground">

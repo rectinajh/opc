@@ -1,6 +1,6 @@
 ---
 name: wireframe
-description: Produce low-fidelity black-and-white UI wireframes as SVGs or viewer pages. Use when asked to wireframe, sketch a screen, draft a layout, make a low-fi mockup, or publish wireframes.
+description: 生成低保真黑白UI线框图，以SVG或查看器页面形式输出。适用于被要求绘制线框、草图屏幕、起草布局、制作低保真原型或发布线框时使用。
 key: paperclipai/bundled/product/wireframe
 recommendedForRoles:
   - designer

@@ -16,7 +16,7 @@ export function IssueSiblingNavigation({ navigation, linkState }: IssueSiblingNa
 
   return (
     <nav
-      aria-label="Sub-task navigation"
+      aria-label="子任务导航"
       className="mt-4 flex flex-col gap-3 sm:mt-6 sm:grid sm:grid-cols-2"
     >
       {navigation.previous ? (

@@ -1,6 +1,6 @@
 ---
 name: task-planning
-description: Turn a Paperclip issue or request into a structured implementation plan with child task graph, blockers, owners, and acceptance criteria, then save it as the issue `plan` document.
+description: 将Paperclip问题或请求转化为结构化实施计划，包含子任务图、阻塞项、负责人及验收标准，并保存为问题`plan`文档。
 key: paperclipai/bundled/paperclip-operations/task-planning
 recommendedForRoles:
   - manager

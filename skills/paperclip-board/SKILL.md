@@ -1,9 +1,6 @@
 ---
 name: paperclip-board
-description: >
-  Manage a Paperclip company as a board member via chat. Use when the user wants
-  onboarding, company or agent management, approvals, task monitoring, cost
-  oversight, or work product review in the Paperclip control plane.
+description: 以董事会成员身份通过聊天管理Paperclip公司。适用于用户需要在Paperclip控制平面内进行入职引导、公司或代理管理、审批、任务监控、成本监督或工作成果审查的场景。
 ---
 
 # Paperclip Board Skill

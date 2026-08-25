@@ -10,12 +10,12 @@ export function FinanceKindCard({ rows }: FinanceKindCardProps) {
   return (
     <Card>
       <CardHeader className="px-4 pt-4 pb-1">
-        <CardTitle className="text-base">Financial event mix</CardTitle>
-        <CardDescription>Account-level charges grouped by event kind.</CardDescription>
+        <CardTitle className="text-base">财务事件组合</CardTitle>
+        <CardDescription>按事件类型分组的账户级费用。</CardDescription>
       </CardHeader>
       <CardContent className="space-y-2 px-4 pb-4 pt-3">
         {rows.length === 0 ? (
-          <p className="text-sm text-muted-foreground">No finance events in this period.</p>
+          <p className="text-sm text-muted-foreground">此期间无财务事件。</p>
         ) : (
           rows.map((row) => (
             <div

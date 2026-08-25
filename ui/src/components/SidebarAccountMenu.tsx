@@ -159,7 +159,7 @@ export function SidebarAccountMenu({
           <button
             type="button"
             className="flex w-full items-center gap-2.5 px-3 py-2 text-left text-(length:--text-compact) font-medium text-foreground/80 transition-colors hover:bg-accent/50 hover:text-foreground"
-            aria-label="Open account menu"
+            aria-label="打开账户菜单"
           >
             <Avatar size="sm">
               {session?.user.image ? <AvatarImage src={session.user.image} alt={displayName} /> : null}
@@ -223,30 +223,30 @@ export function SidebarAccountMenu({
 
             <div className="mt-4 space-y-1">
               <MenuAction
-                label="View profile"
-                description="Open your activity, task, and usage ledger."
+                label="查看个人资料"
+                description="打开您的活动、任务和使用记录。"
                 icon={UserRound}
                 href={profileHref}
                 onClick={closeNavigationChrome}
               />
               <MenuAction
-                label="Edit profile"
-                description="Update your display name and avatar."
+                label="编辑个人资料"
+                description="更新您的显示名称和头像。"
                 icon={UserRoundPen}
                 href={PROFILE_SETTINGS_PATH}
                 onClick={closeNavigationChrome}
               />
               <MenuAction
-                label="Documentation"
-                description="Open Paperclip docs in a new tab."
+                label="文档"
+                description="在新标签页中打开Paperclip文档。"
                 icon={BookOpen}
                 href={DOCS_URL}
                 external
                 onClick={() => setOpen(false)}
               />
               <MenuAction
-                label="Feedback"
-                description="Share feedback or report an issue."
+                label="反馈"
+                description="分享反馈或报告问题。"
                 icon={Megaphone}
                 href={FEEDBACK_URL}
                 external
@@ -271,7 +271,7 @@ export function SidebarAccountMenu({
                       {signOutMutation.isPending ? "Signing out..." : "Sign out"}
                     </span>
                     <span className="block text-xs text-muted-foreground">
-                      End this browser session.
+                      结束此浏览器会话。
                     </span>
                   </span>
                 </button>

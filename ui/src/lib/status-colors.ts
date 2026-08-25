@@ -137,6 +137,48 @@ export const statusBadge: Record<string, string> = {
 
 export const statusBadgeDefault = "bg-muted text-muted-foreground";
 
+// Display label map: status *codes* stay English (used in API/comparisons),
+// only the rendered text is localized. Unknown statuses fall back to the
+// sentence-cased English code.
+export const statusDisplayLabel: Record<string, string> = {
+  // Agent / run statuses
+  running: "运行中",
+  queued: "排队中",
+  succeeded: "成功",
+  failed: "失败",
+  cancelled: "已取消",
+  timed_out: "超时",
+  scheduled_retry: "计划重试",
+  idle: "空闲",
+  paused: "已暂停",
+  active: "运行中",
+  error: "错误",
+  terminated: "已终止",
+  pending: "待处理",
+  // Goal statuses
+  planned: "已计划",
+  achieved: "已达成",
+  completed: "已完成",
+  // Issue / task statuses
+  backlog: "待办",
+  todo: "待办",
+  in_progress: "进行中",
+  in_review: "审核中",
+  blocked: "已阻塞",
+  done: "已完成",
+  draft: "草稿",
+  archived: "已归档",
+  // Approval statuses
+  pending_approval: "待审批",
+  revision_requested: "已请求修改",
+  approved: "已批准",
+  rejected: "已拒绝",
+  // Generic
+  ok: "正常",
+  warning: "警告",
+  info: "信息",
+};
+
 // ---------------------------------------------------------------------------
 // Agent status — brand state system (PAP-75)
 // ---------------------------------------------------------------------------

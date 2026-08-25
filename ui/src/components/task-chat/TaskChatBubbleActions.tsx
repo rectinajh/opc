@@ -40,8 +40,8 @@ export function TaskChatBubbleActions({
       <button
         type="button"
         className="inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-        title="Copy message"
-        aria-label="Copy message"
+        title="复制消息"
+        aria-label="复制消息"
         onClick={() => {
           void copyTextToClipboard(copyText)
             .then(() => {

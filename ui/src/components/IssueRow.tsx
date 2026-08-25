@@ -90,10 +90,10 @@ export function InboxArchiveButton({
       }}
       disabled={disabled}
       className="inline-flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-muted-foreground opacity-0 transition-opacity hover:bg-accent hover:text-foreground group-hover:opacity-100 focus-visible:opacity-100 disabled:pointer-events-none disabled:opacity-30"
-      aria-label="Archive"
+      aria-label="归档"
     >
       <Archive className="h-3.5 w-3.5" />
-      Archive
+      归档
     </button>
   );
 }
@@ -153,7 +153,7 @@ export function IssueRow({
         "inline-flex h-4 w-4 items-center justify-center rounded-full transition-colors",
         selected ? "hover:bg-muted/80" : "hover:bg-blue-500/20",
       )}
-      aria-label="Mark as read"
+      aria-label="标记为已读"
     >
       <span
         className={cn(
@@ -174,7 +174,7 @@ export function IssueRow({
         selected ? "border-muted-foreground text-muted-foreground" : null,
       )}
       title={`Productivity review: ${productivityReviewTriggerLabel(productivityReview.trigger)}`}
-      aria-label="Productivity review open"
+      aria-label="生产力审查开放"
     >
       <Eye className="h-2.5 w-2.5" aria-hidden />
     </span>
@@ -198,7 +198,7 @@ export function IssueRow({
       title="Blocked by parked work — at least one assigned blocker is in backlog and will not wake its assignee."
     >
       <Flag className="h-2.5 w-2.5" aria-hidden />
-      Blocked by parked work
+      被暂停的工作阻塞
     </Badge>
   ) : null;
 

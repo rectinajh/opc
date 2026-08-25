@@ -150,7 +150,7 @@ export function InstanceSettings() {
   }, [agents]);
 
   if (heartbeatsQuery.isLoading) {
-    return <div className="text-sm text-muted-foreground">Loading scheduler heartbeats...</div>;
+    return <div className="text-sm text-muted-foreground">正在加载调度器心跳...</div>;
   }
 
   if (heartbeatsQuery.error) {
@@ -168,10 +168,10 @@ export function InstanceSettings() {
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <Settings className="h-5 w-5 text-muted-foreground" />
-          <h1 className="text-lg font-semibold">Scheduler Heartbeats</h1>
+          <h1 className="text-lg font-semibold">调度器心跳</h1>
         </div>
         <p className="text-sm text-muted-foreground">
-          Agents with a timer heartbeat enabled across all of your companies.
+          所有公司中启用了定时心跳的代理。
         </p>
       </div>
 
@@ -207,7 +207,7 @@ export function InstanceSettings() {
       {agents.length === 0 ? (
         <EmptyState
           icon={Clock3}
-          message="No scheduler heartbeats match the current criteria."
+          message="没有调度器心跳符合当前条件。"
         />
       ) : (
         <div className="space-y-4">
@@ -255,7 +255,7 @@ export function InstanceSettings() {
                           <Link
                             to={buildAgentHref(agent)}
                             className="text-muted-foreground hover:text-foreground"
-                            title="Full agent config"
+                            title="完整代理配置"
                           >
                             <ExternalLink className="h-3.5 w-3.5" />
                           </Link>

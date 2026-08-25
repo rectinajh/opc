@@ -30,7 +30,7 @@ export function ClaudeLocalConfigFields({
   return (
     <>
       {!hideInstructionsFile && (
-        <Field label="Agent instructions file" hint={instructionsFileHint}>
+        <Field label="代理指令文件" hint={instructionsFileHint}>
           <div className="flex items-center gap-2">
             <DraftInput
               value={
@@ -86,7 +86,7 @@ export function ClaudeLocalAdvancedFields({
 
   return (
     <>
-      <Field label="Execution engine" hint="Auto uses ACP when prerequisites pass and falls back to Claude CLI with diagnostics.">
+      <Field label="执行引擎" hint="满足先决条件时自动使用ACP，否则回退到Claude CLI并附带诊断信息。">
         <select
           className={inputClass}
           value={engine}
@@ -97,7 +97,7 @@ export function ClaudeLocalAdvancedFields({
               : mark("adapterConfig", "engine", value === "auto" ? undefined : value);
           }}
         >
-          <option value="auto">Auto (ACP preferred)</option>
+          <option value="auto">自动（首选ACP）</option>
           <option value="cli">Claude CLI</option>
           <option value="acp">ACP</option>
         </select>
@@ -105,8 +105,8 @@ export function ClaudeLocalAdvancedFields({
       {acpSelected && (
         <>
           <Field
-            label="ACP server command"
-            hint="Optional override for the Claude ACP server command. Defaults to the package-local claude-agent-acp binary."
+            label="ACP服务器命令"
+            hint="Claude ACP服务器命令的可选覆盖。默认为包本地的claude-agent-acp二进制文件。"
           >
             <DraftInput
               value={
@@ -124,7 +124,7 @@ export function ClaudeLocalAdvancedFields({
               placeholder="claude-agent-acp"
             />
           </Field>
-          <Field label="ACP session mode" hint="Persistent keeps ACP session state between runs. One-shot starts fresh each run.">
+          <Field label="ACP会话模式" hint="持久化在运行之间保留ACP会话状态。一次性每次运行全新开始。">
             <select
               className={inputClass}
               value={
@@ -139,13 +139,13 @@ export function ClaudeLocalAdvancedFields({
                   : mark("adapterConfig", "mode", value);
               }}
             >
-              <option value="persistent">Persistent</option>
-              <option value="oneshot">One-shot</option>
+              <option value="persistent">持久</option>
+              <option value="oneshot">一次性</option>
             </select>
           </Field>
           <Field
-            label="ACP non-interactive permissions"
-            hint="Fallback if the ACP agent asks for input outside an interactive session."
+            label="ACP非交互权限"
+            hint="当ACP代理在交互会话之外请求输入时的回退。"
           >
             <select
               className={inputClass}
@@ -161,13 +161,13 @@ export function ClaudeLocalAdvancedFields({
                   : mark("adapterConfig", "nonInteractivePermissions", value);
               }}
             >
-              <option value="deny">Deny</option>
-              <option value="fail">Fail</option>
+              <option value="deny">拒绝</option>
+              <option value="fail">失败</option>
             </select>
           </Field>
           <Field
-            label="ACP state directory"
-            hint="Optional ACP session state directory. Defaults to Paperclip-managed company/agent scoped storage."
+            label="ACP状态目录"
+            hint="可选的ACP会话状态目录。默认为Paperclip管理的公司/代理范围存储。"
           >
             <div className="flex items-center gap-2">
               <DraftInput
@@ -189,8 +189,8 @@ export function ClaudeLocalAdvancedFields({
             </div>
           </Field>
           <Field
-            label="ACP warm process idle ms"
-            hint="Defaults to 0, which closes the ACP process after each run while retaining persistent session state."
+            label="ACP热进程空闲毫秒数"
+            hint="默认为0，每次运行后关闭ACP进程，同时保留持久会话状态。"
           >
             {isCreate ? (
               <input
@@ -215,7 +215,7 @@ export function ClaudeLocalAdvancedFields({
         </>
       )}
       <ToggleField
-        label="Enable Chrome"
+        label="启用Chrome"
         hint={help.chrome}
         checked={
           isCreate
@@ -229,7 +229,7 @@ export function ClaudeLocalAdvancedFields({
         }
       />
       <ToggleField
-        label="Skip permissions"
+        label="跳过权限"
         hint={help.dangerouslySkipPermissions}
         checked={
           isCreate
@@ -246,7 +246,7 @@ export function ClaudeLocalAdvancedFields({
             : mark("adapterConfig", "dangerouslySkipPermissions", v)
         }
       />
-      <Field label="Max turns per run" hint={help.maxTurnsPerRun}>
+      <Field label="每次运行的最大轮数" hint={help.maxTurnsPerRun}>
         {isCreate ? (
           <input
             type="number"

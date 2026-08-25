@@ -1498,7 +1498,7 @@ function OnboardingWizardInner({
             className="absolute top-4 left-4 z-10 rounded-sm p-1.5 text-muted-foreground/60 hover:text-foreground transition-colors"
           >
             <X className="h-5 w-5" />
-            <span className="sr-only">Close</span>
+            <span className="sr-only">关闭</span>
           </button>
 
           {/* Step 0: Front Door — full-screen choice */}
@@ -1640,7 +1640,7 @@ function OnboardingWizardInner({
                             choose different models when creating additional agents.
                           </>
                         ) : (
-                          <>Your first agent is online and ready to work.</>
+                          <>您的第一个代理已上线，准备就绪。</>
                         )
                       }
                     />
@@ -1656,44 +1656,44 @@ function OnboardingWizardInner({
                       <Sparkles className="h-5 w-5 text-muted-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-medium">Tell us about your team</h3>
+                      <h3 className="font-medium">告诉我们您的团队</h3>
                       <p className="text-xs text-muted-foreground">
-                        We'll use this to set up your lead agent and plan which agents to add.
+                        我们将用此来设置您的首席代理并规划要添加的代理。
                       </p>
                     </div>
                   </div>
                   <div className="group">
-                    <label className="text-xs text-muted-foreground mb-1 block">What does your team work on?</label>
+                    <label className="text-xs text-muted-foreground mb-1 block">您的团队从事什么工作？</label>
                     <input
                       className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
-                      placeholder="e.g. We create educational YouTube content about AI"
+                      placeholder="例如，我们制作关于AI的教育性YouTube内容"
                       value={q1}
                       onChange={(e) => setQ1(e.target.value)}
                     />
                   </div>
                   <div className="group">
-                    <label className="text-xs text-muted-foreground mb-1 block">What are your current workflows?</label>
+                    <label className="text-xs text-muted-foreground mb-1 block">您当前的工作流程是什么？</label>
                     <textarea
                       className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50 resize-none min-h-(--sz-60px)"
-                      placeholder="e.g. Manual content creation, spreadsheet tracking, email outreach"
+                      placeholder="例如：手动内容创建、电子表格跟踪、电子邮件外联"
                       value={growWorkflows}
                       onChange={(e) => setGrowWorkflows(e.target.value)}
                     />
                   </div>
                   <div className="group">
-                    <label className="text-xs text-muted-foreground mb-1 block">What pain points would you solve with AI?</label>
+                    <label className="text-xs text-muted-foreground mb-1 block">您希望用AI解决哪些痛点？</label>
                     <textarea
                       className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50 resize-none min-h-(--sz-60px)"
-                      placeholder="e.g. Can't produce content fast enough, no time for social media"
+                      placeholder="例如：无法快速生成内容，没有时间处理社交媒体"
                       value={growPainPoints}
                       onChange={(e) => setGrowPainPoints(e.target.value)}
                     />
                   </div>
                   <div className="group">
-                    <label className="text-xs text-muted-foreground mb-1 block">What would you automate first?</label>
+                    <label className="text-xs text-muted-foreground mb-1 block">您会首先自动化什么？</label>
                     <input
                       className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
-                      placeholder="e.g. Social media scheduling and content repurposing"
+                      placeholder="例如：社交媒体排程和内容再利用"
                       value={growAutomate}
                       onChange={(e) => setGrowAutomate(e.target.value)}
                     />
@@ -1711,7 +1711,7 @@ function OnboardingWizardInner({
                             setCompanyGoal(parts.join(". "));
                           }}
                         >
-                          Generate mission from answers
+                          根据回答生成使命
                         </Button>
                       )}
                       {companyGoal.trim() && (
@@ -1743,9 +1743,9 @@ function OnboardingWizardInner({
                       <Building2 className="h-5 w-5 text-muted-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-medium">Name your organization</h3>
+                      <h3 className="font-medium">为您的组织命名</h3>
                       <p className="text-xs text-muted-foreground">
-                        What should we call your team or company?
+                        您的团队或公司叫什么？
                       </p>
                     </div>
                   </div>
@@ -1758,11 +1758,11 @@ function OnboardingWizardInner({
                           : "text-muted-foreground group-focus-within:text-foreground"
                       )}
                     >
-                      Name
+                      名称
                     </label>
                     <input
                       className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
-                      placeholder="Acme Corp"
+                      placeholder="Acme 公司"
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
                       onKeyDown={(e) => {
@@ -1792,9 +1792,9 @@ function OnboardingWizardInner({
                       <Building2 className="h-5 w-5 text-muted-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-medium">Define your mission</h3>
+                      <h3 className="font-medium">定义您的使命</h3>
                       <p className="text-xs text-muted-foreground">
-                        Your mission guides everything — your lead agent, who you bring on, and the work <strong>{companyName}</strong> takes on.
+                        Your mission guides everything — your lead agent, who you bring on, and the work <strong>{companyName}</strong> 承担。
                       </p>
                     </div>
                   </div>
@@ -1802,7 +1802,7 @@ function OnboardingWizardInner({
                   {/* Mission path selector */}
                   <div className="space-y-3 pt-3">
                     <label className="text-xs text-foreground block">
-                      How would you like to define your mission?
+                      您希望如何定义使命？
                     </label>
                     <div className="grid grid-cols-2 gap-2">
                       <button
@@ -1815,9 +1815,9 @@ function OnboardingWizardInner({
                         onClick={() => setMissionPath("direct")}
                       >
                         <Sparkles className="h-4 w-4" />
-                        <span className="font-medium">I know my mission</span>
+                        <span className="font-medium">我知道我的使命</span>
                         <span className="text-muted-foreground text-(length:--text-nano)">
-                          Type it directly
+                          直接输入
                         </span>
                       </button>
                       <button
@@ -1830,9 +1830,9 @@ function OnboardingWizardInner({
                         onClick={() => setMissionPath("questionnaire")}
                       >
                         <ListTodo className="h-4 w-4" />
-                        <span className="font-medium">Help me figure it out</span>
+                        <span className="font-medium">帮我理清</span>
                         <span className="text-muted-foreground text-(length:--text-nano)">
-                          Answer a few questions
+                          回答几个问题
                         </span>
                       </button>
                     </div>
@@ -1850,11 +1850,11 @@ function OnboardingWizardInner({
                               : "text-muted-foreground group-focus-within:text-foreground"
                           )}
                         >
-                          Mission
+                          使命
                         </label>
                         <textarea
                           className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50 resize-none min-h-(--sz-60px)"
-                          placeholder="What is your team trying to achieve?"
+                          placeholder="您的团队想要实现什么目标？"
                           value={companyGoal}
                           onChange={(e) => setCompanyGoal(e.target.value)}
                           autoFocus
@@ -1885,11 +1885,11 @@ function OnboardingWizardInner({
                     <div className="space-y-3 animate-in fade-in duration-200">
                       <div className="group">
                         <label className="text-xs text-muted-foreground mb-1 block">
-                          What does your team work on?
+                          您的团队从事什么工作？
                         </label>
                         <input
                           className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
-                          placeholder="e.g. We create educational YouTube content about AI"
+                          placeholder="例如，我们制作关于AI的教育性YouTube内容"
                           value={q1}
                           onChange={(e) => setQ1(e.target.value)}
                           autoFocus
@@ -1897,33 +1897,33 @@ function OnboardingWizardInner({
                       </div>
                       <div className="group">
                         <label className="text-xs text-muted-foreground mb-1 block">
-                          Who do you serve?
+                          您为谁服务？
                         </label>
                         <input
                           className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
-                          placeholder="e.g. Non-technical professionals curious about AI tools"
+                          placeholder="例如：对AI工具好奇的非技术专业人士"
                           value={q2}
                           onChange={(e) => setQ2(e.target.value)}
                         />
                       </div>
                       <div className="group">
                         <label className="text-xs text-muted-foreground mb-1 block">
-                          What's your biggest bottleneck right now?
+                          您目前最大的瓶颈是什么？
                         </label>
                         <input
                           className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
-                          placeholder="e.g. Can't produce content fast enough across multiple channels"
+                          placeholder="例如：无法在多个渠道快速生成内容"
                           value={q3}
                           onChange={(e) => setQ3(e.target.value)}
                         />
                       </div>
                       <div className="group">
                         <label className="text-xs text-muted-foreground mb-1 block">
-                          What would success look like in 6 months?
+                          6个月后成功会是什么样子？
                         </label>
                         <input
                           className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
-                          placeholder="e.g. Publishing daily content across 4 platforms with a team of AI agents"
+                          placeholder="例如：使用AI代理团队在4个平台每日发布内容"
                           value={q4}
                           onChange={(e) => setQ4(e.target.value)}
                         />
@@ -1937,7 +1937,7 @@ function OnboardingWizardInner({
                             setMissionConfirmed(true);
                           }}
                         >
-                          Generate my mission
+                          生成我的使命
                         </Button>
                       )}
                     </div>
@@ -1969,7 +1969,7 @@ function OnboardingWizardInner({
                   {/* Confirm mission note */}
                   {companyGoal.trim() && (
                     <p className="text-(length:--text-micro) text-muted-foreground italic">
-                      You can always change your mission later in settings.
+                      您以后随时可以在设置中更改使命。
                     </p>
                   )}
                 </div>
@@ -1980,7 +1980,7 @@ function OnboardingWizardInner({
               {step === 3 && (
                 <div className="mx-auto flex w-full max-w-(--sz-320px) flex-col gap-6">
                   <div className="flex flex-col gap-2">
-                    <Label htmlFor="onboarding-agent-role">Role</Label>
+                    <Label htmlFor="onboarding-agent-role">角色</Label>
                     {/* Options come from the AgentRole enum, not the prototype's
                         mock list: four of that list's seven entries have no
                         equivalent here, and one ("Coder") would fail validation
@@ -2009,11 +2009,11 @@ function OnboardingWizardInner({
                   </div>
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="onboarding-agent-name">
-                      Name <span className="font-normal text-muted-foreground">(optional)</span>
+                      名称 <span className="font-normal text-muted-foreground">(optional)</span>
                     </Label>
                     <Input
                       id="onboarding-agent-name"
-                      placeholder="Name"
+                      placeholder="名称"
                       value={agentName}
                       onChange={(e) => setAgentName(e.target.value)}
                     />
@@ -2027,7 +2027,7 @@ function OnboardingWizardInner({
                   {/* Adapter type radio cards */}
                   <div>
                     <label className="text-xs text-muted-foreground mb-2 block">
-                      Adapter type
+                      适配器类型
                     </label>
                     <div className="grid grid-cols-2 gap-2">
                       {recommendedAdapters.map((opt) => (
@@ -2054,7 +2054,7 @@ function OnboardingWizardInner({
                         >
                           {opt.recommended && (
                             <Badge variant="ghost" className="absolute -top-1.5 right-1.5 bg-green-500 text-white text-(length:--text-nano) font-semibold px-1.5 leading-none">
-                              Recommended
+                              推荐
                             </Badge>
                           )}
                           <opt.icon className="h-4 w-4" />
@@ -2076,7 +2076,7 @@ function OnboardingWizardInner({
                           showMoreAdapters ? "rotate-0" : "-rotate-90"
                         )}
                       />
-                      More Agent Adapter Types
+                      更多代理适配器类型
                     </button>
 
                     {showMoreAdapters && (
@@ -2134,7 +2134,7 @@ function OnboardingWizardInner({
                     <div className="space-y-3">
                       <div>
                         <label className="text-xs text-muted-foreground mb-1 block">
-                          Model
+                          模型
                         </label>
                         <Popover
                           open={modelOpen}
@@ -2166,7 +2166,7 @@ function OnboardingWizardInner({
                           >
                             <input
                               className="w-full px-2 py-1.5 text-xs bg-transparent outline-none border-b border-border mb-1 placeholder:text-muted-foreground/50"
-                              placeholder="Search models..."
+                              placeholder="搜索模型..."
                               value={modelSearch}
                               onChange={(e) => setModelSearch(e.target.value)}
                               autoFocus
@@ -2182,7 +2182,7 @@ function OnboardingWizardInner({
                                   setModelOpen(false);
                                 }}
                               >
-                                Default
+                                默认
                               </button>
                             )}
                             <div className="max-h-(--sz-240px) overflow-y-auto">
@@ -2223,7 +2223,7 @@ function OnboardingWizardInner({
                             </div>
                             {filteredModels.length === 0 && (
                               <p className="px-2 py-1.5 text-xs text-muted-foreground">
-                                No models discovered.
+                                未发现模型。
                               </p>
                             )}
                           </PopoverContent>
@@ -2237,7 +2237,7 @@ function OnboardingWizardInner({
                       <div className="flex items-center justify-between gap-2">
                         <div>
                           <p className="text-xs font-medium">
-                            Adapter environment check
+                            适配器环境检查
                           </p>
                           <p className="text-(length:--text-micro) text-muted-foreground">
                             Runs a live probe that asks the adapter CLI to
@@ -2273,7 +2273,7 @@ function OnboardingWizardInner({
                             style={{ "--sc": "var(--status-task-done)" } as CSSProperties}
                           >
                             <Check className="size-3.5 shrink-0" />
-                            <span className="font-medium">Passed</span>
+                            <span className="font-medium">通过</span>
                           </div>
                           {/* Show the checks on a pass too, so the target and the
                               auth signals stay visible before the hire. */}
@@ -2309,7 +2309,7 @@ function OnboardingWizardInner({
 
                       {adapterEnvResult && adapterEnvResult.status === "fail" && (
                         <div className="rounded-md border border-border/70 bg-muted/20 px-2.5 py-2 text-(length:--text-micro) space-y-1.5">
-                          <p className="font-medium">Manual debug</p>
+                          <p className="font-medium">手动调试</p>
                           <p className="text-muted-foreground font-mono break-all">
                             {adapterType === "cursor"
                               ? `${effectiveAdapterCommand} -p --mode ask --output-format json \"Respond with hello.\"`
@@ -2325,7 +2325,7 @@ function OnboardingWizardInner({
                           </p>
                           <p className="text-muted-foreground">
                             Prompt:{" "}
-                            <span className="font-mono">Respond with hello.</span>
+                            <span className="font-mono">回复hello。</span>
                           </p>
                           {adapterType === "cursor" ||
                           adapterType === "codex_local" ||
@@ -2360,7 +2360,7 @@ function OnboardingWizardInner({
                           ) : (
                             <p className="text-muted-foreground">
                               If login is required, run{" "}
-                              <span className="font-mono">claude login</span>{" "}
+                              <span className="font-mono">claude登录</span>{" "}
                               and retry.
                             </p>
                           )}
@@ -2471,7 +2471,7 @@ function OnboardingWizardInner({
                       disabled={loading}
                     >
                       <ArrowLeft className="h-3.5 w-3.5 mr-1" />
-                      Back
+                      返回
                     </Button>
                   )}
                 </div>
@@ -2512,7 +2512,7 @@ function OnboardingWizardInner({
                       disabled={!agentName.trim()}
                       onClick={() => setStep(4)}
                     >
-                      Next
+                      下一个
                       <ArrowRight className="h-3.5 w-3.5 ml-1" />
                     </Button>
                   )}

@@ -157,12 +157,12 @@ export function ConfigureBuiltInAgentModal({
 
         <div className="space-y-4">
           <InlineBanner tone="info" compact>
-            Creates <strong>{definition.displayName}</strong> in your roster, badged{" "}
-            <strong>Built-in</strong>. Companies that require hire approval will queue this for the
+            创建 <strong>{definition.displayName}</strong> in your roster, badged{" "}
+            <strong>内置</strong>. Companies that require hire approval will queue this for the
             board.
           </InlineBanner>
 
-          <Field label="Adapter type">
+          <Field label="适配器类型">
             <AdapterTypeDropdown
               value={adapterType}
               onChange={(next) => {
@@ -201,7 +201,7 @@ export function ConfigureBuiltInAgentModal({
             </InlineBanner>
           )}
 
-          <Field label="Monthly budget (optional)" hint="Leave blank for no cap.">
+          <Field label="每月预算（可选）" hint="留空表示无上限。">
             <div className="flex items-center gap-2">
               <span className="text-sm text-muted-foreground">$</span>
               <Input
@@ -231,7 +231,7 @@ export function ConfigureBuiltInAgentModal({
             onClick={() => onOpenChange(false)}
             disabled={provision.isPending}
           >
-            Not now
+            暂不
           </Button>
           <Button
             onClick={() => {

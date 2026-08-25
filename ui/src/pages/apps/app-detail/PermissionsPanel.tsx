@@ -113,12 +113,12 @@ function AccessSection({
     <section className="rounded-xl border border-border bg-card">
       <div className="flex items-center justify-between px-5 py-4">
         <div>
-          <h2 className="text-sm font-bold text-foreground">Who can use it</h2>
+          <h2 className="text-sm font-bold text-foreground">谁可以使用</h2>
           <p className="mt-0.5 text-sm text-muted-foreground">{summary}</p>
         </div>
         {!editing && (
           <Button size="sm" variant="outline" onClick={() => setEditing(true)}>
-            Change
+            更改
           </Button>
         )}
       </div>
@@ -133,8 +133,8 @@ function AccessSection({
               onChange={() => setDraft({ mode: "all", agentIds: new Set() })}
             />
             <span>
-              <span className="text-sm font-semibold text-foreground">All agents</span>
-              <span className="block text-xs text-muted-foreground">Anyone you've added to Paperclip.</span>
+              <span className="text-sm font-semibold text-foreground">所有代理</span>
+              <span className="block text-xs text-muted-foreground">您已添加到 Paperclip 的任何人。</span>
             </span>
           </label>
           <label className="flex items-start gap-3">
@@ -145,8 +145,8 @@ function AccessSection({
               onChange={() => setDraft({ mode: "specific", agentIds: new Set(draft.agentIds) })}
             />
             <span>
-              <span className="text-sm font-semibold text-foreground">Only specific agents</span>
-              <span className="block text-xs text-muted-foreground">Pick who can use it.</span>
+              <span className="text-sm font-semibold text-foreground">仅限特定代理</span>
+              <span className="block text-xs text-muted-foreground">选择谁可以使用。</span>
             </span>
           </label>
 
@@ -168,10 +168,10 @@ function AccessSection({
                 setEditing(false);
               }}
             >
-              Save
+              保存
             </Button>
             <Button size="sm" variant="ghost" onClick={() => setEditing(false)} disabled={disabled}>
-              Cancel
+              取消
             </Button>
           </div>
         </div>
@@ -209,7 +209,7 @@ function InstalledSection({
     <section className="rounded-xl border border-border bg-card">
       <div className="flex items-center justify-between gap-3 px-5 py-4">
         <div>
-          <h2 className="text-sm font-bold text-foreground">Installed on agents</h2>
+          <h2 className="text-sm font-bold text-foreground">已安装在代理上</h2>
           <p className="mt-0.5 text-sm text-muted-foreground">
             Whose harness carries {appName}'s tools on every run.
           </p>
@@ -217,7 +217,7 @@ function InstalledSection({
         <div className="flex items-center gap-2">
           {disabled && <span className="text-xs text-muted-foreground">Saving…</span>}
           {install.onAll ? (
-            <InstalledBadge label="Installed on all agents" />
+            <InstalledBadge label="已安装到所有代理" />
           ) : install.agentIds.size > 0 ? (
             <InstalledBadge label={`${installedCount} installed`} />
           ) : (
@@ -247,7 +247,7 @@ function InstalledSection({
             renderNameSuffix={(agent) =>
               !hasAccess(agent.id) && install.agentIds.has(agent.id) ? (
                 <span className={cn("rounded border px-1 py-0 text-xs font-medium", brandChipBadge.amber)}>
-                  will grant access
+                  将授予访问权限
                 </span>
               ) : null
             }
@@ -264,13 +264,13 @@ function InstalledSection({
           <Checkbox
             checked={install.onAll}
             disabled={disabled}
-            aria-label="Install on all agents"
+            aria-label="安装到所有代理"
             onCheckedChange={(checked) =>
               onSave(checked ? { onAll: true, agentIds: new Set() } : { onAll: false, agentIds: new Set() })
             }
           />
           <span className="text-xs text-foreground">
-            <span className="font-semibold">Install on all agents</span>
+            <span className="font-semibold">安装到所有代理</span>
             <span className="mt-0.5 block text-muted-foreground">
               {INSTALL_ALL_WARNING}
             </span>
@@ -335,13 +335,13 @@ function ActionsSection({
     <section className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <h2 className="text-sm font-bold text-foreground">Action permissions</h2>
+          <h2 className="text-sm font-bold text-foreground">操作权限</h2>
           <p className="mt-0.5 text-sm text-muted-foreground">
-            Choose what agents can do and what needs a human first.
+            选择代理可以做什么以及哪些需要人工先行。
           </p>
         </div>
         <div className="flex items-center gap-2">
-          {disabled && <span className="text-xs text-muted-foreground">Saving...</span>}
+          {disabled && <span className="text-xs text-muted-foreground">正在保存...</span>}
           <Button
             variant="outline"
             size="sm"
@@ -367,8 +367,8 @@ function ActionsSection({
       )}
 
       <ActionGroup
-        title="Read only"
-        hint="Can look up context without changing anything."
+        title="只读"
+        hint="可以查看上下文而不更改任何内容。"
         actions={readOnly}
         enabledIds={enabledIds}
         askFirstIds={askFirstIds}
@@ -377,8 +377,8 @@ function ActionsSection({
         onSetPermission={onSetPermission}
       />
       <ActionGroup
-        title="Can make changes"
-        hint="Can change something in another app."
+        title="可以更改"
+        hint="可以在另一个应用中更改内容。"
         actions={canChange}
         enabledIds={enabledIds}
         askFirstIds={askFirstIds}
@@ -453,9 +453,9 @@ function ActionGroup({
                 disabled={disabled}
                 onChange={(event) => onSetPermission(action.id, event.currentTarget.value as ActionPermission)}
               >
-                <option value="off">Off</option>
-                <option value="allowed">Allowed</option>
-                <option value="ask">Ask a human first</option>
+                <option value="off">关闭</option>
+                <option value="allowed">允许</option>
+                <option value="ask">先询问人工</option>
               </select>
             </div>
           );

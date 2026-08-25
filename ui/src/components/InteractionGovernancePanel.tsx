@@ -238,19 +238,19 @@ export function InteractionGovernancePanel({
   return (
     <div className="space-y-4" data-testid="company-settings-interaction-governance-section">
       <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-        Interaction governance
+        交互治理
       </div>
       <div className="space-y-4">
         <p className="text-sm text-muted-foreground">
           Thread interactions are open by default:{" "}
-          <span className="font-medium text-foreground">Anyone</span> in the company — the
+          <span className="font-medium text-foreground">任何人</span> in the company — the
           board or any agent, including the one that asked — can respond. Narrow a kind
           only when you need to.{" "}
-          <span className="font-medium text-foreground">Default policy</span> is the
+          <span className="font-medium text-foreground">默认策略</span> is the
           audience new cards get when the requester does not ask for one;{" "}
-          <span className="font-medium text-foreground">Cap</span> narrows every request of
+          <span className="font-medium text-foreground">上限</span> narrows every request of
           that kind and can never widen one. Tool-approval confirmations always stay{" "}
-          <span className="font-medium text-foreground">Human only</span>.
+          <span className="font-medium text-foreground">仅限人工</span>.
         </p>
         {/*
          * Responsive: below `sm` the row collapses to a single column so the
@@ -261,13 +261,13 @@ export function InteractionGovernancePanel({
          */}
         <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-[1fr_auto_auto] sm:items-center sm:gap-x-4 sm:gap-y-2.5">
           <div className="hidden text-xs font-medium text-muted-foreground uppercase tracking-wide sm:block">
-            Kind
+            种类
           </div>
           <div className="hidden text-xs font-medium text-muted-foreground uppercase tracking-wide sm:block">
-            Default policy
+            默认策略
           </div>
           <div className="hidden text-xs font-medium text-muted-foreground uppercase tracking-wide sm:block">
-            Cap
+            上限
           </div>
           {ISSUE_THREAD_INTERACTION_KINDS.map((kind) => {
             const entry = governance[kind] ?? {};

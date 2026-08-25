@@ -60,7 +60,7 @@ export function SourceResolvedFoldCallout({
   return (
     <section
       role="status"
-      aria-label="Source-resolved watchdog fold"
+      aria-label="源解析的看门狗折叠"
       data-source-resolved-fold
       className={cn(
         "relative w-full overflow-hidden rounded-lg border text-sm shadow-(--shadow-extract-8)",
@@ -81,10 +81,10 @@ export function SourceResolvedFoldCallout({
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-eyebrow)">
-            <span className="text-emerald-900 dark:text-emerald-200">SOURCE-RESOLVED FOLD</span>
+            <span className="text-emerald-900 dark:text-emerald-200">源解析折叠</span>
             <span className="text-muted-foreground/60" aria-hidden>·</span>
             <span className="font-medium normal-case tracking-normal text-muted-foreground">
-              system audit
+              系统审计
             </span>
             {finalizedRelative ? (
               <>
@@ -107,7 +107,7 @@ export function SourceResolvedFoldCallout({
           "[&>*]:border-emerald-300/40 dark:[&>*]:border-emerald-500/20",
         )}
       >
-        <MetaRow label="Source task">
+        <MetaRow label="源任务">
           <span className="inline-flex flex-wrap items-center gap-1.5">
             <Link
               to={issueLink(fold.sourceIssueId, fold.sourceIssueIdentifier)}
@@ -120,7 +120,7 @@ export function SourceResolvedFoldCallout({
             </span>
           </span>
         </MetaRow>
-        <MetaRow label="Same-run evidence">
+        <MetaRow label="同次运行证据">
           <span className="inline-flex flex-wrap items-baseline gap-1.5">
             <span className="rounded bg-background/70 px-1.5 py-0.5 font-mono text-(length:--text-micro) text-emerald-900 dark:bg-background/40 dark:text-emerald-100">
               {fold.sameRunEvidenceKind}
@@ -136,7 +136,7 @@ export function SourceResolvedFoldCallout({
             ) : null}
           </span>
         </MetaRow>
-        <MetaRow label="Silence age before fold">
+        <MetaRow label="折叠前静默时间">
           {silenceAgeLabel ? (
             <span>
               {silenceAgeLabel}
@@ -148,7 +148,7 @@ export function SourceResolvedFoldCallout({
             <span className="text-muted-foreground">unknown</span>
           )}
         </MetaRow>
-        <MetaRow label="Process cleanup">
+        <MetaRow label="进程清理">
           <span
             className="inline-flex flex-wrap items-baseline gap-1.5"
             title={fold.cleanup.outcome}
@@ -160,7 +160,7 @@ export function SourceResolvedFoldCallout({
           </span>
         </MetaRow>
         {fold.evaluationIssueId ? (
-          <MetaRow label="Evaluation task">
+          <MetaRow label="评估任务">
             <Link
               to={issueLink(fold.evaluationIssueId, fold.evaluationIssueIdentifier)}
               className="rounded-sm font-medium underline-offset-2 hover:underline"

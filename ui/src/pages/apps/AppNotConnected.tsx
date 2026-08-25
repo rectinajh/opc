@@ -123,7 +123,7 @@ export function AppNotConnected() {
   });
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">Select a company to manage apps.</div>;
+    return <div className="p-6 text-sm text-muted-foreground">选择公司以管理应用。</div>;
   }
   if (!applicationId || !activeTab) {
     return <Navigate to={applicationId ? appApplicationTabHref(applicationId, "setup") : "/apps/connections"} replace />;
@@ -140,7 +140,7 @@ export function AppNotConnected() {
     return (
       <div className="max-w-3xl space-y-3 p-6 text-sm text-muted-foreground">
         <p>This app doesn’t exist anymore.</p>
-        <Button variant="outline" size="sm" onClick={() => navigate("/apps/connections")}>Back to apps</Button>
+        <Button variant="outline" size="sm" onClick={() => navigate("/apps/connections")}>返回应用</Button>
       </div>
     );
   }
@@ -189,7 +189,7 @@ export function AppNotConnected() {
           <ReviewPanel connectionId={previousConnection.id} />
         ) : (
           <EmptyTab
-            title="Nothing is waiting for your OK right now."
+            title="当前没有需要您批准的事项。"
             body="Review requests will appear here after this app is connected."
           />
         )
@@ -199,7 +199,7 @@ export function AppNotConnected() {
       )}
       {activeTab === "test" && (
         <EmptyTab
-          title="Reconnect to test this app."
+          title="重新连接以测试此应用。"
           body="Testing becomes available after this app is connected again."
         />
       )}
@@ -292,7 +292,7 @@ function SetupTab({
           <div>
             <h2 className="text-sm font-bold text-foreground">Already connected to {applicationName}</h2>
             <p className="mt-0.5 text-sm text-muted-foreground">
-              Open a connection to edit it, or add another account.
+              打开连接进行编辑，或添加另一个账户。
             </p>
           </div>
           <div className="overflow-hidden rounded-lg border border-border">
@@ -328,12 +328,12 @@ function SetupTab({
         <section className="rounded-xl border border-border bg-card px-5 py-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h2 className="text-sm font-bold text-foreground">Connect another</h2>
+              <h2 className="text-sm font-bold text-foreground">连接另一个</h2>
               <p className="mt-0.5 text-sm text-muted-foreground">
                 Add another {applicationName} account without changing the connections above.
               </p>
             </div>
-            <Button onClick={onConnect}>Connect another</Button>
+            <Button onClick={onConnect}>连接另一个</Button>
           </div>
         </section>
       </div>
@@ -376,18 +376,18 @@ function PreviousSetup({
 }) {
   return (
     <section className="rounded-xl border border-border bg-card px-5 py-4">
-      <h2 className="text-sm font-bold text-foreground">Previous setup</h2>
+      <h2 className="text-sm font-bold text-foreground">之前的设置</h2>
       {connection.healthMessage && (
         <p className="mt-2 rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-xs text-amber-700 dark:text-amber-300">
           Last error: {connection.healthMessage}
         </p>
       )}
       <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-(--gtc-59)">
-        <dt className="text-muted-foreground">Address</dt>
+        <dt className="text-muted-foreground">地址</dt>
         <dd className="break-all font-mono text-foreground">{previousAddress}</dd>
-        <dt className="text-muted-foreground">Connection type</dt>
+        <dt className="text-muted-foreground">连接类型</dt>
         <dd className="text-foreground">{connectionTransportLabel(connection.transport)}</dd>
-        <dt className="text-muted-foreground">Last used</dt>
+        <dt className="text-muted-foreground">上次使用</dt>
         <dd className="text-foreground">
           {connection.lastUsedAt ? timeAgo(connection.lastUsedAt) : "Never"}
         </dd>
@@ -399,9 +399,9 @@ function PreviousSetup({
 function PermissionsTab({ previousConnection }: { previousConnection: ToolConnection | null }) {
   return (
     <section className="rounded-xl border border-border bg-card px-5 py-4">
-      <h2 className="text-sm font-bold text-foreground">Permissions paused</h2>
+      <h2 className="text-sm font-bold text-foreground">权限已暂停</h2>
       <p className="mt-1 text-sm text-muted-foreground">
-        Reconnect this app to edit who can use it and which actions need a human first.
+        重新连接此应用以编辑谁可以使用它以及哪些操作需要人工先审。
       </p>
       {previousConnection && (
         <p className="mt-3 text-xs text-muted-foreground">
@@ -431,7 +431,7 @@ function AdvancedTab({
         <PreviousSetup connection={previousConnection} previousAddress={previousAddress} />
       ) : (
         <EmptyTab
-          title="No previous connection details"
+          title="没有以前的连接详情"
           body="Technical details will appear here after this app is connected."
         />
       )}

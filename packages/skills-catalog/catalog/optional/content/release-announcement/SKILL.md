@@ -1,6 +1,6 @@
 ---
 name: release-announcement
-description: Write a release announcement — changelog, blog post, in-app note, or social post — that leads with user impact, names the audience, and includes upgrade/migration steps without filler.
+description: 发布公告：为使用Paperclip Agent Skills的开发者带来重大更新——现在支持GitHub与Ramp原生集成，并新增MCP协议兼容层，可直接调用外部工具。现有用户升级时，请先备份技能配置，然后运行`paperclip migrate`命令自动迁移旧版技能定义。新用户安装后，在设置中启用“高级集成”即可体验。此版本还优化了ASD-STE100规范下的技能命名校验，确保跨团队协作一致性。若从旧版升级，需手动更新自定义技能中的环境变量引用，并重新测试所有自动化流程。
 key: paperclipai/optional/content/release-announcement
 recommendedForRoles:
   - devrel

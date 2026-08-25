@@ -37,7 +37,7 @@ export function ProfileWizardRoute({ mode }: { mode: "new" | "edit" }) {
   }, [setBreadcrumbs, selectedCompany?.name, mode]);
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">Select a company to create a profile.</div>;
+    return <div className="p-6 text-sm text-muted-foreground">选择一家公司以创建配置文件。</div>;
   }
 
   return (
@@ -48,7 +48,7 @@ export function ProfileWizardRoute({ mode }: { mode: "new" | "edit" }) {
             {mode === "edit" ? "Finish your profile" : "New access profile"}
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Choose which tools this profile allows, then assign it to the agents that need them.
+            选择此配置文件允许的工具，然后将其分配给需要的代理。
           </p>
         </header>
         <ProfileWizard

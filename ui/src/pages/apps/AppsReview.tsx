@@ -27,15 +27,15 @@ export function AppsReview() {
   }, [setBreadcrumbs, selectedCompany?.name]);
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">Select a company to review approvals.</div>;
+    return <div className="p-6 text-sm text-muted-foreground">选择公司以查看审批。</div>;
   }
 
   return (
     <div className="max-w-3xl space-y-6 pb-12">
       <header>
-        <h1 className="text-2xl font-bold tracking-tight">Review</h1>
+        <h1 className="text-2xl font-bold tracking-tight">审查</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Actions your agents want to run that need your OK first. Approve, always-allow, or decline.
+          您的代理想要运行但需要您先批准的操作。批准、始终允许或拒绝。
         </p>
       </header>
 

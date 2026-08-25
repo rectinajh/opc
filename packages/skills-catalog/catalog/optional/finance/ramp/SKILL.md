@@ -1,6 +1,6 @@
 ---
 name: ramp
-description: Fetch and follow Ramp's published agent playbooks inside Paperclip, with mandatory approval gates for spend, incorporation, cards, account setup, and other financial actions.
+description: 在Paperclip中获取并遵循Ramp发布的代理操作手册，对支出、公司注册、卡片、账户设置及其他财务操作设置强制审批关卡。
 key: paperclipai/optional/finance/ramp
 recommendedForRoles:
   - finance

@@ -1,6 +1,6 @@
 ---
 name: simplified-english
-description: Write user-facing comments, plans, and documents in ASD-STE100 Simplified Technical English — short, unambiguous sentences with approved words and one meaning each — so readers understand them the first time.
+description: 撰写面向用户的评论、计划与文档时，采用ASD-STE100简化技术英语——使用短句、无歧义且经批准的词汇，每个词仅含单一含义，确保读者首次阅读即可理解。
 key: paperclipai/optional/content/simplified-english
 recommendedForRoles:
   - engineer

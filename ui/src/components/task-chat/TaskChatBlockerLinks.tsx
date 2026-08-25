@@ -173,14 +173,14 @@ export function TaskChatBlockerLinks({
 }) {
   return (
     <div
-      aria-label="Task blockers"
+      aria-label="任务阻塞项"
       data-placement={placement}
       data-testid="task-chat-blocker-links"
       className="flex min-w-0 flex-col gap-1 overflow-hidden text-(length:--text-micro) leading-4 text-amber-700 dark:text-amber-300"
     >
-      <BlockerRow label="Blocked by" blocker={directBlocker} />
+      <BlockerRow label="被阻塞" blocker={directBlocker} />
       {ultimateBlocker ? (
-        <BlockerRow label="Ultimately blocked by" blocker={ultimateBlocker} />
+        <BlockerRow label="最终被阻塞于" blocker={ultimateBlocker} />
       ) : null}
     </div>
   );
@@ -195,7 +195,7 @@ export function TaskChatLiveWorkLinks({
 }) {
   return (
     <div
-      aria-label="Tasks waiting on live work"
+      aria-label="等待实时工作的任务"
       data-placement={placement}
       data-testid="task-chat-live-work-links"
       className="flex min-w-0 flex-col gap-1.5 overflow-hidden text-(length:--text-micro) leading-4 text-blue-700 dark:text-blue-300"
@@ -204,7 +204,7 @@ export function TaskChatLiveWorkLinks({
         <span className="flex h-3.5 w-3.5 items-center justify-center" aria-hidden>
           <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-blue-400" />
         </span>
-        Waiting on live work
+        等待实时工作
       </div>
       <ol className="flex min-w-0 flex-col gap-1">
         {liveWork.steps.map(({ blocker, status }, index) => (
@@ -223,7 +223,7 @@ export function TaskChatLiveWorkLinks({
       </ol>
       {liveWork.nowRunning.map((blocker) => (
         <div key={blocker.id} className="flex min-w-0 items-center gap-1.5 whitespace-nowrap">
-          <span className="shrink-0 font-medium">Now running</span>
+          <span className="shrink-0 font-medium">正在运行</span>
           <LiveWorkLink blocker={blocker} />
         </div>
       ))}

@@ -52,7 +52,7 @@ export function ReviewQueueCard({
     if (emptyState === "hidden") return null;
     return (
       <div className="rounded-xl border border-border bg-card p-5 text-sm text-muted-foreground">
-        Nothing is waiting for your OK right now.
+        当前没有需要您批准的事项。
       </div>
     );
   }

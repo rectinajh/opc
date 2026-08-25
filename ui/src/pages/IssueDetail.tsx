@@ -643,7 +643,7 @@ function IssueAttributionByline({
 
   return (
     <TooltipProvider>
-      <AvatarGroup className="-space-x-1.5" aria-label="Task people" data-testid="issue-attribution-avatar-stack">
+      <AvatarGroup className="-space-x-1.5" aria-label="任务人员" data-testid="issue-attribution-avatar-stack">
         {assignee ? <AttributionAvatar label="Assignee" actor={assignee} /> : null}
         {originator ? <AttributionAvatar label="Originating" actor={originator} via={originatorVia} /> : null}
       </AvatarGroup>
@@ -779,7 +779,7 @@ function IssueDetailLoadingState({
                   title={`Routine execution from routine ${headerSeed.originId}`}
                 >
                   <Repeat className="h-3 w-3" />
-                  Routine
+                  例程
                 </Badge>
               ) : null}
               {/* Seeded header — same anatomy as the resolved one below, so the
@@ -794,7 +794,7 @@ function IssueDetailLoadingState({
               ) : (
                 <span className="inline-flex items-center gap-1 text-xs text-muted-foreground opacity-50 px-1 -mx-1 py-0.5">
                   <ProjectTile size="xs" />
-                  No project
+                  无项目
                 </span>
               )}
             </>
@@ -890,7 +890,7 @@ function InboxMobileToolbar({
             navigate(backHref);
           }
         }}
-        aria-label="Back to inbox"
+        aria-label="返回收件箱"
       >
         <ArrowLeft className="h-5 w-5" />
       </Button>
@@ -902,7 +902,7 @@ function InboxMobileToolbar({
             size="icon-sm"
             onClick={onArchive}
             disabled={archivePending}
-            aria-label="Archive from inbox"
+            aria-label="从收件箱归档"
           >
             <Archive className="h-5 w-5" />
           </Button>
@@ -910,7 +910,7 @@ function InboxMobileToolbar({
 
         <Popover open={menuOpen} onOpenChange={setMenuOpen}>
           <PopoverTrigger asChild>
-            <Button variant="ghost" size="icon-sm" aria-label="More actions">
+            <Button variant="ghost" size="icon-sm" aria-label="更多操作">
               <MoreVertical className="h-5 w-5" />
             </Button>
           </PopoverTrigger>
@@ -927,7 +927,7 @@ function InboxMobileToolbar({
               onClick={() => { onProperties(); setMenuOpen(false); }}
             >
               <SlidersHorizontal className="h-3 w-3" />
-              Properties
+              属性
             </button>
             {issueIdProp && (
               <button
@@ -935,7 +935,7 @@ function InboxMobileToolbar({
                 onClick={() => { onHide(); setMenuOpen(false); }}
               >
                 <EyeOff className="h-3 w-3" />
-                Hide this task
+                隐藏此任务
               </button>
             )}
           </PopoverContent>
@@ -1552,13 +1552,13 @@ function IssueDetailActivityTab({
     <>
       {shouldShowCostSummary && (
         <div className="mb-3 px-3 py-2 rounded-lg border border-border">
-          <div className="text-sm font-medium text-muted-foreground mb-1">Cost Summary</div>
+          <div className="text-sm font-medium text-muted-foreground mb-1">成本摘要</div>
           {!issueCostSummary.hasCost && !issueCostSummary.hasTokens && !hasIssueTreeCost ? (
-            <div className="text-xs text-muted-foreground">No cost data yet.</div>
+            <div className="text-xs text-muted-foreground">暂无成本数据。</div>
           ) : (
             <div className="space-y-1 text-xs text-muted-foreground tabular-nums">
               <div className="flex flex-wrap gap-3">
-                <span className="font-medium text-foreground">This task</span>
+                <span className="font-medium text-foreground">此任务</span>
                 {issueCostSummary.hasCost ? (
                   <span className="font-medium text-foreground">
                     ${issueCostSummary.cost.toFixed(4)}
@@ -1579,7 +1579,7 @@ function IssueDetailActivityTab({
                   </span>
                 ) : null}
                 {!issueCostSummary.hasCost && !issueCostSummary.hasTokens && !issueCostSummary.hasRuntime ? (
-                  <span>No direct cost data.</span>
+                  <span>无直接成本数据。</span>
                 ) : null}
               </div>
               {hasIssueTreeCost && issueTreeCostSummary ? (
@@ -4450,8 +4450,8 @@ export function IssueDetail() {
         <Paperclip className="h-3.5 w-3.5 mr-1.5" />
         {uploadAttachment.isPending || importMarkdownDocument.isPending ? "Uploading..." : (
           <>
-            <span className="hidden sm:inline">Upload attachment</span>
-            <span className="sm:hidden">Upload</span>
+            <span className="hidden sm:inline">上传附件</span>
+            <span className="sm:hidden">上传</span>
           </>
         )}
       </Button>
@@ -4516,7 +4516,7 @@ export function IssueDetail() {
                 <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-500" />
               </span>
-              Live
+              实时
             </Badge>
           )}
 
@@ -4527,7 +4527,7 @@ export function IssueDetail() {
               title={`Routine execution from routine ${issue.originId}`}
             >
               <Repeat className="h-3 w-3" />
-              Routine
+              例程
             </Link>
           )}
 
@@ -4538,20 +4538,20 @@ export function IssueDetail() {
           {issue.originKind === "issue_productivity_review" ? (
             <Badge variant="outline"
               className="border-amber-500/40 bg-amber-500/10 text-(length:--text-nano) text-amber-700 dark:text-amber-300"
-              title="This task is a productivity review."
+              title="此任务是生产力审查。"
             >
               <Eye className="h-3 w-3" />
-              Productivity review
+              生产力审查
             </Badge>
           ) : null}
 
           {issue.originKind === "task_watchdog" ? (
             <Badge variant="outline"
               className="border-sky-500/40 bg-sky-500/10 text-(length:--text-nano) text-sky-700 dark:text-sky-300"
-              title="This task is a generated watchdog task. It verifies whether stopped work in the watched task tree is legitimate."
+              title="此任务是生成的看门狗任务。它验证被监视任务树中停止的工作是否合法。"
             >
               <ScanEye className="h-3 w-3" />
-              Watchdog
+              看门狗
             </Badge>
           ) : null}
 
@@ -4580,7 +4580,7 @@ export function IssueDetail() {
               title="Blocked by parked work — at least one assigned blocker is in backlog and will not wake its assignee."
             >
               <Flag className="h-3 w-3" />
-              Blocked by parked work
+              被暂停的工作阻塞
             </Badge>
           ) : null}
 
@@ -4602,7 +4602,7 @@ export function IssueDetail() {
           ) : (
             <span className="inline-flex items-center gap-1 text-xs text-muted-foreground opacity-50 px-1 -mx-1 py-0.5">
               <ProjectTile size="xs" />
-              No project
+              无项目
             </span>
           )}
 
@@ -4640,7 +4640,7 @@ export function IssueDetail() {
                 variant="ghost"
                 size="icon-xs"
                 onClick={copyIssueToClipboard}
-                title="Copy task as markdown"
+                title="将任务复制为Markdown"
               >
                 {copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
               </Button>
@@ -4648,7 +4648,7 @@ export function IssueDetail() {
                 variant="ghost"
                 size="icon-xs"
                 onClick={() => setMobilePropsOpen(true)}
-                title="Properties"
+                title="属性"
               >
                 <SlidersHorizontal className="h-4 w-4" />
               </Button>
@@ -4664,8 +4664,8 @@ export function IssueDetail() {
                   if (!archivePending && issue?.id) archiveFromInbox.mutate(issue.id);
                 }}
                 disabled={archivePending}
-                title="Archive from inbox"
-                aria-label="Archive from inbox"
+                title="从收件箱归档"
+                aria-label="从收件箱归档"
               >
                 <Archive className="h-4 w-4" />
               </Button>
@@ -4675,8 +4675,8 @@ export function IssueDetail() {
                 variant="ghost"
                 size="icon-xs"
                 onClick={() => setFileViewerPromptOpen(true)}
-                title="Open file... (g f)"
-                aria-label="Open file in this issue"
+                title="打开文件... (g f)"
+                aria-label="在此问题中打开文件"
               >
                 <FileCode2 className="h-4 w-4" />
               </Button>
@@ -4685,7 +4685,7 @@ export function IssueDetail() {
               variant="ghost"
               size="icon-xs"
               onClick={copyIssueToClipboard}
-              title="Copy task as markdown"
+              title="将任务复制为Markdown"
             >
               {copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
             </Button>
@@ -4704,7 +4704,7 @@ export function IssueDetail() {
                 }
                 setPanelVisible(true);
               }}
-              title="Show properties"
+              title="显示属性"
             >
               <SlidersHorizontal className="h-4 w-4" />
             </Button>
@@ -4715,8 +4715,8 @@ export function IssueDetail() {
                   variant="ghost"
                   size="icon-xs"
                   className="shrink-0"
-                  aria-label="More task actions"
-                  title="More task actions"
+                  aria-label="更多任务操作"
+                  title="更多任务操作"
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
                       event.preventDefault();
@@ -4739,7 +4739,7 @@ export function IssueDetail() {
                   }}
                 >
                   <PauseCircle className="h-3 w-3" />
-                  Pause work...
+                  暂停工作...
                 </button>
               ) : null}
               {canResumeLeafWork ? (
@@ -4753,7 +4753,7 @@ export function IssueDetail() {
                   }}
                 >
                   <PlayCircle className="h-3 w-3" />
-                  Resume work
+                  恢复工作
                 </button>
               ) : null}
               {canShowSubtreeControls ? (
@@ -4768,7 +4768,7 @@ export function IssueDetail() {
                     }}
                   >
                     <PauseCircle className="h-3 w-3" />
-                    Pause subtree...
+                    暂停子树...
                   </button>
                   {canResumeSubtree ? (
                     <button
@@ -4781,7 +4781,7 @@ export function IssueDetail() {
                       }}
                     >
                       <PlayCircle className="h-3 w-3" />
-                      Resume subtree
+                      恢复子树
                     </button>
                   ) : null}
                   <button
@@ -4794,7 +4794,7 @@ export function IssueDetail() {
                     }}
                   >
                     <XCircle className="h-3 w-3" />
-                    Cancel subtree...
+                    取消子树...
                   </button>
                   {canRestoreSubtree ? (
                     <button
@@ -4808,7 +4808,7 @@ export function IssueDetail() {
                       }}
                     >
                       <Repeat className="h-3 w-3" />
-                      Restore subtree...
+                      恢复子树...
                     </button>
                   ) : null}
                 </>
@@ -4824,7 +4824,7 @@ export function IssueDetail() {
                 }}
               >
                 <EyeOff className="h-3 w-3" />
-                Hide this task
+                隐藏此任务
               </button>
             </PopoverContent>
             </Popover>
@@ -4852,7 +4852,7 @@ export function IssueDetail() {
             onSave={(description) => updateIssue.mutateAsync({ description })}
             as="p"
             className="text-sm leading-7 text-foreground"
-            placeholder="Add a description..."
+            placeholder="添加描述..."
             multiline
             foldable
             mentions={mentionOptions}
@@ -4944,7 +4944,7 @@ export function IssueDetail() {
       {issue.hiddenAt && (
         <div className={cn("flex items-center gap-2 rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive", shellSectionClass)}>
           <EyeOff className="h-4 w-4 shrink-0" />
-          This task is hidden
+          此任务已隐藏
         </div>
       )}
       {activePauseHold && (
@@ -5001,7 +5001,7 @@ export function IssueDetail() {
                         setTreeControlOpen(true);
                       }}
                     >
-                      Cancel subtree...
+                      取消子树...
                     </Button>
                   ) : null}
                 </div>
@@ -5030,7 +5030,7 @@ export function IssueDetail() {
       {taskChatShellEnabled ? null : showRichSubIssuesSection ? (
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="text-sm font-medium text-muted-foreground">Sub-tasks</h3>
+            <h3 className="text-sm font-medium text-muted-foreground">子任务</h3>
           </div>
           <IssuesList
             issues={childIssues}
@@ -5057,7 +5057,7 @@ export function IssueDetail() {
         <div className="flex flex-wrap items-center justify-end gap-2 min-w-0">
           <Button variant="outline" size="sm" onClick={openNewSubIssue} className="shrink-0 shadow-none">
             <Plus className="mr-1.5 h-3.5 w-3.5" />
-            New Sub-task
+            新建子任务
           </Button>
         </div>
       )}
@@ -5177,7 +5177,7 @@ export function IssueDetail() {
         return (
           <div className="space-y-3">
             <div className="flex items-center justify-between gap-2">
-              <h3 className="text-sm font-medium text-muted-foreground">Artifacts</h3>
+              <h3 className="text-sm font-medium text-muted-foreground">工件</h3>
             </div>
             <div className="flex flex-wrap gap-2">
               {workProductsWithFileRefs.map(({ product, fileRef }) => (
@@ -5205,15 +5205,15 @@ export function IssueDetail() {
         <TabsList variant="line" className={cn("w-full justify-start gap-1", shellSectionClass)}>
           <TabsTrigger value="chat" className="gap-1.5">
             <MessageSquare className="h-3.5 w-3.5" />
-            Chat
+            聊天
           </TabsTrigger>
           <TabsTrigger value="activity" className="gap-1.5">
             <ActivityIcon className="h-3.5 w-3.5" />
-            Activity
+            活动
           </TabsTrigger>
           <TabsTrigger value="related-work" className="gap-1.5">
             <ListTree className="h-3.5 w-3.5" />
-            Related work
+            相关工作
           </TabsTrigger>
           {issuePluginTabItems.map((item) => (
             <TabsTrigger key={item.value} value={item.value}>
@@ -5437,12 +5437,12 @@ export function IssueDetail() {
 
             <div className="space-y-1.5">
               <label className="text-xs text-muted-foreground">
-                Reason (optional)
+                原因（可选）
               </label>
               <Textarea
                 value={treeControlReason}
                 onChange={(event) => setTreeControlReason(event.target.value)}
-                placeholder="Explain why this subtree control is being applied..."
+                placeholder="解释为什么应用此子树控制..."
                 className="min-h-(--sz-88px)"
               />
             </div>
@@ -5511,7 +5511,7 @@ export function IssueDetail() {
                       void refetchTreeControlPreview();
                     }}
                   >
-                    Retry preview
+                    重试预览
                   </Button>
                 </div>
               ) : treeControlPreview ? (
@@ -5546,7 +5546,7 @@ export function IssueDetail() {
                             </span>
                             <span className="min-w-0 flex-1 truncate">{candidate.title}</span>
                             {candidate.skipped && candidate.skipReason === "terminal_status" ? (
-                              <span className="shrink-0 text-xs text-muted-foreground">Complete</span>
+                              <span className="shrink-0 text-xs text-muted-foreground">完成</span>
                             ) : null}
                           </Link>
                         </div>
@@ -5555,13 +5555,13 @@ export function IssueDetail() {
                   ) : null}
                 </div>
               ) : (
-                <p className="text-xs text-muted-foreground">Preview unavailable.</p>
+                <p className="text-xs text-muted-foreground">预览不可用。</p>
               )}
             </div>
           </div>
           <DialogFooter className="border-t border-border/60 bg-background px-6 py-4">
             <Button variant="outline" onClick={() => setTreeControlOpen(false)} disabled={executeTreeControl.isPending}>
-              Close
+              关闭
             </Button>
             <Button
               onClick={() => executeTreeControl.mutate()}
@@ -5578,7 +5578,7 @@ export function IssueDetail() {
       <Sheet open={mobilePropsOpen} onOpenChange={setMobilePropsOpen}>
         <SheetContent side="bottom" className="max-h-(--sz-85dvh) pb-(--sz-safe-bottom)">
           <SheetHeader>
-            <SheetTitle className="text-sm">Properties</SheetTitle>
+            <SheetTitle className="text-sm">属性</SheetTitle>
           </SheetHeader>
           <ScrollArea className="flex-1 overflow-y-auto">
             <div className="px-4 pb-4">

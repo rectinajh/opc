@@ -83,7 +83,7 @@ export function RoutineVariablesEditor({
     <Collapsible open={open} onOpenChange={setOpen} className="overflow-hidden rounded-lg border border-border/70">
       <CollapsibleTrigger className="flex w-full items-center justify-between px-3 py-2 text-left">
         <div>
-          <p className="text-sm font-medium">Variables</p>
+          <p className="text-sm font-medium">变量</p>
           <p className="text-xs text-muted-foreground">
             Detected from `{"{{name}}"}` placeholders in the title and instructions.
           </p>
@@ -98,13 +98,13 @@ export function RoutineVariablesEditor({
                 {`{{${variable.name}}}`}
               </Badge>
               <span className="text-xs text-muted-foreground">
-                Prompt the user for this value before each manual run.
+                每次手动运行前提示用户输入此值。
               </span>
             </div>
 
             <div className="grid gap-3 md:grid-cols-2">
               <div className="space-y-1.5">
-                <Label className="text-xs">Label</Label>
+                <Label className="text-xs">标签</Label>
                 <Input
                   value={variable.label ?? ""}
                   onChange={(event) => onChange(updateVariableList(syncedVariables, variable.name, (current) => ({
@@ -116,7 +116,7 @@ export function RoutineVariablesEditor({
               </div>
 
               <div className="space-y-1.5">
-                <Label className="text-xs">Type</Label>
+                <Label className="text-xs">类型</Label>
                 <Select
                   value={variable.type}
                   onValueChange={(type) => onChange(updateVariableList(syncedVariables, variable.name, (current) => ({
@@ -139,7 +139,7 @@ export function RoutineVariablesEditor({
 
               <div className="space-y-1.5 md:col-span-2">
                 <div className="flex items-center justify-between gap-3">
-                  <Label className="text-xs">Default value</Label>
+                  <Label className="text-xs">默认值</Label>
                   <label className="flex items-center gap-2 text-xs text-muted-foreground">
                     <input
                       type="checkbox"
@@ -149,7 +149,7 @@ export function RoutineVariablesEditor({
                         required: event.target.checked,
                       })))}
                     />
-                    Required
+                    必填
                   </label>
                 </div>
 
@@ -174,15 +174,15 @@ export function RoutineVariablesEditor({
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="__unset__">No default</SelectItem>
-                      <SelectItem value="true">True</SelectItem>
-                      <SelectItem value="false">False</SelectItem>
+                      <SelectItem value="__unset__">无默认</SelectItem>
+                      <SelectItem value="true">真</SelectItem>
+                      <SelectItem value="false">假</SelectItem>
                     </SelectContent>
                   </Select>
                 ) : variable.type === "select" ? (
                   <div className="grid gap-3 md:grid-cols-2">
                     <div className="space-y-1.5">
-                      <Label className="text-xs">Options</Label>
+                      <Label className="text-xs">选项</Label>
                       <Input
                         value={variable.options.join(", ")}
                         onChange={(event) => {
@@ -196,11 +196,11 @@ export function RoutineVariablesEditor({
                                 : null,
                           })));
                         }}
-                        placeholder="high, medium, low"
+                        placeholder="高、中、低"
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <Label className="text-xs">Default option</Label>
+                      <Label className="text-xs">默认选项</Label>
                       <Select
                         value={typeof variable.defaultValue === "string" ? variable.defaultValue : "__unset__"}
                         onValueChange={(next) => onChange(updateVariableList(syncedVariables, variable.name, (current) => ({
@@ -209,10 +209,10 @@ export function RoutineVariablesEditor({
                         })))}
                       >
                         <SelectTrigger>
-                          <SelectValue placeholder="No default" />
+                          <SelectValue placeholder="无默认" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="__unset__">No default</SelectItem>
+                          <SelectItem value="__unset__">无默认</SelectItem>
                           {variable.options.map((option) => (
                             <SelectItem key={option} value={option}>{option}</SelectItem>
                           ))}
@@ -281,7 +281,7 @@ export function RoutineVariablesHint() {
           type="button"
           onClick={() => setHelpOpen(true)}
           className="shrink-0 rounded-full p-0.5 text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          aria-label="Show variable help"
+          aria-label="显示变量帮助"
         >
           <HelpCircle className="h-3.5 w-3.5" />
         </button>
@@ -290,16 +290,16 @@ export function RoutineVariablesHint() {
       <Dialog open={helpOpen} onOpenChange={setHelpOpen}>
         <DialogContent className="sm:max-w-xl">
           <DialogHeader>
-            <DialogTitle>Routine variables</DialogTitle>
+            <DialogTitle>例程变量</DialogTitle>
             <DialogDescription>
-              How to prompt for inputs and which variables Paperclip fills in automatically.
+              如何提示输入以及 Paperclip 自动填充哪些变量。
             </DialogDescription>
           </DialogHeader>
 
           <div className="space-y-5 text-sm">
             <section className="space-y-2">
               <h3 className="text-xs font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
-                Custom variables
+                自定义变量
               </h3>
               <p className="text-muted-foreground">
                 Type{" "}
@@ -307,12 +307,12 @@ export function RoutineVariablesHint() {
                   {"{{variable_name}}"}
                 </code>{" "}
                 anywhere in the title or instructions. Paperclip detects each placeholder, lists it
-                under <span className="font-medium text-foreground">Variables</span>, and prompts
+                under <span className="font-medium text-foreground">变量</span>, and prompts
                 for a value before each run.
               </p>
               <ul className="list-disc space-y-1 pl-5 text-muted-foreground">
-                <li>Names must start with a letter and may use letters, numbers, and underscores.</li>
-                <li>Pick a type (text, textarea, number, boolean, select, date), default value, and whether it is required.</li>
+                <li>名称必须以字母开头，可使用字母、数字和下划线。</li>
+                <li>选择类型（文本、文本区域、数字、布尔、选择、日期）、默认值以及是否必填。</li>
                 <li>Variable names ending in capital Date, such as startDate, are created as date variables by default.</li>
                 <li>The same name reused across the title and instructions is treated as one variable.</li>
               </ul>
@@ -320,7 +320,7 @@ export function RoutineVariablesHint() {
 
             <section className="space-y-2">
               <h3 className="text-xs font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
-                Built-in variables
+                内置变量
               </h3>
               <p className="text-muted-foreground">
                 These are filled in automatically — no setup needed and they will not appear in the
@@ -330,9 +330,9 @@ export function RoutineVariablesHint() {
                 <table className="w-full text-left text-xs">
                   <thead className="bg-muted/40 text-muted-foreground">
                     <tr>
-                      <th className="px-3 py-2 font-medium">Placeholder</th>
-                      <th className="px-3 py-2 font-medium">Example</th>
-                      <th className="px-3 py-2 font-medium">Description</th>
+                      <th className="px-3 py-2 font-medium">占位符</th>
+                      <th className="px-3 py-2 font-medium">示例</th>
+                      <th className="px-3 py-2 font-medium">描述</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-border/70">

@@ -1,6 +1,6 @@
 ---
 name: issue-triage
-description: Triage Paperclip inbox issues that are stale, blocked, in-review, or assigned-but-not-progressing, and decide a single next action per issue (resume, reassign, unblock, escalate, or close).
+description: 对Paperclip收件箱中的过期、受阻、审核中或已分配但无进展的问题进行分类，并为每个问题决定单一后续行动（恢复、重新分配、解除阻塞、升级或关闭）。
 key: paperclipai/bundled/paperclip-operations/issue-triage
 recommendedForRoles:
   - manager

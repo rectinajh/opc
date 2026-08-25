@@ -39,9 +39,9 @@ class RouteErrorBoundaryInner extends Component<RouteErrorBoundaryInnerProps, Ro
     return (
       <div className="mx-auto max-w-2xl space-y-4 px-4 py-10">
         <div>
-          <h1 className="text-lg font-semibold">This page hit an error</h1>
+          <h1 className="text-lg font-semibold">此页面出错</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Something went wrong while rendering this page. You can go back and try again, or reload.
+            渲染此页面时出错。您可以返回重试或重新加载。
           </p>
         </div>
         <pre className="overflow-auto rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-xs text-destructive whitespace-pre-wrap">
@@ -49,10 +49,10 @@ class RouteErrorBoundaryInner extends Component<RouteErrorBoundaryInnerProps, Ro
         </pre>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" onClick={this.props.onReset}>
-            Go back
+            返回
           </Button>
           <Button size="sm" onClick={() => window.location.reload()}>
-            Reload page
+            重新加载页面
           </Button>
         </div>
       </div>

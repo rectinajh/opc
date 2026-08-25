@@ -334,11 +334,11 @@ function KanbanCard({
           {isSuccessfulRunHandoffRequired(issue) ? (
             <Badge variant="outline"
               className="border-amber-400/45 bg-amber-50/60 px-1.5 text-(length:--text-nano) text-amber-700 dark:border-amber-300/35 dark:bg-amber-400/10 dark:text-amber-300"
-              title="This task needs a next step"
-              aria-label="Needs next step"
+              title="此任务需要下一步"
+              aria-label="需要下一步"
             >
               <AlertTriangle className="h-3 w-3" />
-              Next step
+              下一步
             </Badge>
           ) : null}
           {isLive && (

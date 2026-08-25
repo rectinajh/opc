@@ -328,7 +328,7 @@ export function SkillStudio() {
   }, [skill?.id]);
 
   if (!companyId) {
-    return <StudioMessage message="Select a company to open Skill Studio." />;
+    return <StudioMessage message="选择公司以打开 Skill Studio。" />;
   }
   if (isCreateMode) {
     return (
@@ -360,7 +360,7 @@ export function SkillStudio() {
     return <StudioMessage message="Loading skill…" />;
   }
   if (detailQuery.isError || !detailQuery.data) {
-    return <StudioMessage message="Skill not found." />;
+    return <StudioMessage message="未找到技能。" />;
   }
 
   return (
@@ -486,7 +486,7 @@ function StudioNewSkillPanel({
   });
 
   if (forkFromSkillId && forkLoading) {
-    return <StudioMessage message="Loading fork source..." />;
+    return <StudioMessage message="正在加载分支源..." />;
   }
 
   const previewCard: DiscoveryCard = {
@@ -518,7 +518,7 @@ function StudioNewSkillPanel({
           {draft.forkedFromSkillId ? "Fork skill" : "Create a new skill"}
         </h1>
         <p className="text-sm text-muted-foreground">
-          Create an editable company skill and open it directly in Studio.
+          创建可编辑的公司技能并直接在 Studio 中打开。
         </p>
       </div>
 
@@ -530,18 +530,18 @@ function StudioNewSkillPanel({
       ) : forkError ? (
         <div className="flex items-center gap-2 rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">
           <AlertTriangle className="h-4 w-4" />
-          Fork source not found. You can still create a blank skill.
+          未找到分叉源。您仍可创建空白技能。
         </div>
       ) : null}
 
       <section className="space-y-3">
         <div>
-          <h2 className="text-sm font-medium text-foreground">Basics</h2>
-          <p className="text-xs text-muted-foreground">Name the skill and set the route-safe slug.</p>
+          <h2 className="text-sm font-medium text-foreground">基本信息</h2>
+          <p className="text-xs text-muted-foreground">为技能命名并设置路由安全的 slug。</p>
         </div>
         <div className="grid gap-3 md:grid-cols-2">
           <div className="space-y-1.5">
-            <Label htmlFor="skill-name">Name</Label>
+            <Label htmlFor="skill-name">名称</Label>
             <Input
               id="skill-name"
               value={draft.name}
@@ -555,7 +555,7 @@ function StudioNewSkillPanel({
                     : draft.markdown,
                 });
               }}
-              placeholder="Code review"
+              placeholder="代码审查"
             />
           </div>
           <div className="space-y-1.5">
@@ -574,7 +574,7 @@ function StudioNewSkillPanel({
           </div>
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="skill-tagline">Tagline</Label>
+          <Label htmlFor="skill-tagline">标语</Label>
           <Textarea
             id="skill-tagline"
             value={draft.tagline}
@@ -588,7 +588,7 @@ function StudioNewSkillPanel({
                   : draft.markdown,
               });
             }}
-            placeholder="Review repository changes for correctness, tests, and maintainability."
+            placeholder="审查仓库更改的正确性、测试和可维护性。"
             className="min-h-20"
           />
         </div>
@@ -596,8 +596,8 @@ function StudioNewSkillPanel({
 
       <section className="space-y-3">
         <div>
-          <h2 className="text-sm font-medium text-foreground">Appearance</h2>
-          <p className="text-xs text-muted-foreground">Tune how the skill appears in the store and Studio switcher.</p>
+          <h2 className="text-sm font-medium text-foreground">外观</h2>
+          <p className="text-xs text-muted-foreground">调整技能在商店和 Studio 切换器中的显示方式。</p>
         </div>
         <div className="flex items-center gap-3">
           <SkillCardIcon card={previewCard} size={48} />
@@ -607,7 +607,7 @@ function StudioNewSkillPanel({
           </div>
         </div>
         <div className="space-y-2">
-          <Label>Color</Label>
+          <Label>颜色</Label>
           <div className="flex flex-wrap items-center gap-2">
             {SKILL_CREATE_ACCENTS.map((color) => (
               <button
@@ -623,7 +623,7 @@ function StudioNewSkillPanel({
               />
             ))}
             <Input
-              aria-label="Hex color"
+              aria-label="十六进制颜色"
               value={draft.color}
               onChange={(event) => patchDraft({ color: event.target.value })}
               className="h-7 w-28 font-mono text-xs"
@@ -631,20 +631,20 @@ function StudioNewSkillPanel({
           </div>
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="skill-categories">Categories</Label>
+          <Label htmlFor="skill-categories">类别</Label>
           <Input
             id="skill-categories"
             value={categoryDraft}
             onChange={(event) => setCategoryDraft(event.target.value)}
-            placeholder="engineering, review, memory"
+            placeholder="工程、审查、记忆"
           />
         </div>
       </section>
 
       <section className="space-y-3">
         <div>
-          <h2 className="text-sm font-medium text-foreground">Sharing</h2>
-          <p className="text-xs text-muted-foreground">Choose who can discover this skill inside Paperclip.</p>
+          <h2 className="text-sm font-medium text-foreground">共享</h2>
+          <p className="text-xs text-muted-foreground">选择谁可以在 Paperclip 中发现此技能。</p>
         </div>
         <div className="grid gap-2 sm:grid-cols-3">
           {(["company", "private"] as const).map((scope) => (
@@ -668,14 +668,14 @@ function StudioNewSkillPanel({
             disabled
             className="rounded-md border border-dashed border-border px-3 py-2 text-left text-sm text-muted-foreground"
           >
-            <span className="block font-medium">Public</span>
-            <span className="mt-1 block text-xs">Coming later.</span>
+            <span className="block font-medium">公开</span>
+            <span className="mt-1 block text-xs">稍后推出。</span>
           </button>
         </div>
       </section>
 
       <details className="rounded-md border border-border px-3 py-2">
-        <summary className="cursor-pointer text-sm font-medium text-foreground">Starter content</summary>
+        <summary className="cursor-pointer text-sm font-medium text-foreground">入门内容</summary>
         <Textarea
           value={draft.markdown}
           onChange={(event) => patchDraft({ markdown: event.target.value })}
@@ -685,7 +685,7 @@ function StudioNewSkillPanel({
 
       <div className="flex items-center justify-end gap-2 border-t border-border pt-4">
         <Button variant="ghost" onClick={() => navigate("/skills/studio")} disabled={createSkill.isPending}>
-          Cancel
+          取消
         </Button>
         <Button onClick={() => createSkill.mutate()} disabled={createSkill.isPending || !nameValid}>
           <FilePlus className="h-4 w-4" />
@@ -801,20 +801,20 @@ function StudioLanding({
           />
           <Button variant="ghost" size="sm" className="ml-auto" onClick={onCreateNew}>
             <Plus className="mr-1.5 h-3.5 w-3.5" />
-            New skill
+            新技能
           </Button>
         </header>
         <div className="min-h-0 flex-1 overflow-auto">
           <div className="mx-auto w-full max-w-3xl space-y-8 px-4 py-8">
             {visited.length > 0 ? (
               <StudioLandingSection
-                title="Recently visited"
+                title="最近访问"
                 skills={visited}
                 onSelectSkill={onSelectSkill}
               />
             ) : null}
             <StudioLandingSection
-              title="Recently updated"
+              title="最近更新"
               skills={updated}
               onSelectSkill={onSelectSkill}
             />
@@ -1154,10 +1154,10 @@ function StudioHeader({
         <span className="font-mono text-xs text-muted-foreground">v{version}</span>
       )}
       {skillDirty ? (
-        <Badge variant="secondary">Unsaved edits</Badge>
+        <Badge variant="secondary">未保存的编辑</Badge>
       ) : null}
       {!skill.editable ? (
-        <Badge variant="secondary">Read-only</Badge>
+        <Badge variant="secondary">只读</Badge>
       ) : null}
       {skill.forkedFromSkillId ? (
         <SkillLineageChip
@@ -1169,17 +1169,17 @@ function StudioHeader({
       <div className="ml-auto flex items-center gap-1">
         <Button variant="ghost" size="sm" onClick={onOpenVersions}>
           <History className="mr-1.5 h-3.5 w-3.5" />
-          Version history
+          版本历史
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon-sm" aria-label="Studio menu">
+            <Button variant="ghost" size="icon-sm" aria-label="工作室菜单">
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-52">
             <DropdownMenuItem onClick={copyShareLink}>
-              <Share2 className="mr-2 h-4 w-4" /> Share link
+              <Share2 className="mr-2 h-4 w-4" /> 分享链接
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -1412,7 +1412,7 @@ function SkillPane({
           />
         }
       >
-        <EmptyState icon={FileCode} message="This skill has no files yet." />
+        <EmptyState icon={FileCode} message="此技能暂无文件。" />
         <SkillPathDialog
           mode={createDialog}
           open={createDialog !== null}
@@ -1452,7 +1452,7 @@ function SkillPane({
         {dirty && !readOnly ? (
           <div className="flex items-start gap-2 border-b border-border bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
             <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-500" />
-            <span>Unsaved edits live only in this Studio session. Save to create the next version before running tests or switching files.</span>
+            <span>未保存的编辑仅存在于当前 Studio 会话中。在运行测试或切换文件之前保存以创建下一版本。</span>
           </div>
         ) : null}
         <div className="max-h-(--sz-11_75rem) overflow-auto border-b border-border p-1">
@@ -1488,7 +1488,7 @@ function SkillPane({
                 onClick={onEditACopy}
               >
                 <GitFork className="mr-1.5 h-3.5 w-3.5" />
-                Edit a copy
+                编辑副本
               </Button>
             </div>
           </div>
@@ -1500,10 +1500,10 @@ function SkillPane({
           </span>
           <div className="flex items-center gap-2">
             {readOnly ? (
-              <Badge variant="secondary">Read-only</Badge>
+              <Badge variant="secondary">只读</Badge>
             ) : (
               <>
-                {dirty && <Badge variant="secondary">Unsaved</Badge>}
+                {dirty && <Badge variant="secondary">未保存</Badge>}
                 <Button
                   size="sm"
                   disabled={!dirty || saveMutation.isPending}
@@ -1655,22 +1655,22 @@ function SkillFileActions({
       <Tooltip>
         <TooltipTrigger asChild>
           <span>
-            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFile} aria-label="Add file">
+            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFile} aria-label="添加文件">
               <FilePlus className="h-4 w-4" />
             </Button>
           </span>
         </TooltipTrigger>
-        <TooltipContent>Add file</TooltipContent>
+        <TooltipContent>添加文件</TooltipContent>
       </Tooltip>
       <Tooltip>
         <TooltipTrigger asChild>
           <span>
-            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFolder} aria-label="Add folder">
+            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFolder} aria-label="添加文件夹">
               <FolderPlus className="h-4 w-4" />
             </Button>
           </span>
         </TooltipTrigger>
-        <TooltipContent>Add folder</TooltipContent>
+        <TooltipContent>添加文件夹</TooltipContent>
       </Tooltip>
       <Tooltip>
         <TooltipTrigger asChild>
@@ -1684,7 +1684,7 @@ function SkillFileActions({
                   onDeleteFile();
                 }
               }}
-              aria-label="Delete file"
+              aria-label="删除文件"
             >
               <Trash2 className="h-4 w-4" />
             </Button>
@@ -1695,12 +1695,12 @@ function SkillFileActions({
       <Tooltip>
         <TooltipTrigger asChild>
           <span>
-            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onDeleteFolder} aria-label="Delete folder">
+            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onDeleteFolder} aria-label="删除文件夹">
               <FolderMinus className="h-4 w-4" />
             </Button>
           </span>
         </TooltipTrigger>
-        <TooltipContent>Delete folder</TooltipContent>
+        <TooltipContent>删除文件夹</TooltipContent>
       </Tooltip>
     </div>
   );
@@ -1782,16 +1782,16 @@ function SkillPathDialog({
             placeholder={mode === "folder" ? "references/examples" : "references/examples.md"}
           />
           {mode === "folder" ? (
-            <p className="text-xs text-muted-foreground">A README.md seed file is created so the folder appears in the file tree.</p>
+            <p className="text-xs text-muted-foreground">已创建 README.md 种子文件，以便文件夹出现在文件树中。</p>
           ) : null}
           {error ? <p className="text-xs text-destructive">{error}</p> : null}
         </div>
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
-            Cancel
+            取消
           </Button>
           <Button disabled={pending} onClick={submit}>
-            Create
+            创建
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -1845,13 +1845,13 @@ function DeleteFolderDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Delete folder</DialogTitle>
+          <DialogTitle>删除文件夹</DialogTitle>
           <DialogDescription>
             This removes every skill file under the folder and saves the result as the next version.
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-2">
-          <Label htmlFor="skill-folder-delete">Folder path</Label>
+          <Label htmlFor="skill-folder-delete">文件夹路径</Label>
           <Input
             id="skill-folder-delete"
             value={pathValue}
@@ -1865,10 +1865,10 @@ function DeleteFolderDialog({
         </div>
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
-            Cancel
+            取消
           </Button>
           <Button variant="destructive" disabled={pending} onClick={submit}>
-            Delete
+            删除
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -2024,18 +2024,18 @@ function InputPane({
             </TooltipTrigger>
             <TooltipContent>{collapsed ? "Expand input" : "Collapse input"}</TooltipContent>
           </Tooltip>
-          <span>Input</span>
+          <span>输入</span>
         </span>
       }
       action={
         <div className="flex items-center gap-1">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon-sm" onClick={selectAdHocInput} aria-label="New input">
+              <Button variant="ghost" size="icon-sm" onClick={selectAdHocInput} aria-label="新输入">
                 <Plus className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>New input</TooltipContent>
+            <TooltipContent>新输入</TooltipContent>
           </Tooltip>
         </div>
       }
@@ -2047,7 +2047,7 @@ function InputPane({
           onClick={() => setCollapsed(false)}
         >
           <ChevronRight className="h-3.5 w-3.5" />
-          <span>Input folded</span>
+          <span>输入已折叠</span>
         </button>
       ) : (
         <div className="flex min-h-0 flex-1 flex-col">
@@ -2059,7 +2059,7 @@ function InputPane({
                 <>
                   {adHocMode && (
                     <div className="flex items-center gap-2 rounded px-2 py-1.5 text-sm italic text-muted-foreground">
-                      <FilePlus className="h-3.5 w-3.5" /> New input (not saved)
+                      <FilePlus className="h-3.5 w-3.5" /> 新输入（未保存）
                     </div>
                   )}
                   <FileTree
@@ -2100,14 +2100,14 @@ function InputPane({
                                 if (input) void copyTextToClipboard(input.content).catch(() => {});
                               }}
                             >
-                              <Copy className="mr-2 h-4 w-4" /> Copy content
+                              <Copy className="mr-2 h-4 w-4" /> 复制内容
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem
                               variant="destructive"
                               onClick={() => deleteMutation.mutate(id)}
                             >
-                              <Trash2 className="mr-2 h-4 w-4" /> Delete
+                              <Trash2 className="mr-2 h-4 w-4" /> 删除
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
@@ -2123,8 +2123,8 @@ function InputPane({
             <textarea
               value={draft}
               onChange={(event) => setDraft(event.target.value)}
-              placeholder="Paste text - treated as a new issue description."
-              aria-label="Skill test input"
+              placeholder="粘贴文本 - 视为新问题描述。"
+              aria-label="技能测试输入"
               className="min-h-0 flex-1 resize-none border-0 bg-transparent px-3 py-3 text-sm leading-6 outline-none placeholder:text-muted-foreground focus-visible:ring-0"
             />
           </div>
@@ -2133,7 +2133,7 @@ function InputPane({
               <span className="truncate">
                 {selectedInput ? selectedInput.name : adHocMode ? "New input" : "No input selected"}
               </span>
-              {dirty ? <Badge variant="secondary">Unsaved</Badge> : null}
+              {dirty ? <Badge variant="secondary">未保存</Badge> : null}
             </div>
             {selectedInput && dirty ? (
               <>
@@ -2147,7 +2147,7 @@ function InputPane({
                     baselineContent: selectedInput.content,
                   })}
                 >
-                  Revert
+                  还原
                 </Button>
                 <Button
                   variant="outline"
@@ -2233,14 +2233,14 @@ function SaveInputDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Save test input</DialogTitle>
+          <DialogTitle>保存测试输入</DialogTitle>
           <DialogDescription>
             Runs snapshot input at run time — editing later won't change past runs.
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-3">
           <div className="space-y-1">
-            <Label htmlFor="input-name">Name</Label>
+            <Label htmlFor="input-name">名称</Label>
             <Input
               id="input-name"
               value={name}
@@ -2250,7 +2250,7 @@ function SaveInputDialog({
             <p className="text-xs text-muted-foreground">Use “/” for folders, e.g. onboarding/happy-path</p>
           </div>
           <div className="space-y-1">
-            <Label htmlFor="input-content">Content</Label>
+            <Label htmlFor="input-content">内容</Label>
             <Textarea
               id="input-content"
               value={content}
@@ -2261,13 +2261,13 @@ function SaveInputDialog({
         </div>
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
-            Cancel
+            取消
           </Button>
           <Button
             disabled={!name.trim() || !content.trim() || createMutation.isPending}
             onClick={() => createMutation.mutate()}
           >
-            Save
+            保存
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -2499,7 +2499,7 @@ function RunsPane({
 
   return (
     <PaneScaffold
-      title="Test runs"
+      title="测试运行"
       action={
         <div className="flex items-center gap-2">
           <AgentPicker
@@ -2516,7 +2516,7 @@ function RunsPane({
                   disabled={gate.disabled || Boolean(templateGateReason) || createRunMutation.isPending}
                   onClick={() => createRunMutation.mutate()}
                 >
-                  <Play className="mr-1.5 h-3.5 w-3.5" /> Run
+                  <Play className="mr-1.5 h-3.5 w-3.5" /> 运行
                 </Button>
               </span>
             </TooltipTrigger>
@@ -2568,7 +2568,7 @@ function RunsPane({
           {runsQuery.isLoading ? (
             <div className="text-xs text-muted-foreground">Loading runs…</div>
           ) : runs.length === 0 ? (
-            <EmptyState icon={FlaskConical} message="No test runs yet. Pick an agent and Run." />
+            <EmptyState icon={FlaskConical} message="暂无测试运行。选择代理并运行。" />
           ) : (
             <div className="space-y-1 rounded-md border border-border p-1">
               {runs.map((run) => (
@@ -2692,21 +2692,21 @@ function RunTemplateAdvancedPanel({
         ) : (
           <ChevronRight className="h-3.5 w-3.5" />
         )}
-        <span className="font-semibold uppercase tracking-wide">Advanced</span>
+        <span className="font-semibold uppercase tracking-wide">高级</span>
         <span className="ml-auto truncate">{selectedTemplateName}</span>
       </button>
       {open ? (
         <div className="space-y-3 px-3 pb-3 pt-1">
           <div className="flex items-end gap-2">
             <div className="min-w-0 flex-1 space-y-1">
-              <Label>Run template</Label>
+              <Label>运行模板</Label>
               <SearchableSelect<string, RunTemplateOption>
                 value={selectedValue}
                 groups={templateGroups}
                 loading={templatesLoading}
                 disabled={templatesLoading || templatesError}
                 loadingMessage="Loading templates..."
-                placeholder="Select template"
+                placeholder="选择模板"
                 searchPlaceholder="Search templates..."
                 emptyMessage="No templates."
                 contentClassName="w-(--sz-320px)"
@@ -2728,14 +2728,14 @@ function RunTemplateAdvancedPanel({
                   type="button"
                   variant="outline"
                   size="icon-sm"
-                  aria-label="Create run template"
+                  aria-label="创建运行模板"
                   disabled={actionPending}
                   onClick={onCreateTemplate}
                 >
                   <Plus />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Create run template</TooltipContent>
+              <TooltipContent>创建运行模板</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -2744,7 +2744,7 @@ function RunTemplateAdvancedPanel({
                     type="button"
                     variant="ghost"
                     size="icon-sm"
-                    aria-label="Edit run template"
+                    aria-label="编辑运行模板"
                     disabled={!canEdit || actionPending}
                     onClick={() => selectedTemplate && onEditTemplate(selectedTemplate)}
                   >
@@ -2752,7 +2752,7 @@ function RunTemplateAdvancedPanel({
                   </Button>
                 </span>
               </TooltipTrigger>
-              <TooltipContent>Edit custom template</TooltipContent>
+              <TooltipContent>编辑自定义模板</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -2761,7 +2761,7 @@ function RunTemplateAdvancedPanel({
                     type="button"
                     variant="ghost"
                     size="icon-sm"
-                    aria-label="Duplicate run template"
+                    aria-label="复制运行模板"
                     disabled={!canDuplicate || actionPending}
                     onClick={() => selectedTemplate && onDuplicateTemplate(selectedTemplate)}
                   >
@@ -2780,7 +2780,7 @@ function RunTemplateAdvancedPanel({
                     type="button"
                     variant="ghost"
                     size="icon-sm"
-                    aria-label="Delete run template"
+                    aria-label="删除运行模板"
                     className="text-destructive hover:text-destructive"
                     disabled={!canDelete || actionPending || deletingTemplateId === selectedTemplate?.id}
                     onClick={() => selectedTemplate && onDeleteTemplate(selectedTemplate)}
@@ -2789,16 +2789,16 @@ function RunTemplateAdvancedPanel({
                   </Button>
                 </span>
               </TooltipTrigger>
-              <TooltipContent>Delete custom template</TooltipContent>
+              <TooltipContent>删除自定义模板</TooltipContent>
             </Tooltip>
           </div>
 
           {templatesError ? (
-            <p className="text-xs text-destructive">Run templates could not load.</p>
+            <p className="text-xs text-destructive">无法加载运行模板。</p>
           ) : selectedTemplateId === null ? (
-            <p className="text-xs text-muted-foreground">Runs will use only the input text.</p>
+            <p className="text-xs text-muted-foreground">运行将仅使用输入文本。</p>
           ) : selectedMissing ? (
-            <p className="text-xs text-destructive">Selected template is no longer available.</p>
+            <p className="text-xs text-destructive">所选模板不再可用。</p>
           ) : selectedTemplate ? (
             <div className="space-y-2">
               {selectedTemplate.description ? (
@@ -2809,7 +2809,7 @@ function RunTemplateAdvancedPanel({
               </pre>
             </div>
           ) : (
-            <p className="text-xs text-muted-foreground">Loading template...</p>
+            <p className="text-xs text-muted-foreground">正在加载模板...</p>
           )}
         </div>
       ) : null}
@@ -2858,25 +2858,25 @@ function RunTemplateDialog({
         </DialogHeader>
         <div className="space-y-3">
           <div className="space-y-1">
-            <Label htmlFor="run-template-name">Name</Label>
+            <Label htmlFor="run-template-name">名称</Label>
             <Input
               id="run-template-name"
               value={name}
               onChange={(event) => setName(event.target.value)}
-              placeholder="Focused smoke"
+              placeholder="聚焦冒烟测试"
             />
           </div>
           <div className="space-y-1">
-            <Label htmlFor="run-template-description">Description</Label>
+            <Label htmlFor="run-template-description">描述</Label>
             <Input
               id="run-template-description"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
-              placeholder="Short instructions for common skill checks"
+              placeholder="常见技能检查的简短说明"
             />
           </div>
           <div className="space-y-1">
-            <Label htmlFor="run-template-body">Body</Label>
+            <Label htmlFor="run-template-body">正文</Label>
             <Textarea
               id="run-template-body"
               value={body}
@@ -2890,7 +2890,7 @@ function RunTemplateDialog({
         </div>
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
-            Cancel
+            取消
           </Button>
           <Button
             disabled={!name.trim() || !body.trim() || pending}
@@ -2957,7 +2957,7 @@ function AgentPicker({
           {selectedAgent ? (
             <Identity name={selectedAgent.name} size="xs" />
           ) : (
-            <span className="text-muted-foreground">Pick an agent</span>
+            <span className="text-muted-foreground">选择代理</span>
           )}
         </Button>
       </PopoverTrigger>
@@ -2965,7 +2965,7 @@ function AgentPicker({
         <Command>
           <CommandInput placeholder="Search agents…" />
           <CommandList>
-            <CommandEmpty>No agents.</CommandEmpty>
+            <CommandEmpty>没有代理。</CommandEmpty>
             <CommandGroup>
               {agents.map((agent) => {
                 const selectable = isAgentSelectable(agent);
@@ -2991,7 +2991,7 @@ function AgentPicker({
                     <Identity name={agent.name} size="xs" />
                     {!selectable && (
                       <Badge variant="secondary" className="ml-auto">
-                        Paused
+                        已暂停
                       </Badge>
                     )}
                   </CommandItem>
@@ -3089,15 +3089,15 @@ function RunDetailView({
 
   if (detailQuery.isLoading) {
     return (
-      <PaneScaffold title="Run" action={<BackButton onBack={onBack} />}>
+      <PaneScaffold title="运行" action={<BackButton onBack={onBack} />}>
         <div className="p-3 text-xs text-muted-foreground">Loading run…</div>
       </PaneScaffold>
     );
   }
   if (!detail) {
     return (
-      <PaneScaffold title="Run" action={<BackButton onBack={onBack} />}>
-        <div className="p-3 text-xs text-muted-foreground">Run not found.</div>
+      <PaneScaffold title="运行" action={<BackButton onBack={onBack} />}>
+        <div className="p-3 text-xs text-muted-foreground">未找到运行。</div>
       </PaneScaffold>
     );
   }
@@ -3111,7 +3111,7 @@ function RunDetailView({
   const taskLink = testTaskLinkState(detail);
 
   return (
-    <PaneScaffold title="Run" action={<BackButton onBack={onBack} />}>
+    <PaneScaffold title="运行" action={<BackButton onBack={onBack} />}>
       <div className="min-h-0 flex-1 space-y-3 overflow-auto p-3">
         <div className="flex flex-wrap items-center gap-2">
           <StatusBadge status={runBadgeStatus(detail.status)} />
@@ -3127,17 +3127,17 @@ function RunDetailView({
 
         {/* snapshot property block */}
         <div className="rounded-md border border-border text-xs">
-          <PropRow label="Input" value={detail.inputId ? "saved input" : "ad-hoc paste"} />
-          <PropRow label="Template" value={detail.templateName ?? "No template"} />
-          <PropRow label="Skill version" value={`v${detail.skillVersion.revisionNumber}`} />
-          <PropRow label="Created" value={relativeTime(detail.createdAt)} />
+          <PropRow label="输入" value={detail.inputId ? "saved input" : "ad-hoc paste"} />
+          <PropRow label="模板" value={detail.templateName ?? "No template"} />
+          <PropRow label="技能版本" value={`v${detail.skillVersion.revisionNumber}`} />
+          <PropRow label="创建时间" value={relativeTime(detail.createdAt)} />
         </div>
 
         {showRunErrorCard(detail.status) && (
           <Card className="border-destructive/50">
             <CardHeader className="flex-row items-center gap-2 space-y-0 pb-2">
               <AlertTriangle className="h-3.5 w-3.5 text-destructive" />
-              <span className="text-sm font-medium">Run failed</span>
+              <span className="text-sm font-medium">运行失败</span>
             </CardHeader>
             <CardContent className="text-sm text-muted-foreground">
               {detail.error ?? "The test task ended with an error."}
@@ -3217,7 +3217,7 @@ function RunDetailView({
             disabled={reRunMutation.isPending}
             onClick={() => reRunMutation.mutate()}
           >
-            <RotateCcw className="mr-1.5 h-3.5 w-3.5" /> Re-run
+            <RotateCcw className="mr-1.5 h-3.5 w-3.5" /> 重新运行
           </Button>
           {nonTerminal ? (
             <Button
@@ -3226,7 +3226,7 @@ function RunDetailView({
               disabled={cancelMutation.isPending}
               onClick={() => cancelMutation.mutate()}
             >
-              Cancel
+              取消
             </Button>
           ) : (
             <Button
@@ -3236,7 +3236,7 @@ function RunDetailView({
               disabled={deleteMutation.isPending}
               onClick={() => deleteMutation.mutate()}
             >
-              <Trash2 className="mr-1.5 h-3.5 w-3.5" /> Delete
+              <Trash2 className="mr-1.5 h-3.5 w-3.5" /> 删除
             </Button>
           )}
           {taskLink.enabled && detail.harnessIssue ? (
@@ -3287,7 +3287,7 @@ function RunDocumentsSection({ documents }: { documents: IssueDocument[] }) {
     <section className="space-y-2">
       <div className="flex items-center gap-2">
         <FileText className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
-        <h3 className="text-sm font-medium text-muted-foreground">Documents</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">文档</h3>
         <span className="text-xs text-muted-foreground">{documents.length}</span>
       </div>
       <div className="space-y-2">
@@ -3360,7 +3360,7 @@ function InteractionSection({
   return (
     <section>
       <h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-        Interactions
+        交互
       </h3>
       <div className="space-y-2">
         {detail.interactions.map((summary) => {
@@ -3463,13 +3463,13 @@ function VersionHistorySheet({
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="left" className="w-full sm:max-w-(--sz-560px)">
         <SheetHeader>
-          <SheetTitle>Version history</SheetTitle>
+          <SheetTitle>版本历史</SheetTitle>
         </SheetHeader>
         <div className="mt-3 space-y-2 overflow-auto">
           {versionsQuery.isLoading ? (
             <div className="text-xs text-muted-foreground">Loading versions…</div>
           ) : versions.length === 0 ? (
-            <EmptyState icon={History} message="No versions yet. Save changes to create the first." />
+            <EmptyState icon={History} message="暂无版本。保存更改以创建第一个版本。" />
           ) : (
             <div className="space-y-1 rounded-md border border-border p-1">
               {versions.map((v) => (
@@ -3571,7 +3571,7 @@ function PropRow({ label, value }: { label: string; value: string }) {
 function BackButton({ onBack }: { onBack: () => void }) {
   return (
     <Button variant="ghost" size="sm" onClick={onBack}>
-      <ArrowLeft className="mr-1.5 h-3.5 w-3.5" /> Back
+      <ArrowLeft className="mr-1.5 h-3.5 w-3.5" /> 返回
     </Button>
   );
 }
@@ -3588,9 +3588,9 @@ function MobileTabs({
   return (
     <Tabs defaultValue="skill" className="flex flex-1 flex-col">
       <TabsList variant="line" className="px-3">
-        <TabsTrigger value="skill">Skill</TabsTrigger>
-        <TabsTrigger value="input">Input</TabsTrigger>
-        <TabsTrigger value="runs">Runs</TabsTrigger>
+        <TabsTrigger value="skill">技能</TabsTrigger>
+        <TabsTrigger value="input">输入</TabsTrigger>
+        <TabsTrigger value="runs">运行</TabsTrigger>
       </TabsList>
       <TabsContent value="skill" className="min-h-0 flex-1">
         {skill}

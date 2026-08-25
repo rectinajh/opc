@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "packageName": "@paperclipai/skills-catalog",
   "packageVersion": "0.3.1",
-  "generatedAt": "2026-08-07T20:30:29.973Z",
+  "generatedAt": "2026-08-23T16:38:03.082Z",
   "skills": [
     {
       "id": "paperclipai:bundled:docs:doc-maintenance",
@@ -11,7 +11,7 @@
       "category": "docs",
       "slug": "doc-maintenance",
       "name": "doc-maintenance",
-      "description": "Keep project docs aligned with recent code and feature changes — detect drift, update affected pages, and add release-relevant notes without rewriting unchanged sections.",
+      "description": "保持项目文档与最新代码及功能变更同步——检测文档偏差，更新受影响页面，并添加与版本发布相关的说明，同时避免重写未变更部分。",
       "path": "catalog/bundled/docs/doc-maintenance",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -32,11 +32,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 4478,
-          "sha256": "fb0353386c5e5e5e13bcbb3233f044e3dccecf371f429d6328f26c26d7cb6169"
+          "sizeBytes": 4489,
+          "sha256": "4fe9e899972ad338df5bca9f7e943d87caa418bd9b0369bb77d225f1ef75ba98"
         }
       ],
-      "contentHash": "sha256:2e02299210fd17c1fe1867b4ee8c144a11b6fe1fe481f83b8268cfbaaf10f9aa"
+      "contentHash": "sha256:e9f929f4f09dbf0543444888e18437ab4dce25b98d7996a21a595d28e5423ff3"
     },
     {
       "id": "paperclipai:bundled:paperclip-operations:issue-triage",
@@ -45,7 +45,7 @@
       "category": "paperclip-operations",
       "slug": "issue-triage",
       "name": "issue-triage",
-      "description": "Triage Paperclip inbox issues that are stale, blocked, in-review, or assigned-but-not-progressing, and decide a single next action per issue (resume, reassign, unblock, escalate, or close).",
+      "description": "对Paperclip收件箱中的过期、受阻、审核中或已分配但无进展的问题进行分类，并为每个问题决定单一后续行动（恢复、重新分配、解除阻塞、升级或关闭）。",
       "path": "catalog/bundled/paperclip-operations/issue-triage",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -67,11 +67,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 4042,
-          "sha256": "df5bdc8bf5e017b7ba5f70a4b5323fad51d0c323278f386580f26cf43ad09160"
+          "sizeBytes": 4060,
+          "sha256": "742ebdf6474888af42bef1366e9bf5c889eae5c824e8dd876d2ccce9ccc4d327"
         }
       ],
-      "contentHash": "sha256:88dc13560371fb364963782cb4f6eeb4090fcde92ee3774479428ed6b90e11c1"
+      "contentHash": "sha256:423224b0bfcded943ca6e3902cb2b46214ee1bd8f49685b6e72111bc77c90fd4"
     },
     {
       "id": "paperclipai:bundled:paperclip-operations:reflection-coach",
@@ -80,7 +80,7 @@
       "category": "paperclip-operations",
       "slug": "reflection-coach",
       "name": "reflection-coach",
-      "description": "Reflect on another agent's recent execution record and propose the smallest durable instruction, skill, or tool-description change. Use for evidence-backed coaching proposals, never hot-swaps.",
+      "description": "反思另一智能体近期的执行记录，提出最小且持久的指令、技能或工具描述变更。此变更用于基于证据的辅导建议，绝不用于热替换操作。",
       "path": "catalog/bundled/paperclip-operations/reflection-coach",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -102,11 +102,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 12028,
-          "sha256": "083d5fa8dc43c3ce7747e89c1afb6f6f42d0603a31808bffc5f8e56735f2d865"
+          "sizeBytes": 12019,
+          "sha256": "664903ef551e46920f9cf9233435aa375159cd0afc57d64e561740d711390b08"
         }
       ],
-      "contentHash": "sha256:f2592d81f616628a3eba92636616424f2eed82ec22bb504240a58f6be115e407"
+      "contentHash": "sha256:8da1ae1eaeb0ed2c41a9f811b819bb98aae42c7a146eba5bb72635c8d23fd580"
     },
     {
       "id": "paperclipai:bundled:paperclip-operations:status-card-query",
@@ -115,7 +115,7 @@
       "category": "paperclip-operations",
       "slug": "status-card-query",
       "name": "status-card-query",
-      "description": "Create and maintain agent-authored Paperclip status cards, or compile a prose interest prompt into bounded CompanySearchQuery objects and write the first summary from the assigned Summarizer run.",
+      "description": "创建并维护由代理撰写的Paperclip状态卡片，或将散文式兴趣提示编译为有界的CompanySearchQuery对象，并从指定的Summarizer运行中撰写首份摘要。",
       "path": "catalog/bundled/paperclip-operations/status-card-query",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -137,11 +137,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 6368,
-          "sha256": "0c6140f51d503cbadc98723ce54c0def48e7e31ea159b0935b8ad6369291498a"
+          "sizeBytes": 6357,
+          "sha256": "cead016899165825d81e99c6e202ab66e645b80d145df9e62ee30ed2cb7931e9"
         }
       ],
-      "contentHash": "sha256:2b6e53bf8491f027afdbd6961ad84f677cfd385a0a6a73616ea84111ca8886ed"
+      "contentHash": "sha256:460ab1bb6178d64650598a5d5873825a5c7dc0607e9186d26b9dc2d85c668c4f"
     },
     {
       "id": "paperclipai:bundled:paperclip-operations:summarize-status",
@@ -150,7 +150,7 @@
       "category": "paperclip-operations",
       "slug": "summarize-status",
       "name": "summarize-status",
-      "description": "Write a short, colloquial summary for a Paperclip summary slot: open with the 1–3 specific, concrete actions the reader needs to take right now to unblock the work, then a brief plain-language status, streaming progress as it works.",
+      "description": "立即打开GitHub仓库，拉取最新分支并运行测试套件；同时联系Ramp团队确认MCP接口权限。当前Paperclip技能已部署，Agent Skills正在处理ASD-STE100规范校验，进度约60%，无阻塞项，预计两小时内完成。",
       "path": "catalog/bundled/paperclip-operations/summarize-status",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -172,11 +172,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 8877,
-          "sha256": "4cb3d177f5d16e3cc2052d2f80e7fb245ab95e79c1e947abdc84cd4ee3d8c61e"
+          "sizeBytes": 8897,
+          "sha256": "f7ee96f5c4f92983c8b9f4d75ced57f05e91c73e195a0c05fb15a76e6af3c78e"
         }
       ],
-      "contentHash": "sha256:3e49ee2b8d83d1371fb0f59197bb96c46b64f722540405f46d4a5a756fbe1b89"
+      "contentHash": "sha256:6283a8dbcbba3380b22fff2c7e7991d5ea96773b34f9ab3e47f62dd3ee3126b2"
     },
     {
       "id": "paperclipai:bundled:paperclip-operations:task-planning",
@@ -185,7 +185,7 @@
       "category": "paperclip-operations",
       "slug": "task-planning",
       "name": "task-planning",
-      "description": "Turn a Paperclip issue or request into a structured implementation plan with child task graph, blockers, owners, and acceptance criteria, then save it as the issue `plan` document.",
+      "description": "将Paperclip问题或请求转化为结构化实施计划，包含子任务图、阻塞项、负责人及验收标准，并保存为问题`plan`文档。",
       "path": "catalog/bundled/paperclip-operations/task-planning",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -207,11 +207,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 4938,
-          "sha256": "9c52a44a30ec8d306119da51bf298e9e3e6c382a9a9559ffd3054bf5e0c75f36"
+          "sizeBytes": 4911,
+          "sha256": "88b128502d374c06feaed1dbffe032b7db7c6ed197a1412ad0a64454644e2241"
         }
       ],
-      "contentHash": "sha256:487c3116eead89fef4f71c984329c41836bd69951b7ef9ed8736c69435e02438"
+      "contentHash": "sha256:31fd332b6b91c667b0b289e0b9460359677ea84bc1d26fd92898626f1d8ce1b8"
     },
     {
       "id": "paperclipai:bundled:product:paperclip-capsules",
@@ -220,7 +220,7 @@
       "category": "product",
       "slug": "paperclip-capsules",
       "name": "paperclip-capsules",
-      "description": "Generate, implement, or review Paperclip capsule visuals. Use for capsule art, agent capsules, heartbeat status capsules, identicons, capsule banks, or brand-usage validation.",
+      "description": "生成、实现或审核Paperclip胶囊视觉设计，适用于胶囊艺术、代理胶囊、心跳状态胶囊、身份图标、胶囊库或品牌使用验证。",
       "path": "catalog/bundled/product/paperclip-capsules",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -245,8 +245,8 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 5831,
-          "sha256": "dd659ccb46e105336eb00fbe689b1d5531347fc69493c3156390d40ee413c93e"
+          "sizeBytes": 5818,
+          "sha256": "1133bf6dd4c504583732e980008314cfb3d294b36ea3e9ce17b3a586585bcf52"
         },
         {
           "path": "references/generator-workflows.md",
@@ -273,7 +273,7 @@
           "sha256": "be1f2eccf96b4d2deefe45b3bc1dd0a3597278472c2ffedadc43c57161e9103d"
         }
       ],
-      "contentHash": "sha256:a2b26cf6895affeeb70c85567a061094450a59bd3c4fdcf28ee65858599ac12c"
+      "contentHash": "sha256:48de643a110522f25dd9500530aa9e7fbdcd0f6f660755860f1bb82acb19581f"
     },
     {
       "id": "paperclipai:bundled:product:wireframe",
@@ -282,7 +282,7 @@
       "category": "product",
       "slug": "wireframe",
       "name": "wireframe",
-      "description": "Produce low-fidelity black-and-white UI wireframes as SVGs or viewer pages. Use when asked to wireframe, sketch a screen, draft a layout, make a low-fi mockup, or publish wireframes.",
+      "description": "生成低保真黑白UI线框图，以SVG或查看器页面形式输出。适用于被要求绘制线框、草图屏幕、起草布局、制作低保真原型或发布线框时使用。",
       "path": "catalog/bundled/product/wireframe",
       "entrypoint": "SKILL.md",
       "trustLevel": "assets",
@@ -305,8 +305,8 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 11509,
-          "sha256": "6992047cc97b67211cc8c1183718ab9aa26b8afc34c70d54d20558c215daaf48"
+          "sizeBytes": 11512,
+          "sha256": "f333058c99021eb4aa744e453277beb02edb714cbf58a3c5e4eba57f2d5c837e"
         },
         {
           "path": "assets/site-template.html",
@@ -345,7 +345,7 @@
           "sha256": "017260d2216859d57e5fa869e0efc6b88c7ed4d8a8a4f5af04fe89a3ef2445bd"
         }
       ],
-      "contentHash": "sha256:7106d84fc9db2053090f692706e41cfc586e7dd85a44f568e3319c4eefbdde46"
+      "contentHash": "sha256:f25252f3d0e1ec647ed8be2123c6474b5bcd8bdf854fcc6ea7a164992a24d21b"
     },
     {
       "id": "paperclipai:bundled:quality:qa-acceptance",
@@ -354,7 +354,7 @@
       "category": "quality",
       "slug": "qa-acceptance",
       "name": "qa-acceptance",
-      "description": "Produce QA acceptance criteria and a manual validation plan for a feature change — golden path, edge cases, error states, performance limits, and explicit pass/fail evidence.",
+      "description": "为功能变更制定QA验收标准及手动验证方案，覆盖黄金路径、边界情况、错误状态、性能极限，并明确通过/失败的证据要求。",
       "path": "catalog/bundled/quality/qa-acceptance",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -376,11 +376,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 3861,
-          "sha256": "c631b437ab26d104af6cdb963d8f679a9341439041b3cb3ec8835f4ff551b378"
+          "sizeBytes": 3850,
+          "sha256": "d1e175497727411d1acd284b8d44ce27996c8f92f1a48bbcdf3f0b2c32f8f226"
         }
       ],
-      "contentHash": "sha256:32372dacaf62e93454b9855968c4eec96456ba78b509f450b3dfaa48e31ef356"
+      "contentHash": "sha256:8f79acdab853e3dea3d2c127bede858fd4ff263a89419dad0b8baeb32f6a16ab"
     },
     {
       "id": "paperclipai:bundled:software-development:github-pr-workflow",
@@ -389,7 +389,7 @@
       "category": "software-development",
       "slug": "github-pr-workflow",
       "name": "github-pr-workflow",
-      "description": "Prepare a GitHub pull request from a feature branch — branch hygiene, commit shape, title/body, verification notes, screenshots for UI work, and replies to review comments.",
+      "description": "从功能分支准备GitHub拉取请求——包括分支卫生、提交结构、标题与正文、验证说明、UI工作的截图，以及对评审意见的回复。",
       "path": "catalog/bundled/software-development/github-pr-workflow",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -409,11 +409,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 3970,
-          "sha256": "f498ec4ebb1779dea37adeb1db8a8b22316282798e35ee02e2fc5ff627d7e261"
+          "sizeBytes": 3963,
+          "sha256": "faef52c79a964b63fe9b583cdc10fbd8e6d8fe01b0f10fbb48c50f7f7ac04024"
         }
       ],
-      "contentHash": "sha256:90f278c89aa0711be150c1cd2456ca25620d02f36995b113ca9837d756a37f6c"
+      "contentHash": "sha256:7616e1835fccb2d8762a3153f8152b38b3daa91c08123f5a23fb8336d3bcb80e"
     },
     {
       "id": "paperclipai:optional:browser:agent-browser",
@@ -422,7 +422,7 @@
       "category": "browser",
       "slug": "agent-browser",
       "name": "agent-browser",
-      "description": "Drive a real browser to inspect or interact with a web page or app — navigate, take screenshots, read console and network, fill simple forms — for verification tasks, not unattended automation.",
+      "description": "驱动真实浏览器检查或与网页、应用交互——导航、截图、读取控制台与网络、填写简单表单——用于验证任务，而非无人值守的自动化操作。",
       "path": "catalog/optional/browser/agent-browser",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -444,11 +444,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 5133,
-          "sha256": "362f7b9d02297782bc6f0c093f495b8a0304a75bcf4b42e5c280a42b1f757b7d"
+          "sizeBytes": 5125,
+          "sha256": "03c921a02b52e090f8f9508a7b2494486946db37dc7b9c72a832100480ec6869"
         }
       ],
-      "contentHash": "sha256:eabb2c9f7b5e1a27ebb1e05a711d61433a266478154cd671a685e99e67aadea2"
+      "contentHash": "sha256:4cabe4dbedd0bc4da928453fe65c1e7146034c30a73c57499bc754d0033be7b9"
     },
     {
       "id": "paperclipai:optional:content:release-announcement",
@@ -457,7 +457,7 @@
       "category": "content",
       "slug": "release-announcement",
       "name": "release-announcement",
-      "description": "Write a release announcement — changelog, blog post, in-app note, or social post — that leads with user impact, names the audience, and includes upgrade/migration steps without filler.",
+      "description": "发布公告：为使用Paperclip Agent Skills的开发者带来重大更新——现在支持GitHub与Ramp原生集成，并新增MCP协议兼容层，可直接调用外部工具。现有用户升级时，请先备份技能配置，然后运行`paperclip migrate`命令自动迁移旧版技能定义。新用户安装后，在设置中启用“高级集成”即可体验。此版本还优化了ASD-STE100规范下的技能命名校验，确保跨团队协作一致性。若从旧版升级，需手动更新自定义技能中的环境变量引用，并重新测试所有自动化流程。",
       "path": "catalog/optional/content/release-announcement",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -479,11 +479,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 6945,
-          "sha256": "d745cca96350518fabae14f5c407d779e1df2c5d091b5b4a5c55bb888b569e5f"
+          "sizeBytes": 7346,
+          "sha256": "d96b7693a7fcac94679ef72a3dc4ba0a5c7eaf4c4c8d0ec57c032c36fee871eb"
         }
       ],
-      "contentHash": "sha256:efe8ea89b552df95222609867c9c75f1b40e16f457d34e7e4a124f54daa33efa"
+      "contentHash": "sha256:aafb0109e6fec45afeac7d812c1baf5f712c266391cd822a50fa47e27782ed54"
     },
     {
       "id": "paperclipai:optional:content:simplified-english",
@@ -492,7 +492,7 @@
       "category": "content",
       "slug": "simplified-english",
       "name": "simplified-english",
-      "description": "Write user-facing comments, plans, and documents in ASD-STE100 Simplified Technical English — short, unambiguous sentences with approved words and one meaning each — so readers understand them the first time.",
+      "description": "撰写面向用户的评论、计划与文档时，采用ASD-STE100简化技术英语——使用短句、无歧义且经批准的词汇，每个词仅含单一含义，确保读者首次阅读即可理解。",
       "path": "catalog/optional/content/simplified-english",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -515,11 +515,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 1578,
-          "sha256": "a0f7385599873910e2fabf400346016a07dacbc7ece27c0e3616ae8fd94ebfbb"
+          "sizeBytes": 1574,
+          "sha256": "66db21484ffd47d76dee14dba9f1e9412b320fca2d17f0991079a71c3b8c671c"
         }
       ],
-      "contentHash": "sha256:642321f40d51e0125df05c6fbace49aeb07ec30392058756909c259c9c5eac6a"
+      "contentHash": "sha256:5e56f01a2219443e145d2303e79cea4ed77469bb6d5b5e0b3d3e8be4f5ec7587"
     },
     {
       "id": "paperclipai:optional:finance:ramp",
@@ -528,7 +528,7 @@
       "category": "finance",
       "slug": "ramp",
       "name": "ramp",
-      "description": "Fetch and follow Ramp's published agent playbooks inside Paperclip, with mandatory approval gates for spend, incorporation, cards, account setup, and other financial actions.",
+      "description": "在Paperclip中获取并遵循Ramp发布的代理操作手册，对支出、公司注册、卡片、账户设置及其他财务操作设置强制审批关卡。",
       "path": "catalog/optional/finance/ramp",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -552,11 +552,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 7016,
-          "sha256": "698cd69ebf2f2481ed83c8e9477b56ae78288cc4c751d7d35f649ff2483802a3"
+          "sizeBytes": 7002,
+          "sha256": "66caa708e6eedfead223791fe86a2c929c9d7532913106a751ed1a3e3f090702"
         }
       ],
-      "contentHash": "sha256:276d85e98a4732f278204e26438aa95fde158dd2d15c1e427c4c7c7d492e769d"
+      "contentHash": "sha256:903a882e9687cbc01bae9de31553e86754ea45e6d67cf586749abb1efccefc8d"
     },
     {
       "id": "paperclipai:optional:product:design-critique",
@@ -565,7 +565,7 @@
       "category": "product",
       "slug": "design-critique",
       "name": "design-critique",
-      "description": "Give a structured product design critique — user job clarity, hierarchy, affordance, error states, accessibility, and consistency — focused on what to change, in what order, and why.",
+      "description": "提供结构化产品设计评审——聚焦用户任务清晰度、层级、可操作性、错误状态、无障碍性和一致性，并明确变更顺序及理由。",
       "path": "catalog/optional/product/design-critique",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -587,11 +587,11 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 4851,
-          "sha256": "022e619baf6cc25725946279cb8052d22af090dd6cd6dc8c20f17867f71a5d8e"
+          "sizeBytes": 4833,
+          "sha256": "7c71e6bf31e0cf905d3ed80c3dec143167c3a9242730ba4e4f5946b40b6c101a"
         }
       ],
-      "contentHash": "sha256:429f94df398a0697042b5bbe4755b1ff1a230aa5f41d99118ad37493ac65d21c"
+      "contentHash": "sha256:c59c189a065d9a0e76f9b08944d4202fe1b1880af0a09b941f1e82f80cc1c663"
     },
     {
       "id": "paperclipai:optional:research:last30days",
@@ -1121,7 +1121,7 @@
       "category": "software-development",
       "slug": "prepare-mcp-integration",
       "name": "prepare-mcp-integration",
-      "description": "Prepare MCP/vendor integrations through cited research, a content PR, exact-revision human approval, and one governed Paperclip connector PR per approved connection. Use for new integration research and delivery; not for ad hoc connector coding that bypasses the playbooks.",
+      "description": "通过引用研究、内容PR、精确修订的人工审批以及每个已批准连接的一个受治理的Paperclip连接器PR，准备MCP/供应商集成。用于新集成的研究与交付，而非绕过操作手册的临时连接器编码。",
       "path": "catalog/optional/software-development/prepare-mcp-integration",
       "entrypoint": "SKILL.md",
       "trustLevel": "markdown_only",
@@ -1149,8 +1149,8 @@
         {
           "path": "SKILL.md",
           "kind": "skill",
-          "sizeBytes": 11183,
-          "sha256": "452386be3aa5e2988dc9d72f288f469975da766626a25c48017877963c533781"
+          "sizeBytes": 11145,
+          "sha256": "7a280315515419c93d39b5ec6736a7e66968ef1c47acd7473fab9bba439c2e8b"
         },
         {
           "path": "examples/notion-mcp-research-gate.md",
@@ -1159,7 +1159,7 @@
           "sha256": "944b13ac67c06c65643eb236e856f1479106749861535648d29334f84cf1b50b"
         }
       ],
-      "contentHash": "sha256:4dbb76624e0fd5502fa10a9168f77214c5020899838af887e77a1617a0a00c31"
+      "contentHash": "sha256:9c804b6fd600db468a265a0dddcbe52c80cf9ef55bde925c8dd366abf87c77e6"
     }
   ]
 }

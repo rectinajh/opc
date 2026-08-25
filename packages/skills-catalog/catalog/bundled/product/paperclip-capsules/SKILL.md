@@ -1,6 +1,6 @@
 ---
 name: paperclip-capsules
-description: Generate, implement, or review Paperclip capsule visuals. Use for capsule art, agent capsules, heartbeat status capsules, identicons, capsule banks, or brand-usage validation.
+description: 生成、实现或审核Paperclip胶囊视觉设计，适用于胶囊艺术、代理胶囊、心跳状态胶囊、身份图标、胶囊库或品牌使用验证。
 key: paperclipai/bundled/product/paperclip-capsules
 recommendedForRoles:
   - designer

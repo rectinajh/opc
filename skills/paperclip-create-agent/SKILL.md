@@ -1,9 +1,6 @@
 ---
 name: paperclip-create-agent
-description: >
-  Create new agents in Paperclip with governance-aware hiring. Use when you need
-  to inspect adapter configuration options, compare existing agent configs,
-  draft a new agent prompt/config, and submit a hire request.
+description: 在Paperclip中创建新代理，并采用治理感知的招聘流程。当需要检查适配器配置选项、比较现有代理配置、起草新代理提示或配置，以及提交招聘请求时使用此功能。
 ---
 
 # Paperclip Create Agent Skill

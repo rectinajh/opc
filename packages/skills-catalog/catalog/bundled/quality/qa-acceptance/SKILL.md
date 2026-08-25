@@ -1,6 +1,6 @@
 ---
 name: qa-acceptance
-description: Produce QA acceptance criteria and a manual validation plan for a feature change — golden path, edge cases, error states, performance limits, and explicit pass/fail evidence.
+description: 为功能变更制定QA验收标准及手动验证方案，覆盖黄金路径、边界情况、错误状态、性能极限，并明确通过/失败的证据要求。
 key: paperclipai/bundled/quality/qa-acceptance
 recommendedForRoles:
   - qa

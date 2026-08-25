@@ -1,10 +1,6 @@
 ---
 name: prepare-mcp-integration
-description: >
-  Prepare MCP/vendor integrations through cited research, a content PR,
-  exact-revision human approval, and one governed Paperclip connector PR per
-  approved connection. Use for new integration research and delivery; not for
-  ad hoc connector coding that bypasses the playbooks.
+description: 通过引用研究、内容PR、精确修订的人工审批以及每个已批准连接的一个受治理的Paperclip连接器PR，准备MCP/供应商集成。用于新集成的研究与交付，而非绕过操作手册的临时连接器编码。
 key: paperclipai/optional/software-development/prepare-mcp-integration
 recommendedForRoles:
   - engineer

@@ -124,16 +124,16 @@ export function SidebarServerInfo() {
   return (
     <div className="mt-2 border-t border-border pt-2">
       <p className="px-3 pb-1 pt-1 text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">
-        Server
+        服务器
       </p>
       <ServerInfoRow
         icon={Clock3}
-        label="Last restarted"
+        label="上次重启"
         value={lastRestartedLabel}
         dateTime={!healthUnavailable && !isWaitingForHealth && restartedAtIsValid ? restartedAt : null}
       />
-      <ServerInfoRow icon={GitCommit} label="Running commit" value={commit} />
-      <ServerInfoRow icon={FileDiff} label="Checkout state" value={localChanges} />
+      <ServerInfoRow icon={GitCommit} label="运行中的提交" value={commit} />
+      <ServerInfoRow icon={FileDiff} label="检出状态" value={localChanges} />
     </div>
   );
 }

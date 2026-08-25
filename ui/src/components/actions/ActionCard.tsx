@@ -133,10 +133,10 @@ function initials(name: string): string {
 function bindingRows(binding: ActionCardBinding, isStale: boolean): BindingRow[] {
   const catalogValue = isStale && binding.previousCatalogSha256 ? (
     <span className="inline-flex flex-wrap items-center gap-1.5">
-      <span className="text-muted-foreground line-through decoration-amber-500" title="Previous catalog hash">
+      <span className="text-muted-foreground line-through decoration-amber-500" title="先前目录哈希">
         {shortSha(binding.previousCatalogSha256)}
       </span>
-      <span className="text-amber-600 dark:text-amber-400" title="Current catalog hash">
+      <span className="text-amber-600 dark:text-amber-400" title="当前目录哈希">
         {shortSha(binding.catalogSha256)}
       </span>
     </span>
@@ -203,12 +203,12 @@ export function ActionCard({
       className={mobile ? "w-full" : undefined}
       title={isStale ? "Re-issue the request before approving — the catalog hash changed." : undefined}
     >
-      Approve
+      批准
     </Button>
   );
   const denyButton = (
     <Button size="sm" variant="outline" onClick={onDeny} className={mobile ? "w-full" : undefined}>
-      Deny
+      拒绝
     </Button>
   );
   const editButton = (
@@ -236,7 +236,7 @@ export function ActionCard({
           </Avatar>
           <div className="min-w-0 flex-1">
             <p className="text-sm text-foreground">
-              <span className="font-medium">{agentName}</span> requested approval to call
+              <span className="font-medium">{agentName}</span> 请求批准调用
             </p>
             <p className="mt-0.5 font-mono text-xs text-muted-foreground break-all">{toolName}</p>
           </div>
@@ -256,7 +256,7 @@ export function ActionCard({
         {isStale ? (
           <EnforcementBanner
             tone="warning"
-            title="Catalog changed since this request was signed."
+            title="自请求签名以来目录已更改。"
             body="The application's tool catalog hash no longer matches the one this approval was issued against. Approval is disabled — the agent must edit & re-sign to request again."
           />
         ) : null}
@@ -266,7 +266,7 @@ export function ActionCard({
 
         {/* JSON input */}
         <div className="space-y-1">
-          <p className="text-xs font-medium uppercase tracking-normal text-muted-foreground">Input</p>
+          <p className="text-xs font-medium uppercase tracking-normal text-muted-foreground">输入</p>
           <pre className="overflow-x-auto rounded-md border border-border bg-muted/40 p-3 font-mono text-xs leading-relaxed text-foreground">
             {json}
           </pre>
@@ -280,7 +280,7 @@ export function ActionCard({
             {policyNumber != null ? (
               <>
                 {" "}
-                <span className="font-medium text-foreground">Policy #{policyNumber}</span> requires approval here.
+                <span className="font-medium text-foreground">Policy #{policyNumber}</span> 此处需要批准。
               </>
             ) : null}
           </p>

@@ -48,15 +48,15 @@ function KeySection({
         <div className="flex items-start gap-3">
           <Lock className="mt-0.5 h-4 w-4 text-muted-foreground" />
           <div>
-            <h2 className="text-sm font-bold text-foreground">Key</h2>
+            <h2 className="text-sm font-bold text-foreground">键</h2>
             <p className="mt-0.5 text-sm text-muted-foreground">
-              Your key is stored securely. Replace it if it stopped working or you rotated it.
+              您的密钥已安全存储。如果它停止工作或您已轮换，请更换。
             </p>
           </div>
         </div>
         {!open && (
           <Button size="sm" variant="outline" onClick={() => setOpen(true)}>
-            Replace key
+            更换密钥
           </Button>
         )}
       </div>
@@ -210,7 +210,7 @@ function ReconnectForm({
                 rel="noreferrer"
                 className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-foreground underline underline-offset-2"
               >
-                Where do I find this? <ArrowUpRight className="h-3 w-3" />
+                我在哪里可以找到这个？ <ArrowUpRight className="h-3 w-3" />
               </a>
             )}
           </div>
@@ -221,7 +221,7 @@ function ReconnectForm({
           autoComplete="off"
           value={single}
           onChange={(e) => setSingle(e.target.value)}
-          placeholder="Paste your new key"
+          placeholder="粘贴您的新密钥"
           className="h-10 font-mono"
         />
       )}
@@ -232,7 +232,7 @@ function ReconnectForm({
         </Button>
         {onCancel && (
           <Button size="sm" variant="ghost" onClick={onCancel} disabled={reconnect.isPending}>
-            Cancel
+            取消
           </Button>
         )}
       </div>
@@ -243,11 +243,11 @@ function ReconnectForm({
 function TechnicalDetails({ connection }: { connection: ToolConnection }) {
   return (
     <section className="rounded-xl border border-border bg-card px-5 py-4">
-      <h2 className="text-sm font-bold text-foreground">Technical details</h2>
+      <h2 className="text-sm font-bold text-foreground">技术细节</h2>
       <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-(--gtc-59)">
-        <dt className="text-muted-foreground">Address</dt>
+        <dt className="text-muted-foreground">地址</dt>
         <dd className="break-all font-mono text-foreground">{connectionAddress(connection)}</dd>
-        <dt className="text-muted-foreground">Connection type</dt>
+        <dt className="text-muted-foreground">连接类型</dt>
         <dd className="text-foreground">{connectionTransportLabel(connection.transport)}</dd>
       </dl>
     </section>
@@ -267,11 +267,11 @@ export function DangerZone({
   return (
     <section className="rounded-xl border border-destructive/40 bg-card">
       <div className="border-b border-destructive/40 px-5 py-3 text-sm font-bold text-destructive">
-        Danger zone
+        危险区域
       </div>
       <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
         <div>
-          <p className="text-sm font-medium text-foreground">Remove this app</p>
+          <p className="text-sm font-medium text-foreground">移除该应用</p>
           <p className="text-xs text-muted-foreground">
             Agents lose access to {appName} right away. You can connect it again later.
           </p>
@@ -279,7 +279,7 @@ export function DangerZone({
         {confirming ? (
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" onClick={() => setConfirming(false)} disabled={removing}>
-              Cancel
+              取消
             </Button>
             <Button variant="destructive" size="sm" onClick={onRemove} disabled={removing}>
               {removing && <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />}
@@ -288,7 +288,7 @@ export function DangerZone({
           </div>
         ) : (
           <Button variant="destructive" size="sm" onClick={() => setConfirming(true)}>
-            Remove app
+            移除应用
           </Button>
         )}
       </div>

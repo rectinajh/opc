@@ -390,7 +390,7 @@ function AgentRow({
               {busy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : "Remove"}
             </Button>
             <Button variant="ghost" size="sm" onClick={onCancelRemove} disabled={busy}>
-              Cancel
+              取消
             </Button>
           </div>
         ) : (

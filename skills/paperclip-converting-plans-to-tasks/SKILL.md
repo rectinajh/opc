@@ -1,9 +1,6 @@
 ---
 name: paperclip-converting-plans-to-tasks
-description: >
-  Convert Paperclip plans into executable issue graphs. Use when asked to plan,
-  scope, or break down Paperclip company work into assigned tasks with specialty
-  fit, dependencies, blockers, and parallelization.
+description: 将Paperclip计划转化为可执行的议题图谱。适用于需要规划、界定范围或拆解Paperclip公司工作，并分配具有专业匹配度、依赖关系、阻碍因素及并行化策略的任务时。
 ---
 
 # Paperclip — Converting Plans to Tasks

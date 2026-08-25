@@ -16,7 +16,7 @@ const ITEMS: { key: SubNavKey; label: string; href: string }[] = [
  */
 export function AppsSubNav({ active }: { active: SubNavKey }) {
   return (
-    <nav className="flex items-center gap-6 border-b border-border text-sm" aria-label="Apps sections">
+    <nav className="flex items-center gap-6 border-b border-border text-sm" aria-label="应用部分">
       {ITEMS.map((item) => {
         const isActive = item.key === active;
         return (

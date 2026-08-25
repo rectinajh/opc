@@ -106,10 +106,10 @@ export function IssuePropertiesPlansTab({ issue }: IssuePropertiesPlansTabProps)
           "Loading plan…"
         ) : issue.workMode === "planning" ? (
           <div className="space-y-2">
-            <p>This task is in plan mode but no plan document has been written yet.</p>
+            <p>此任务处于计划模式，但尚未编写计划文档。</p>
             {pendingPlanConfirmation ? (
               <p className="text-amber-foreground">
-                A plan confirmation is pending, but the plan document it should confirm is missing.
+                计划确认待处理，但应确认的计划文档缺失。
               </p>
             ) : null}
           </div>

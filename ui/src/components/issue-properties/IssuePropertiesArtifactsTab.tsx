@@ -207,7 +207,7 @@ function MarkdownWorkProductRow({
   if (tooLarge) {
     expandedBody = (
       <p className="text-sm text-muted-foreground">
-        This Markdown file is too large to preview. Use Raw or Download instead.
+        此 Markdown 文件太大，无法预览。请改用 Raw 或下载。
       </p>
     );
   } else if (reviewDoc) {
@@ -227,7 +227,7 @@ function MarkdownWorkProductRow({
         <MarkdownBody>{reviewDoc.body}</MarkdownBody>
       </IssueDocumentAnnotations>
     ) : (
-      <p className="text-sm text-muted-foreground">Document is empty.</p>
+      <p className="text-sm text-muted-foreground">文档为空。</p>
     );
   } else if (ensure.isError) {
     expandedBody = (
@@ -246,7 +246,7 @@ function MarkdownWorkProductRow({
               ensure.mutate();
             }}
           >
-            Retry
+            重试
           </button>
         ) : null}
       </div>
@@ -294,7 +294,7 @@ function MarkdownWorkProductRow({
           target="_blank"
           rel="noreferrer"
           aria-label={`Open raw ${workProduct.title}`}
-          title="Open raw"
+          title="打开原始内容"
           className="shrink-0 px-1.5 py-1.5 text-muted-foreground hover:text-foreground"
         >
           <ExternalLink className="h-3 w-3" />
@@ -302,7 +302,7 @@ function MarkdownWorkProductRow({
         <a
           href={metadata.downloadPath}
           aria-label={`Download ${workProduct.title}`}
-          title="Download"
+          title="下载"
           className="shrink-0 py-1.5 pr-2 pl-0.5 text-muted-foreground hover:text-foreground"
         >
           <Download className="h-3 w-3" />
@@ -378,7 +378,7 @@ function DocumentRow({
               <MarkdownBody>{doc.body}</MarkdownBody>
             </IssueDocumentAnnotations>
           ) : (
-            <p className="text-sm text-muted-foreground">Document is empty.</p>
+            <p className="text-sm text-muted-foreground">文档为空。</p>
           )}
         </div>
       ) : null}
@@ -417,7 +417,7 @@ export function IssuePropertiesArtifactsTab({ issue, documentDeepLink }: IssuePr
   if (workProductRows.length === 0 && documentRows.length === 0 && fileRows.length === 0) {
     return (
       <div className="px-1 py-6 text-sm text-muted-foreground">
-        No artifacts yet. Work products, documents, and agent-produced files will appear here.
+        暂无工件。工作产品、文档和代理生成的文件将显示在此处。
       </div>
     );
   }
@@ -426,7 +426,7 @@ export function IssuePropertiesArtifactsTab({ issue, documentDeepLink }: IssuePr
     <div className="flex flex-col gap-2 py-2">
       {workProductRows.length > 0 ? (
         <>
-          <SectionHeading>Work products</SectionHeading>
+          <SectionHeading>工作产品</SectionHeading>
           <ul className="flex flex-col gap-1">
             {workProductRows.map((wp) => {
               const markdownMetadata = getMarkdownWorkProductAttachmentMetadata(wp);
@@ -457,7 +457,7 @@ export function IssuePropertiesArtifactsTab({ issue, documentDeepLink }: IssuePr
       ) : null}
       {documentRows.length > 0 ? (
         <>
-          <SectionHeading>Documents</SectionHeading>
+          <SectionHeading>文档</SectionHeading>
           <ul className="flex flex-col gap-1">
             {documentRows.map((doc) => (
               <li key={doc.key}>
@@ -475,7 +475,7 @@ export function IssuePropertiesArtifactsTab({ issue, documentDeepLink }: IssuePr
       ) : null}
       {fileRows.length > 0 ? (
         <>
-          <SectionHeading>Files</SectionHeading>
+          <SectionHeading>文件</SectionHeading>
           <ul className="flex flex-col gap-1">
             {fileRows.map((a) => (
               <li key={a.id}>

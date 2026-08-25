@@ -73,7 +73,7 @@ export function SkillPolicyDenialNotice({
 }) {
   const actions = onDismiss ? (
     <Button variant="ghost" size="sm" onClick={onDismiss}>
-      Dismiss
+      关闭
     </Button>
   ) : undefined;
 

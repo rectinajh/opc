@@ -1,6 +1,6 @@
 ---
 name: reflection-coach
-description: Reflect on another agent's recent execution record and propose the smallest durable instruction, skill, or tool-description change. Use for evidence-backed coaching proposals, never hot-swaps.
+description: 反思另一智能体近期的执行记录，提出最小且持久的指令、技能或工具描述变更。此变更用于基于证据的辅导建议，绝不用于热替换操作。
 key: paperclipai/bundled/paperclip-operations/reflection-coach
 recommendedForRoles:
   - manager

@@ -119,30 +119,30 @@ export function StatusCardSettingsForm({
   return (
     <div className="space-y-6">
       <section className="space-y-2">
-        <h3 className="text-sm font-semibold">Auto-update policy</h3>
+        <h3 className="text-sm font-semibold">自动更新策略</h3>
         <div className="space-y-2">
           <RadioRow
             selected={policy.mode === "manual"}
             title="Manual only — updates when I press refresh"
             badge={
               <span className="ml-auto rounded-full bg-muted px-2 py-0.5 text-(length:--text-nano) font-medium uppercase tracking-wide text-muted-foreground">
-                Default
+                默认
               </span>
             }
             onSelect={() => setMode("manual")}
           />
           <RadioRow
             selected={policy.mode === "interval"}
-            title="On a schedule, only if something changed"
+            title="按计划，仅在发生变化时"
             onSelect={() => setMode("interval")}
           >
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <span>Check every</span>
+              <span>检查频率</span>
               <Select
                 value={String(policy.intervalMinutes ?? 15)}
                 onValueChange={(next) => setPolicy({ intervalMinutes: Number(next) })}
               >
-                <SelectTrigger size="sm" className="w-28" aria-label="Check interval">
+                <SelectTrigger size="sm" className="w-28" aria-label="检查间隔">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -157,16 +157,16 @@ export function StatusCardSettingsForm({
           </RadioRow>
           <RadioRow
             selected={policy.mode === "reactive"}
-            title="As soon as something changes (debounced)"
+            title="一旦发生变化（防抖）"
             onSelect={() => setMode("reactive")}
           >
             <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-              <span>Wait</span>
+              <span>等待</span>
               <Select
                 value={String(policy.debounceSeconds ?? 60)}
                 onValueChange={(next) => setPolicy({ debounceSeconds: Number(next) })}
               >
-                <SelectTrigger size="sm" className="w-24" aria-label="Debounce">
+                <SelectTrigger size="sm" className="w-24" aria-label="防抖">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -185,7 +185,7 @@ export function StatusCardSettingsForm({
                 value={policy.maxUpdatesPerHour ?? 6}
                 onChange={(event) => setPolicy({ maxUpdatesPerHour: Math.max(1, Number(event.target.value) || 1) })}
                 className="h-8 w-16 text-sm"
-                aria-label="Max updates per hour"
+                aria-label="每小时最大更新次数"
               />
               <span className="text-xs">updates/hour</span>
             </div>
@@ -201,7 +201,7 @@ export function StatusCardSettingsForm({
       {autoUpdating ? (
         <Collapsible className="rounded-md border border-border">
           <CollapsibleTrigger className="group flex w-full items-center justify-between gap-2 px-3 py-2.5 text-sm font-semibold">
-            Advanced
+            高级
             <ChevronDown className="h-4 w-4 text-muted-foreground transition-transform group-data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent className="space-y-6 border-t border-border px-3 py-3">
@@ -223,10 +223,10 @@ export function StatusCardSettingsForm({
             </section>
 
             <section className="space-y-3">
-              <h3 className="text-sm font-semibold">Guardrails</h3>
+              <h3 className="text-sm font-semibold">护栏</h3>
               <label className="flex items-start gap-2.5 text-sm">
-                <Checkbox checked={Boolean(activeHours)} onCheckedChange={(checked) => setActiveHoursEnabled(Boolean(checked))} className="mt-0.5" aria-label="Limit to active hours" />
-                <span>Only auto-update during active hours</span>
+                <Checkbox checked={Boolean(activeHours)} onCheckedChange={(checked) => setActiveHoursEnabled(Boolean(checked))} className="mt-0.5" aria-label="限制在活跃时段" />
+                <span>仅在活跃时段自动更新</span>
               </label>
               {activeHours ? (
                 <div className="flex flex-wrap items-center gap-2 pl-6 text-sm">
@@ -235,7 +235,7 @@ export function StatusCardSettingsForm({
                     value={activeHours.start}
                     onChange={(event) => setPolicy({ activeHours: { ...activeHours, start: event.target.value } })}
                     className="h-8 w-32"
-                    aria-label="Active hours start"
+                    aria-label="活跃时段开始"
                   />
                   <span className="text-muted-foreground">–</span>
                   <Input
@@ -243,19 +243,19 @@ export function StatusCardSettingsForm({
                     value={activeHours.end}
                     onChange={(event) => setPolicy({ activeHours: { ...activeHours, end: event.target.value } })}
                     className="h-8 w-32"
-                    aria-label="Active hours end"
+                    aria-label="活跃时段结束"
                   />
                   <Input
                     value={activeHours.timezone}
                     onChange={(event) => setPolicy({ activeHours: { ...activeHours, timezone: event.target.value } })}
                     className="h-8 w-40"
-                    placeholder="Timezone"
-                    aria-label="Active hours timezone"
+                    placeholder="时区"
+                    aria-label="活跃时段时区"
                   />
                 </div>
               ) : null}
               <div className="flex flex-wrap items-center gap-2 text-sm">
-                <span className="w-32 shrink-0">Daily token cap</span>
+                <span className="w-32 shrink-0">每日令牌上限</span>
                 <Input
                   type="number"
                   min={0}
@@ -266,8 +266,8 @@ export function StatusCardSettingsForm({
                     setPolicy({ dailyTokenCap: event.target.value === "" || parsed <= 0 ? undefined : parsed });
                   }}
                   className="h-8 w-36"
-                  placeholder="no cap"
-                  aria-label="Daily token cap"
+                  placeholder="无上限"
+                  aria-label="每日令牌上限"
                 />
               </div>
             </section>
@@ -276,7 +276,7 @@ export function StatusCardSettingsForm({
       ) : null}
 
       <div className="flex items-center gap-2 text-sm">
-        <span className="font-semibold">Estimated cost</span>
+        <span className="font-semibold">预计成本</span>
         <span className="text-muted-foreground">=</span>
         <Tooltip>
           <TooltipTrigger asChild>

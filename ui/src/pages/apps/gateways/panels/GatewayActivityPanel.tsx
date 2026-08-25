@@ -66,11 +66,11 @@ export function GatewayActivityPanel({
   return (
     <div className="space-y-3">
       <p className="text-sm text-muted-foreground">
-        Every call through this gateway in the last 7 days, with why it was allowed, blocked, or paused.
+        过去 7 天内通过此网关的每次调用，以及允许、阻止或暂停的原因。
       </p>
       {events.length === 0 ? (
         <div className="rounded-md border border-dashed border-border p-6 text-center text-sm text-muted-foreground">
-          No calls have gone through this gateway yet.
+          尚无调用通过此网关。
         </div>
       ) : (
         <ul className="divide-y divide-border rounded-lg border border-border">

@@ -348,7 +348,7 @@ export function AppDetail() {
   }
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">Select a company to manage apps.</div>;
+    return <div className="p-6 text-sm text-muted-foreground">选择公司以管理应用。</div>;
   }
   if (connectionQuery.isLoading || catalogQuery.isLoading) {
     return (
@@ -362,9 +362,9 @@ export function AppDetail() {
   if (!connection) {
     return (
       <div className="max-w-3xl p-6">
-        <p className="text-sm text-muted-foreground">We couldn't find that app.</p>
+        <p className="text-sm text-muted-foreground">我们找不到该应用。</p>
         <Button className="mt-4" variant="outline" onClick={() => navigate("/apps/connections")}>
-          Back to apps
+          返回应用
         </Button>
       </div>
     );
@@ -529,7 +529,7 @@ function AppDetailHeader({
               }}
             >
               <Input
-                aria-label="App name"
+                aria-label="应用名称"
                 value={nameDraft}
                 onChange={(event) => onNameDraftChange(event.target.value)}
                 className="h-9 w-64 text-lg font-bold"
@@ -539,7 +539,7 @@ function AppDetailHeader({
                 {renamePending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : "Save"}
               </Button>
               <Button type="button" size="sm" variant="ghost" onClick={onRenameCancel} disabled={renamePending}>
-                Cancel
+                取消
               </Button>
             </form>
           ) : (
@@ -549,7 +549,7 @@ function AppDetailHeader({
                 variant="ghost"
                 size="icon"
                 className="h-7 w-7 text-muted-foreground"
-                aria-label="Rename app"
+                aria-label="重命名应用"
                 onClick={onRenameStart}
               >
                 <Pencil className="h-3.5 w-3.5" />

@@ -212,15 +212,15 @@ function InviteSummaryPanel({
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">
-        <MetaCard label="Company" value="Acme Robotics" />
-        <MetaCard label="Invited by" value="Board User" />
-        <MetaCard label="Requested access" value={requestedAccess} />
-        <MetaCard label="Invite expires" value="Mar 7, 2027" />
+        <MetaCard label="公司" value="Acme Robotics" />
+        <MetaCard label="邀请者" value="Board User" />
+        <MetaCard label="请求访问" value={requestedAccess} />
+        <MetaCard label="邀请过期" value="Mar 7, 2027" />
       </div>
 
       {inviteMessage ? (
         <div className="border border-amber-500/40 bg-amber-500/10 p-4">
-          <div className="text-xs uppercase tracking-(--tracking-caps) text-amber-200/80">Message from inviter</div>
+          <div className="text-xs uppercase tracking-(--tracking-caps) text-amber-200/80">邀请人的消息</div>
           <p className="mt-2 text-sm leading-6 text-amber-50">{inviteMessage}</p>
         </div>
       ) : null}
@@ -275,7 +275,7 @@ function InlineAuthPreview({
               : "border-zinc-800 text-zinc-300 hover:border-zinc-600",
           )}
         >
-          Create account
+          创建账户
         </button>
         <button
           type="button"
@@ -286,23 +286,23 @@ function InlineAuthPreview({
               : "border-zinc-800 text-zinc-300 hover:border-zinc-600",
           )}
         >
-          I already have an account
+          我已有账户
         </button>
       </div>
 
       <form className="space-y-4">
         {mode === "sign_up" ? (
           <label className="block text-sm">
-            <span className="mb-1 block text-zinc-400">Name</span>
+            <span className="mb-1 block text-zinc-400">名称</span>
             <input name="name" className={fieldClassName} defaultValue="Jane Example" readOnly />
           </label>
         ) : null}
         <label className="block text-sm">
-          <span className="mb-1 block text-zinc-400">Email</span>
+          <span className="mb-1 block text-zinc-400">电子邮件</span>
           <input name="email" type="email" className={fieldClassName} defaultValue="jane@example.com" readOnly />
         </label>
         <label className="block text-sm">
-          <span className="mb-1 block text-zinc-400">Password</span>
+          <span className="mb-1 block text-zinc-400">密码</span>
           <input name="password" type="password" className={fieldClassName} defaultValue="supersecret" readOnly />
         </label>
         {feedback ? (
@@ -328,17 +328,17 @@ function AgentRequestPreview() {
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="text-lg font-semibold text-zinc-100">Submit agent details</h3>
+        <h3 className="text-lg font-semibold text-zinc-100">提交代理详情</h3>
         <p className="mt-1 text-sm text-zinc-400">
-          This invite will create an approval request for a new agent in Acme Robotics.
+          此邀请将为 Acme Robotics 中的新代理创建审批请求。
         </p>
       </div>
       <label className="block text-sm">
-        <span className="mb-1 block text-zinc-400">Agent name</span>
+        <span className="mb-1 block text-zinc-400">代理名称</span>
         <input className={fieldClassName} defaultValue="Acme Ops Agent" readOnly />
       </label>
       <label className="block text-sm">
-        <span className="mb-1 block text-zinc-400">Adapter type</span>
+        <span className="mb-1 block text-zinc-400">适配器类型</span>
         <select className={fieldClassName} defaultValue="codex_local" disabled>
           <option value="codex_local">Codex</option>
           <option value="claude_local">Claude Code</option>
@@ -346,7 +346,7 @@ function AgentRequestPreview() {
         </select>
       </label>
       <label className="block text-sm">
-        <span className="mb-1 block text-zinc-400">Capabilities</span>
+        <span className="mb-1 block text-zinc-400">能力</span>
         <textarea
           className={fieldClassName}
           rows={4}
@@ -355,7 +355,7 @@ function AgentRequestPreview() {
         />
       </label>
       <Button type="button" className="w-full rounded-none">
-        Submit request
+        提交请求
       </Button>
     </div>
   );
@@ -373,7 +373,7 @@ function AcceptInvitePreview({
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="text-lg font-semibold text-zinc-100">Accept company invite</h3>
+        <h3 className="text-lg font-semibold text-zinc-100">接受公司邀请</h3>
         <p className="mt-1 text-sm text-zinc-400">
           {autoAccept
             ? "Granting your access to Acme Robotics."
@@ -384,10 +384,10 @@ function AcceptInvitePreview({
       </div>
       {error ? <p className="text-xs text-red-400">{error}</p> : null}
       {autoAccept ? (
-        <div className="text-sm text-zinc-400">Submitting request...</div>
+        <div className="text-sm text-zinc-400">正在提交请求...</div>
       ) : (
         <Button type="button" className="w-full rounded-none" disabled={isCurrentMember}>
-          Accept invite
+          接受邀请
         </Button>
       )}
     </div>
@@ -422,12 +422,12 @@ function InviteResultPreview({
         <p className="text-sm text-zinc-400">{description}</p>
         {joinedNow ? (
           <Button type="button" className="w-full rounded-none">
-            Open board
+            打开看板
           </Button>
         ) : (
           <>
             <div className="border border-zinc-800 p-3">
-              <p className="mb-1 text-xs text-zinc-500">Approval page</p>
+              <p className="mb-1 text-xs text-zinc-500">审批页面</p>
               <a className="text-sm text-zinc-200 underline underline-offset-2" href="/company/settings/members">
                 Settings → Members
               </a>
@@ -439,14 +439,14 @@ function InviteResultPreview({
         )}
         {claimSecret ? (
           <div className="space-y-1 border border-zinc-800 p-3 text-xs text-zinc-400">
-            <div className="text-zinc-200">Claim secret</div>
+            <div className="text-zinc-200">声明密钥</div>
             <div className="font-mono break-all">{claimSecret}</div>
             <div className="font-mono break-all">POST /api/agents/claim-api-key</div>
           </div>
         ) : null}
         {onboardingTextUrl ? (
           <div className="text-xs text-zinc-400">
-            Onboarding: <span className="font-mono break-all">{onboardingTextUrl}</span>
+            入门： <span className="font-mono break-all">{onboardingTextUrl}</span>
           </div>
         ) : null}
       </div>
@@ -475,7 +475,7 @@ function AuthScreenPreview({ mode, error }: { mode: "sign_in" | "sign_up"; error
             <div className="mt-6 space-y-4">
               {mode === "sign_up" ? (
                 <label className="block">
-                  <span className="mb-1 block text-xs text-muted-foreground">Name</span>
+                  <span className="mb-1 block text-xs text-muted-foreground">名称</span>
                   <input
                     className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm"
                     defaultValue="Jane Example"
@@ -484,7 +484,7 @@ function AuthScreenPreview({ mode, error }: { mode: "sign_in" | "sign_up"; error
                 </label>
               ) : null}
               <label className="block">
-                <span className="mb-1 block text-xs text-muted-foreground">Email</span>
+                <span className="mb-1 block text-xs text-muted-foreground">电子邮件</span>
                 <input
                   className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm"
                   defaultValue="jane@example.com"
@@ -492,7 +492,7 @@ function AuthScreenPreview({ mode, error }: { mode: "sign_in" | "sign_up"; error
                 />
               </label>
               <label className="block">
-                <span className="mb-1 block text-xs text-muted-foreground">Password</span>
+                <span className="mb-1 block text-xs text-muted-foreground">密码</span>
                 <input
                   className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm"
                   defaultValue="supersecret"
@@ -515,9 +515,9 @@ function AuthScreenPreview({ mode, error }: { mode: "sign_in" | "sign_up"; error
         <div className="hidden min-h-(--sz-420px) items-center justify-center bg-[radial-gradient(circle_at_top,rgba(8,145,178,0.18),transparent_48%),linear-gradient(180deg,rgba(15,23,42,0.96),rgba(2,6,23,1))] px-8 py-10 md:flex">
           <div className="max-w-sm space-y-4 text-zinc-200">
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/[0.08] px-3 py-1 text-(length:--text-nano) uppercase tracking-(--tracking-caps) text-cyan-200">
-              Auth preview
+              认证预览
             </div>
-            <div className="text-2xl font-semibold">Side-by-side signup styling review</div>
+            <div className="text-2xl font-semibold">并排注册样式审查</div>
             <p className="text-sm leading-6 text-zinc-400">
               This frame mirrors the production auth surface so spacing, label density, button treatments, and desktop composition are easy to compare.
             </p>
@@ -535,18 +535,18 @@ function CompanyInvitesPreview() {
         <CardHeader className="space-y-3">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <MailPlus className="h-4 w-4" />
-            Company Invites
+            公司邀请
           </div>
           <div>
-            <CardTitle>Create invite</CardTitle>
+            <CardTitle>创建邀请</CardTitle>
             <CardDescription className="mt-2">
-              Generate a human invite link and choose the default access it should request.
+              生成人工邀请链接并选择其应请求的默认访问权限。
             </CardDescription>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <fieldset className="space-y-3">
-            <legend className="text-sm font-medium">Choose a role</legend>
+            <legend className="text-sm font-medium">选择角色</legend>
             <div className="rounded-2xl border border-border">
               {inviteRoleOptions.map((option, index) => (
                 <label
@@ -564,7 +564,7 @@ function CompanyInvitesPreview() {
                       <span className="text-sm font-medium">{option.label}</span>
                       {option.value === "operator" ? (
                         <Badge variant="outline" className="border-border text-muted-foreground">
-                          Default
+                          默认
                         </Badge>
                       ) : null}
                     </span>
@@ -581,21 +581,21 @@ function CompanyInvitesPreview() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <Button type="button">Create invite</Button>
-            <span className="text-sm text-muted-foreground">Invite history below keeps the audit trail.</span>
+            <Button type="button">创建邀请</Button>
+            <span className="text-sm text-muted-foreground">下方的邀请历史保留审计跟踪。</span>
           </div>
 
           <div className="space-y-3 rounded-2xl border border-border px-4 py-4">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <div className="text-sm font-medium">Latest invite link</div>
+                <div className="text-sm font-medium">最新邀请链接</div>
                 <div className="text-sm text-muted-foreground">
-                  This URL includes the current Paperclip domain returned by the server.
+                  此 URL 包含服务器返回的当前 Paperclip 域。
                 </div>
               </div>
               <div className="inline-flex items-center gap-1 text-xs font-medium text-foreground">
                 <Check className="h-3.5 w-3.5" />
-                Copied
+                已复制
               </div>
             </div>
             <button
@@ -607,7 +607,7 @@ function CompanyInvitesPreview() {
             <div className="flex flex-wrap gap-2">
               <Button type="button" size="sm" variant="outline">
                 <ExternalLink className="h-4 w-4" />
-                Open invite
+                打开邀请
               </Button>
             </div>
           </div>
@@ -618,13 +618,13 @@ function CompanyInvitesPreview() {
         <CardHeader className="space-y-3">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <CardTitle>Invite history</CardTitle>
+              <CardTitle>邀请历史</CardTitle>
               <CardDescription className="mt-2">
-                Review invite status, role, inviter, and any linked join request.
+                查看邀请状态、角色、邀请人以及任何关联的加入请求。
               </CardDescription>
             </div>
             <a href="/inbox/requests" className="text-sm underline underline-offset-4">
-              Open join request queue
+              打开加入请求队列
             </a>
           </div>
         </CardHeader>
@@ -633,12 +633,12 @@ function CompanyInvitesPreview() {
             <table className="min-w-full text-left text-sm">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="px-5 py-3 font-medium text-muted-foreground">State</th>
-                  <th className="px-5 py-3 font-medium text-muted-foreground">Role</th>
-                  <th className="px-5 py-3 font-medium text-muted-foreground">Invited by</th>
-                  <th className="px-5 py-3 font-medium text-muted-foreground">Created</th>
-                  <th className="px-5 py-3 font-medium text-muted-foreground">Join request</th>
-                  <th className="px-5 py-3 text-right font-medium text-muted-foreground">Action</th>
+                  <th className="px-5 py-3 font-medium text-muted-foreground">状态</th>
+                  <th className="px-5 py-3 font-medium text-muted-foreground">角色</th>
+                  <th className="px-5 py-3 font-medium text-muted-foreground">邀请者</th>
+                  <th className="px-5 py-3 font-medium text-muted-foreground">创建时间</th>
+                  <th className="px-5 py-3 font-medium text-muted-foreground">加入请求</th>
+                  <th className="px-5 py-3 text-right font-medium text-muted-foreground">操作</th>
                 </tr>
               </thead>
               <tbody>
@@ -667,10 +667,10 @@ function CompanyInvitesPreview() {
                     <td className="px-5 py-3 text-right align-top">
                       {invite.action === "Revoke" ? (
                         <Button type="button" size="sm" variant="outline">
-                          Revoke
+                          撤销
                         </Button>
                       ) : (
-                        <span className="text-xs text-muted-foreground">Inactive</span>
+                        <span className="text-xs text-muted-foreground">不活跃</span>
                       )}
                     </td>
                   </tr>
@@ -681,15 +681,15 @@ function CompanyInvitesPreview() {
 
           <div className="grid gap-3 md:grid-cols-2">
             <div className="rounded-2xl border border-border p-4">
-              <div className="text-sm font-medium">Empty history state</div>
+              <div className="text-sm font-medium">空历史状态</div>
               <div className="mt-2 text-sm text-muted-foreground">
-                No invites have been created for this company yet.
+                尚未为此公司创建邀请。
               </div>
             </div>
             <div className="rounded-2xl border border-rose-400/40 bg-rose-500/[0.07] p-4">
-              <div className="text-sm font-medium text-foreground">Permission error</div>
+              <div className="text-sm font-medium text-foreground">权限错误</div>
               <div className="mt-2 text-sm text-muted-foreground">
-                You do not have permission to manage company invites.
+                您没有管理公司邀请的权限。
               </div>
             </div>
           </div>
@@ -707,9 +707,9 @@ export function InviteUxLab() {
           <div className="p-6 sm:p-7">
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/25 bg-cyan-500/[0.08] px-3 py-1 text-(length:--text-nano) font-semibold uppercase tracking-(--tracking-caps) text-cyan-700 dark:text-cyan-300">
               <FlaskConical className="h-3.5 w-3.5" />
-              Invite UX Lab
+              邀请用户体验实验室
             </div>
-            <h1 className="mt-4 text-3xl font-semibold tracking-tight">Invite and signup UX review surface</h1>
+            <h1 className="mt-4 text-3xl font-semibold tracking-tight">邀请和注册用户体验审查界面</h1>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">
               This page collects the current invite landing, signup, approval-result, and company invite-management states in one place so styling changes can be reviewed without recreating each backend condition by hand.
             </p>
@@ -719,17 +719,17 @@ export function InviteUxLab() {
                 /tests/ux/invites
               </Badge>
               <Badge variant="outline" className="rounded-full px-3 py-1 text-(length:--text-nano) uppercase tracking-(--tracking-caps)">
-                signup + invite states
+                注册 + 邀请状态
               </Badge>
               <Badge variant="outline" className="rounded-full px-3 py-1 text-(length:--text-nano) uppercase tracking-(--tracking-caps)">
-                fixture-backed preview
+                基于夹具的预览
               </Badge>
             </div>
           </div>
 
           <aside className="border-t border-border/60 bg-background/70 p-6 lg:border-l lg:border-t-0">
             <div className="mb-4 text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
-              Covered states
+              覆盖的州
             </div>
             <div className="space-y-3">
               {[
@@ -753,52 +753,52 @@ export function InviteUxLab() {
 
       <LabSection
         eyebrow="Top-level states"
-        title="Landing state coverage"
-        description="Small cards for the fast-return invite states that do not render the full split-screen layout."
+        title="着陆状态覆盖"
+        description="用于快速返回邀请状态的小卡片，不渲染完整的分屏布局。"
         accentClassName="bg-[linear-gradient(180deg,rgba(59,130,246,0.05),transparent_30%),var(--background)]"
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <StatusCard
             icon={<Loader2 className="h-4 w-4 animate-spin" />}
-            title="Loading invite"
+            title="加载邀请中"
             body="Shown while invite summary, deployment mode, or auth session data is still loading."
           />
           <StatusCard
             icon={<Clock3 className="h-4 w-4" />}
-            title="Checking your access"
+            title="正在检查您的访问权限"
             body="Shown after sign-in while the app verifies whether the current user already belongs to the invited company."
           />
           <StatusCard
             icon={<KeyRound className="h-4 w-4" />}
-            title="Invalid invite token"
+            title="无效的邀请令牌"
             body="The token is missing entirely, so the page short-circuits before any invite lookup."
             tone="error"
           />
           <StatusCard
             icon={<Link2 className="h-4 w-4" />}
-            title="Invite not available"
+            title="邀请不可用"
             body="Used for expired, revoked, already-consumed, or otherwise missing invites."
             tone="warn"
           />
           <StatusCard
             icon={<ShieldCheck className="h-4 w-4" />}
-            title="Bootstrap complete"
+            title="引导完成"
             body="Result screen for bootstrap CEO invites after setup has been accepted successfully."
             tone="success"
           />
           <StatusCard
             icon={<ArrowRight className="h-4 w-4" />}
-            title="Auto-accept in progress"
+            title="自动接受进行中"
             body="Signed-in human users skip the extra button click and move straight into join submission."
           />
           <StatusCard
             icon={<Users className="h-4 w-4" />}
-            title="Already a member"
+            title="已是成员"
             body="Acceptance stays disabled and the page redirects into the company once membership is confirmed."
           />
           <StatusCard
             icon={<UserPlus className="h-4 w-4" />}
-            title="Invite result surfaces"
+            title="邀请结果界面"
             body="Both pending-approval and joined-now confirmations are included below with claim and onboarding extras."
             tone="success"
           />
@@ -807,16 +807,16 @@ export function InviteUxLab() {
 
       <LabSection
         eyebrow="Invite landing"
-        title="Split-screen invite flows"
-        description="These frames mirror the production invite surface closely enough to review spacing, hierarchy, and control states while keeping data fixture-driven."
+        title="分屏邀请流程"
+        description="这些框架足够接近生产邀请界面，以便审查间距、层次结构和控件状态，同时保持数据由固定装置驱动。"
         accentClassName="bg-[linear-gradient(180deg,rgba(234,179,8,0.06),transparent_28%),var(--background)]"
       >
         <div className="space-y-5">
           <InviteLandingShell
             left={
               <InviteSummaryPanel
-                title="Join Acme Robotics"
-                description="Create your Paperclip account first. If you already have one, switch to sign in and continue the invite with the same email."
+                title="加入Acme Robotics"
+                description="请先创建您的Paperclip账户。如果您已有账户，请切换到登录并使用同一电子邮件继续邀请。"
                 inviteMessage="Welcome aboard."
                 requestedAccess="Operator"
               />
@@ -827,8 +827,8 @@ export function InviteUxLab() {
           <InviteLandingShell
             left={
               <InviteSummaryPanel
-                title="Join Acme Robotics"
-                description="Create your Paperclip account first. If you already have one, switch to sign in and continue the invite with the same email."
+                title="加入Acme Robotics"
+                description="请先创建您的Paperclip账户。如果您已有账户，请切换到登录并使用同一电子邮件继续邀请。"
                 inviteMessage="Welcome aboard."
                 requestedAccess="Operator"
               />
@@ -847,8 +847,8 @@ export function InviteUxLab() {
           <InviteLandingShell
             left={
               <InviteSummaryPanel
-                title="Join Acme Robotics"
-                description="Your account is ready. Review the invite details, then accept it to continue."
+                title="加入Acme Robotics"
+                description="您的账户已就绪。查看邀请详情，然后接受以继续。"
                 inviteMessage="Welcome aboard."
                 requestedAccess="Operator"
                 signedInLabel="Jane Example"
@@ -860,8 +860,8 @@ export function InviteUxLab() {
           <InviteLandingShell
             left={
               <InviteSummaryPanel
-                title="Join Acme Robotics"
-                description="Review the invite details, then submit the agent information below to start the join request."
+                title="加入Acme Robotics"
+                description="查看邀请详情，然后提交下面的代理信息以开始加入请求。"
                 requestedAccess="Agent join request"
               />
             }
@@ -871,8 +871,8 @@ export function InviteUxLab() {
           <InviteLandingShell
             left={
               <InviteSummaryPanel
-                title="Join Acme Robotics"
-                description="Your account is ready. Review the invite details, then accept it to continue."
+                title="加入Acme Robotics"
+                description="您的账户已就绪。查看邀请详情，然后接受以继续。"
                 requestedAccess="Operator"
                 signedInLabel="Jane Example"
               />
@@ -884,24 +884,24 @@ export function InviteUxLab() {
 
       <LabSection
         eyebrow="Result states"
-        title="Approval and completion screens"
-        description="These are the post-submit states returned from invite acceptance, including optional claim and onboarding metadata."
+        title="审批和完成屏幕"
+        description="这些是邀请接受后返回的提交后状态，包括可选声明和入职元数据。"
         accentClassName="bg-[linear-gradient(180deg,rgba(16,185,129,0.06),transparent_30%),var(--background)]"
       >
         <div className="grid gap-5 xl:grid-cols-3">
           <InviteResultPreview
-            title="Request to join Acme Robotics"
-            description="Board User must approve your request to join."
+            title="请求加入Acme Robotics"
+            description="董事会用户必须批准您的加入请求。"
             claimSecret="pcp_claim_secret_demo"
             onboardingTextUrl="/api/invites/pcp_invite_test/onboarding.txt"
           />
           <InviteResultPreview
-            title="You joined the company"
-            description="Your account already matched the approved invite, so the board can be opened immediately."
+            title="您已加入公司"
+            description="您的账户已匹配批准的邀请，因此可以立即打开董事会。"
             joinedNow
           />
           <InviteResultPreview
-            title="Request to join Acme Robotics"
+            title="请求加入Acme Robotics"
             description="Ask them to visit Settings → Members to approve your request."
           />
         </div>
@@ -909,7 +909,7 @@ export function InviteUxLab() {
 
       <LabSection
         eyebrow="Standalone auth"
-        title="Auth page states"
+        title="认证页面状态"
         description="The general `/auth` page uses a different composition from invite landing. These previews keep both sign-in and sign-up variants visible."
         accentClassName="bg-[linear-gradient(180deg,rgba(168,85,247,0.06),transparent_28%),var(--background)]"
       >
@@ -921,8 +921,8 @@ export function InviteUxLab() {
 
       <LabSection
         eyebrow="Settings"
-        title="Company invite management"
-        description="This section captures the board-side invite creation flow, copied-link state, audit table, and the edge states that are otherwise tedious to stage."
+        title="公司邀请管理"
+        description="此部分捕获董事会侧邀请创建流程、复制链接状态、审计表以及难以模拟的边缘状态。"
         accentClassName="bg-[linear-gradient(180deg,rgba(244,114,182,0.06),transparent_28%),var(--background)]"
       >
         <CompanyInvitesPreview />

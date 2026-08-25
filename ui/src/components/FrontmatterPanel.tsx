@@ -344,7 +344,7 @@ export function FrontmatterPanel({
               <span className="truncate text-xs text-muted-foreground">{summary}</span>
             ) : null}
             {!open && !present ? (
-              <span className="text-xs text-muted-foreground">None</span>
+              <span className="text-xs text-muted-foreground">无</span>
             ) : null}
           </button>
 
@@ -356,7 +356,7 @@ export function FrontmatterPanel({
               <TabsList variant="line" className="h-7">
                 {canUseFields ? (
                   <TabsTrigger value="fields" className="px-2 py-0.5 text-xs">
-                    Fields
+                    字段
                   </TabsTrigger>
                 ) : (
                   <Tooltip>
@@ -368,7 +368,7 @@ export function FrontmatterPanel({
                           aria-disabled="true"
                           className="px-2 py-0.5 text-xs opacity-50"
                         >
-                          Fields
+                          字段
                         </TabsTrigger>
                       </span>
                     </TooltipTrigger>
@@ -387,7 +387,7 @@ export function FrontmatterPanel({
           ) : !readOnly ? (
             <Button variant="ghost" size="sm" onClick={addFrontmatter} data-testid="add-frontmatter">
               <Plus className="mr-1 h-3.5 w-3.5" />
-              Add frontmatter
+              添加 frontmatter
             </Button>
           ) : null}
 
@@ -421,7 +421,7 @@ export function FrontmatterPanel({
             </div>
           ) : (
             <div className="px-3 pb-2 text-xs text-muted-foreground">
-              This file has no frontmatter.
+              此文件没有 frontmatter。
             </div>
           )}
         </CollapsibleContent>
@@ -628,7 +628,7 @@ function MetadataRows({
       {!readOnly ? (
         <Button variant="ghost" size="sm" onClick={add} className="text-xs">
           <Plus className="mr-1 h-3.5 w-3.5" />
-          add field
+          添加字段
         </Button>
       ) : null}
     </div>
@@ -686,7 +686,7 @@ function ChipInput({
             }
           }}
           onBlur={commit}
-          aria-label="Add tool"
+          aria-label="添加工具"
           className="min-w-24 flex-1 bg-transparent text-xs outline-none"
         />
       ) : null}
@@ -712,7 +712,7 @@ function YamlEditor({
       {!canReturnToFields && !parseError ? (
         <div className="mb-1.5 flex items-start gap-2 rounded-md bg-muted/40 px-2 py-1.5 text-xs text-muted-foreground">
           <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-          <span>Editing raw YAML to preserve formatting the form can't reconstruct.</span>
+          <span>编辑原始 YAML 以保留表单无法重建的格式。</span>
         </div>
       ) : null}
       <Textarea
@@ -725,7 +725,7 @@ function YamlEditor({
         aria-label="Frontmatter YAML"
       />
       <p className="mt-1 text-xs text-muted-foreground">
-        Raw YAML is the source of truth in this mode.
+        在此模式下，原始 YAML 是唯一事实来源。
       </p>
     </div>
   );

@@ -96,18 +96,18 @@ export function CompanySettingsSidebar() {
 
       <nav className="flex-1 min-h-0 overflow-y-auto scrollbar-auto-hide px-3 py-2">
         <div className="flex flex-col gap-0.5">
-          <SidebarNavItem to="/company/settings" label="General" icon={SlidersHorizontal} end />
+          <SidebarNavItem to="/company/settings" label="常规" icon={SlidersHorizontal} end />
           {showPage("instance.profile") && (
             <SidebarNavItem
               to={`${INSTANCE_SETTINGS_PATH_PREFIX}/profile`}
-              label="Profile"
+              label="个人资料"
               icon={UserRoundPen}
               end
             />
           )}
           <SidebarNavItem
             to="/company/settings/members"
-            label="Members"
+            label="成员"
             icon={Users}
             badge={badges?.joinRequests ?? 0}
             end
@@ -123,12 +123,12 @@ export function CompanySettingsSidebar() {
                 end
               />
             ))}
-          <SidebarNavItem to="/company/settings/invites" label="Invites" icon={MailPlus} end />
-          <SidebarNavItem to="/company/settings/secrets" label="Secrets" icon={KeyRound} end />
+          <SidebarNavItem to="/company/settings/invites" label="邀请" icon={MailPlus} end />
+          <SidebarNavItem to="/company/settings/secrets" label="机密" icon={KeyRound} end />
           {showPage("instance.environments") && (
             <SidebarNavItem
               to={`${INSTANCE_SETTINGS_PATH_PREFIX}/environments`}
-              label="Environments"
+              label="环境"
               icon={MonitorCog}
               end
             />
@@ -136,7 +136,7 @@ export function CompanySettingsSidebar() {
           {showPage("instance.access") && (
             <SidebarNavItem
               to={`${INSTANCE_SETTINGS_PATH_PREFIX}/access`}
-              label="Access"
+              label="访问"
               icon={Shield}
               end
             />
@@ -144,24 +144,24 @@ export function CompanySettingsSidebar() {
           {showPage("instance.heartbeats") && (
             <SidebarNavItem
               to={`${INSTANCE_SETTINGS_PATH_PREFIX}/heartbeats`}
-              label="Heartbeats"
+              label="心跳"
               icon={Clock3}
               end
             />
           )}
-          <SidebarNavItem to="/company/export" label="Export" icon={Download} />
-          <SidebarNavItem to="/company/import" label="Import" icon={Upload} end />
+          <SidebarNavItem to="/company/export" label="导出" icon={Download} />
+          <SidebarNavItem to="/company/import" label="导入" icon={Upload} end />
           {showPage("instance.experimental") && (
             <SidebarNavItem
               to={`${INSTANCE_SETTINGS_PATH_PREFIX}/experimental`}
-              label="Experimental"
+              label="实验性"
               icon={FlaskConical}
             />
           )}
           {showPlugins && (
             <SidebarNavItem
               to={`${INSTANCE_SETTINGS_PATH_PREFIX}/plugins`}
-              label="Plugins"
+              label="插件"
               icon={Puzzle}
             />
           )}
@@ -189,7 +189,7 @@ export function CompanySettingsSidebar() {
           {showPage("instance.adapters") && (
             <SidebarNavItem
               to={`${INSTANCE_SETTINGS_PATH_PREFIX}/adapters`}
-              label="Adapters"
+              label="适配器"
               icon={Cpu}
             />
           )}

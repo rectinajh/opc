@@ -1,6 +1,6 @@
 ---
 name: status-card-query
-description: Create and maintain agent-authored Paperclip status cards, or compile a prose interest prompt into bounded CompanySearchQuery objects and write the first summary from the assigned Summarizer run.
+description: 创建并维护由代理撰写的Paperclip状态卡片，或将散文式兴趣提示编译为有界的CompanySearchQuery对象，并从指定的Summarizer运行中撰写首份摘要。
 key: paperclipai/bundled/paperclip-operations/status-card-query
 recommendedForRoles:
   - general

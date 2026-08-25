@@ -115,7 +115,7 @@ export function Browse() {
   }, [applicationsQuery.data, connectionsQuery.data]);
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">Select a company to browse apps.</div>;
+    return <div className="p-6 text-sm text-muted-foreground">选择公司以浏览应用。</div>;
   }
 
   const loading = galleryQuery.isLoading || applicationsQuery.isLoading || connectionsQuery.isLoading;
@@ -136,9 +136,9 @@ export function Browse() {
   return (
     <div className="max-w-5xl space-y-8 pb-12">
       <header>
-        <h1 className="text-2xl font-bold tracking-tight">Browse</h1>
+        <h1 className="text-2xl font-bold tracking-tight">浏览</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Choose an app or connect your own MCP server.
+          选择应用或连接您自己的 MCP 服务器。
         </p>
       </header>
 
@@ -149,7 +149,7 @@ export function Browse() {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search apps…"
-          aria-label="Search apps"
+          aria-label="搜索应用"
           className="h-10 w-full rounded-lg border border-border bg-background pl-9 pr-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground/30"
         />
       </div>
@@ -165,7 +165,7 @@ export function Browse() {
           {!trimmed && popular.length > 0 && (
             <section className="space-y-3">
               <div className="text-(length:--text-micro) font-semibold uppercase tracking-wide text-muted-foreground">
-                Popular
+                热门
               </div>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
                 {popular.map((entry) => (

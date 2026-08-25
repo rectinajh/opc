@@ -163,7 +163,7 @@ export function SearchFilterBar({
   return (
     <div className="flex flex-wrap items-center gap-1.5" data-testid="search-filter-bar">
       <SearchFilterMenu
-        label="Status"
+        label="状态"
         multi
         options={options.status}
         selected={filters.status ?? []}
@@ -172,7 +172,7 @@ export function SearchFilterBar({
         presets={[{ label: "Open items", values: OPEN_STATUS_PRESET }]}
       />
       <SearchFilterMenu
-        label="Assignee"
+        label="负责人"
         options={options.assignee}
         selected={selectedAssignee ? [selectedAssignee] : []}
         onSelect={(value) => onChange(applyAssigneeToken(filters, value, data.currentUserId))}
@@ -181,7 +181,7 @@ export function SearchFilterBar({
         emptyMessage="No assignees"
       />
       <SearchFilterMenu
-        label="Project"
+        label="项目"
         options={options.project}
         selected={filters.projectId ? [filters.projectId] : []}
         onSelect={(value) => onChange({ ...filters, projectId: value })}
@@ -190,7 +190,7 @@ export function SearchFilterBar({
         emptyMessage="No projects"
       />
       <SearchFilterMenu
-        label="Label"
+        label="标签"
         options={options.label}
         selected={filters.labelId ? [filters.labelId] : []}
         onSelect={(value) => onChange({ ...filters, labelId: value })}
@@ -201,7 +201,7 @@ export function SearchFilterBar({
       {/* PAP-411: Priority filter menu hidden behind SHOW_TASK_PRIORITY_UI (search DSL stays intact). */}
       {SHOW_TASK_PRIORITY_UI && (
       <SearchFilterMenu
-        label="Priority"
+        label="优先级"
         multi
         options={options.priority}
         selected={filters.priority ?? []}
@@ -210,7 +210,7 @@ export function SearchFilterBar({
       />
       )}
       <SearchFilterMenu
-        label="Updated"
+        label="更新时间"
         options={options.updated}
         selected={filters.updatedWithin ? [filters.updatedWithin] : []}
         onSelect={(value) => onChange({ ...filters, updatedWithin: value })}

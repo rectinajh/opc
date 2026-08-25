@@ -156,7 +156,7 @@ export function UserSecretDefinitionsTab({ companyId }: { companyId: string }) {
       <div className="flex items-start gap-2 rounded-md border border-violet-500/30 bg-violet-500/5 px-4 py-3 text-xs text-violet-800 dark:text-violet-200">
         <UserRound className="h-4 w-4 mt-0.5 shrink-0" />
         <p>
-          Define credentials that <span className="font-medium">each member supplies for
+          定义凭据 <span className="font-medium">each member supplies for
           themselves</span>. You set the shape here; every user enters their own value under My
           secrets. Coverage shows how many members have set a value — never the values themselves.
         </p>
@@ -164,7 +164,7 @@ export function UserSecretDefinitionsTab({ companyId }: { companyId: string }) {
 
       <div className="flex items-center justify-end">
         <Button size="sm" onClick={openCreate}>
-          <Plus className="mr-1 h-3.5 w-3.5" /> New user secret
+          <Plus className="mr-1 h-3.5 w-3.5" /> 新用户机密
         </Button>
       </div>
 
@@ -174,13 +174,13 @@ export function UserSecretDefinitionsTab({ companyId }: { companyId: string }) {
             <AlertCircle className="h-4 w-4" /> Failed to load definitions:{" "}
             {(definitionsQuery.error as Error).message}
             <Button variant="ghost" size="sm" onClick={() => definitionsQuery.refetch()}>
-              Retry
+              重试
             </Button>
           </div>
         ) : definitions.length === 0 && !definitionsQuery.isPending ? (
           <EmptyState
             icon={UserRound}
-            message="No user secret definitions yet. Create one to require each member to supply their own credential."
+            message="尚无用户机密定义。创建一个以要求每个成员提供自己的凭据。"
             action="New user secret"
             onAction={openCreate}
           />
@@ -238,13 +238,13 @@ export function UserSecretDefinitionsTab({ companyId }: { companyId: string }) {
               <UserSecretChip />
             </DialogTitle>
             <DialogDescription>
-              Members supply their own value for this credential. No value is entered here.
+              成员为此凭据提供自己的值。此处不输入任何值。
             </DialogDescription>
           </DialogHeader>
 
           <div className="space-y-3">
             <div className="space-y-1">
-              <label className="text-xs font-medium text-foreground">Name</label>
+              <label className="text-xs font-medium text-foreground">名称</label>
               <Input
                 value={form.name}
                 onChange={(event) => {
@@ -255,12 +255,12 @@ export function UserSecretDefinitionsTab({ companyId }: { companyId: string }) {
                     key: keyDirty ? current.key : keyFromName(name),
                   }));
                 }}
-                placeholder="Personal GitHub token"
+                placeholder="个人GitHub令牌"
                 autoFocus
               />
             </div>
             <div className="space-y-1">
-              <label className="text-xs font-medium text-foreground">Key</label>
+              <label className="text-xs font-medium text-foreground">键</label>
               <Input
                 value={form.key}
                 onChange={(event) => {
@@ -276,31 +276,31 @@ export function UserSecretDefinitionsTab({ companyId }: { companyId: string }) {
               </p>
             </div>
             <div className="space-y-1">
-              <label className="text-xs font-medium text-foreground">Description</label>
+              <label className="text-xs font-medium text-foreground">描述</label>
               <Input
                 value={form.description}
                 onChange={(event) =>
                   setForm((current) => ({ ...current, description: event.target.value }))
                 }
-                placeholder="What this credential is for"
+                placeholder="此凭据的用途"
               />
             </div>
             <div className="space-y-1">
               <label className="text-xs font-medium text-foreground">
-                Usage guidance <span className="text-muted-foreground">(optional)</span>
+                使用指南 <span className="text-muted-foreground">(optional)</span>
               </label>
               <Textarea
                 value={form.usageGuidance}
                 onChange={(event) =>
                   setForm((current) => ({ ...current, usageGuidance: event.target.value }))
                 }
-                placeholder="Tell members how to create their token, required scopes, etc."
+                placeholder="告知成员如何创建令牌、所需范围等。"
                 className="min-h-(--sz-70px) text-sm"
               />
             </div>
             {editing ? (
               <div className="space-y-1">
-                <label className="text-xs font-medium text-foreground">Status</label>
+                <label className="text-xs font-medium text-foreground">状态</label>
                 <Select
                   value={form.status}
                   onValueChange={(status) =>
@@ -311,9 +311,9 @@ export function UserSecretDefinitionsTab({ companyId }: { companyId: string }) {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="active">Active</SelectItem>
-                    <SelectItem value="disabled">Disabled</SelectItem>
-                    <SelectItem value="archived">Archived</SelectItem>
+                    <SelectItem value="active">活跃</SelectItem>
+                    <SelectItem value="disabled">已禁用</SelectItem>
+                    <SelectItem value="archived">已归档</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -323,7 +323,7 @@ export function UserSecretDefinitionsTab({ companyId }: { companyId: string }) {
 
           <DialogFooter>
             <Button variant="ghost" onClick={() => setDialogOpen(false)} disabled={save.isPending}>
-              Cancel
+              取消
             </Button>
             <Button onClick={() => save.mutate()} disabled={!canSave || save.isPending}>
               {save.isPending ? "Saving…" : editing ? "Save changes" : "Create"}
@@ -336,15 +336,15 @@ export function UserSecretDefinitionsTab({ companyId }: { companyId: string }) {
       <Dialog open={deleteTarget !== null} onOpenChange={(open) => !open && setDeleteTarget(null)}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Remove user secret?</DialogTitle>
+            <DialogTitle>移除用户机密？</DialogTitle>
             <DialogDescription>
-              This removes the definition <span className="font-mono">{deleteTarget?.key}</span> for
+              这将移除定义 <span className="font-mono">{deleteTarget?.key}</span> for
               the whole company. Existing member values become unreferenced. This cannot be undone.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button variant="ghost" onClick={() => setDeleteTarget(null)} disabled={remove.isPending}>
-              Cancel
+              取消
             </Button>
             <Button
               variant="destructive"

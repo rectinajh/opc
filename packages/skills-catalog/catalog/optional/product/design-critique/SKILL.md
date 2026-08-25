@@ -1,6 +1,6 @@
 ---
 name: design-critique
-description: Give a structured product design critique — user job clarity, hierarchy, affordance, error states, accessibility, and consistency — focused on what to change, in what order, and why.
+description: 提供结构化产品设计评审——聚焦用户任务清晰度、层级、可操作性、错误状态、无障碍性和一致性，并明确变更顺序及理由。
 key: paperclipai/optional/product/design-critique
 recommendedForRoles:
   - designer

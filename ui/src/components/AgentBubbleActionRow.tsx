@@ -54,8 +54,8 @@ export function BubbleCopyButton({ copyText }: { copyText: string }) {
     <button
       type="button"
       className="inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-      title="Copy message"
-      aria-label="Copy message"
+      title="复制消息"
+      aria-label="复制消息"
       onClick={() => {
         void copyTextToClipboard(copyText)
           .then(() => {
@@ -141,8 +141,8 @@ export function AgentBubbleActionRow({
             variant="ghost"
             size="icon-xs"
             className="text-muted-foreground hover:text-foreground"
-            title="More actions"
-            aria-label="More actions"
+            title="更多操作"
+            aria-label="更多操作"
           >
             <MoreHorizontal className="h-3.5 w-3.5" />
           </Button>
@@ -154,7 +154,7 @@ export function AgentBubbleActionRow({
             }}
           >
             <Copy className="mr-2 h-3.5 w-3.5" />
-            Copy message
+            复制消息
           </DropdownMenuItem>
           {menuItems}
         </DropdownMenuContent>
@@ -258,8 +258,8 @@ export function IssueChatFeedbackButtons({
             ? "text-green-600 dark:text-green-400"
             : "text-muted-foreground hover:bg-accent hover:text-foreground",
         )}
-        title="Helpful"
-        aria-label="Helpful"
+        title="有帮助"
+        aria-label="有帮助"
         onClick={handleThumbsUp}
       >
         <ThumbsUp className="h-3.5 w-3.5" />
@@ -275,19 +275,19 @@ export function IssueChatFeedbackButtons({
                 ? "text-amber-600 dark:text-amber-400"
                 : "text-muted-foreground hover:bg-accent hover:text-foreground",
             )}
-            title="Needs work"
-            aria-label="Needs work"
+            title="需要改进"
+            aria-label="需要改进"
             onClick={handleThumbsDown}
           >
             <ThumbsDown className="h-3.5 w-3.5" />
           </button>
         </PopoverTrigger>
         <PopoverContent side="top" align="start" className="w-80 p-3">
-          <div className="mb-2 text-sm font-medium">What could have been better?</div>
+          <div className="mb-2 text-sm font-medium">哪些方面可以做得更好？</div>
           <Textarea
             value={downvoteReason}
             onChange={(event) => setDownvoteReason(event.target.value)}
-            placeholder="Add a short note"
+            placeholder="添加简短备注"
             className="min-h-20 resize-y bg-background text-sm"
             disabled={isSaving}
           />
@@ -302,7 +302,7 @@ export function IssueChatFeedbackButtons({
                 setDownvoteReason("");
               }}
             >
-              Dismiss
+              关闭
             </Button>
             <Button
               type="button"
@@ -327,18 +327,18 @@ export function IssueChatFeedbackButtons({
       >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Save your feedback sharing preference</DialogTitle>
+            <DialogTitle>保存您的反馈分享偏好</DialogTitle>
             <DialogDescription>
               Choose whether voted AI outputs can be shared with Paperclip Labs. This
               answer becomes the default for future thumbs up and thumbs down votes.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-3 text-sm text-muted-foreground">
-            <p>This vote is always saved locally.</p>
+            <p>此投票始终保存在本地。</p>
             <p>
-              Choose <span className="font-medium text-foreground">Always allow</span> to share
+              选择 <span className="font-medium text-foreground">始终允许</span> to share
               this vote and future voted AI outputs. Choose{" "}
-              <span className="font-medium text-foreground">Don't allow</span> to keep this vote
+              <span className="font-medium text-foreground">不允许</span> to keep this vote
               and future votes local.
             </p>
             <p>You can change this later in Settings &gt; General.</p>
@@ -349,7 +349,7 @@ export function IssueChatFeedbackButtons({
                 rel="noreferrer"
                 className="inline-flex text-sm text-foreground underline underline-offset-4"
               >
-                Read our terms of service
+                阅读我们的服务条款
               </a>
             ) : null}
           </div>

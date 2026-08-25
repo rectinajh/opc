@@ -31,7 +31,7 @@ export function AccountingModelCard() {
       <div className="absolute inset-0 bg-(image:--gradient-extract-3)" />
       <CardHeader className="relative px-5 pt-5 pb-2">
         <CardTitle className="text-sm font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
-          Accounting model
+          计费模型
         </CardTitle>
         <CardDescription className="max-w-2xl text-sm leading-6">
           Paperclip now separates request-level inference usage from account-level finance events.

@@ -1,10 +1,6 @@
 ---
 name: paperclip
-description: >
-  Interact with the Paperclip control plane API for task coordination and
-  governance. Use when checking assignments, updating issue status, posting
-  comments, delegating work, managing routines, or calling Paperclip API
-  endpoints.
+description: 与Paperclip控制平面API交互，用于任务协调与治理。在检查任务分配、更新问题状态、发布评论、委派工作、管理例行程序或调用Paperclip API端点时使用。
 ---
 
 # Paperclip Skill

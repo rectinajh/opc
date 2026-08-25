@@ -78,8 +78,8 @@ export function PipelineStageHistoryPanel({
         <div className="flex items-center gap-2">
           <History className="h-4 w-4 text-muted-foreground" />
           <div>
-            <p className="text-sm font-medium">History</p>
-            <p className="text-xs text-muted-foreground">Past versions of these instructions.</p>
+            <p className="text-sm font-medium">历史记录</p>
+            <p className="text-xs text-muted-foreground">这些说明的过往版本。</p>
           </div>
         </div>
         {open ? (
@@ -91,7 +91,7 @@ export function PipelineStageHistoryPanel({
       <CollapsibleContent className="border-t border-border/70">
         {!hasDocument ? (
           <p className="px-4 py-3 text-xs text-muted-foreground">
-            No history yet. Save the instructions to create the first revision.
+            暂无历史。保存说明以创建首个修订版。
           </p>
         ) : revisionsQuery.isLoading ? (
           <p className="px-4 py-3 text-xs text-muted-foreground">Loading revisions…</p>
@@ -100,7 +100,7 @@ export function PipelineStageHistoryPanel({
             {revisionsQuery.error instanceof Error ? revisionsQuery.error.message : "Could not load revisions."}
           </p>
         ) : revisions.length === 0 ? (
-          <p className="px-4 py-3 text-xs text-muted-foreground">No revisions recorded yet.</p>
+          <p className="px-4 py-3 text-xs text-muted-foreground">尚未记录修订版。</p>
         ) : (
           <ul className="divide-y divide-border/70">
             {revisions.map((revision) => {
@@ -115,7 +115,7 @@ export function PipelineStageHistoryPanel({
                       Revision {revision.revisionNumber}
                       {isCurrent ? (
                         <Badge variant="ghost" className="ml-2 bg-muted text-(length:--text-micro) text-muted-foreground">
-                          Current
+                          当前
                         </Badge>
                       ) : null}
                     </p>
@@ -133,7 +133,7 @@ export function PipelineStageHistoryPanel({
                       onClick={() => restore.mutate(revision.id)}
                     >
                       <RotateCcw className="h-3.5 w-3.5" />
-                      Restore
+                      恢复
                     </Button>
                   )}
                 </li>

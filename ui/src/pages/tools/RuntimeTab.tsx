@@ -231,10 +231,10 @@ function LivePill() {
       <TooltipTrigger asChild>
         <span className="inline-flex cursor-help items-center gap-1.5 rounded-full border border-border px-2.5 py-1 text-xs font-medium text-foreground">
           <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-          Live
+          实时
         </span>
       </TooltipTrigger>
-      <TooltipContent>Updates automatically every 15 seconds.</TooltipContent>
+      <TooltipContent>每 15 秒自动更新。</TooltipContent>
     </Tooltip>
   );
 }
@@ -346,14 +346,14 @@ export function RuntimeTab({ companyId }: { companyId: string }) {
   return (
     <div className="space-y-5">
       <div className="flex items-start justify-between gap-3">
-        <ToolsPageHeader title="Health" description="How your apps are doing right now." />
+        <ToolsPageHeader title="健康" description="您的应用当前运行状况。" />
         <LivePill />
       </div>
 
       {/* Summary strip — plain words; ops vocabulary lives in tooltips. */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         <SummaryCard
-          label="Apps running"
+          label="运行中的应用"
           value={totalCount === 0 ? "None" : `${workingCount} of ${totalCount}`}
           note={
             totalCount === 0
@@ -364,7 +364,7 @@ export function RuntimeTab({ companyId }: { companyId: string }) {
           }
         />
         <SummaryCard
-          label="Typical response time"
+          label="典型响应时间"
           value={formatTypicalLatency(metrics?.averageToolLatencyMsLastHour)}
           note={
             metrics?.averageToolLatencyMsLastHour == null
@@ -376,7 +376,7 @@ export function RuntimeTab({ companyId }: { companyId: string }) {
           detail={`Slowest 5% (P95): ${formatTypicalLatency(metrics?.p95ToolLatencyMsLastHour)} · timeout rate ${metrics?.timeoutRateLastHour ?? 0}%`}
         />
         <SummaryCard
-          label="Errors in the last hour"
+          label="最近一小时的错误"
           value={String(errors)}
           note={errors === 0 ? "None" : "across your apps"}
           detail={`${metrics?.toolFailuresLastHour ?? 0} failed · ${metrics?.toolTimeoutsLastHour ?? 0} timed out · ${metrics?.capacityDeferralsLastHour ?? 0} waited for capacity`}
@@ -403,11 +403,11 @@ export function RuntimeTab({ companyId }: { companyId: string }) {
                   </Button>
                 ) : action === "reviewApps" ? (
                   <Button size="sm" asChild>
-                    <Link to="/apps/attention">Review apps</Link>
+                    <Link to="/apps/attention">审查应用</Link>
                   </Button>
                 ) : (
                   <Button size="sm" asChild>
-                    <Link to="/apps/advanced/audit">Review activity</Link>
+                    <Link to="/apps/advanced/audit">审查活动</Link>
                   </Button>
                 )}
                 <button
@@ -415,17 +415,17 @@ export function RuntimeTab({ companyId }: { companyId: string }) {
                   className="text-left"
                   onClick={() => setOpenAlertDetails((s) => ({ ...s, [alert.name]: !detailsOpen }))}
                 >
-                  <Disclosure open={detailsOpen} label="Technical details" />
+                  <Disclosure open={detailsOpen} label="技术细节" />
                 </button>
               </div>
               {detailsOpen ? (
                 <dl className="grid grid-cols-1 gap-x-8 gap-y-2 rounded-md bg-muted/40 p-3 text-xs sm:grid-cols-2">
-                  <Fact label="Alert" value={<span className="font-mono">{alert.name}</span>} />
-                  <Fact label="Severity" value={alert.severity} />
-                  <Fact label="Threshold" value={alert.threshold} />
-                  <Fact label="Observed" value={alert.observed} />
-                  <Fact label="First responder" value={alert.firstResponderAction} />
-                  <Fact label="Runbook" value={<span className="font-mono">{alert.runbookSection || health.data?.runbookPath}</span>} />
+                  <Fact label="警报" value={<span className="font-mono">{alert.name}</span>} />
+                  <Fact label="严重性" value={alert.severity} />
+                  <Fact label="阈值" value={alert.threshold} />
+                  <Fact label="观察值" value={alert.observed} />
+                  <Fact label="第一响应者" value={alert.firstResponderAction} />
+                  <Fact label="运行手册" value={<span className="font-mono">{alert.runbookSection || health.data?.runbookPath}</span>} />
                 </dl>
               ) : null}
             </CardContent>
@@ -437,23 +437,23 @@ export function RuntimeTab({ companyId }: { companyId: string }) {
       {totalCount === 0 ? (
         <EmptyState
           icon={Server}
-          message="No apps running right now"
-          description="Apps that run on this machine start automatically the first time an agent needs them. Apps that connect over the internet don't use a local process."
+          message="当前没有正在运行的应用"
+          description="在此机器上运行的应用会在代理首次需要时自动启动。通过互联网连接的应用不使用本地进程。"
         />
       ) : (
         <Card className="py-0">
           <CardContent className="px-0 py-0">
             <div className="px-5 pb-1 pt-4">
-              <h3 className="text-base font-bold text-foreground">Running apps</h3>
-              <p className="text-xs text-muted-foreground">Click a row to see how the connection is wired up.</p>
+              <h3 className="text-base font-bold text-foreground">正在运行的应用</h3>
+              <p className="text-xs text-muted-foreground">单击一行以查看连接方式。</p>
             </div>
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border text-left text-xs font-medium text-muted-foreground">
-                  <th className="px-5 py-2.5">App</th>
-                  <th className="px-3 py-2.5">Status</th>
-                  <th className="px-3 py-2.5">Last used</th>
-                  <th className="px-5 py-2.5 text-right">Actions</th>
+                  <th className="px-5 py-2.5">应用</th>
+                  <th className="px-3 py-2.5">状态</th>
+                  <th className="px-3 py-2.5">上次使用</th>
+                  <th className="px-5 py-2.5 text-right">操作</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
@@ -560,7 +560,7 @@ function RuntimeRowView({
               Restart
             </Button>
           ) : (
-            <span className="text-xs text-muted-foreground">Runs on the provider's side</span>
+            <span className="text-xs text-muted-foreground">在提供方运行</span>
           )}
         </td>
       </tr>
@@ -568,12 +568,12 @@ function RuntimeRowView({
         <tr className="bg-muted/40">
           <td colSpan={4} className="px-5 py-4">
             <dl className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-3">
-              <Fact label="Slot key" value={<span className="font-mono text-xs">{slot.slotKey ?? slot.commandTemplateKey ?? slot.id}</span>} />
-              <Fact label="How it runs" value={howItRuns(slot)} />
-              <Fact label="Process ID" value={slot.processId ?? "—"} />
-              <Fact label="Scope" value={scopeLabel(slot.ownerScopeType)} />
-              <Fact label="Trust tier" value={trustTierLabel(slot)} />
-              <Fact label="Started" value={<RelativeTime value={slot.lastStartedAt ?? slot.startedAt} />} />
+              <Fact label="槽位键" value={<span className="font-mono text-xs">{slot.slotKey ?? slot.commandTemplateKey ?? slot.id}</span>} />
+              <Fact label="运行方式" value={howItRuns(slot)} />
+              <Fact label="进程 ID" value={slot.processId ?? "—"} />
+              <Fact label="范围" value={scopeLabel(slot.ownerScopeType)} />
+              <Fact label="信任级别" value={trustTierLabel(slot)} />
+              <Fact label="已开始" value={<RelativeTime value={slot.lastStartedAt ?? slot.startedAt} />} />
             </dl>
             {slot.lastError ? (
               <p className="mt-3 text-xs text-destructive">Last error: {slot.lastError}</p>
@@ -595,7 +595,7 @@ function RuntimeRowView({
                   This app runs on the provider's side — there's nothing to stop or restart here.
                 </p>
               ) : (
-                <p className="text-xs text-muted-foreground">This app is off. It will start again when an agent needs it.</p>
+                <p className="text-xs text-muted-foreground">此应用已关闭。当代理需要时，它将再次启动。</p>
               )}
             </div>
           </td>
@@ -640,14 +640,14 @@ function ConfirmDialog({
                 {target?.name} will stop running. Agents won't be able to use it until it starts again.
               </p>
               <p className="text-xs text-muted-foreground">
-                It starts again automatically the next time an agent needs it.
+                下次代理需要时，它会自动再次启动。
               </p>
             </>
           )}
         </div>
         <DialogFooter>
           <Button variant="ghost" onClick={onCancel} disabled={pending}>
-            Cancel
+            取消
           </Button>
           <Button onClick={onConfirm} disabled={pending}>
             {pending ? <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" /> : null}

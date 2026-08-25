@@ -188,7 +188,7 @@ export function AnnotationPanelBody(props: AnnotationPanelProps) {
             props.onFocusThread(null);
             props.onOpenChange(false);
           }}
-          aria-label="Close annotation panel"
+          aria-label="关闭注释面板"
         >
           <X className="h-4 w-4" />
         </Button>
@@ -292,7 +292,7 @@ export function AnnotationPanelBody(props: AnnotationPanelProps) {
                 setComposerValue("");
               }}
             >
-              Cancel
+              取消
             </Button>
             <Button
               type="button"
@@ -397,11 +397,11 @@ export function ThreadCard(props: {
               >
                 {thread.status === "resolved" ? (
                   <>
-                    <RotateCcw className="h-3 w-3" /> Reopen
+                    <RotateCcw className="h-3 w-3" /> 重新打开
                   </>
                 ) : (
                   <>
-                    <Check className="h-3 w-3" /> Resolve
+                    <Check className="h-3 w-3" /> 解决
                   </>
                 )}
               </Button>
@@ -420,8 +420,8 @@ export function ThreadCard(props: {
                     variant="ghost"
                     size="icon-xs"
                     className="text-muted-foreground"
-                    title="More actions"
-                    aria-label="More thread actions"
+                    title="更多操作"
+                    aria-label="更多线程操作"
                   >
                     <MoreHorizontal className="h-3.5 w-3.5" />
                   </Button>
@@ -434,7 +434,7 @@ export function ThreadCard(props: {
                     }}
                   >
                     <Copy className="h-3.5 w-3.5" />
-                    Copy link
+                    复制链接
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

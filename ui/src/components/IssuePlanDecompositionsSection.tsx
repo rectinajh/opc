@@ -18,14 +18,14 @@ function StatusBadge({ status }: { status: AcceptedPlanDecompositionSummary["sta
     return (
       <span className="inline-flex items-center gap-1 rounded-sm border border-emerald-500/50 bg-emerald-500/10 px-2 py-0.5 text-(length:--text-micro) font-medium text-emerald-900 dark:text-emerald-100">
         <CheckCircle2 className="h-3 w-3" />
-        Completed
+        已完成
       </span>
     );
   }
   return (
     <span className="inline-flex items-center gap-1 rounded-sm border border-amber-500/50 bg-amber-500/10 px-2 py-0.5 text-(length:--text-micro) font-medium text-amber-900 dark:text-amber-100">
       <Loader2 className="h-3 w-3 animate-spin" />
-      In flight
+      进行中
     </span>
   );
 }
@@ -46,7 +46,7 @@ export function IssuePlanDecompositionsSection({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between gap-2">
-        <h3 className="text-sm font-medium text-muted-foreground">Plan decomposition</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">计划分解</h3>
         <span className="text-(length:--text-micro) text-muted-foreground/80">
           {items.length === 1 ? "1 accepted plan revision" : `${items.length} accepted plan revisions`}
         </span>
@@ -85,7 +85,7 @@ export function IssuePlanDecompositionsSection({
           return (
             <li
               key={record.id}
-              // design-allow(card-pattern): semantic <li> row inside a <ul>; Card renders a div (C5a Run 3)
+              // design-allow(card-pattern): semantic <li> 行内 <ul>; Card renders a div (C5a Run 3)
               className="rounded-md border border-border bg-card/50 p-3 text-sm"
             >
               <div className="flex flex-wrap items-center gap-2">
@@ -101,10 +101,10 @@ export function IssuePlanDecompositionsSection({
                 {record.status === "completed" && requested > 0 ? (
                   <span
                     className="inline-flex items-center gap-1 rounded-sm border border-sky-500/40 bg-sky-500/10 px-1.5 py-0.5 text-(length:--text-nano) font-medium text-sky-900 dark:text-sky-100"
-                    title="Repeat attempts with this fingerprint reuse this record instead of creating new children"
+                    title="使用此指纹重复尝试时，重用此记录而不是创建新的子记录"
                   >
                     <Repeat className="h-3 w-3" />
-                    Idempotent claim
+                    幂等声明
                   </span>
                 ) : null}
               </div>
@@ -124,7 +124,7 @@ export function IssuePlanDecompositionsSection({
                     to={`/issues/${issueIdentifier}#document-plan`}
                     className="underline-offset-2 hover:underline"
                   >
-                    Plan document
+                    计划文档
                   </Link>
                 ) : null}
               </div>

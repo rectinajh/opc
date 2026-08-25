@@ -112,7 +112,7 @@ export function WorkspaceAccessCard({
           </Button>
           {access.state === "ready" && !access.handoffAvailable ? (
             <span className="text-xs text-muted-foreground">
-              Signs in with the snapshot-local credentials captured when this clone was made.
+              使用创建此克隆时捕获的快照本地凭据登录。
             </span>
           ) : null}
           {access.state === "ready" && access.handoffAvailable ? (

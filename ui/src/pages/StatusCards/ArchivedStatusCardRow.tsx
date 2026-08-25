@@ -45,7 +45,7 @@ export function ArchivedStatusCardRow({
           stale and never auto-runs. */}
       <div className="flex shrink-0 gap-2">
         <Button size="sm" onClick={onView}>
-          View
+          查看
         </Button>
         <Button variant="outline" size="sm" onClick={onRestore} disabled={restorePending}>
           {restorePending ? <Loader2 className="animate-spin" /> : null}

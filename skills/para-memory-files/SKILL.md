@@ -1,9 +1,6 @@
 ---
 name: para-memory-files
-description: >
-  Use a file-based PARA memory system to store, retrieve, and organize durable
-  knowledge across sessions. Trigger on saving facts, daily notes, entity
-  records, weekly synthesis, recall, tacit user patterns, or plan memory.
+description: 使用基于文件的PARA记忆系统，跨会话存储、检索并组织持久知识。在保存事实、每日笔记、实体记录、每周综合、回忆、用户隐性模式或计划记忆时触发操作。
 ---
 
 # PARA Memory Files

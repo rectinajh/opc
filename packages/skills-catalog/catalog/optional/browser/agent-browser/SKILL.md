@@ -1,6 +1,6 @@
 ---
 name: agent-browser
-description: Drive a real browser to inspect or interact with a web page or app — navigate, take screenshots, read console and network, fill simple forms — for verification tasks, not unattended automation.
+description: 驱动真实浏览器检查或与网页、应用交互——导航、截图、读取控制台与网络、填写简单表单——用于验证任务，而非无人值守的自动化操作。
 key: paperclipai/optional/browser/agent-browser
 recommendedForRoles:
   - qa

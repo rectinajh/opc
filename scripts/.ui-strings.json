@@ -1,0 +1,583 @@
+{
+  "files": 821,
+  "attrs": [
+    [
+      "Agent Alpha",
+      3
+    ],
+    [
+      "bash ./scripts/provision-worktree.sh",
+      2
+    ],
+    [
+      "bash ./scripts/provision-worktree-runtime.sh",
+      2
+    ],
+    [
+      "bash ./scripts/teardown-worktree.sh",
+      2
+    ],
+    [
+      "gemini --acp",
+      1
+    ],
+    [
+      "Paperclip API URL",
+      1
+    ],
+    [
+      "Webhook URL",
+      1
+    ],
+    [
+      "You",
+      1
+    ],
+    [
+      "Frontmatter YAML",
+      1
+    ],
+    [
+      "TOOLS.md",
+      1
+    ],
+    [
+      "Board",
+      1
+    ],
+    [
+      "GitHub URL",
+      1
+    ],
+    [
+      "Background",
+      1
+    ],
+    [
+      "Foreground",
+      1
+    ],
+    [
+      "Card",
+      1
+    ],
+    [
+      "Primary",
+      1
+    ],
+    [
+      "Primary foreground",
+      1
+    ],
+    [
+      "Secondary",
+      1
+    ],
+    [
+      "Muted",
+      1
+    ],
+    [
+      "Muted foreground",
+      1
+    ],
+    [
+      "Accent",
+      1
+    ],
+    [
+      "Destructive",
+      1
+    ],
+    [
+      "Border",
+      1
+    ],
+    [
+      "Ring",
+      1
+    ],
+    [
+      "Sidebar",
+      1
+    ],
+    [
+      "Sidebar border",
+      1
+    ],
+    [
+      "Chart 1",
+      1
+    ],
+    [
+      "Chart 2",
+      1
+    ],
+    [
+      "Chart 3",
+      1
+    ],
+    [
+      "Chart 4",
+      1
+    ],
+    [
+      "Chart 5",
+      1
+    ],
+    [
+      "CEO Agent",
+      1
+    ],
+    [
+      "Alpha",
+      1
+    ],
+    [
+      "Quality Assurance Lead",
+      1
+    ],
+    [
+      "Backend Service",
+      1
+    ],
+    [
+      "PAP-946-workspace",
+      1
+    ],
+    [
+      "System",
+      1
+    ],
+    [
+      "Assignee",
+      1
+    ],
+    [
+      "Originating",
+      1
+    ],
+    [
+      "pnpm install && pnpm dev",
+      1
+    ]
+  ],
+  "texts": [
+    [
+      "Promise",
+      125
+    ],
+    [
+      "Signed in as",
+      6
+    ],
+    [
+      "ACP",
+      3
+    ],
+    [
+      "option && currentProject ? (",
+      3
+    ],
+    [
+      "option ? (",
+      3
+    ],
+    [
+      "Record",
+      2
+    ],
+    [
+      "collectSubtreeLiveCounts(issues, liveIssueIds ?? new Set",
+      2
+    ],
+    [
+      "URL",
+      2
+    ],
+    [
+      "Paperclip",
+      2
+    ],
+    [
+      "Slug",
+      2
+    ],
+    [
+      "PAP-123",
+      2
+    ],
+    [
+      "tested as",
+      2
+    ],
+    [
+      "Claude CLI",
+      1
+    ],
+    [
+      "Codex CLI",
+      1
+    ],
+    [
+      "Gemini CLI",
+      1
+    ],
+    [
+      "T): Promise",
+      1
+    ],
+    [
+      "GET /agents/me/secrets",
+      1
+    ],
+    [
+      "g f",
+      1
+    ],
+    [
+      "pnpm dev:once",
+      1
+    ],
+    [
+      "Frontmatter",
+      1
+    ],
+    [
+      "YAML",
+      1
+    ],
+    [
+      "row.editable ? (",
+      1
+    ],
+    [
+      "new Set",
+      1
+    ],
+    [
+      "new Map",
+      1
+    ],
+    [
+      "Esc",
+      1
+    ],
+    [
+      "Assigning implies executable intent - leave status as",
+      1
+    ],
+    [
+      "Restore as new revision",
+      1
+    ],
+    [
+      "revisions.length && !showOlder && (",
+      1
+    ],
+    [
+      "option && selectedProject ? (",
+      1
+    ],
+    [
+      "Variable names ending in capital Date, such as startDate, are created as date variables by default.",
+      1
+    ],
+    [
+      "The same name reused across the title and instructions is treated as one variable.",
+      1
+    ],
+    [
+      "readonly SearchableSelectGroup",
+      1
+    ],
+    [
+      "This run was folded as a source-resolved false positive.",
+      1
+    ],
+    [
+      "macOS (Finder)",
+      1
+    ],
+    [
+      "Shift",
+      1
+    ],
+    [
+      "cd /path/to/folder",
+      1
+    ],
+    [
+      "valueCellRef.current?.querySelector",
+      1
+    ],
+    [
+      "Store the value inline as plain text.",
+      1
+    ],
+    [
+      "Store as secret",
+      1
+    ],
+    [
+      "segment.highlight ? (",
+      1
+    ],
+    [
+      "now - t",
+      1
+    ],
+    [
+      "Then verify with: curl -fsS",
+      1
+    ],
+    [
+      "Omit",
+      1
+    ],
+    [
+      "rawStart && nodeStart",
+      1
+    ],
+    [
+      "string): Record",
+      1
+    ],
+    [
+      "Array",
+      1
+    ],
+    [
+      "Pick",
+      1
+    ],
+    [
+      "Alpha",
+      1
+    ],
+    [
+      "createServerAdapter()",
+      1
+    ],
+    [
+      "CloudAccessGate",
+      1
+    ],
+    [
+      "PAP-10113",
+      1
+    ],
+    [
+      "PAP-10114",
+      1
+    ],
+    [
+      "group.label ? (",
+      1
+    ],
+    [
+      "SSH",
+      1
+    ],
+    [
+      "visibleTaskChildren && !treeSearch && (",
+      1
+    ],
+    [
+      "MiB",
+      1
+    ],
+    [
+      "setSettingsSharingScope(event.target.value as Exclude",
+      1
+    ],
+    [
+      "Mark as done",
+      1
+    ],
+    [
+      "SM",
+      1
+    ],
+    [
+      "DF",
+      1
+    ],
+    [
+      "LG",
+      1
+    ],
+    [
+      "A1",
+      1
+    ],
+    [
+      "A2",
+      1
+    ],
+    [
+      "A3",
+      1
+    ],
+    [
+      "ring-2 ring-ring",
+      1
+    ],
+    [
+      "ActionCard",
+      1
+    ],
+    [
+      "StatusBadge",
+      1
+    ],
+    [
+      "PageSkeleton",
+      1
+    ],
+    [
+      "EmptyState",
+      1
+    ],
+    [
+      "InlineBanner",
+      1
+    ],
+    [
+      "Mark all as read?",
+      1
+    ],
+    [
+      "Mark all as read",
+      1
+    ],
+    [
+      "Codex",
+      1
+    ],
+    [
+      "Claude Code",
+      1
+    ],
+    [
+      "Cursor",
+      1
+    ],
+    [
+      "POST /api/agents/claim-api-key",
+      1
+    ],
+    [
+      "Copy as markdown",
+      1
+    ],
+    [
+      "breadcrumbStatus ? (",
+      1
+    ],
+    [
+      "taskChatShellEnabled && issue && showRichSubIssuesSection ? (",
+      1
+    ],
+    [
+      "As soon as the pieces are created",
+      1
+    ],
+    [
+      "option && selectedAutomationProject ? (",
+      1
+    ],
+    [
+      "PID",
+      1
+    ],
+    [
+      "setIsMobile(window.innerWidth",
+      1
+    ],
+    [
+      "This removes every skill file under the folder and saves the result as the next version.",
+      1
+    ],
+    [
+      "Save as input",
+      1
+    ],
+    [
+      "Count as a change",
+      1
+    ],
+    [
+      "YO",
+      1
+    ],
+    [
+      "Author reads as",
+      1
+    ],
+    [
+      "IssueChatUserMessage",
+      1
+    ],
+    [
+      "SuccessfulRunHandoffCommentCallout",
+      1
+    ],
+    [
+      "Use this team as a full-company package (no target manager)",
+      1
+    ],
+    [
+      "Zapier MCP URL",
+      1
+    ],
+    [
+      "No agents to test as",
+      1
+    ],
+    [
+      "Test as",
+      1
+    ],
+    [
+      "shown.length && (",
+      1
+    ],
+    [
+      "Try as a different agent:",
+      1
+    ],
+    [
+      "Bring AWS-managed secrets into Paperclip as external references.",
+      1
+    ],
+    [
+      "Delivered as",
+      1
+    ],
+    [
+      "Pick a project, scan its workspaces for skills, and import them as references.",
+      1
+    ],
+    [
+      "SKILL.md",
+      1
+    ],
+    [
+      "Import as",
+      1
+    ],
+    [
+      "As soon as your agents start using connected apps, what they do shows up here.",
+      1
+    ],
+    [
+      "draftConnectUrl(d)) ? (",
+      1
+    ],
+    [
+      "module.MarkdownEditor as ComponentType",
+      1
+    ]
+  ]
+}
