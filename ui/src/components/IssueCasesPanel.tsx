@@ -37,7 +37,7 @@ export function IssueCasesPanel({ issueId }: { issueId: string }) {
 
   return (
     <section className="space-y-2">
-      <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">案例</h3>
+      <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Cases</h3>
       <div className="space-y-1">
         {links.map((link) => (
           <Link

@@ -65,7 +65,7 @@ export function ToolsAccess() {
   }, [setBreadcrumbs, selectedCompany?.name, advanced, tabLabel]);
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">选择公司以打开高级设置。</div>;
+    return <div className="p-6 text-sm text-muted-foreground">Select a company to open advanced setup.</div>;
   }
 
   // Retired developer tabs (PAP-10915/PAP-10928) — keep old links working.
@@ -85,16 +85,16 @@ export function ToolsAccess() {
       <div className="mx-auto flex w-full max-w-4xl flex-col gap-5 p-4 sm:p-6">
         <header>
           <div className="flex items-center gap-2.5">
-            <h1 className="text-xl font-bold text-foreground">高级设置</h1>
+            <h1 className="text-xl font-bold text-foreground">Advanced setup</h1>
             <span className="inline-flex items-center rounded-full bg-foreground px-2.5 py-0.5 text-(length:--text-micro) font-bold text-background">
-              高级
+              Advanced
             </span>
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
             For tools that aren't in the gallery. You'll need details from the tool's documentation.
             Most people never need this — if the app you want is in the gallery,{" "}
             <Link to="/apps" className="font-medium text-primary hover:underline">
-              改为在那里连接
+              connect it there instead
             </Link>
             .
           </p>
@@ -123,7 +123,7 @@ export function ToolsAccess() {
           <Wrench className="h-3.5 w-3.5" />
           Looking for the developer surface?{" "}
           <Link to={advancedTabHref("profiles")} className="font-medium text-primary hover:underline">
-            打开开发者工具
+            Open developer tools
           </Link>
         </p>
       </div>
@@ -135,7 +135,7 @@ export function ToolsAccess() {
       <div>
         <div className="flex items-center gap-2">
           <Settings2 className="h-5 w-5 text-muted-foreground" />
-          <h1 className="text-xl font-bold text-foreground">开发者工具</h1>
+          <h1 className="text-xl font-bold text-foreground">Developer tools</h1>
         </div>
         <p className="mt-1.5 max-w-2xl text-sm text-muted-foreground">
           Apps is the simple way to connect tools. This Developer area is for wiring your own

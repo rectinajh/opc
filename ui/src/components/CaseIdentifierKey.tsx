@@ -57,7 +57,7 @@ export function CaseCopyableToken({
           className="pointer-events-none absolute bottom-full left-1/2 mb-1.5 inline-flex -translate-x-1/2 items-center gap-1 rounded-md bg-foreground px-2 py-1 text-xs whitespace-nowrap text-background"
         >
           <Check className="h-3 w-3 shrink-0" />
-          已复制
+          Copied
         </span>
       ) : null}
     </span>
@@ -82,7 +82,7 @@ export function CaseIdentifierKey({
     >
       <CaseCopyableToken
         value={identifier}
-        label="案例ID"
+        label="case ID"
         className="shrink-0 font-mono text-xs text-muted-foreground"
         containerClassName="shrink-0"
         stopPropagation={stopPropagation}
@@ -90,7 +90,7 @@ export function CaseIdentifierKey({
       {caseKey ? (
         <CaseCopyableToken
           value={caseKey}
-          label="案例键"
+          label="case key"
           className="font-mono text-xs text-muted-foreground"
           stopPropagation={stopPropagation}
         />

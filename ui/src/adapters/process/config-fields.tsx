@@ -34,7 +34,7 @@ export function ProcessConfigFields({
 }: AdapterConfigFieldsProps) {
   return (
     <>
-      <Field label="命令" hint={help.command}>
+      <Field label="Command" hint={help.command}>
         <DraftInput
           value={
             isCreate
@@ -48,10 +48,10 @@ export function ProcessConfigFields({
           }
           immediate
           className={inputClass}
-          placeholder="例如：node、python"
+          placeholder="e.g. node, python"
         />
       </Field>
-      <Field label="参数（逗号分隔）" hint={help.args}>
+      <Field label="Args (comma-separated)" hint={help.args}>
         <DraftInput
           value={
             isCreate
@@ -69,7 +69,7 @@ export function ProcessConfigFields({
           }
           immediate
           className={inputClass}
-          placeholder="例如：script.js, --flag"
+          placeholder="e.g. script.js, --flag"
         />
       </Field>
     </>

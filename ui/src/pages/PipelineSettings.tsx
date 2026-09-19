@@ -1093,7 +1093,7 @@ function CarriedFieldTokenHelper({
     <div className="rounded-md border border-dashed border-border bg-muted/25 px-3 py-2">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <span className="text-xs font-semibold uppercase text-muted-foreground">
-          已在子项上可用
+          Already available on child items
         </span>
       </div>
       <div className="space-y-2">
@@ -1179,7 +1179,7 @@ function StageSubSidebar({
   return (
     <>
       <div className="md:hidden">
-        <label className="sr-only" htmlFor="stage-section-picker">阶段部分</label>
+        <label className="sr-only" htmlFor="stage-section-picker">Stage section</label>
         <select
           id="stage-section-picker"
           value={activeSection}
@@ -1196,7 +1196,7 @@ function StageSubSidebar({
         </select>
       </div>
       <nav
-        aria-label="阶段部分"
+        aria-label="Stage sections"
         className="sticky top-14 hidden max-h-(--sz-calc-39) w-52 shrink-0 flex-col gap-4 self-start overflow-y-auto border-r border-border bg-sidebar/30 px-3 py-4 md:flex"
       >
         {groups.map((group) => (
@@ -2119,11 +2119,11 @@ export function PipelineSettings() {
   };
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Hexagon} message="选择公司以编辑管道设置。" />;
+    return <EmptyState icon={Hexagon} message="Select a company to edit pipeline settings." />;
   }
 
   if (!pipelineId) {
-    return <EmptyState icon={Hexagon} message="未选择管道。" />;
+    return <EmptyState icon={Hexagon} message="No pipeline selected." />;
   }
 
   if (pipelineQuery.isLoading) {
@@ -2135,7 +2135,7 @@ export function PipelineSettings() {
   }
 
   if (!pipeline) {
-    return <EmptyState icon={Hexagon} message="未找到管道。" />;
+    return <EmptyState icon={Hexagon} message="Pipeline not found." />;
   }
 
   const isArchived = Boolean(pipeline.archivedAt);
@@ -2265,7 +2265,7 @@ export function PipelineSettings() {
     ? breakdownSummarySentence(breakdownConfigForCopy, breakdownCopyNames)
     : null;
   const transitionTargetsControl = !isReviewStage && !isPipelineTerminalStageKind(stageKind) ? (
-    <FieldRow label="允许的后续步骤">
+    <FieldRow label="Allowed next steps">
       <div className="space-y-2">
         {otherStages.map((stage) => {
           const isCancelled = stage.kind === "cancelled";
@@ -2294,7 +2294,7 @@ export function PipelineSettings() {
               />
               <span className="flex-1">{stage.name}</span>
               {isCancelled ? (
-                <span className="text-xs text-muted-foreground">始终可用</span>
+                <span className="text-xs text-muted-foreground">Always available</span>
               ) : null}
             </label>
           );
@@ -2306,13 +2306,13 @@ export function PipelineSettings() {
     <div className="rounded-lg border border-border">
       <div className="flex items-start justify-between gap-4 border-b border-border p-4">
         <div className="space-y-1">
-          <h3 className="text-sm font-semibold text-foreground">分解为更小的部分</h3>
+          <h3 className="text-sm font-semibold text-foreground">Break into smaller pieces</h3>
           <p className="max-w-md text-sm text-muted-foreground">
-            代理决定任务是什么。Paperclip创建并跟踪它们。
+            The agent decides what the pieces are. Paperclip creates and tracks them.
           </p>
         </div>
         <ToggleSwitch
-          aria-label="分解为更小的部分"
+          aria-label="Break into smaller pieces"
           checked={breakdownEnabled}
           onCheckedChange={(checked) => {
             setBreakdownEnabled(checked);
@@ -2324,11 +2324,11 @@ export function PipelineSettings() {
       </div>
       {breakdownEnabled ? (
         <div className="divide-y divide-border px-4">
-          <FieldRow label="在...中创建每个片段">
+          <FieldRow label="Create each piece in">
             <div className="space-y-1">
               <div className="flex w-full max-w-sm items-center">
                 <select
-                  aria-label="在...中创建每个片段"
+                  aria-label="Create each piece in"
                   value={breakdownTargetPipelineId}
                   onChange={(event) => {
                     setBreakdownTargetPipelineId(event.target.value);
@@ -2336,7 +2336,7 @@ export function PipelineSettings() {
                   }}
                   className="h-10 min-w-0 flex-1 rounded-md border border-input bg-background px-3 text-sm"
                 >
-                  <option value="">选择管道</option>
+                  <option value="">Choose a pipeline</option>
                   {breakdownTargetOptions.map((candidate) => (
                     <option key={candidate.id} value={candidate.id}>{candidate.name}</option>
                   ))}
@@ -2353,31 +2353,31 @@ export function PipelineSettings() {
                 ) : null}
               </div>
               {!breakdownTargetPipelineId ? (
-                <p className="text-xs text-muted-foreground">此工作区中的管道</p>
+                <p className="text-xs text-muted-foreground">A pipeline in this workspace</p>
               ) : null}
             </div>
           </FieldRow>
-          <FieldRow label="起始于">
+          <FieldRow label="starting at">
             <div className="space-y-1">
               <select
-                aria-label="每个部分的起始阶段"
+                aria-label="Starting stage for each piece"
                 value={breakdownTargetStageKey}
                 onChange={(event) => setBreakdownTargetStageKey(event.target.value)}
                 disabled={!breakdownTargetPipelineId}
                 className="h-10 w-full max-w-sm rounded-md border border-input bg-background px-3 text-sm disabled:opacity-50"
               >
-                <option value="">选择阶段</option>
+                <option value="">Choose a stage</option>
                 {breakdownTargetStages.map((stage) => (
                   <option key={stage.id} value={stage.key}>{stage.name}</option>
                 ))}
               </select>
-              <p className="text-xs text-muted-foreground">每个新任务开始的阶段</p>
+              <p className="text-xs text-muted-foreground">The stage every new piece starts in</p>
             </div>
           </FieldRow>
-          <FieldRow label="将每个片段称为">
+          <FieldRow label="Call each piece a">
             <div className="space-y-1">
               <Input
-                aria-label="将每个片段称为"
+                aria-label="Call each piece a"
                 value={breakdownPieceNoun}
                 onChange={(event) => setBreakdownPieceNoun(event.target.value)}
                 placeholder="piece"
@@ -2388,7 +2388,7 @@ export function PipelineSettings() {
               </p>
             </div>
           </FieldRow>
-          <FieldRow label="结转">
+          <FieldRow label="Carry over">
             <div className="space-y-2">
               <div className="space-y-1 rounded-md border border-dashed border-border bg-muted/30 px-3 py-2 text-xs">
                 <p className="text-muted-foreground">
@@ -2396,7 +2396,7 @@ export function PipelineSettings() {
                 </p>
                 {breakdownTargetPipelineId ? (
                   <div className="flex flex-wrap items-center gap-1 text-muted-foreground">
-                    <span>目标验证：</span>
+                    <span>Destination validation:</span>
                     <span className="font-medium text-foreground">
                       {breakdownTargetPipeline?.name ?? "selected pipeline"}
                     </span>
@@ -2413,7 +2413,7 @@ export function PipelineSettings() {
                     to={breakdownIntakeSettingsHref}
                     className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
                   >
-                    查看目标字段
+                    Review destination fields
                     <ArrowUpRight className="h-3 w-3" />
                   </Link>
                 ) : null}
@@ -2485,15 +2485,15 @@ export function PipelineSettings() {
               </p>
             </div>
           </FieldRow>
-          <FieldRow label="然后将此案例移至">
+          <FieldRow label="Then move this case to">
             <div className="space-y-1">
               <select
-                aria-label="然后将此案例移至"
+                aria-label="Then move this case to"
                 value={breakdownAdvanceTo}
                 onChange={(event) => setBreakdownAdvanceTo(event.target.value)}
                 className="h-10 w-full max-w-sm rounded-md border border-input bg-background px-3 text-sm"
               >
-                <option value="">停留在此步骤</option>
+                <option value="">Stay on this step</option>
                 {otherStages.map((stage) => (
                   <option key={stage.id} value={stage.key}>{stage.name}</option>
                 ))}
@@ -2501,7 +2501,7 @@ export function PipelineSettings() {
               <p className="text-xs text-muted-foreground">As soon as the pieces are created</p>
             </div>
           </FieldRow>
-          <FieldRow label="等待">
+          <FieldRow label="Wait">
             <div className="space-y-2">
               <label className="flex items-start gap-2 text-sm">
                 <input
@@ -2521,13 +2521,13 @@ export function PipelineSettings() {
                 </span>
               </label>
               <select
-                aria-label="当所有部分完成时移动此案例"
+                aria-label="Move this case when all pieces finish"
                 value={breakdownWhenFinishedMoveTo}
                 onChange={(event) => setBreakdownWhenFinishedMoveTo(event.target.value)}
                 disabled={!breakdownWaitForPieces}
                 className="h-10 w-full max-w-sm rounded-md border border-input bg-background px-3 text-sm disabled:opacity-50"
               >
-                <option value="">选择阶段</option>
+                <option value="">Choose a stage</option>
                 {otherStages.map((stage) => (
                   <option key={stage.id} value={stage.key}>{stage.name}</option>
                 ))}
@@ -2562,11 +2562,11 @@ export function PipelineSettings() {
       >
         <div className="mb-3 flex items-start justify-between gap-3">
           <Link to={`/pipelines/${pipeline.id}`} className="text-sm text-muted-foreground hover:text-foreground">
-            返回看板
+            Back to board
           </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button type="button" variant="outline" size="icon" className="h-8 w-8" title="管道操作">
+              <Button type="button" variant="outline" size="icon" className="h-8 w-8" title="Pipeline actions">
                 <MoreHorizontal className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
@@ -2574,12 +2574,12 @@ export function PipelineSettings() {
               {isArchived ? (
                 <DropdownMenuItem onSelect={() => archivePipeline.mutate(false)}>
                   <Archive className="h-4 w-4" />
-                  恢复管道
+                  Restore pipeline
                 </DropdownMenuItem>
               ) : (
                 <DropdownMenuItem variant="destructive" onSelect={() => setArchiveDialogOpen(true)}>
                   <Archive className="h-4 w-4" />
-                  归档管道
+                  Archive pipeline
                 </DropdownMenuItem>
               )}
             </DropdownMenuContent>
@@ -2588,9 +2588,9 @@ export function PipelineSettings() {
         <div className="grid gap-3 md:grid-cols-(--gtc-13) md:items-end">
           <div className="space-y-3">
             <label className="block space-y-1.5 text-sm font-medium">
-              <span className="sr-only">管道名称</span>
+              <span className="sr-only">Pipeline name</span>
               <Input
-                aria-label="管道名称"
+                aria-label="Pipeline name"
                 value={pipelineName}
                 onChange={(event) => setPipelineName(event.target.value)}
                 required
@@ -2598,13 +2598,13 @@ export function PipelineSettings() {
               />
             </label>
             <label className="block space-y-1.5 text-sm font-medium">
-              <span className="sr-only">管道描述</span>
+              <span className="sr-only">Pipeline description</span>
               <Textarea
-                aria-label="管道描述"
+                aria-label="Pipeline description"
                 value={pipelineDescription}
                 onChange={(event) => setPipelineDescription(event.target.value)}
                 rows={2}
-                placeholder="添加描述"
+                placeholder="Add a description"
                 className="min-h-0 resize-none border-0 bg-transparent px-0 py-0 text-sm text-muted-foreground shadow-none focus-visible:ring-0"
               />
             </label>
@@ -2625,7 +2625,7 @@ export function PipelineSettings() {
           {stages.length === 0 ? (
             <EmptyState
               icon={GitBranch}
-              message="未配置阶段。"
+              message="No stages configured."
               action="Add first stage"
               onAction={() => addStage.mutate(null)}
             />
@@ -2668,7 +2668,7 @@ export function PipelineSettings() {
                           {stageNewEntriesDisabled(stage) ? (
                             <span className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-300">
                               <AlertTriangle className="h-3 w-3" />
-                              新条目已暂停
+                              New entries paused
                             </span>
                           ) : null}
                         </button>
@@ -2676,7 +2676,7 @@ export function PipelineSettings() {
                           to={`/pipelines/${pipelineId}`}
                           className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground hover:underline"
                         >
-                          查看队列
+                          View queue
                           <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
                         </Link>
                       </div>
@@ -2760,17 +2760,17 @@ export function PipelineSettings() {
                   {activeStageSection === "instructions" ? (
                     <div className="w-full max-w-3xl">
                       <div className="divide-y divide-border border-b border-border">
-                        <FieldRow label="名称">
+                        <FieldRow label="Name">
                           <Input value={stageName} onChange={(event) => setStageName(event.target.value)} required />
                         </FieldRow>
-                        <FieldRow label="步骤类型">
+                        <FieldRow label="Step type">
                           <div className="max-w-xl space-y-2">
                             <DropdownMenu>
                               <DropdownMenuTrigger asChild>
                                 <Button
                                   type="button"
                                   variant="outline"
-                                  aria-label="步骤类型"
+                                  aria-label="Step type"
                                   className="h-auto min-h-10 w-full justify-between whitespace-normal px-3 py-2 text-left"
                                 >
                                   <span className="flex min-w-0 items-center gap-2">
@@ -2810,18 +2810,18 @@ export function PipelineSettings() {
                         </FieldRow>
 
                         {stageKind === "review" ? (
-                          <FieldRow label="审批人">
+                          <FieldRow label="Approver">
                             <InlineEntitySelector
                               value={selectedApproval === "any_human" ? "" : selectedApproval}
                               options={approvalOptions}
                               recentOptionIds={recentAssigneeOptionIds}
-                              placeholder="审批人"
+                              placeholder="Approver"
                               noneLabel="Any human"
                               searchPlaceholder="Search approvers..."
                               emptyMessage="No approvers found."
                               onChange={(value) => setSelectedApproval(approverValueFromOption(value))}
                               renderTriggerValue={(option) => {
-                                if (!option) return <span className="text-muted-foreground">任何人</span>;
+                                if (!option) return <span className="text-muted-foreground">Any human</span>;
                                 const agent = option.id.startsWith("agent:") ? agentById.get(option.id.slice("agent:".length)) : null;
                                 return (
                                   <>
@@ -2845,7 +2845,7 @@ export function PipelineSettings() {
                         ) : null}
 
                         {stageKind === "review" ? (
-                          <FieldRow label="审查结果">
+                          <FieldRow label="Review outcomes">
                             <div className="space-y-2">
                               {([
                                 ["Approved items move to", approveTarget, setApproveTarget, "Choose a stage"],
@@ -2871,13 +2871,13 @@ export function PipelineSettings() {
                                 </div>
                               ))}
                               <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-(--gtc-42)">
-                                <span className="text-sm font-medium">请求更改时要求备注</span>
+                                <span className="text-sm font-medium">Ask for a note when requesting changes</span>
                                 <div className="sm:justify-self-start">
                                   <ToggleSwitch checked={requireRequestChangesReason} onCheckedChange={setRequireRequestChangesReason} />
                                 </div>
                               </div>
                               <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-(--gtc-42)">
-                                <span className="text-sm font-medium">拒绝时要求备注</span>
+                                <span className="text-sm font-medium">Ask for a note when declining</span>
                                 <div className="sm:justify-self-start">
                                   <ToggleSwitch checked={requireRejectReason} onCheckedChange={setRequireRejectReason} />
                                 </div>
@@ -2899,18 +2899,18 @@ export function PipelineSettings() {
                     <div className="mt-8 w-full max-w-3xl space-y-6">
                       <div className="overflow-x-auto overscroll-x-contain">
                         <div className="inline-flex min-w-full flex-wrap items-center gap-2 text-sm text-muted-foreground sm:min-w-max sm:flex-nowrap">
-                          <span>当项目进入此步骤时</span>
+                          <span>When an item enters this step</span>
                           <InlineEntitySelector
                             value={stageAssigneeOptionId(stageAssigneeAgentId)}
                             options={stageAssigneeOptions}
                             recentOptionIds={recentAssigneeOptionIds}
-                            placeholder="选择代理"
+                            placeholder="Pick agent"
                             noneLabel="No automation"
                             searchPlaceholder="Search agents..."
                             emptyMessage="No agents found."
                             onChange={(value) => setStageAssigneeAgentId(stageAssigneeIdFromOption(value))}
                             renderTriggerValue={(option) => {
-                              if (!option) return <span className="text-muted-foreground">选择代理</span>;
+                              if (!option) return <span className="text-muted-foreground">Pick agent</span>;
                               const agent = stageAssigneeIdFromOption(option.id)
                                 ? agentById.get(stageAssigneeIdFromOption(option.id))
                                 : null;
@@ -2933,20 +2933,20 @@ export function PipelineSettings() {
                               );
                             }}
                           />
-                          <span>运行这些指令，然后将项目移至下一步。</span>
+                          <span>runs these instructions, then moves the item to the next step.</span>
                         </div>
                       </div>
 
                       {selectedAutomationAgent ? (
                         <>
                           <div className="divide-y divide-border border-y border-border">
-                            <FieldRow label="项目上下文">
+                            <FieldRow label="Project context">
                               <div className="grid gap-2 sm:grid-cols-(--gtc-43)">
                                 <InlineEntitySelector
                                   value={stageProjectId}
                                   options={projectOptions}
                                   recentOptionIds={recentProjectIds}
-                                  placeholder="项目"
+                                  placeholder="Project"
                                   noneLabel="No project"
                                   searchPlaceholder="Search projects..."
                                   emptyMessage="No projects found."
@@ -2961,7 +2961,7 @@ export function PipelineSettings() {
                                         <span className="truncate">{option.label}</span>
                                       </>
                                     ) : (
-                                      <span className="text-muted-foreground">项目</span>
+                                      <span className="text-muted-foreground">Project</span>
                                     )
                                   }
                                   renderOption={(option) => {
@@ -2980,12 +2980,12 @@ export function PipelineSettings() {
                                 />
                                 {selectedAutomationProject ? (
                                   <select
-                                    aria-label="项目工作区"
+                                    aria-label="Project workspace"
                                     value={stageProjectWorkspaceId}
                                     onChange={(event) => handleAutomationProjectWorkspaceChange(event.target.value)}
                                     className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
                                   >
-                                    <option value="">项目回退</option>
+                                    <option value="">Project fallback</option>
                                     {(selectedAutomationProject.workspaces ?? []).map((workspace) => (
                                       <option key={workspace.id} value={workspace.id}>
                                         {workspace.name}{workspace.isPrimary ? " · primary" : ""}
@@ -2994,7 +2994,7 @@ export function PipelineSettings() {
                                   </select>
                                 ) : (
                                   <div className="flex h-10 items-center rounded-md border border-dashed border-border px-3 text-sm text-muted-foreground">
-                                    项目工作区
+                                    Project workspace
                                   </div>
                                 )}
                               </div>
@@ -3006,10 +3006,10 @@ export function PipelineSettings() {
                             </FieldRow>
 
                             {selectedAutomationProject && selectedProjectSupportsExecutionWorkspace ? (
-                              <FieldRow label="执行工作区">
+                              <FieldRow label="Execution workspace">
                                 <div className="grid gap-2 sm:grid-cols-(--gtc-43)">
                                   <select
-                                    aria-label="执行工作区模式"
+                                    aria-label="Execution workspace mode"
                                     value={stageExecutionWorkspacePreference || "shared_workspace"}
                                     onChange={(event) => handleAutomationExecutionWorkspacePreferenceChange(event.target.value)}
                                     className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
@@ -3022,12 +3022,12 @@ export function PipelineSettings() {
                                   </select>
                                   {stageExecutionWorkspacePreference === "reuse_existing" ? (
                                     <select
-                                      aria-label="现有执行工作区"
+                                      aria-label="Existing execution workspace"
                                       value={stageExecutionWorkspaceId}
                                       onChange={(event) => handleAutomationExecutionWorkspaceIdChange(event.target.value)}
                                       className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
                                     >
-                                      <option value="">选择现有工作区</option>
+                                      <option value="">Choose an existing workspace</option>
                                       {deduplicatedReusableWorkspaces.map((workspace) => (
                                         <option key={workspace.id} value={workspace.id}>
                                           {workspace.name} · {workspace.status} · {workspace.branchName ?? workspace.cwd ?? workspace.id.slice(0, 8)}
@@ -3059,10 +3059,10 @@ export function PipelineSettings() {
                             <AgentIcon icon={selectedAutomationAgent.icon} className="h-4 w-4 shrink-0" />
                             <span>{selectedAutomationAgent.name} runs this step automatically.</span>
                           </div>
-                          <FieldRow label="问题标题">
+                          <FieldRow label="Issue title">
                             <Input
                               ref={issueTitleTemplateInputRef}
-                              aria-label="问题标题模板"
+                              aria-label="Issue title template"
                               value={issueTitleTemplate}
                               onChange={(event) => setIssueTitleTemplate(event.target.value)}
                               placeholder={PIPELINE_AUTOMATION_DEFAULT_TITLE_TEMPLATE}
@@ -3072,11 +3072,11 @@ export function PipelineSettings() {
                           <AutomationVariableTokenHelper
                             groups={automationVariableGroups}
                             onInsert={insertIssueTitleVariableToken}
-                            label="问题标题变量"
+                            label="Issue title variables"
                           />
                           {breakdownEnabled ? (
                             <div className="space-y-1">
-                              <h3 className="text-sm font-semibold text-foreground">代理应决定什么？</h3>
+                              <h3 className="text-sm font-semibold text-foreground">What should the agent decide?</h3>
                               <p className="text-sm text-muted-foreground">
                                 The mechanics are handled below. Write only the judgment.
                               </p>
@@ -3114,7 +3114,7 @@ export function PipelineSettings() {
                       ) : (
                         <EmptyState
                           icon={Pause}
-                          message="此处不会自动运行任何内容。项目会等待人员移动它们，或者您可以选择代理来运行此步骤。"
+                          message="Nothing runs here automatically. Items wait until a person moves them, or you can pick an agent to run this step."
                         />
                       )}
                       <div className="space-y-3">
@@ -3162,13 +3162,13 @@ export function PipelineSettings() {
                     <div className="w-full max-w-3xl space-y-8">
                       <div className="divide-y divide-border border-b border-border">
                         <div className="py-3">
-                          <h3 className="text-sm font-semibold text-foreground">转换</h3>
+                          <h3 className="text-sm font-semibold text-foreground">Transitions</h3>
                         </div>
-                        <FieldRow label="严格模式">
+                        <FieldRow label="Strict mode">
                           <div className="space-y-1.5">
                             <div className="flex items-center gap-3">
                               <ToggleSwitch
-                                aria-label="严格执行转换"
+                                aria-label="Strictly enforce transitions"
                                 checked={strictTransitionsEnabled}
                                 disabled={saveStrictTransitions.isPending}
                                 onCheckedChange={(checked) => {
@@ -3177,7 +3177,7 @@ export function PipelineSettings() {
                                 }}
                               />
                               <span className="text-sm font-medium text-foreground">
-                                严格执行转换
+                                Strictly enforce transitions
                               </span>
                             </div>
                             <p className="max-w-2xl text-sm text-muted-foreground">
@@ -3192,14 +3192,14 @@ export function PipelineSettings() {
                       {isPipelineTerminalStageKind(stageKind) ? null : breakdownEnabled ? (
                         <EmptyState
                           icon={SlidersHorizontal}
-                          message="启用“分解为更小的部分”时，高级子设置将被隐藏。在自动化中配置该工作流。"
+                          message="Advanced child settings are hidden while Break into smaller pieces is enabled. Configure that workflow in Automation."
                         />
                       ) : (
                         <div className="divide-y divide-border border-b border-border">
                           <div className="py-3">
-                            <h3 className="text-sm font-semibold text-foreground">子项</h3>
+                            <h3 className="text-sm font-semibold text-foreground">Children</h3>
                           </div>
-                          <FieldRow label="阻止子项">
+                          <FieldRow label="Block children">
                             <div className="space-y-1.5">
                               <div className="flex items-center gap-3">
                                 <ToggleSwitch
@@ -3207,7 +3207,7 @@ export function PipelineSettings() {
                                   onCheckedChange={setRequireChildrenTerminal}
                                 />
                                 <span className="text-sm font-medium text-foreground">
-                                  阻塞直到所有子项完成或取消
+                                  Block until all child items are done or cancelled
                                 </span>
                               </div>
                               <p className="max-w-2xl text-sm text-muted-foreground">
@@ -3215,7 +3215,7 @@ export function PipelineSettings() {
                               </p>
                             </div>
                           </FieldRow>
-                          <FieldRow label="推进子项">
+                          <FieldRow label="Advance children">
                             <div className="space-y-3">
                               <div className="flex items-center gap-3">
                                 <ToggleSwitch
@@ -3225,19 +3225,19 @@ export function PipelineSettings() {
                                   }}
                                 />
                                 <span className="text-sm font-medium text-foreground">
-                                  当最后一个子项完成时推进
+                                  Advance when the last child is done
                                 </span>
                               </div>
                               <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-(--gtc-44)">
-                                <span className="text-sm font-medium text-muted-foreground">移动到</span>
+                                <span className="text-sm font-medium text-muted-foreground">Move to</span>
                                 <select
-                                  aria-label="当子项完成时移动到阶段"
+                                  aria-label="Move to stage when children finish"
                                   value={autoAdvanceOnChildrenTerminal}
                                   onChange={(event) => setAutoAdvanceOnChildrenTerminal(event.target.value)}
                                   disabled={!autoAdvanceOnChildrenTerminal}
                                   className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm disabled:opacity-50"
                                 >
-                                  <option value="">选择阶段</option>
+                                  <option value="">Choose a stage</option>
                                   {otherStages.map((stage) => (
                                     <option key={stage.id} value={stage.key}>{stage.name}</option>
                                   ))}
@@ -3311,7 +3311,7 @@ export function PipelineSettings() {
       >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>删除阶段</DialogTitle>
+            <DialogTitle>Delete stage</DialogTitle>
             <DialogDescription>
               Delete {selectedStage?.name ?? "this stage"} from this pipeline. Connected stage transitions are removed.
             </DialogDescription>
@@ -3319,9 +3319,9 @@ export function PipelineSettings() {
           <div className="space-y-3">
             {stages.length > 1 ? (
               <label className="block space-y-1.5 text-sm font-medium">
-                <span>将现有项目移动到</span>
+                <span>Move existing items to</span>
                 <select
-                  aria-label="将现有项目移动到"
+                  aria-label="Move existing items to"
                   value={deleteMoveTargetStageId}
                   onChange={(event) => setDeleteMoveTargetStageId(event.target.value)}
                   className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
@@ -3335,7 +3335,7 @@ export function PipelineSettings() {
               </label>
             ) : (
               <p className="text-sm text-muted-foreground">
-                这是唯一的阶段。仅当没有项目时才能删除。
+                This is the only stage. Deletion succeeds only if it has no items.
               </p>
             )}
             {deleteStage.error ? (
@@ -3349,7 +3349,7 @@ export function PipelineSettings() {
               onClick={() => setDeleteStageDialogOpen(false)}
               disabled={deleteStage.isPending}
             >
-              取消
+              Cancel
             </Button>
             <Button
               type="button"
@@ -3373,7 +3373,7 @@ export function PipelineSettings() {
       >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>归档管道</DialogTitle>
+            <DialogTitle>Archive pipeline</DialogTitle>
             <DialogDescription>
               Archiving hides this pipeline from everyday views. Its stages and items are kept and can be restored later.
             </DialogDescription>
@@ -3382,7 +3382,7 @@ export function PipelineSettings() {
             <label className="block space-y-1.5 text-sm font-medium">
               <span>Type {pipeline.name} to confirm</span>
               <Input
-                aria-label="归档确认"
+                aria-label="Archive confirmation"
                 value={archiveConfirmation}
                 onChange={(event) => setArchiveConfirmation(event.target.value)}
                 autoComplete="off"
@@ -3399,7 +3399,7 @@ export function PipelineSettings() {
               onClick={() => setArchiveDialogOpen(false)}
               disabled={archivePipeline.isPending}
             >
-              取消
+              Cancel
             </Button>
             <Button
               type="button"

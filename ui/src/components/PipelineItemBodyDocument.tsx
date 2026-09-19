@@ -309,7 +309,7 @@ export function PipelineItemBodyDocument({
           </span>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" onClick={cancelEdit} disabled={saveMutation.isPending}>
-              取消
+              Cancel
             </Button>
             <Button size="sm" onClick={() => void handleSave()} disabled={saveMutation.isPending}>
               {saveMutation.isPending ? <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" /> : null}
@@ -335,7 +335,7 @@ export function PipelineItemBodyDocument({
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <Button variant="outline" size="sm" onClick={() => setSelectedRevisionId(null)}>
-                返回最新
+                Return to latest
               </Button>
               <Button
                 size="sm"
@@ -356,7 +356,7 @@ export function PipelineItemBodyDocument({
   } else if (!hasDocument) {
     // Truly empty (A).
     bodyContent = (
-      <EmptyState icon={FileText} message="暂无正文。在此处记录项目详情。" action="Add the item body" onAction={beginEdit} />
+      <EmptyState icon={FileText} message="No body yet. Capture the item's details here." action="Add the item body" onAction={beginEdit} />
     );
   } else if (annotationsLinked && bodyIssueDocument) {
     bodyContent = (
@@ -406,7 +406,7 @@ export function PipelineItemBodyDocument({
 
   return (
     <section
-      aria-label="项目正文"
+      aria-label="Item body"
       id="pipeline-item-body-document"
       data-testid="pipeline-item-body-document"
       className="rounded-lg border border-border p-3"
@@ -447,7 +447,7 @@ export function PipelineItemBodyDocument({
         ) : (
           <Button variant="ghost" size="sm" className="h-auto gap-1.5 px-2 py-1 text-xs" onClick={beginEdit}>
             <FilePenLine className="h-3.5 w-3.5" />
-            编辑
+            Edit
           </Button>
         )}
       />

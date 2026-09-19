@@ -100,19 +100,19 @@ export function RunYourOwnTab({ companyId }: { companyId: string }) {
 
       <div className="space-y-5 rounded-lg border border-border bg-card p-5">
         <div className="space-y-1.5">
-          <Label htmlFor="ryo-name">名称</Label>
+          <Label htmlFor="ryo-name">Name</Label>
           <Input
             id="ryo-name"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            placeholder="Acme工具"
+            placeholder="Acme tools"
             maxLength={160}
           />
-          <p className="text-xs text-muted-foreground">您将在应用列表中对此工具的称呼。</p>
+          <p className="text-xs text-muted-foreground">What you'll call this tool in your apps list.</p>
         </div>
 
         <div className="space-y-1.5">
-          <Label htmlFor="ryo-command">命令</Label>
+          <Label htmlFor="ryo-command">Command</Label>
           <Input
             id="ryo-command"
             value={command}
@@ -121,12 +121,12 @@ export function RunYourOwnTab({ companyId }: { companyId: string }) {
             spellCheck={false}
             className="bg-slate-900 font-mono text-(length:--text-compact) text-slate-100 placeholder:text-slate-500 focus-visible:ring-slate-400"
           />
-          <p className="text-xs text-muted-foreground">运行工具的命令。来自工具的 README。</p>
+          <p className="text-xs text-muted-foreground">The command that runs the tool. From the tool's README.</p>
         </div>
 
         <div className="space-y-2">
           <div className="flex items-baseline gap-2">
-            <Label>所需的密钥</Label>
+            <Label>Keys it needs</Label>
             <span className="text-xs text-muted-foreground">· optional, depends on the tool</span>
           </div>
           {keyRows.length > 0 ? (
@@ -152,7 +152,7 @@ export function RunYourOwnTab({ companyId }: { companyId: string }) {
                         type="button"
                         variant="ghost"
                         size="icon"
-                        aria-label="移除密钥"
+                        aria-label="Remove key"
                         onClick={() => setKeyRows((rows) => rows.filter((r) => r.id !== row.id))}
                       >
                         <X className="h-4 w-4" />
@@ -170,7 +170,7 @@ export function RunYourOwnTab({ companyId }: { companyId: string }) {
           ) : null}
           <Button type="button" variant="outline" size="sm" onClick={addKeyRow} className="gap-1.5">
             <Plus className="h-3.5 w-3.5" />
-            添加密钥
+            Add a key
           </Button>
         </div>
 
@@ -178,11 +178,11 @@ export function RunYourOwnTab({ companyId }: { companyId: string }) {
           <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
           <div className="text-xs">
             <p className="font-medium text-foreground">
-              这在您公司自己的工作区中运行，与其他一切隔离。
+              This runs in your company's own workspace, isolated from everything else.
             </p>
             <p className="mt-0.5 flex items-center gap-1 text-muted-foreground">
               <Lock className="h-3 w-3" />
-              只有管理员可以看到此选项。
+              Only administrators see this option.
             </p>
           </div>
         </div>
@@ -194,28 +194,28 @@ export function RunYourOwnTab({ companyId }: { companyId: string }) {
             {createMutation.isPending ? "Adding…" : "Check & continue"}
           </Button>
           <span className="text-xs text-muted-foreground">
-            Paperclip 将注册命令及其所需的密钥。
+            Paperclip will register the command and the keys it needs.
           </span>
         </div>
       </div>
 
       <div className="space-y-3">
-        <h3 className="text-sm font-semibold text-foreground">您自己的工具</h3>
+        <h3 className="text-sm font-semibold text-foreground">Your own tools</h3>
         {templates.isLoading ? (
           <LoadingState />
         ) : templates.isError ? (
           <ErrorState error={templates.error} onRetry={() => templates.refetch()} />
         ) : adminTemplates.length === 0 ? (
-          <p className="text-sm text-muted-foreground">您尚未添加任何自己的工具。</p>
+          <p className="text-sm text-muted-foreground">You haven't added any of your own tools yet.</p>
         ) : (
           <div className="overflow-hidden rounded-lg border border-border">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border bg-muted/40 text-left text-(length:--text-micro) font-semibold uppercase tracking-wide text-muted-foreground">
-                  <th className="px-4 py-2.5">名称</th>
-                  <th className="px-4 py-2.5">命令</th>
-                  <th className="px-4 py-2.5">密钥</th>
-                  <th className="px-4 py-2.5">已添加</th>
+                  <th className="px-4 py-2.5">Name</th>
+                  <th className="px-4 py-2.5">Command</th>
+                  <th className="px-4 py-2.5">Keys</th>
+                  <th className="px-4 py-2.5">Added</th>
                   <th className="px-4 py-2.5" />
                 </tr>
               </thead>
@@ -281,7 +281,7 @@ function RunYourOwnRow({
             onClick={() => disableMutation.mutate()}
             disabled={disableMutation.isPending}
           >
-            关闭
+            Turn off
           </Button>
         )}
       </td>

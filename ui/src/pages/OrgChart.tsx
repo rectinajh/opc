@@ -430,7 +430,7 @@ export function OrgChart() {
   }, [pan, zoom]);
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Network} message="选择公司以查看组织架构图。" />;
+    return <EmptyState icon={Network} message="Select a company to view the org chart." />;
   }
 
   if (isLoading) {
@@ -438,7 +438,7 @@ export function OrgChart() {
   }
 
   if (orgTree && orgTree.length === 0) {
-    return <EmptyState icon={Network} message="未定义组织层级。" />;
+    return <EmptyState icon={Network} message="No organizational hierarchy defined." />;
   }
 
   return (
@@ -447,13 +447,13 @@ export function OrgChart() {
         <Link to="/company/import">
           <Button variant="outline" size="sm">
             <Upload className="mr-1.5 h-3.5 w-3.5" />
-            导入公司
+            Import company
           </Button>
         </Link>
         <Link to="/company/export">
           <Button variant="outline" size="sm">
             <Download className="mr-1.5 h-3.5 w-3.5" />
-            导出公司
+            Export company
           </Button>
         </Link>
       </div>
@@ -489,8 +489,8 @@ export function OrgChart() {
                 });
               }
             }}
-            title="放大"
-            aria-label="放大"
+            title="Zoom in"
+            aria-label="Zoom in"
           >
             <Plus className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
           </button>
@@ -505,16 +505,16 @@ export function OrgChart() {
                 });
               }
             }}
-            title="缩小"
-            aria-label="缩小"
+            title="Zoom out"
+            aria-label="Zoom out"
           >
             <Minus className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
           </button>
           <button
             className="flex size-9 items-center justify-center rounded border border-border bg-background text-(length:--text-nano) transition-colors hover:bg-accent sm:size-7"
             onClick={fitToScreen}
-            title="适应屏幕"
-            aria-label="使图表适应屏幕"
+            title="Fit to screen"
+            aria-label="Fit chart to screen"
           >
             <Maximize2 className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
           </button>

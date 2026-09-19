@@ -55,7 +55,7 @@ export function CodexLocalConfigFields({
 
   return (
     <>
-      <Field label="执行引擎" hint="满足先决条件时自动使用ACP，否则回退到Codex CLI并附带诊断信息。">
+      <Field label="Execution engine" hint="Auto uses ACP when prerequisites pass and falls back to Codex CLI with diagnostics.">
         <select
           className={inputClass}
           value={engine}
@@ -66,7 +66,7 @@ export function CodexLocalConfigFields({
               : mark("adapterConfig", "engine", value === "auto" ? undefined : value);
           }}
         >
-          <option value="auto">自动（首选ACP）</option>
+          <option value="auto">Auto (ACP preferred)</option>
           <option value="cli">Codex CLI</option>
           <option value="acp">ACP</option>
         </select>
@@ -74,8 +74,8 @@ export function CodexLocalConfigFields({
       {acpSelected && (
         <>
           <Field
-            label="ACP服务器命令"
-            hint="Codex ACP服务器命令的可选覆盖。默认为包本地的codex-acp二进制文件。"
+            label="ACP server command"
+            hint="Optional override for the Codex ACP server command. Defaults to the package-local codex-acp binary."
           >
             <DraftInput
               value={
@@ -93,7 +93,7 @@ export function CodexLocalConfigFields({
               placeholder="codex-acp"
             />
           </Field>
-          <Field label="ACP会话模式" hint="持久化在运行之间保留ACP会话状态。一次性每次运行全新开始。">
+          <Field label="ACP session mode" hint="Persistent keeps ACP session state between runs. One-shot starts fresh each run.">
             <select
               className={inputClass}
               value={
@@ -108,13 +108,13 @@ export function CodexLocalConfigFields({
                   : mark("adapterConfig", "mode", value);
               }}
             >
-              <option value="persistent">持久</option>
-              <option value="oneshot">一次性</option>
+              <option value="persistent">Persistent</option>
+              <option value="oneshot">One-shot</option>
             </select>
           </Field>
           <Field
-            label="ACP非交互权限"
-            hint="当ACP代理在交互会话之外请求输入时的回退。"
+            label="ACP non-interactive permissions"
+            hint="Fallback if the ACP agent asks for input outside an interactive session."
           >
             <select
               className={inputClass}
@@ -130,13 +130,13 @@ export function CodexLocalConfigFields({
                   : mark("adapterConfig", "nonInteractivePermissions", value);
               }}
             >
-              <option value="deny">拒绝</option>
-              <option value="fail">失败</option>
+              <option value="deny">Deny</option>
+              <option value="fail">Fail</option>
             </select>
           </Field>
           <Field
-            label="ACP状态目录"
-            hint="可选的ACP会话状态目录。默认为Paperclip管理的公司/代理范围存储。"
+            label="ACP state directory"
+            hint="Optional ACP session state directory. Defaults to Paperclip-managed company/agent scoped storage."
           >
             <div className="flex items-center gap-2">
               <DraftInput
@@ -158,8 +158,8 @@ export function CodexLocalConfigFields({
             </div>
           </Field>
           <Field
-            label="ACP热进程空闲毫秒数"
-            hint="默认为0，每次运行后关闭ACP进程，同时保留持久会话状态。"
+            label="ACP warm process idle ms"
+            hint="Defaults to 0, which closes the ACP process after each run while retaining persistent session state."
           >
             {isCreate ? (
               <input
@@ -184,7 +184,7 @@ export function CodexLocalConfigFields({
         </>
       )}
       {!hideInstructionsFile && (
-        <Field label="代理指令文件" hint={instructionsFileHint}>
+        <Field label="Agent instructions file" hint={instructionsFileHint}>
           <div className="flex items-center gap-2">
             <DraftInput
               value={
@@ -210,7 +210,7 @@ export function CodexLocalConfigFields({
         </Field>
       )}
       <ToggleField
-        label="绕过沙箱"
+        label="Bypass sandbox"
         hint={help.dangerouslyBypassSandbox}
         checked={
           isCreate
@@ -228,7 +228,7 @@ export function CodexLocalConfigFields({
         }
       />
       <ToggleField
-        label="启用搜索"
+        label="Enable search"
         hint={help.search}
         checked={
           isCreate
@@ -242,7 +242,7 @@ export function CodexLocalConfigFields({
         }
       />
       <ToggleField
-        label="快速模式"
+        label="Fast mode"
         hint={help.fastMode}
         checked={fastModeEnabled}
         onChange={(v) =>

@@ -212,7 +212,7 @@ export function DecisionQueuePage() {
   });
 
   if (!selectedCompanyId) {
-    return <p className="text-sm text-muted-foreground">请先选择公司。</p>;
+    return <p className="text-sm text-muted-foreground">Select a company first.</p>;
   }
   if (isLoading) {
     return <PageSkeleton variant="approvals" />;
@@ -264,17 +264,17 @@ export function DecisionQueuePage() {
 
       {isEmpty ? (
         <div className="rounded-xl border border-dashed border-border py-14 text-center">
-          <p className="text-sm font-medium text-foreground">此队列为空。</p>
+          <p className="text-sm font-medium text-foreground">This queue is empty.</p>
           <p className="mt-1 text-xs text-muted-foreground">
-            当决策符合队列规则或由代理添加时，决策会出现在这里。
+            Decisions land here when they match the queue's rules or an agent adds them.
           </p>
         </div>
       ) : (
         <div className="space-y-4">
           {visibleCount === 0 ? (
             <div className="rounded-xl border border-dashed border-border py-10 text-center">
-              <p className="text-sm font-medium text-foreground">没有符合筛选条件的决策。</p>
-              <p className="mt-1 text-xs text-muted-foreground">调整或清除筛选器以查看其余内容。</p>
+              <p className="text-sm font-medium text-foreground">No decisions match your filters.</p>
+              <p className="mt-1 text-xs text-muted-foreground">Adjust or clear the filters to see the rest.</p>
             </div>
           ) : (
             groups.map((group) => {
@@ -320,7 +320,7 @@ export function DecisionQueuePage() {
 
           {agingItems.length > 0 && (
             <Curtain
-              label="老化"
+              label="Aging"
               count={agingItems.length}
               open={agingOpen}
               onToggle={() => setAgingOpen((prev) => !prev)}
@@ -463,11 +463,11 @@ function QueueItemRow({
           <PopoverTrigger asChild>
             <Button type="button" variant="ghost" size="xs" className="h-7 gap-1 text-muted-foreground">
               <X className="h-3.5 w-3.5" />
-              排除
+              Exclude
             </Button>
           </PopoverTrigger>
           <PopoverContent align="end" className="w-64 space-y-2 p-3">
-            <p className="text-xs font-medium text-foreground">从此队列移除</p>
+            <p className="text-xs font-medium text-foreground">Remove from this queue</p>
             <textarea
               value={reason}
               onChange={(event) => setReason(event.target.value)}
@@ -476,7 +476,7 @@ function QueueItemRow({
             />
             <div className="flex justify-end gap-1">
               <Button type="button" variant="ghost" size="xs" onClick={() => setOpen(false)}>
-                取消
+                Cancel
               </Button>
               <Button
                 type="button"

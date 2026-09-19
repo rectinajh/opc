@@ -36,7 +36,7 @@ export function SearchFilterChips({
         className="text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
         onClick={onClearAll}
       >
-        全部清除
+        Clear all
       </button>
     </div>
   );

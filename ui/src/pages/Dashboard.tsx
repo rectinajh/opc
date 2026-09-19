@@ -242,14 +242,14 @@ export function Dashboard() {
       return (
         <EmptyState
           icon={LayoutDashboard}
-          message="欢迎使用 Paperclip。设置您的第一个公司和代理以开始。"
+          message="Welcome to Paperclip. Set up your first company and agent to get started."
           action="Get Started"
           onAction={openOnboarding}
         />
       );
     }
     return (
-      <EmptyState icon={LayoutDashboard} message="创建或选择公司以查看仪表板。" />
+      <EmptyState icon={LayoutDashboard} message="Create or select a company to view the dashboard." />
     );
   }
 
@@ -268,14 +268,14 @@ export function Dashboard() {
           <div className="flex items-center gap-2.5">
             <Bot className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
             <p className="text-sm text-amber-900 dark:text-amber-100">
-              您没有代理。
+              You have no agents.
             </p>
           </div>
           <button
             onClick={() => openOnboarding({ initialStep: 3, companyId: selectedCompanyId! })}
             className="text-sm font-medium text-amber-700 hover:text-amber-900 dark:text-amber-300 dark:hover:text-amber-100 underline underline-offset-2 shrink-0"
           >
-            在此创建
+            Create one here
           </button>
         </div>
       )}
@@ -298,7 +298,7 @@ export function Dashboard() {
                 </div>
               </div>
               <Link to="/costs" className="text-sm underline underline-offset-2 text-red-900 dark:text-red-100">
-                打开预算
+                Open budgets
               </Link>
             </div>
           ) : null}
@@ -307,7 +307,7 @@ export function Dashboard() {
             <MetricCard
               icon={Bot}
               value={data.agents.active + data.agents.running + data.agents.paused + data.agents.error}
-              label="已启用代理"
+              label="Agents Enabled"
               to="/agents"
               description={
                 <span>
@@ -320,7 +320,7 @@ export function Dashboard() {
             <MetricCard
               icon={CircleDot}
               value={data.tasks.inProgress}
-              label="进行中的任务"
+              label="Tasks In Progress"
               to="/issues"
               description={
                 <span>
@@ -332,7 +332,7 @@ export function Dashboard() {
             <MetricCard
               icon={DollarSign}
               value={formatCents(data.costs.monthSpendCents)}
-              label="月度支出"
+              label="Month Spend"
               to="/costs"
               description={
                 <span>
@@ -345,7 +345,7 @@ export function Dashboard() {
             <MetricCard
               icon={ShieldCheck}
               value={data.pendingApprovals + data.budgets.pendingApprovals}
-              label="待处理审批"
+              label="Pending Approvals"
               to="/approvals"
               description={
                 <span>
@@ -360,19 +360,19 @@ export function Dashboard() {
           <SmokeLabDashboardCard companyId={selectedCompanyId!} />
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <ChartCard title="运行活动" subtitle="Last 14 days">
+            <ChartCard title="Run Activity" subtitle="Last 14 days">
               <RunActivityChart activity={data.runActivity} />
             </ChartCard>
             {/* PAP-411: "Tasks by Priority" chart hidden behind SHOW_TASK_PRIORITY_UI. */}
             {SHOW_TASK_PRIORITY_UI && (
-              <ChartCard title="按优先级排序的任务" subtitle="Last 14 days">
+              <ChartCard title="Tasks by Priority" subtitle="Last 14 days">
                 <PriorityChart issues={issues ?? []} />
               </ChartCard>
             )}
-            <ChartCard title="按状态排序的任务" subtitle="Last 14 days">
+            <ChartCard title="Tasks by Status" subtitle="Last 14 days">
               <IssueStatusChart issues={issues ?? []} />
             </ChartCard>
-            <ChartCard title="成功率" subtitle="Last 14 days">
+            <ChartCard title="Success Rate" subtitle="Last 14 days">
               <SuccessRateChart activity={data.runActivity} />
             </ChartCard>
           </div>
@@ -390,7 +390,7 @@ export function Dashboard() {
             {recentActivity.length > 0 && (
               <div className="min-w-0">
                 <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
-                  最近活动
+                  Recent Activity
                 </h3>
                 <Card className="block py-0 divide-y divide-border overflow-hidden">
                   {recentActivity.map((event) => (
@@ -411,11 +411,11 @@ export function Dashboard() {
             {/* Recent Tasks */}
             <div className="min-w-0">
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
-                最近任务
+                Recent Tasks
               </h3>
               {recentIssues.length === 0 ? (
                 <Card className="block p-4">
-                  <p className="text-sm text-muted-foreground">暂无任务。</p>
+                  <p className="text-sm text-muted-foreground">No tasks yet.</p>
                 </Card>
               ) : (
                 <Card className="block py-0 divide-y divide-border overflow-hidden">

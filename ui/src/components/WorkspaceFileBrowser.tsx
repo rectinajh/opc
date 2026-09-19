@@ -141,7 +141,7 @@ function WorkspaceFileBreadcrumbs({
   if (!rootLabel && segments.length === 0) return null;
 
   return (
-    <nav aria-label="当前文件夹" className="min-w-0 overflow-hidden text-(length:--text-micro) text-muted-foreground">
+    <nav aria-label="Current folder" className="min-w-0 overflow-hidden text-(length:--text-micro) text-muted-foreground">
       <ol className="flex min-w-0 items-center gap-1 overflow-hidden">
         {rootLabel ? (
           <li className="min-w-0 shrink">
@@ -428,7 +428,7 @@ function WorkspaceFileTree({
                   style={{ paddingLeft: `${1 + (node.depth + 1) * 0.875}rem` }}
                 >
                   <span className="h-3.5 w-3.5 shrink-0" />
-                  <span>从该文件夹加载更多</span>
+                  <span>Load more from this folder</span>
                 </button>
               ) : null}
             </>
@@ -453,7 +453,7 @@ function WorkspaceFileTree({
   }
 
   return (
-    <div role="tree" id={listboxId} aria-label="工作区文件" className="space-y-0.5 py-1">
+    <div role="tree" id={listboxId} aria-label="Workspace files" className="space-y-0.5 py-1">
       {nodes.map(renderNode)}
     </div>
   );
@@ -987,7 +987,7 @@ export function WorkspaceFileBrowser({
     body = (
       <StateMessage
         icon={<FolderOpen aria-hidden="true" className="h-5 w-5 text-muted-foreground" />}
-        title="未选择公司"
+        title="No company selected"
         body="Choose a company before browsing another project workspace."
       />
     );
@@ -995,7 +995,7 @@ export function WorkspaceFileBrowser({
     body = (
       <StateMessage
         icon={<Loader2 aria-hidden="true" className="h-5 w-5 animate-spin text-muted-foreground" />}
-        title="正在加载项目工作区"
+        title="Loading project workspaces"
         body="Registered workspaces will appear here."
       />
     );
@@ -1003,7 +1003,7 @@ export function WorkspaceFileBrowser({
     body = (
       <StateMessage
         icon={<FolderOpen aria-hidden="true" className="h-5 w-5 text-muted-foreground" />}
-        title="没有项目工作区"
+        title="No project workspaces"
         body="No same-company project has a registered workspace to browse."
       />
     );
@@ -1048,7 +1048,7 @@ export function WorkspaceFileBrowser({
             disabled={!queriesEnabled}
             onClick={() => void listQuery.refetch()}
           >
-            <RefreshCcw aria-hidden="true" className="mr-1 h-3 w-3" /> 重试
+            <RefreshCcw aria-hidden="true" className="mr-1 h-3 w-3" /> Retry
           </Button>
         ) : null}
       />
@@ -1101,7 +1101,7 @@ export function WorkspaceFileBrowser({
             onChange={(event) => setSearchInput(event.target.value)}
             onKeyDown={handleSearchKeyDown}
             placeholder="Search files by name or path…"
-            aria-label="搜索工作区文件"
+            aria-label="Search workspace files"
             role="combobox"
             aria-expanded={items.length > 0}
             aria-controls={items.length > 0 ? listboxId : undefined}
@@ -1118,8 +1118,8 @@ export function WorkspaceFileBrowser({
           size="icon-sm"
           onClick={() => void listQuery.refetch()}
           disabled={!queriesEnabled || listQuery.isFetching}
-          aria-label="刷新工作区文件"
-          title="刷新工作区文件"
+          aria-label="Refresh workspace files"
+          title="Refresh workspace files"
           className="h-8 w-8 shrink-0"
         >
           <RefreshCcw aria-hidden="true" className={cn("h-3.5 w-3.5", listQuery.isFetching && "animate-spin")} />
@@ -1146,7 +1146,7 @@ export function WorkspaceFileBrowser({
               onClick={() => loadMoreFolder(currentFolderKey)}
               className="rounded px-1 py-0.5 text-left hover:bg-accent hover:text-foreground"
             >
-              从该文件夹加载更多
+              Load more from this folder
             </button>
           ) : (
             <>Showing first {items.length} — refine the search to narrow.</>

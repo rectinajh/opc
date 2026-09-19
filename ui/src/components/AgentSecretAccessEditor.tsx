@@ -177,7 +177,7 @@ function DeliveryBadge({ mode }: { mode: "env" | "api" }) {
         variant="outline"
         className="h-5 gap-1 px-1.5 text-(length:--text-nano) font-normal border-sky-500/30 bg-sky-500/10 text-sky-700 dark:text-sky-300"
       >
-        <Variable className="size-3" /> 环境变量
+        <Variable className="size-3" /> Env var
       </Badge>
     );
   }
@@ -186,7 +186,7 @@ function DeliveryBadge({ mode }: { mode: "env" | "api" }) {
       variant="outline"
       className="h-5 gap-1 px-1.5 text-(length:--text-nano) font-normal border-violet-500/30 bg-violet-500/10 text-violet-700 dark:text-violet-300"
     >
-      <ServerCog className="size-3" /> API 访问
+      <ServerCog className="size-3" /> API access
     </Badge>
   );
 }
@@ -285,14 +285,14 @@ export function AgentSecretAccessEditor({
           ))}
         </div>
       ) : (
-        <p className="text-sm text-muted-foreground">尚无密钥绑定到此代理。</p>
+        <p className="text-sm text-muted-foreground">No secrets are bound to this agent yet.</p>
       )}
 
       {/* Pending binding proposals targeting this agent (PAP-14731). */}
       {bindingProposals.length > 0 && onApproveProposal && onRejectProposal ? (
         <div className="space-y-2">
           <div className="text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">
-            建议的访问权限
+            Proposed access
           </div>
           {bindingProposals.map((proposal) => {
             const secret = bindingSecretLabel(proposal);
@@ -333,7 +333,7 @@ export function AgentSecretAccessEditor({
       {/* Editable API-access grants (access.<ALIAS>). */}
       <div className="space-y-2">
         <div className="text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">
-          API 访问（无环境变量）
+          API access (no env var)
         </div>
         {rows.length > 0 ? (
           <div className="space-y-2">
@@ -356,8 +356,8 @@ export function AgentSecretAccessEditor({
                             if (suggested && suggested !== next) patchRow(row.id, { alias: suggested });
                           }
                         }}
-                        placeholder="别名"
-                        aria-label="访问别名"
+                        placeholder="ALIAS"
+                        aria-label="Access alias"
                         disabled={disabled}
                         className={cn(
                           "h-9 font-mono text-sm",
@@ -450,7 +450,7 @@ export function AgentSecretAccessEditor({
                           });
                         }}
                         disabled={disabled || !selectedSecret}
-                        aria-label="版本"
+                        aria-label="Version"
                       >
                         <option value="latest">latest</option>
                         {selectedSecret
@@ -470,7 +470,7 @@ export function AgentSecretAccessEditor({
                       type="button"
                       onClick={() => removeRow(row.id)}
                       disabled={disabled}
-                      aria-label="移除 API 访问权限"
+                      aria-label="Remove API access"
                       className="mt-1 inline-flex size-7 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
                     >
                       <Trash2 className="size-3.5" />
@@ -481,7 +481,7 @@ export function AgentSecretAccessEditor({
                       Invalid alias — use letters, digits and _
                     </p>
                   ) : aliasDuplicate ? (
-                    <p className="pl-0.5 text-(length:--text-micro) text-destructive">重复别名</p>
+                    <p className="pl-0.5 text-(length:--text-micro) text-destructive">Duplicate alias</p>
                   ) : null}
                 </div>
               );
@@ -496,7 +496,7 @@ export function AgentSecretAccessEditor({
           className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
         >
           <Plus className="size-3.5" />
-          添加 API 访问
+          Add API access
         </button>
       </div>
 

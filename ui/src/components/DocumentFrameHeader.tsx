@@ -128,9 +128,9 @@ export function DocumentFrameHeader({
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-72">
-                <DropdownMenuLabel>修订历史</DropdownMenuLabel>
+                <DropdownMenuLabel>Revision history</DropdownMenuLabel>
                 {revisionMenu.loading && revisionMenu.revisions.length === 0 ? (
-                  <DropdownMenuItem disabled>正在加载修订版本...</DropdownMenuItem>
+                  <DropdownMenuItem disabled>Loading revisions...</DropdownMenuItem>
                 ) : revisionMenu.revisions.length > 0 ? (
                   <DropdownMenuRadioGroup value={revisionMenu.selectedRevisionId ?? revisionMenu.currentRevisionId ?? ""}>
                     {revisionMenu.revisions.map((revision) => {
@@ -147,7 +147,7 @@ export function DocumentFrameHeader({
                               <span className="font-medium">rev {revision.revisionNumber}</span>
                               {isCurrentRevision ? (
                                 <Badge variant="outline" className="border-border px-1.5 text-(length:--text-nano) uppercase tracking-(--tracking-eyebrow) text-muted-foreground">
-                                  当前
+                                  Current
                                 </Badge>
                               ) : null}
                             </div>
@@ -163,7 +163,7 @@ export function DocumentFrameHeader({
                     })}
                   </DropdownMenuRadioGroup>
                 ) : (
-                  <DropdownMenuItem disabled>暂无修订</DropdownMenuItem>
+                  <DropdownMenuItem disabled>No revisions yet</DropdownMenuItem>
                 )}
               </DropdownMenuContent>
             </DropdownMenu>

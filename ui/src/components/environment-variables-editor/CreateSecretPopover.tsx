@@ -77,20 +77,20 @@ export function SecretPopoverForm({
         {mode === "store" ? (
           <PopoverDescription className="text-(length:--text-micro) text-muted-foreground">
             Moves the typed value into an encrypted company secret and binds{" "}
-            <span className="font-mono">{initialName || "this variable"}</span> 到它。
+            <span className="font-mono">{initialName || "this variable"}</span> to it.
           </PopoverDescription>
         ) : null}
       </div>
 
       <label className="block space-y-1">
-        <span className="text-(length:--text-micro) font-medium text-muted-foreground">名称</span>
+        <span className="text-(length:--text-micro) font-medium text-muted-foreground">Name</span>
         <input
           className={cn(fieldClass, nameError && "border-destructive focus-visible:ring-destructive/40")}
           value={name}
           autoFocus
           spellCheck={false}
           placeholder="secret_name"
-          aria-label="密钥名称"
+          aria-label="Secret name"
           aria-invalid={nameError ? true : undefined}
           onChange={(event) => setName(event.target.value)}
           onBlur={() => setTouched(true)}
@@ -105,7 +105,7 @@ export function SecretPopoverForm({
       </label>
 
       <label className="block space-y-1">
-        <span className="text-(length:--text-micro) font-medium text-muted-foreground">值</span>
+        <span className="text-(length:--text-micro) font-medium text-muted-foreground">Value</span>
         <div className="relative">
           <input
             className={cn(fieldClass, "pr-8", valueError && "border-destructive focus-visible:ring-destructive/40")}
@@ -114,7 +114,7 @@ export function SecretPopoverForm({
             readOnly={mode === "store"}
             spellCheck={false}
             placeholder={mode === "create" ? "value" : undefined}
-            aria-label="密钥值"
+            aria-label="Secret value"
             aria-invalid={valueError ? true : undefined}
             onChange={mode === "create" ? (event) => setValue(event.target.value) : undefined}
           />
@@ -134,7 +134,7 @@ export function SecretPopoverForm({
 
       <div className="flex items-center justify-end gap-2 pt-0.5">
         <Button type="button" variant="ghost" size="sm" onClick={onCancel} disabled={submitting}>
-          取消
+          Cancel
         </Button>
         <Button type="button" size="sm" onClick={() => void handleSubmit()} disabled={!canSubmit}>
           {submitting ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : null}

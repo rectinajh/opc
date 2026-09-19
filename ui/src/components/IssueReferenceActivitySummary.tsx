@@ -58,12 +58,12 @@ export function IssueReferenceActivitySummary({ event }: { event: Pick<ActivityE
   return (
     <div className="mt-2 space-y-1">
       <Section
-        label="添加的引用"
+        label="Added references"
         icon={<Plus className="h-3 w-3 text-green-600 dark:text-green-400" aria-hidden="true" />}
         items={added}
       />
       <Section
-        label="移除的引用"
+        label="Removed references"
         icon={<Minus className="h-3 w-3 text-red-600 dark:text-red-400" aria-hidden="true" />}
         items={removed}
         strikethrough

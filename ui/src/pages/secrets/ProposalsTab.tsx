@@ -184,8 +184,8 @@ export function ProposalsTab({
     return (
       <EmptyState
         icon={Inbox}
-        title="暂无待处理的提案"
-        message="当代理提议机密或访问绑定时，会显示在此处供审查。"
+        title="No pending proposals"
+        message="When an agent proposes a secret or an access binding, it shows up here for review."
       />
     );
   }

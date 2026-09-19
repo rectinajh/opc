@@ -76,7 +76,7 @@ export function Approvals() {
   ).length;
 
   if (!selectedCompanyId) {
-    return <p className="text-sm text-muted-foreground">请先选择公司。</p>;
+    return <p className="text-sm text-muted-foreground">Select a company first.</p>;
   }
 
   if (isLoading) {

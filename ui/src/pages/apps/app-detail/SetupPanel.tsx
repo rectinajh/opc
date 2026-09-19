@@ -115,15 +115,15 @@ function GoogleSheetsAllowlistSection({
   return (
     <section className="rounded-xl border border-border bg-card px-5 py-4">
       <div>
-        <h2 className="text-sm font-bold text-foreground">代理可使用的表格</h2>
+        <h2 className="text-sm font-bold text-foreground">Sheets agents can use</h2>
         <p className="mt-0.5 text-sm text-muted-foreground">
-          代理只能使用此处列出的表格。
+          Agents can only use the sheets listed here.
         </p>
       </div>
 
       <div className="mt-4 space-y-2">
         {ids.length === 0 ? (
-          <div className="text-sm text-muted-foreground">尚未连接表格。</div>
+          <div className="text-sm text-muted-foreground">No sheets are connected yet.</div>
         ) : (
           ids.map((id) => {
             const sheetUrl = googleSheetsUrlForId(id);
@@ -135,7 +135,7 @@ function GoogleSheetsAllowlistSection({
                   rel="noreferrer"
                   className="min-w-0 flex-1 text-sm font-medium text-foreground underline-offset-2 hover:underline"
                 >
-                  <span className="block truncate">打开表格</span>
+                  <span className="block truncate">Open sheet</span>
                   <span className="block truncate font-mono text-xs font-normal text-muted-foreground">
                     {sheetUrl}
                   </span>
@@ -151,7 +151,7 @@ function GoogleSheetsAllowlistSection({
                   title={ids.length <= 1 ? "Add another sheet before removing this one." : undefined}
                   onClick={() => saveIds(ids.filter((current) => current !== id))}
                 >
-                  移除
+                  Remove
                 </Button>
               </div>
             );
@@ -187,7 +187,7 @@ function GoogleSheetsAllowlistSection({
             setDraft("");
           }}
         >
-          添加表格
+          Add sheet
         </Button>
       </div>
       {error && <div className="mt-2 text-xs text-destructive">{error}</div>}
@@ -250,7 +250,7 @@ export function QuarantinedActionsReview({
             Review {count} new {count === 1 ? "action" : "actions"}
           </div>
           <p className="mt-1 text-xs text-amber-700 dark:text-amber-300">
-            开启代理可使用的操作。保存时，未开启的操作将保持阻止。
+            Turn on the actions agents may use. Anything left off stays blocked when you save.
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -260,7 +260,7 @@ export function QuarantinedActionsReview({
             disabled={disabled}
             onClick={() => setEnabledIds(new Set(entries.map((entry) => entry.id)))}
           >
-            全部开启
+            Turn all on
           </button>
           <button
             type="button"
@@ -268,7 +268,7 @@ export function QuarantinedActionsReview({
             disabled={disabled}
             onClick={() => setEnabledIds(new Set())}
           >
-            全部关闭
+            Turn all off
           </button>
         </div>
       </div>

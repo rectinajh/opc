@@ -163,8 +163,8 @@ export function DecisionTriageStrip({ item, companyId, agents }: DecisionTriageS
 
       {/* When to decide — the importance signal that drives desk ordering. */}
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-medium text-muted-foreground">决定时间</span>
-        <div className="flex flex-wrap items-center gap-1" role="group" aria-label="决定时间">
+        <span className="text-xs font-medium text-muted-foreground">When to decide</span>
+        <div className="flex flex-wrap items-center gap-1" role="group" aria-label="When to decide">
           {DECIDE_BY_OPTIONS.map(([value, label]) => (
             <SegmentButton
               key={value}
@@ -201,7 +201,7 @@ export function DecisionTriageStrip({ item, companyId, agents }: DecisionTriageS
 
       {/* Queues — current membership as removable chips + add/create. */}
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-medium text-muted-foreground">队列</span>
+        <span className="text-xs font-medium text-muted-foreground">Queues</span>
         {item.queues.map((queue) => (
           <span
             key={queue.key}
@@ -239,7 +239,7 @@ export function DecisionTriageStrip({ item, companyId, agents }: DecisionTriageS
               disabled={pending}
               onClick={() => setSnooze.mutate(null)}
             >
-              清除
+              Clear
             </button>
           </span>
         ) : (
@@ -247,7 +247,7 @@ export function DecisionTriageStrip({ item, companyId, agents }: DecisionTriageS
             <DropdownMenuTrigger asChild>
               <Button type="button" variant="outline" size="xs" className="h-7 gap-1" disabled={pending}>
                 <AlarmClock className="h-3.5 w-3.5" />
-                稍后提醒
+                Snooze
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
@@ -348,7 +348,7 @@ function QueuePicker({
       <PopoverTrigger asChild>
         <Button type="button" variant="outline" size="xs" className="h-7 gap-1" disabled={disabled}>
           <Plus className="h-3.5 w-3.5" />
-          队列
+          Queue
         </Button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-56 p-1">
@@ -367,7 +367,7 @@ function QueuePicker({
             />
             <div className="flex justify-end gap-1">
               <Button type="button" variant="ghost" size="xs" onClick={() => setCreating(false)}>
-                取消
+                Cancel
               </Button>
               <Button type="button" size="xs" disabled={!title.trim() || create.isPending} onClick={() => create.mutate(title)}>
                 {create.isPending && <Loader2 className="h-3 w-3 animate-spin" />}
@@ -378,7 +378,7 @@ function QueuePicker({
         ) : (
           <div className="max-h-64 space-y-0.5 overflow-y-auto">
             {available.length === 0 && (
-              <p className="px-2 py-1.5 text-xs text-muted-foreground">暂无其他队列。</p>
+              <p className="px-2 py-1.5 text-xs text-muted-foreground">No other queues yet.</p>
             )}
             {available.map((queue) => (
               <button
@@ -448,7 +448,7 @@ function AskAgentPicker({
           title={disabledReason}
         >
           <UserPlus className="h-3.5 w-3.5" />
-          向代理请求推荐
+          Ask agent for recommendation
           <ChevronDown className="h-3 w-3" />
         </Button>
       </DropdownMenuTrigger>

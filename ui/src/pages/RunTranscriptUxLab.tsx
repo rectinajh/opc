@@ -68,7 +68,7 @@ function RunDetailPreview({
       <div className="border-b border-border/60 bg-background/90 px-5 py-4">
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="outline" className="uppercase tracking-(--tracking-caps) text-(length:--text-nano)">
-            运行详情
+            Run Detail
           </Badge>
           <StatusBadge status={streaming ? "running" : "succeeded"} />
           <span className="text-xs text-muted-foreground">
@@ -104,10 +104,10 @@ function LiveWidgetPreview({
     <div className="overflow-hidden rounded-xl border border-cyan-500/25 bg-background/85 shadow-[0_20px_50px_rgba(6,182,212,0.10)]">
       <div className="border-b border-border/60 bg-cyan-500/[0.05] px-5 py-4">
         <div className="text-xs font-semibold uppercase tracking-(--tracking-caps) text-cyan-700 dark:text-cyan-300">
-          实时运行
+          Live Runs
         </div>
         <div className="mt-1 text-xs text-muted-foreground">
-          用于问题详情页的紧凑实时转录流。
+          Compact live transcript stream for the issue detail page.
         </div>
       </div>
       <div className="px-5 py-4">
@@ -123,7 +123,7 @@ function LiveWidgetPreview({
             </div>
           </div>
           <Badge variant="outline" className="border-border/70 bg-background/70 px-2.5 py-1 text-(length:--text-micro) text-muted-foreground">
-            打开运行
+            Open run
             <ExternalLink className="h-3 w-3" />
           </Badge>
         </div>
@@ -210,9 +210,9 @@ export function RunTranscriptUxLab() {
             <div className="mb-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/25 bg-cyan-500/[0.08] px-3 py-1 text-(length:--text-nano) font-semibold uppercase tracking-(--tracking-caps) text-cyan-700 dark:text-cyan-300">
                 <FlaskConical className="h-3.5 w-3.5" />
-                UX 实验室
+                UX Lab
               </div>
-              <h1 className="mt-4 text-2xl font-semibold tracking-tight">运行转录夹具</h1>
+              <h1 className="mt-4 text-2xl font-semibold tracking-tight">Run Transcript Fixtures</h1>
               <p className="mt-2 text-sm text-muted-foreground">
                 Built from a real Paperclip development run, then sanitized so no secrets, local paths, or environment details survive into the fixture.
               </p>
@@ -277,7 +277,7 @@ export function RunTranscriptUxLab() {
 
             <div className="mb-5 flex flex-wrap items-center gap-2">
               <span className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
-                控件
+                Controls
               </span>
               <div className="inline-flex rounded-full border border-border/70 bg-background/80 p-1">
                 {(["nice", "raw"] as const).map((mode) => (

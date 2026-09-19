@@ -76,7 +76,7 @@ function RecentActivity({
   return (
     <section className="space-y-2">
       <div>
-        <h2 className="text-sm font-bold text-foreground">最近活动</h2>
+        <h2 className="text-sm font-bold text-foreground">Recent activity</h2>
       </div>
       {loading ? (
         <div className="space-y-2 py-4">
@@ -84,7 +84,7 @@ function RecentActivity({
           <Skeleton className="h-4 w-2/3" />
         </div>
       ) : rows.length === 0 ? (
-        <p className="py-5 text-sm text-muted-foreground">暂无活动。</p>
+        <p className="py-5 text-sm text-muted-foreground">No activity yet.</p>
       ) : (
         <ul className="divide-y divide-border">
           {rows.map((row) => (

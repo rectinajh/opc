@@ -123,7 +123,7 @@ export function SearchFilterMenu(props: SearchFilterMenuProps) {
               className="text-xs text-muted-foreground hover:text-foreground"
               onClick={() => props.onClear()}
             >
-              清除
+              Clear
             </button>
           ) : null}
         </div>

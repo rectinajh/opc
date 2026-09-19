@@ -475,9 +475,9 @@ export function RuntimeProvisionStatusValue({
   if (status.kind === "deferred") {
     return (
       <div className="flex flex-col gap-1">
-        <StatusPill className="border-amber-500/40 text-amber-600 dark:text-amber-400">延迟</StatusPill>
+        <StatusPill className="border-amber-500/40 text-amber-600 dark:text-amber-400">Deferred</StatusPill>
         <span className="text-xs text-muted-foreground">
-          在首次运行时服务启动前运行一次。
+          Runs once before the first runtime-service start.
         </span>
       </div>
     );
@@ -503,7 +503,7 @@ export function RuntimeProvisionStatusValue({
         Provisioning failed{status.at ? ` · ${formatDateTime(status.at)}` : ""}
       </StatusPill>
       <button type="button" onClick={onViewLogs} className="self-start text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground">
-        查看运行时日志
+        View runtime logs
       </button>
     </div>
   );
@@ -740,14 +740,14 @@ function ExecutionWorkspaceRoutinesList({
     <>
       <Card className="rounded-none">
         <CardHeader>
-          <CardTitle>工作区例程</CardTitle>
+          <CardTitle>Workspace routines</CardTitle>
           <CardDescription>
-            使用工作区特定变量的例程可在此执行工作区中运行。
+            Routines that use workspace-specific variables can be run against this execution workspace.
           </CardDescription>
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <p className="text-sm text-muted-foreground">正在加载例程...</p>
+            <p className="text-sm text-muted-foreground">Loading routines...</p>
           ) : error ? (
             <p className="text-sm text-destructive">
               {error instanceof Error ? error.message : "Failed to load routines."}
@@ -756,7 +756,7 @@ function ExecutionWorkspaceRoutinesList({
             <div className="flex flex-col items-center gap-2 py-10 text-center">
               <Repeat className="h-5 w-5 text-muted-foreground" />
               <p className="text-sm text-muted-foreground">
-                尚无例程使用工作区特定变量。
+                No routines use workspace-specific variables yet.
               </p>
             </div>
           ) : (
@@ -1143,7 +1143,7 @@ export function ExecutionWorkspaceDetail() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="min-w-0 space-y-2">
             <div className="text-xs font-medium uppercase tracking-(--tracking-eyebrow) text-muted-foreground">
-              执行工作区
+              Execution workspace
             </div>
             <h1 className="truncate text-xl font-semibold sm:text-2xl">{workspace.name}</h1>
           </div>
@@ -1215,7 +1215,7 @@ export function ExecutionWorkspaceDetail() {
           <div className="space-y-4 sm:space-y-6">
             <Card className="rounded-none">
               <CardHeader>
-                <CardTitle>工作区设置</CardTitle>
+                <CardTitle>Workspace settings</CardTitle>
                 <CardDescription>
                   Edit the concrete path, repo, branch, provisioning, teardown, and runtime overrides attached to this execution workspace. Saved changes affect future runs; Paperclip may refresh or replace a reused workspace when config changes.
                 </CardDescription>
@@ -1236,12 +1236,12 @@ export function ExecutionWorkspaceDetail() {
 
               <div className="space-y-6">
                 <div className="space-y-4">
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">常规</div>
-                  <Field label="工作区名称">
+                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">General</div>
+                  <Field label="Workspace name">
                     <Input
                       value={form.name}
                       onChange={(event) => setForm((current) => current ? { ...current, name: event.target.value } : current)}
-                      placeholder="执行工作区名称"
+                      placeholder="Execution workspace name"
                     />
                   </Field>
                 </div>
@@ -1249,9 +1249,9 @@ export function ExecutionWorkspaceDetail() {
                 <Separator />
 
                 <div className="space-y-4">
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">源代码控制</div>
+                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Source control</div>
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <Field label="分支名称" hint="适用于隔离工作树">
+                    <Field label="Branch name" hint="Useful for isolated worktrees">
                       <Input
                         className="font-mono"
                         value={form.branchName}
@@ -1260,7 +1260,7 @@ export function ExecutionWorkspaceDetail() {
                       />
                     </Field>
 
-                    <Field label="基础引用">
+                    <Field label="Base ref">
                       <Input
                         className="font-mono"
                         value={form.baseRef}
@@ -1270,7 +1270,7 @@ export function ExecutionWorkspaceDetail() {
                     </Field>
                   </div>
 
-                  <Field label="仓库 URL">
+                  <Field label="Repo URL">
                     <Input
                       value={form.repoUrl}
                       onChange={(event) => setForm((current) => current ? { ...current, repoUrl: event.target.value } : current)}
@@ -1282,8 +1282,8 @@ export function ExecutionWorkspaceDetail() {
                 <Separator />
 
                 <div className="space-y-4">
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">路径</div>
-                  <Field label="工作目录">
+                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Paths</div>
+                  <Field label="Working directory">
                     <Input
                       className="font-mono"
                       value={form.cwd}
@@ -1292,7 +1292,7 @@ export function ExecutionWorkspaceDetail() {
                     />
                   </Field>
 
-                  <Field label="提供者路径/引用">
+                  <Field label="Provider path / ref">
                     <Input
                       className="font-mono"
                       value={form.providerRef}
@@ -1305,8 +1305,8 @@ export function ExecutionWorkspaceDetail() {
                 <Separator />
 
                 <div className="space-y-4">
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">生命周期命令</div>
-                  <Field label="预置命令" hint="当 Paperclip 准备此执行工作区时运行">
+                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Lifecycle commands</div>
+                  <Field label="Provision command" hint="Runs when Paperclip prepares this execution workspace">
                     <Textarea
                       className="min-h-20 font-mono"
                       value={form.provisionCommand}
@@ -1316,8 +1316,8 @@ export function ExecutionWorkspaceDetail() {
                   </Field>
 
                   <Field
-                    label="运行时预置命令"
-                    hint="在首次运行时服务启动前运行一次。留空以保持主动预置。"
+                    label="Runtime provision command"
+                    hint="Runs once before the first runtime-service start. Leave empty to keep eager provisioning."
                   >
                     <Textarea
                       className="min-h-20 font-mono"
@@ -1327,7 +1327,7 @@ export function ExecutionWorkspaceDetail() {
                     />
                   </Field>
 
-                  <Field label="拆除命令" hint="当执行工作区被归档或清理时运行">
+                  <Field label="Teardown command" hint="Runs when the execution workspace is archived or cleaned up">
                     <Textarea
                       className="min-h-20 font-mono"
                       value={form.teardownCommand}
@@ -1336,7 +1336,7 @@ export function ExecutionWorkspaceDetail() {
                     />
                   </Field>
 
-                  <Field label="清理命令" hint="拆除前的工作区特定清理">
+                  <Field label="Cleanup command" hint="Workspace-specific cleanup before teardown">
                     <Textarea
                       className="min-h-16 font-mono"
                       value={form.cleanupCommand}
@@ -1349,12 +1349,12 @@ export function ExecutionWorkspaceDetail() {
                 <Separator />
 
                 <div className="space-y-4">
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">运行时配置</div>
+                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Runtime config</div>
                   <div className="rounded-md border border-dashed border-border/70 bg-background px-4 py-3">
                     <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
                       <div className="space-y-1">
                         <div className="text-sm font-medium text-foreground">
-                          运行时配置来源
+                          Runtime config source
                         </div>
                         <p className="text-sm text-muted-foreground">
                           {runtimeConfigSource === "execution_workspace"
@@ -1377,18 +1377,18 @@ export function ExecutionWorkspaceDetail() {
                           } : current)
                         }
                       >
-                        重置为继承
+                        Reset to inherit
                       </Button>
                     </div>
                   </div>
 
                   <details className="rounded-md border border-dashed border-border/70 bg-background px-4 py-3">
-                    <summary className="cursor-pointer text-sm font-medium">高级运行时JSON</summary>
+                    <summary className="cursor-pointer text-sm font-medium">Advanced runtime JSON</summary>
                     <p className="mt-2 text-sm text-muted-foreground">
                       Override the inherited workspace command model only when this execution workspace truly needs different service or job behavior.
                     </p>
                     <div className="mt-3">
-                      <Field label="工作区命令JSON" hint="Legacy `services` arrays still work, but `commands` supports both services and jobs.">
+                      <Field label="Workspace commands JSON" hint="Legacy `services` arrays still work, but `commands` supports both services and jobs.">
                         <div className="mb-2 flex items-center gap-2 text-sm text-muted-foreground">
                           <input
                             id="inherit-runtime-config"
@@ -1406,7 +1406,7 @@ export function ExecutionWorkspaceDetail() {
                               });
                             }}
                           />
-                          <label htmlFor="inherit-runtime-config">继承项目工作区运行时配置</label>
+                          <label htmlFor="inherit-runtime-config">Inherit project workspace runtime config</label>
                         </div>
                         <Textarea
                           className="min-h-64 font-mono sm:min-h-96"
@@ -1422,14 +1422,14 @@ export function ExecutionWorkspaceDetail() {
                   {configuredRuntimeServicePorts.length > 0 ? (
                     <div className="space-y-3 rounded-md border border-border bg-muted/20 p-4">
                       <div>
-                        <div className="text-sm font-medium">服务端口</div>
+                        <div className="text-sm font-medium">Service ports</div>
                         <p className="mt-1 text-sm text-muted-foreground">
                           Set a fixed port for a service or leave it blank to use its configured automatic behavior. Editing an inherited service creates an execution-workspace runtime override.
                         </p>
                       </div>
                       <div className="grid gap-3 sm:grid-cols-2">
                         {configuredRuntimeServicePorts.map((service) => (
-                          <Field key={`${service.collection}-${service.index}`} label={service.name} hint="固定端口">
+                          <Field key={`${service.collection}-${service.index}`} label={service.name} hint="Fixed port">
                             <Input
                               type="number"
                               min="1"
@@ -1487,24 +1487,24 @@ export function ExecutionWorkspaceDetail() {
                     setRuntimeActionMessage(null);
                   }}
                 >
-                  重置
+                  Reset
                 </Button>
                 {errorMessage ? <p className="text-sm text-destructive">{errorMessage}</p> : null}
-                {!errorMessage && !isDirty ? <p className="text-sm text-muted-foreground">没有未保存的更改。</p> : null}
+                {!errorMessage && !isDirty ? <p className="text-sm text-muted-foreground">No unsaved changes.</p> : null}
               </div>
               </CardContent>
             </Card>
 
             <Card className="rounded-none">
               <CardHeader>
-                <CardTitle>工作区上下文</CardTitle>
-                <CardDescription>链接的对象和关系</CardDescription>
+                <CardTitle>Workspace context</CardTitle>
+                <CardDescription>Linked objects and relationships</CardDescription>
               </CardHeader>
               <CardContent>
-              <DetailRow label="项目">
+              <DetailRow label="Project">
                 {project ? <Link to={`/projects/${projectRef}`} className="hover:underline">{project.name}</Link> : <MonoValue value={workspace.projectId} />}
               </DetailRow>
-              <DetailRow label="项目工作区">
+              <DetailRow label="Project workspace">
                 {project && linkedProjectWorkspace ? (
                   <WorkspaceLink project={project} workspace={linkedProjectWorkspace} />
                 ) : workspace.projectWorkspaceId ? (
@@ -1513,7 +1513,7 @@ export function ExecutionWorkspaceDetail() {
                   "None"
                 )}
               </DetailRow>
-              <DetailRow label="源任务">
+              <DetailRow label="Source task">
                 {sourceIssue ? (
                   <Link to={issueUrl(sourceIssue)} className="hover:underline">
                     {sourceIssue.identifier ?? sourceIssue.id} · {sourceIssue.title}
@@ -1524,7 +1524,7 @@ export function ExecutionWorkspaceDetail() {
                   "None"
                 )}
               </DetailRow>
-              <DetailRow label="源自">
+              <DetailRow label="Derived from">
                 {derivedWorkspace ? (
                   <Link to={executionWorkspaceTabPath(derivedWorkspace.id, "configuration")} className="hover:underline">
                     {derivedWorkspace.name}
@@ -1535,13 +1535,13 @@ export function ExecutionWorkspaceDetail() {
                   "None"
                 )}
               </DetailRow>
-              <DetailRow label="运行时预置">
+              <DetailRow label="Runtime provisioning">
                 <RuntimeProvisionStatusValue
                   status={runtimeProvisionStatus}
                   onViewLogs={() => handleTabChange("runtime_logs")}
                 />
               </DetailRow>
-              <DetailRow label="工作区ID">
+              <DetailRow label="Workspace ID">
                 <MonoValue value={workspace.id} />
               </DetailRow>
               </CardContent>
@@ -1549,17 +1549,17 @@ export function ExecutionWorkspaceDetail() {
 
             <Card className="rounded-none">
               <CardHeader>
-                <CardTitle>具体位置</CardTitle>
-                <CardDescription>路径和引用</CardDescription>
+                <CardTitle>Concrete location</CardTitle>
+                <CardDescription>Paths and refs</CardDescription>
               </CardHeader>
               <CardContent>
-              <DetailRow label="工作目录">
+              <DetailRow label="Working dir">
                 {workspace.cwd ? <MonoValue value={workspace.cwd} copy /> : "None"}
               </DetailRow>
-              <DetailRow label="提供者引用">
+              <DetailRow label="Provider ref">
                 {workspace.providerRef ? <MonoValue value={workspace.providerRef} copy /> : "None"}
               </DetailRow>
-              <DetailRow label="仓库 URL">
+              <DetailRow label="Repo URL">
                 {workspace.repoUrl && isSafeExternalUrl(workspace.repoUrl) ? (
                   <div className="inline-flex max-w-full items-start gap-2">
                     <a href={workspace.repoUrl} target="_blank" rel="noreferrer" className="inline-flex min-w-0 items-center gap-1 break-all hover:underline">
@@ -1576,15 +1576,15 @@ export function ExecutionWorkspaceDetail() {
                   "None"
                 )}
               </DetailRow>
-              <DetailRow label="基础引用">
+              <DetailRow label="Base ref">
                 {workspace.baseRef ? <MonoValue value={workspace.baseRef} copy /> : "None"}
               </DetailRow>
-              <DetailRow label="分支">
+              <DetailRow label="Branch">
                 {workspace.branchName ? <MonoValue value={workspace.branchName} copy /> : "None"}
               </DetailRow>
-              <DetailRow label="已打开">{formatDateTime(workspace.openedAt)}</DetailRow>
-              <DetailRow label="上次使用">{formatDateTime(workspace.lastUsedAt)}</DetailRow>
-              <DetailRow label="清理">
+              <DetailRow label="Opened">{formatDateTime(workspace.openedAt)}</DetailRow>
+              <DetailRow label="Last used">{formatDateTime(workspace.lastUsedAt)}</DetailRow>
+              <DetailRow label="Cleanup">
                 {workspace.cleanupEligibleAt
                   ? `${formatDateTime(workspace.cleanupEligibleAt)}${workspace.cleanupReason ? ` · ${workspace.cleanupReason}` : ""}`
                   : "Not scheduled"}
@@ -1595,8 +1595,8 @@ export function ExecutionWorkspaceDetail() {
         ) : activeTab === "runtime_logs" ? (
           <Card className="rounded-none">
             <CardHeader>
-              <CardTitle>运行时和清理日志</CardTitle>
-              <CardDescription>最近操作</CardDescription>
+              <CardTitle>Runtime and cleanup logs</CardTitle>
+              <CardDescription>Recent operations</CardDescription>
             </CardHeader>
             <CardContent>
             {workspaceOperationsQuery.isLoading ? (
@@ -1630,7 +1630,7 @@ export function ExecutionWorkspaceDetail() {
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-muted-foreground">尚未记录任何工作区操作。</p>
+              <p className="text-sm text-muted-foreground">No workspace operations have been recorded yet.</p>
             )}
             </CardContent>
           </Card>
@@ -1640,8 +1640,8 @@ export function ExecutionWorkspaceDetail() {
               companyId={workspace.companyId}
               scopeKind="execution_workspace"
               scopeId={workspace.id}
-              title="工作区摘要"
-              description="摘要器在此保留最新工作区状态、下一步和操作员所需项目。"
+              title="Workspace summary"
+              description="Summarizer keeps the latest workspace status, next step, and operator-needed items here."
             />
             <ExecutionWorkspaceIssuesList
               companyId={workspace.companyId}
@@ -1660,7 +1660,7 @@ export function ExecutionWorkspaceDetail() {
           />
         ) : isExecutionWorkspacePluginTab(activeTab) && workspacePluginDetailSlotsLoading ? (
           <Card>
-            <CardContent className="py-6 text-sm text-muted-foreground">正在加载工作区插件...</CardContent>
+            <CardContent className="py-6 text-sm text-muted-foreground">Loading workspace plugin...</CardContent>
           </Card>
         ) : isExecutionWorkspacePluginTab(activeTab) && workspacePluginDetailSlotsError ? (
           <Card>

@@ -88,7 +88,7 @@ export function RunsSection() {
       {runs.length === 0 ? (
         <EmptyState
           icon={Play}
-          message="暂无运行记录。从标题栏触发运行或等待计划。"
+          message="No runs yet. Trigger a run from the header or wait for the schedule."
           action="Run now"
           onAction={onOpenRunDialog}
         />
@@ -98,8 +98,8 @@ export function RunsSection() {
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <Select value={sourceFilter} onValueChange={setSourceFilter}>
-                <SelectTrigger size="sm" className="h-8 w-auto gap-1.5 text-xs" aria-label="按来源筛选">
-                  <span className="text-muted-foreground">来源：</span>
+                <SelectTrigger size="sm" className="h-8 w-auto gap-1.5 text-xs" aria-label="Filter by source">
+                  <span className="text-muted-foreground">Source:</span>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -112,8 +112,8 @@ export function RunsSection() {
                 </SelectContent>
               </Select>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger size="sm" className="h-8 w-auto gap-1.5 text-xs" aria-label="按状态筛选">
-                  <span className="text-muted-foreground">状态：</span>
+                <SelectTrigger size="sm" className="h-8 w-auto gap-1.5 text-xs" aria-label="Filter by status">
+                  <span className="text-muted-foreground">Status:</span>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -126,8 +126,8 @@ export function RunsSection() {
                 </SelectContent>
               </Select>
               <Select value={dateFilter} onValueChange={setDateFilter}>
-                <SelectTrigger size="sm" className="h-8 w-auto gap-1.5 text-xs" aria-label="按日期筛选">
-                  <span className="text-muted-foreground">日期：</span>
+                <SelectTrigger size="sm" className="h-8 w-auto gap-1.5 text-xs" aria-label="Filter by date">
+                  <span className="text-muted-foreground">Date:</span>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -145,7 +145,7 @@ export function RunsSection() {
           {filtered.length === 0 ? (
             <EmptyState
               icon={SlidersHorizontal}
-              message="没有符合这些筛选条件的运行记录。"
+              message="No runs match these filters."
               action="Clear filters"
               onAction={clearFilters}
             />
@@ -223,7 +223,7 @@ export function ActivitySection() {
   }, [events]);
 
   if (events.length === 0) {
-    return <EmptyState icon={ActivityIcon} message="暂无活动。" />;
+    return <EmptyState icon={ActivityIcon} message="No activity yet." />;
   }
 
   return (

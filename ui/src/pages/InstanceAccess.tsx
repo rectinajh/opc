@@ -104,22 +104,22 @@ export function InstanceAccess() {
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <Shield className="h-5 w-5 text-muted-foreground" />
-          <h1 className="text-lg font-semibold">实例访问</h1>
+          <h1 className="text-lg font-semibold">Instance Access</h1>
         </div>
         <p className="max-w-3xl text-sm text-muted-foreground">
-          搜索用户，管理实例管理员状态，并控制他们可以访问的公司。
+          Search users, manage instance-admin status, and control which companies they can access.
         </p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-(--gtc-34)">
         <Card className="block space-y-4 p-4">
           <label className="block space-y-2 text-sm">
-            <span className="font-medium">搜索用户</span>
+            <span className="font-medium">Search users</span>
             <input
               className="w-full rounded-md border border-border bg-background px-3 py-2"
               value={search}
               onChange={(event) => setSearch(event.target.value)}
-              placeholder="按姓名或邮箱搜索"
+              placeholder="Search by name or email"
             />
           </label>
           <div className="space-y-2">
@@ -153,7 +153,7 @@ export function InstanceAccess() {
 
         <Card className="block space-y-4 p-5">
           {!selectedUserId ? (
-            <div className="text-sm text-muted-foreground">选择用户以检查实例访问权限。</div>
+            <div className="text-sm text-muted-foreground">Select a user to inspect instance access.</div>
           ) : userAccessQuery.isLoading ? (
             <div className="text-sm text-muted-foreground">Loading user access…</div>
           ) : userAccessQuery.error ? (
@@ -182,7 +182,7 @@ export function InstanceAccess() {
 
               <div className="space-y-3">
                 <div>
-                  <h2 className="text-sm font-semibold">公司访问权限</h2>
+                  <h2 className="text-sm font-semibold">Company access</h2>
                   <p className="text-sm text-muted-foreground">
                     Toggle company membership for this user. New access defaults to an active operator membership.
                   </p>
@@ -222,7 +222,7 @@ export function InstanceAccess() {
               </div>
 
               <div className="space-y-2">
-                <h2 className="text-sm font-semibold">当前成员资格</h2>
+                <h2 className="text-sm font-semibold">Current memberships</h2>
                 <div className="space-y-2">
                   {(userAccessQuery.data?.companyAccess ?? []).map((membership) => (
                     <div

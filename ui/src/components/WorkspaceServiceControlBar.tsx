@@ -151,7 +151,7 @@ function UrlSegment({ entry, compact }: { entry: WorkspaceServiceControlEntry; c
   const live = entry.state === "running" && Boolean(entry.url);
 
   if (!displayUrl) {
-    return <span className="font-mono text-xs text-muted-foreground/70">无 URL</span>;
+    return <span className="font-mono text-xs text-muted-foreground/70">no url</span>;
   }
   return (
     <>
@@ -181,10 +181,10 @@ function UrlSegment({ entry, compact }: { entry: WorkspaceServiceControlEntry; c
           size="icon-xs"
           disabled={!live}
           className="text-muted-foreground hover:text-foreground"
-          title="在新标签页中打开"
+          title="Open in new tab"
         >
           {live ? (
-            <a href={entry.url ?? undefined} target="_blank" rel="noreferrer" aria-label="在新标签页中打开">
+            <a href={entry.url ?? undefined} target="_blank" rel="noreferrer" aria-label="Open in new tab">
               <ExternalLink className="size-3" />
             </a>
           ) : (
@@ -214,11 +214,11 @@ function ActionSlots({
         className="w-13 justify-center"
         disabled={!canStart}
         onClick={() => onAction("start")}
-        aria-label="开始"
-        title="开始"
+        aria-label="Start"
+        title="Start"
       >
         <Play className="size-3" />
-        开始
+        Start
       </Button>
     );
   }
@@ -231,8 +231,8 @@ function ActionSlots({
           size="icon-xs"
           disabled={!canStart}
           onClick={() => onAction("start")}
-          aria-label="开始"
-          title="开始"
+          aria-label="Start"
+          title="Start"
         >
           <Play className="size-3" />
         </Button>
@@ -241,8 +241,8 @@ function ActionSlots({
           size="icon-xs"
           disabled={!canStart}
           onClick={() => onAction("restart")}
-          aria-label="重新启动"
-          title="重新启动"
+          aria-label="Restart"
+          title="Restart"
           className="border border-border text-foreground"
         >
           <RotateCcw className="size-3" />
@@ -258,8 +258,8 @@ function ActionSlots({
         size="icon-xs"
         disabled={transitional}
         onClick={() => onAction("stop")}
-        aria-label="停止"
-        title="停止"
+        aria-label="Stop"
+        title="Stop"
         className="border border-border text-foreground"
       >
         <Square className="size-3" />
@@ -269,8 +269,8 @@ function ActionSlots({
         size="icon-xs"
         disabled={transitional || !canStart}
         onClick={() => onAction("restart")}
-        aria-label="重新启动"
-        title="重新启动"
+        aria-label="Restart"
+        title="Restart"
         className="border border-border text-foreground"
       >
         <RotateCcw className="size-3" />
@@ -300,7 +300,7 @@ function ServiceDetail({
             onClick={onViewLogs}
             className="font-medium text-foreground underline underline-offset-2 hover:text-foreground/80"
           >
-            查看日志
+            View logs
           </button>
         </>
       ) : null}
@@ -471,9 +471,9 @@ function MultiServiceBar({
                 ))}
               </div>
               <div className="flex items-center gap-1 border-t border-border px-4 py-2">
-                <Button variant="ghost" size="xs" onClick={() => onAction("start", null)}>全部启动</Button>
-                <Button variant="ghost" size="xs" onClick={() => onAction("stop", null)}>全部停止</Button>
-                <Button variant="ghost" size="xs" onClick={() => onAction("restart", null)}>全部重启</Button>
+                <Button variant="ghost" size="xs" onClick={() => onAction("start", null)}>Start all</Button>
+                <Button variant="ghost" size="xs" onClick={() => onAction("stop", null)}>Stop all</Button>
+                <Button variant="ghost" size="xs" onClick={() => onAction("restart", null)}>Restart all</Button>
                 {onManageServices ? (
                   <Button
                     variant="link"
@@ -495,7 +495,7 @@ function MultiServiceBar({
                 <UrlSegment entry={primary} />
               </>
             ) : (
-              <span className="font-mono text-xs text-muted-foreground/70">无 URL</span>
+              <span className="font-mono text-xs text-muted-foreground/70">no url</span>
             )}
           </div>
           <div className="mx-3 hidden h-5 w-px bg-border sm:block" />

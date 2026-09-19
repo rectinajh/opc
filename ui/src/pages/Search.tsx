@@ -587,7 +587,7 @@ export function Search() {
   return (
     <div className="flex h-full min-h-0 flex-col" data-page="search">
       <div className="border-b border-border px-4 py-3 sm:px-6">
-        <h1 className="sr-only">搜索</h1>
+        <h1 className="sr-only">Search</h1>
         <div className="relative">
           <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -608,14 +608,14 @@ export function Search() {
               }
             }}
             placeholder="Search tasks, comments, documents, artifacts, agents, projects…"
-            aria-label="搜索查询"
+            aria-label="Search query"
             className="h-10 pl-9 pr-20 text-sm"
           />
           {draftQuery.length > 0 ? (
             <button
               type="button"
               onClick={handleClear}
-              aria-label="清除搜索"
+              aria-label="Clear search"
               className="absolute right-12 top-1/2 inline-flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full text-muted-foreground hover:bg-accent/50"
             >
               <X className="h-3.5 w-3.5" />
@@ -659,7 +659,7 @@ export function Search() {
             </div>
           ) : (
             <span className="truncate">
-              尝试 <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">status:todo</code>,{" "}
+              Try <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">status:todo</code>,{" "}
               <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">assignee:me</code>,{" "}
               or <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">updated:&gt;7d</code>.
             </span>
@@ -805,7 +805,7 @@ function SearchTabContent({
     return (
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 py-10 sm:px-6">
         <div>
-          <h2 className="text-lg font-semibold">输入以搜索公司记忆。</h2>
+          <h2 className="text-lg font-semibold">Type to search company memory.</h2>
           <p className="mt-1 text-sm text-muted-foreground">
             Tasks, comments, plan documents, artifacts, agents, projects — same surface, ranked by relevance.
           </p>
@@ -813,7 +813,7 @@ function SearchTabContent({
         {recentSearches.length > 0 ? (
           <div>
             <div className="mb-2 text-(length:--text-micro) font-semibold uppercase tracking-wide text-muted-foreground">
-              最近搜索
+              Recent searches
             </div>
             <ul className="flex flex-col divide-y divide-border rounded-md border border-border">
               {recentSearches.map((entry) => (
@@ -833,11 +833,11 @@ function SearchTabContent({
         ) : null}
         <ul className="space-y-1 text-xs text-muted-foreground">
           <li>
-            <span className="font-medium text-foreground">标识符查找：</span> type{" "}
-            <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">PAP-123</code> 直接跳转到任务。
+            <span className="font-medium text-foreground">Identifier lookup:</span> type{" "}
+            <code className="rounded bg-muted px-1 py-0.5 text-(length:--text-micro)">PAP-123</code> to jump straight to a task.
           </li>
           <li>
-            <span className="font-medium text-foreground">带引号的短语：</span> wrap a phrase in quotes to match the
+            <span className="font-medium text-foreground">Quoted phrases:</span> wrap a phrase in quotes to match the
             exact sequence.
           </li>
           <li>
@@ -861,10 +861,10 @@ function SearchTabContent({
         </p>
         <div className="flex flex-wrap items-center justify-center gap-2">
           <Button onClick={refetch} variant="default" size="sm">
-            重试
+            Retry
           </Button>
           <Button onClick={navigateIssuesFallback} variant="outline" size="sm">
-            打开任务筛选视图
+            Open Tasks filter view
           </Button>
         </div>
       </div>
@@ -910,23 +910,23 @@ function SearchTabContent({
         <div className="flex flex-wrap items-center justify-center gap-2">
           {scope !== "all" ? (
             <Button onClick={showAllScope} size="sm" variant="outline">
-              搜索所有范围
+              Search all scopes
             </Button>
           ) : null}
           <Button onClick={openNewIssue} size="sm" variant="default">
             <Plus className="mr-1.5 h-4 w-4" />
-            从此查询创建任务
+            Create task from this query
           </Button>
           <Button onClick={navigateIssuesFallback} size="sm" variant="ghost">
-            打开任务筛选视图
+            Open Tasks filter view
           </Button>
         </div>
         <ul className="mt-2 space-y-0.5 text-xs text-muted-foreground">
-          <li>尝试更少的标记或单个独特术语。</li>
+          <li>Try fewer tokens or a single distinctive term.</li>
           <li>
-            使用标识符快捷方式，例如 <code className="rounded bg-muted px-1 py-0.5">PAP-123</code>.
+            Use an identifier shortcut like <code className="rounded bg-muted px-1 py-0.5">PAP-123</code>.
           </li>
-          <li>将多词短语用引号括起来。</li>
+          <li>Wrap multi-word phrases in quotes.</li>
         </ul>
       </div>
     );

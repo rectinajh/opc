@@ -146,10 +146,10 @@ export function SystemNoticeUxLab() {
           <div className="p-6 sm:p-7">
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/25 bg-amber-500/[0.08] px-3 py-1 text-(length:--text-nano) font-semibold uppercase tracking-(--tracking-caps) text-amber-700 dark:text-amber-300">
               <FlaskConical className="h-3.5 w-3.5" />
-              系统通知实验室
+              System Notice Lab
             </div>
             <h1 className="mt-4 text-3xl font-semibold tracking-tight">
-              一流的系统通知处理
+              First-class system notice treatment
             </h1>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">
               Replaces the current pattern where a Paperclip-authored warning renders inside a user-style
@@ -159,7 +159,7 @@ export function SystemNoticeUxLab() {
 
             <div className="mt-5 flex flex-wrap items-center gap-2">
               <Badge variant="outline" className="rounded-full px-3 py-1 text-(length:--text-nano) uppercase tracking-(--tracking-caps)">
-                PAP-3525 计划
+                PAP-3525 plan
               </Badge>
               <Badge variant="outline" className="rounded-full px-3 py-1 text-(length:--text-nano) uppercase tracking-(--tracking-caps)">
                 phase 1 — UX
@@ -173,7 +173,7 @@ export function SystemNoticeUxLab() {
           <aside className="border-t border-border/60 bg-background/70 p-6 lg:border-l lg:border-t-0">
             <div className="mb-4 flex items-center gap-2 text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
               <ListChecks className="h-4 w-4 text-amber-700 dark:text-amber-300" />
-              此实验室证明的内容
+              What this lab proves
             </div>
             <div className="space-y-3">
               {checklist.map((line) => (
@@ -192,7 +192,7 @@ export function SystemNoticeUxLab() {
       <LabSection
         id="tones"
         eyebrow="Tone matrix"
-        title="三种色调，两种状态"
+        title="Three tones, two states"
         description="Each tone pairs a unique icon and tone label so the notice is recognizable without color. Collapsed is the default; the Details affordance reveals operational metadata only when reviewers ask for it."
         accentClassName="bg-[linear-gradient(180deg,rgba(245,158,11,0.05),transparent_28%),var(--background)]"
       >
@@ -224,7 +224,7 @@ export function SystemNoticeUxLab() {
       <LabSection
         id="hierarchy"
         eyebrow="Hierarchy in thread"
-        title="与用户和代理评论区分"
+        title="Distinct from user and agent comments"
         description="Side-by-side with adjacent comment types so reviewers can confirm the system row reads as a system row — full width, no avatar gutter, no chat bubble — while user and agent comments keep their existing rounded bubbles."
         accentClassName="bg-[linear-gradient(180deg,rgba(8,145,178,0.05),transparent_28%),var(--background)]"
       >
@@ -240,7 +240,7 @@ export function SystemNoticeUxLab() {
           />
           <SystemNotice
             tone="danger"
-            label="系统警报"
+            label="System alert"
             source={{ label: "Paperclip", href: "/PAP/agents" }}
             timestamp="2026-05-04T16:48:00.000Z"
             body="Paperclip could not resolve this issue's missing disposition automatically. The source assignment is unchanged and a board decision is required."
@@ -288,8 +288,8 @@ export function SystemNoticeUxLab() {
       <div className="grid gap-5 xl:grid-cols-2">
         <LabSection
           eyebrow="Before"
-          title="今日嵌套处理"
-          description="相同内容通过现有用户气泡+警告提示路径渲染。两个容器，背景与用户评论相同，警告图标强制放在聊天行内。"
+          title="Today's nested treatment"
+          description="The same content rendered through the existing user-bubble + warning-callout path. Two containers, same gray background as user comments, and the warning icon is forced inside a chat row."
           accentClassName="bg-[linear-gradient(180deg,rgba(244,63,94,0.05),transparent_28%),var(--background)]"
         >
           <div className="space-y-3 rounded-2xl border border-border/70 bg-background/70 p-4">
@@ -298,21 +298,21 @@ export function SystemNoticeUxLab() {
                 <AvatarFallback>YO</AvatarFallback>
               </Avatar>
               <div className="flex min-w-0 max-w-(--pct-85) flex-col">
-                <div className="mb-1 px-1 text-sm font-medium text-foreground">你</div>
+                <div className="mb-1 px-1 text-sm font-medium text-foreground">You</div>
                 <div className="min-w-0 max-w-full rounded-2xl bg-muted px-4 py-2.5 text-sm leading-6 text-foreground">
                   <div className="rounded-md border border-red-500/35 bg-red-500/10 px-3 py-2.5 text-sm text-red-950 dark:text-red-100">
                     <div className="flex items-start gap-2">
                       <Sparkles className="mt-1 h-4 w-4 shrink-0 text-red-600 dark:text-red-300" />
                       <div className="min-w-0">
-                        <p className="m-0 font-semibold">缺少成功运行交接</p>
+                        <p className="m-0 font-semibold">Successful run handoff missing</p>
                         <ul className="mt-1.5 list-disc space-y-0.5 pl-4 text-(length:--text-compact) leading-5">
-                          <li>源问题：PAP-3440</li>
-                          <li>源运行：9cdba892-c7ca-4d93-8604-4843873b127c</li>
-                          <li>恢复运行：61fdb79b-8012-4676-ac71-2971830e126a</li>
+                          <li>Source issue: PAP-3440</li>
+                          <li>Source run: 9cdba892-c7ca-4d93-8604-4843873b127c</li>
+                          <li>Recovery run: 61fdb79b-8012-4676-ac71-2971830e126a</li>
                           <li>Status before: in_progress</li>
-                          <li>规范化原因：运行完成但未处理</li>
-                          <li>恢复负责人：CTO</li>
-                          <li>建议操作：重新分配给恢复代理</li>
+                          <li>Normalized cause: Run completed without disposition</li>
+                          <li>Recovery owner: CTO</li>
+                          <li>Suggested action: Reassign to recovery agent</li>
                         </ul>
                       </div>
                     </div>
@@ -321,7 +321,7 @@ export function SystemNoticeUxLab() {
               </div>
             </div>
             <p className="px-1 text-xs text-muted-foreground">
-              Author reads as <span className="font-medium text-foreground">你</span> even though the
+              Author reads as <span className="font-medium text-foreground">You</span> even though the
               author is the Paperclip system. Two containers stack the warning inside a user-style
               bubble, and operational evidence is always visible.
             </p>
@@ -330,15 +330,15 @@ export function SystemNoticeUxLab() {
 
         <LabSection
           eyebrow="After"
-          title="系统通知替换"
-          description="一个容器，系统作者标签，隐藏详情。聊天界面保持用户和代理气泡不变。"
+          title="System notice replacement"
+          description="One container, system-authored label, hidden details. The chat surface keeps user and agent bubbles unchanged."
           accentClassName="bg-[linear-gradient(180deg,rgba(16,185,129,0.05),transparent_28%),var(--background)]"
         >
           <div className="space-y-3 rounded-2xl border border-border/70 bg-background/70 p-4">
             <SystemNotice {...dangerCollapsed} />
             <p className="px-1 text-xs text-muted-foreground">
               Same content. The visible body is one short system sentence; reviewers expand{" "}
-              <span className="font-medium text-foreground">详情</span> only when they need run
+              <span className="font-medium text-foreground">Details</span> only when they need run
               evidence. Tone is reinforced by the octagon icon and the &quot;System alert&quot; label,
               not just red.
             </p>
@@ -350,17 +350,17 @@ export function SystemNoticeUxLab() {
         <CardHeader className="px-5 pt-5 pb-0">
           <div className="flex items-center gap-2 text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
             <Layers className="h-4 w-4 text-amber-700 dark:text-amber-300" />
-            实施说明
+            Implementation notes
           </div>
-          <CardTitle className="text-lg">移交给工程团队</CardTitle>
+          <CardTitle className="text-lg">Handoff to engineering</CardTitle>
           <CardDescription>
-            Phase 4 UI 实施应保留此设计中的哪些内容。
+            What the Phase 4 UI implementation should preserve from this design.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3 px-5 pb-5 pt-0 text-sm text-muted-foreground">
           <div className="rounded-2xl border border-border/70 bg-background/80 px-4 py-3">
-            <div className="mb-1 font-medium text-foreground">组件</div>
-            用途 <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">{`<SystemNotice />`}</code>{" "}
+            <div className="mb-1 font-medium text-foreground">Component</div>
+            Use <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">{`<SystemNotice />`}</code>{" "}
             from <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">@/components/SystemNotice</code>.
             It accepts <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">tone</code>,{" "}
             <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">label</code>,{" "}
@@ -369,7 +369,7 @@ export function SystemNoticeUxLab() {
             <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">detailsDefaultOpen</code>.
           </div>
           <div className="rounded-2xl border border-border/70 bg-background/80 px-4 py-3">
-            <div className="mb-1 font-medium text-foreground">IssueChatThread 中的路由</div>
+            <div className="mb-1 font-medium text-foreground">Routing in IssueChatThread</div>
             Comments where{" "}
             <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">authorType === &quot;system&quot;</code>{" "}
             or{" "}
@@ -379,7 +379,7 @@ export function SystemNoticeUxLab() {
             or assistant bubble.
           </div>
           <div className="rounded-2xl border border-border/70 bg-background/80 px-4 py-3">
-            <div className="mb-1 font-medium text-foreground">无障碍</div>
+            <div className="mb-1 font-medium text-foreground">Accessibility</div>
             The Details button has{" "}
             <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">aria-expanded</code>{" "}
             and{" "}
@@ -391,7 +391,7 @@ export function SystemNoticeUxLab() {
             equal to the visible tone label so screen readers announce tone with text.
           </div>
           <div className="rounded-2xl border border-border/70 bg-background/80 px-4 py-3">
-            <div className="mb-1 font-medium text-foreground">旧版回退</div>
+            <div className="mb-1 font-medium text-foreground">Legacy fallback</div>
             Existing comments without{" "}
             <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">presentation</code>{" "}
             keep rendering through the current{" "}

@@ -42,18 +42,18 @@ export function BoardClaimPage() {
   });
 
   if (!token || !code) {
-    return <div className="mx-auto max-w-xl py-10 text-sm text-destructive">无效的董事会声明URL。</div>;
+    return <div className="mx-auto max-w-xl py-10 text-sm text-destructive">Invalid board claim URL.</div>;
   }
 
   if (statusQuery.isLoading || sessionQuery.isLoading) {
-    return <div className="mx-auto max-w-xl py-10 text-sm text-muted-foreground">正在加载声明挑战...</div>;
+    return <div className="mx-auto max-w-xl py-10 text-sm text-muted-foreground">Loading claim challenge...</div>;
   }
 
   if (statusQuery.error) {
     return (
       <div className="mx-auto max-w-xl py-10">
         <Card className="block p-6">
-          <h1 className="text-lg font-semibold">声明挑战不可用</h1>
+          <h1 className="text-lg font-semibold">Claim challenge unavailable</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             {statusQuery.error instanceof Error ? statusQuery.error.message : "Challenge is invalid or expired."}
           </p>
@@ -64,19 +64,19 @@ export function BoardClaimPage() {
 
   const status = statusQuery.data;
   if (!status) {
-    return <div className="mx-auto max-w-xl py-10 text-sm text-destructive">声明挑战不可用。</div>;
+    return <div className="mx-auto max-w-xl py-10 text-sm text-destructive">Claim challenge unavailable.</div>;
   }
 
   if (status.status === "claimed") {
     return (
       <div className="mx-auto max-w-xl py-10">
         <Card className="block p-6">
-          <h1 className="text-lg font-semibold">董事会所有权已声明</h1>
+          <h1 className="text-lg font-semibold">Board ownership claimed</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            此实例现已链接到您的认证用户。
+            This instance is now linked to your authenticated user.
           </p>
           <Button asChild className="mt-4">
-            <Link to="/">打开看板</Link>
+            <Link to="/">Open board</Link>
           </Button>
         </Card>
       </div>
@@ -87,12 +87,12 @@ export function BoardClaimPage() {
     return (
       <div className="mx-auto max-w-xl py-10">
         <Card className="block p-6">
-          <h1 className="text-lg font-semibold">需要登录</h1>
+          <h1 className="text-lg font-semibold">Sign in required</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            登录或创建账户，然后返回此页面认领 Board 所有权。
+            Sign in or create an account, then return to this page to claim Board ownership.
           </p>
           <Button asChild className="mt-4">
-            <Link to={`/auth?next=${encodeURIComponent(currentPath)}`}>登录/创建账户</Link>
+            <Link to={`/auth?next=${encodeURIComponent(currentPath)}`}>Sign in / Create account</Link>
           </Button>
         </Card>
       </div>
@@ -102,7 +102,7 @@ export function BoardClaimPage() {
   return (
     <div className="mx-auto max-w-xl py-10">
       <Card className="block p-6">
-        <h1 className="text-xl font-semibold">认领 Board 所有权</h1>
+        <h1 className="text-xl font-semibold">Claim Board ownership</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           This will promote your user to instance admin and migrate company ownership access from local trusted mode.
         </p>

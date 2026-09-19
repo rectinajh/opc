@@ -52,23 +52,23 @@ export function ProductivityReviewBadge({
           aria-label={`Under review · productivity review ${reviewIdentifier} (${label})`}
         >
           <Eye className="h-3 w-3" aria-hidden />
-          {hideLabel ? null : <span>审核中</span>}
+          {hideLabel ? null : <span>Under review</span>}
         </Link>
       </TooltipTrigger>
       <TooltipContent>
         <div className="space-y-1 text-xs">
-          <div className="font-semibold">生产力审查开放</div>
+          <div className="font-semibold">Productivity review open</div>
           <div>
-            <span className="text-muted-foreground">触发：</span> {label}
+            <span className="text-muted-foreground">Trigger:</span> {label}
           </div>
           {typeof review.noCommentStreak === "number" && review.noCommentStreak > 0 ? (
             <div>
-              <span className="text-muted-foreground">无评论连续天数：</span>{" "}
+              <span className="text-muted-foreground">No-comment streak:</span>{" "}
               {review.noCommentStreak} runs
             </div>
           ) : null}
           <div>
-            <span className="text-muted-foreground">审阅：</span> {reviewIdentifier} ({statusLabel})
+            <span className="text-muted-foreground">Review:</span> {reviewIdentifier} ({statusLabel})
           </div>
         </div>
       </TooltipContent>

@@ -69,7 +69,7 @@ export function PathInstructionsModal({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-base">如何获取完整路径</DialogTitle>
+          <DialogTitle className="text-base">How to get a full path</DialogTitle>
           <DialogDescription>
             Paste the absolute path (e.g.{" "}
             <code className="text-xs bg-muted px-1 py-0.5 rounded">/Users/you/project</code>
@@ -135,7 +135,7 @@ export function ChoosePathButton({ className }: { className?: string }) {
         )}
         onClick={() => setOpen(true)}
       >
-        选择
+        Choose
       </button>
       <PathInstructionsModal open={open} onOpenChange={setOpen} />
     </>

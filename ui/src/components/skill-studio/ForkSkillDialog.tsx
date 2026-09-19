@@ -158,7 +158,7 @@ export function ForkSkillDialog({
 
         {reusableFork ? (
           <div className="rounded-md border border-primary/40 bg-primary/5 p-3 text-sm">
-            <p className="font-medium text-foreground">您已有一份副本</p>
+            <p className="font-medium text-foreground">You already have a copy</p>
             <p className="mt-0.5 text-muted-foreground">
               An unedited copy of this skill already exists. Open it instead of
               making another.
@@ -170,7 +170,7 @@ export function ForkSkillDialog({
               onClick={openExisting}
               disabled={busy}
             >
-              打开您现有的副本
+              Open your existing copy
             </Button>
           </div>
         ) : null}
@@ -202,7 +202,7 @@ export function ForkSkillDialog({
               <label className="mt-3 flex items-start justify-between gap-3">
                 <span className="text-sm">
                   <span className="font-medium text-foreground">
-                    将这些代理切换到副本
+                    Switch these agents to the copy
                   </span>
                   <span className="mt-0.5 block text-xs text-muted-foreground">
                     {reassign
@@ -214,7 +214,7 @@ export function ForkSkillDialog({
                   checked={reassign}
                   onCheckedChange={setReassign}
                   disabled={busy}
-                  aria-label="将这些代理切换到副本"
+                  aria-label="Switch these agents to the copy"
                 />
               </label>
             </>
@@ -233,7 +233,7 @@ export function ForkSkillDialog({
             onClick={() => onOpenChange(false)}
             disabled={busy}
           >
-            取消
+            Cancel
           </Button>
           <Button
             type="button"

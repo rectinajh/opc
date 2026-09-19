@@ -249,14 +249,14 @@ export function SkillFolderRail({
   return (
     <div className="relative hidden h-full shrink-0 md:flex" style={{ width: `${width}px` }}>
       <nav
-        aria-label="技能文件夹"
+        aria-label="Skill folders"
         className="flex min-w-0 flex-1 flex-col overflow-y-auto border-r border-border pr-3"
       >
       <div className="mb-2 flex items-center justify-between gap-2 pt-0.5">
         <div className="text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">
-          文件夹
+          Folders
         </div>
-        <Button variant="ghost" size="icon-sm" title="新建文件夹" onClick={() => onCreateFolder(null)}>
+        <Button variant="ghost" size="icon-sm" title="New folder" onClick={() => onCreateFolder(null)}>
           <Plus className="h-3.5 w-3.5" />
         </Button>
       </div>
@@ -271,7 +271,7 @@ export function SkillFolderRail({
         <div className="space-y-0.5">
           <VirtualRow
             active={selection === "all"}
-            label="所有技能"
+            label="All skills"
             count={allCount}
             icon={<Layers className="h-3.5 w-3.5" />}
             onSelect={() => onSelect("all")}
@@ -302,7 +302,7 @@ export function SkillFolderRail({
           ) : onEnsureMyFolder ? (
             <VirtualRow
               active={false}
-              label="我的技能"
+              label="My Skills"
               count={0}
               icon={<User className="h-3.5 w-3.5" />}
               muted
@@ -311,7 +311,7 @@ export function SkillFolderRail({
           ) : null}
 
           {/* Company — plain top-level company folders */}
-          <RailHeading label="公司" onCreate={() => onCreateFolder(null)} />
+          <RailHeading label="Company" onCreate={() => onCreateFolder(null)} />
           {model.company.length > 0 ? (
             model.company.map((node) => (
               <TreeBranch
@@ -335,7 +335,7 @@ export function SkillFolderRail({
               />
             ))
           ) : (
-            <div className="px-2 py-1 text-xs text-muted-foreground">还没有公司文件夹。</div>
+            <div className="px-2 py-1 text-xs text-muted-foreground">No company folders yet.</div>
           )}
 
           {/* Projects — auto-managed, read-only structure */}
@@ -363,7 +363,7 @@ export function SkillFolderRail({
           ) : (
             <VirtualRow
               active={false}
-              label="项目"
+              label="Projects"
               count={0}
               icon={<Boxes className="h-3.5 w-3.5" />}
               muted
@@ -397,11 +397,11 @@ export function SkillFolderRail({
           ) : null}
 
           <div className="px-2 pb-1 pt-3 text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">
-            系统
+            System
           </div>
           <VirtualRow
             active={selection === "unfiled"}
-            label="未归档"
+            label="Unfiled"
             count={unfiledCount}
             icon={<FolderSwatch color={null} />}
             onSelect={() => onSelect("unfiled")}
@@ -414,7 +414,7 @@ export function SkillFolderRail({
         <div className="mt-4 border-t border-border pt-3">
           <div className="mb-1.5 flex items-center gap-1.5 px-2 text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">
             <Hash className="h-3 w-3" />
-            标签
+            Tags
           </div>
           <div className="flex flex-wrap gap-1.5 px-1">
             {activeTag ? (
@@ -446,7 +446,7 @@ export function SkillFolderRail({
       </nav>
       <div
         role="separator"
-        aria-label="调整技能文件夹大小"
+        aria-label="Resize skill folders"
         aria-orientation="vertical"
         aria-valuemin={MIN_FOLDER_RAIL_WIDTH}
         aria-valuemax={MAX_FOLDER_RAIL_WIDTH}
@@ -640,13 +640,13 @@ function TreeBranch({
               {canNest ? (
                 <DropdownMenuItem onSelect={() => onCreateFolder(folder.id)}>
                   <FolderPlus className="h-3.5 w-3.5" />
-                  新建子文件夹
+                  New subfolder
                 </DropdownMenuItem>
               ) : null}
               {editable ? (
                 <>
-                  <DropdownMenuItem onSelect={() => onStartRename(folder)}>重命名</DropdownMenuItem>
-                  <DropdownMenuItem onSelect={() => onEditFolder(folder)}>编辑颜色</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => onStartRename(folder)}>Rename</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => onEditFolder(folder)}>Edit color</DropdownMenuItem>
                   <DropdownMenuItem onSelect={() => onMoveFolder(folder, isInMySkills ? "company" : "my")}>
                     <MoveRight className="h-3.5 w-3.5" />
                     Move to {isInMySkills ? "Company" : "My Skills"}
@@ -654,7 +654,7 @@ function TreeBranch({
                   <DropdownMenuSeparator />
                   <DropdownMenuItem variant="destructive" onSelect={() => onDeleteFolder(folder)}>
                     <Trash2 className="h-3.5 w-3.5" />
-                    删除
+                    Delete
                   </DropdownMenuItem>
                 </>
               ) : null}
@@ -712,7 +712,7 @@ export function FolderBreadcrumb({
     : folderBreadcrumbTrail(model, selection);
 
   return (
-    <nav aria-label="文件夹路径" className="flex flex-wrap items-center gap-1 text-sm">
+    <nav aria-label="Folder path" className="flex flex-wrap items-center gap-1 text-sm">
       <button
         type="button"
         onClick={() => onSelect("all")}
@@ -722,12 +722,12 @@ export function FolderBreadcrumb({
         )}
       >
         <Home className="h-3.5 w-3.5" />
-        所有技能
+        All skills
       </button>
       {selection === "unfiled" ? (
         <>
           <ChevronRight className="h-3.5 w-3.5 text-muted-foreground/60" />
-          <span className="rounded px-1.5 py-0.5 font-medium text-foreground">未归档</span>
+          <span className="rounded px-1.5 py-0.5 font-medium text-foreground">Unfiled</span>
         </>
       ) : null}
       {trail.map((folder, index) => {
@@ -779,7 +779,7 @@ export function FolderTiles({
   return (
     <div className="mb-4">
       <div className="mb-2 text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">
-        文件夹
+        Folders
       </div>
       <div className="grid gap-2 [grid-template-columns:repeat(auto-fill,minmax(11rem,1fr))]">
         {children.map((node) => (
@@ -950,7 +950,7 @@ export function MoveToFolderDialog({
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="搜索文件夹"
+            placeholder="Search folders"
             className="h-8 min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
           />
         </div>
@@ -964,7 +964,7 @@ export function MoveToFolderDialog({
             onClick={() => setTarget(null)}
           >
             <FolderSwatch color={null} />
-            <span className="min-w-0 flex-1 truncate">未归档</span>
+            <span className="min-w-0 flex-1 truncate">Unfiled</span>
             {currentFolderId == null ? <span className="text-xs text-muted-foreground">current</span> : null}
             {chosen === null ? <Check className="h-3.5 w-3.5" /> : null}
           </div>
@@ -998,16 +998,16 @@ export function MoveToFolderDialog({
         <div className="min-h-5 text-xs text-muted-foreground">
           {previewPath ? (
             <span>
-              移动到 <span className="font-mono text-foreground">{previewPath}</span>
+              Moving to <span className="font-mono text-foreground">{previewPath}</span>
             </span>
           ) : (
-            <span>选择目标文件夹。</span>
+            <span>Pick a destination folder.</span>
           )}
         </div>
 
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)} disabled={pending}>
-            取消
+            Cancel
           </Button>
           <Button
             disabled={pending || chosen === undefined || chosen === currentFolderId}
@@ -1047,7 +1047,7 @@ function InlineNewFolder({
       <Input
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder="文件夹名称"
+        placeholder="Folder name"
         autoFocus
         className="h-7 flex-1 text-sm"
         onKeyDown={(event) => {
@@ -1056,10 +1056,10 @@ function InlineNewFolder({
         }}
       />
       <Button size="sm" variant="ghost" onClick={onCancel} disabled={pending}>
-        取消
+        Cancel
       </Button>
       <Button size="sm" onClick={onSubmit} disabled={pending || !value.trim()}>
-        添加
+        Add
       </Button>
     </div>
   );

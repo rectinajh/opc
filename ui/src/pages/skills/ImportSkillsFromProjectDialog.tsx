@@ -241,7 +241,7 @@ function CandidateStatusBadge({
           variant="outline"
           className="gap-1 px-1.5 py-0 font-normal text-muted-foreground border-border/60"
         >
-          <Link2 className="h-3 w-3" /> 已导入
+          <Link2 className="h-3 w-3" /> Imported
         </Badge>
       );
     case "conflict":
@@ -250,7 +250,7 @@ function CandidateStatusBadge({
           variant="outline"
           className="gap-1 px-1.5 py-0 font-normal text-amber-600 border-amber-500/40 dark:text-amber-400"
         >
-          <AlertTriangle className="h-3 w-3" /> 冲突
+          <AlertTriangle className="h-3 w-3" /> Conflict
         </Badge>
       );
     case "skipped":
@@ -259,7 +259,7 @@ function CandidateStatusBadge({
           variant="outline"
           className="gap-1 px-1.5 py-0 font-normal text-muted-foreground border-border/60"
         >
-          <FileWarning className="h-3 w-3" /> 已跳过
+          <FileWarning className="h-3 w-3" /> Skipped
         </Badge>
       );
     case "new":
@@ -269,7 +269,7 @@ function CandidateStatusBadge({
           variant="outline"
           className="gap-1 px-1.5 py-0 font-normal text-emerald-600 border-emerald-500/40 dark:text-emerald-400"
         >
-          <CheckCircle2 className="h-3 w-3" /> 新
+          <CheckCircle2 className="h-3 w-3" /> New
         </Badge>
       );
   }
@@ -513,7 +513,7 @@ export function ImportSkillsFromProjectDialog({
         <header className="flex shrink-0 items-start justify-between gap-3 border-b border-border/60 px-5 py-4">
           <div className="flex flex-col gap-1">
             <DialogTitle className="text-base font-semibold">
-              从项目导入技能
+              Import skills from project
             </DialogTitle>
             <DialogDescription className="text-xs text-muted-foreground">
               Pick a project, scan its workspaces for skills, and import them as references.
@@ -523,7 +523,7 @@ export function ImportSkillsFromProjectDialog({
             type="button"
             className="rounded-sm text-muted-foreground opacity-70 transition-opacity hover:opacity-100"
             onClick={handleClose}
-            aria-label="关闭导入对话框"
+            aria-label="Close import dialog"
           >
             <X className="h-4 w-4" />
           </button>
@@ -588,7 +588,7 @@ export function ImportSkillsFromProjectDialog({
                       disabled={selectableCandidates.length === 0}
                       data-testid="select-all"
                     >
-                      全选
+                      Select all
                     </Button>
                     <Button
                       variant="ghost"
@@ -597,12 +597,12 @@ export function ImportSkillsFromProjectDialog({
                       disabled={selectedCount === 0}
                       data-testid="deselect-all"
                     >
-                      取消全选
+                      Deselect all
                     </Button>
                   </div>
                 )}
                 <Button variant="outline" size="sm" onClick={backToPick}>
-                  <ArrowLeft className="mr-1 h-3.5 w-3.5" /> 返回
+                  <ArrowLeft className="mr-1 h-3.5 w-3.5" /> Back
                 </Button>
                 {!scanError && candidates.length > 0 && (
                   <Button
@@ -624,12 +624,12 @@ export function ImportSkillsFromProjectDialog({
             )}
             {step === "pick" && (
               <Button variant="ghost" size="sm" onClick={handleClose}>
-                取消
+                Cancel
               </Button>
             )}
             {step === "result" && (
               <Button size="sm" onClick={handleClose}>
-                完成
+                Done
               </Button>
             )}
           </div>
@@ -666,9 +666,9 @@ function PickProjectStep({
           <Input
             value={filter}
             onChange={(event) => onFilterChange(event.target.value)}
-            placeholder="筛选项目"
+            placeholder="Filter projects"
             className="pl-7 text-xs"
-            aria-label="筛选项目"
+            aria-label="Filter projects"
             data-testid="project-filter"
           />
         </div>
@@ -685,7 +685,7 @@ function PickProjectStep({
             <div>{readableErrorMessage(error)}</div>
           </div>
         ) : totalProjects === 0 ? (
-          <EmptyState icon={Layers} message="此公司尚无项目。" />
+          <EmptyState icon={Layers} message="This company has no projects yet." />
         ) : projects.length === 0 ? (
           <EmptyState icon={Search} message={`No projects match "${filter}".`} />
         ) : (
@@ -752,7 +752,7 @@ function ScanningStep({ projectName }: { projectName: string }) {
       <div>
         <p className="text-sm font-medium">Scanning {projectName || "project"} for skills…</p>
         <p className="mt-1 text-xs text-muted-foreground">
-          正在每个工作区的常见技能文件夹中查找。
+          Looking in well-known skill folders across each workspace.
         </p>
       </div>
       <div className="flex max-w-md flex-wrap justify-center gap-1.5">
@@ -815,15 +815,15 @@ function ProjectSkillBrowser({
       <div className="shrink-0 border-b border-border/60 px-5 py-3">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-sm font-medium">浏览项目文件夹</p>
-            <p className="mt-0.5 text-xs text-muted-foreground">打开任意文件夹并添加目录或单个 SKILL.md 文件。</p>
+            <p className="text-sm font-medium">Browse project folders</p>
+            <p className="mt-0.5 text-xs text-muted-foreground">Open any folder and add directories or individual SKILL.md files.</p>
           </div>
           <Button variant="outline" size="sm" onClick={onBack}>
-            <ArrowLeft className="mr-1 h-3.5 w-3.5" /> 已发现的技能
+            <ArrowLeft className="mr-1 h-3.5 w-3.5" /> Discovered skills
           </Button>
         </div>
         {workspaces.length > 1 && (
-          <div className="mt-3 flex flex-wrap gap-1.5" aria-label="项目工作区">
+          <div className="mt-3 flex flex-wrap gap-1.5" aria-label="Project workspace">
             {workspaces.map((workspace) => (
               <Button
                 key={workspace.id}
@@ -844,7 +844,7 @@ function ProjectSkillBrowser({
           size="sm"
           onClick={() => result?.parentPath && setFolderPath(result.parentPath)}
           disabled={!result?.parentPath}
-          aria-label="打开父文件夹"
+          aria-label="Open parent folder"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
         </Button>
@@ -891,10 +891,10 @@ function ProjectSkillBrowser({
             })}
           </ul>
         ) : (
-          <div className="p-8 text-center text-sm text-muted-foreground">此文件夹为空。</div>
+          <div className="p-8 text-center text-sm text-muted-foreground">This folder is empty.</div>
         )}
         {result?.truncated && (
-          <p className="border-t border-border/60 px-5 py-2 text-xs text-muted-foreground">显示前 250 条记录。</p>
+          <p className="border-t border-border/60 px-5 py-2 text-xs text-muted-foreground">Showing the first 250 entries.</p>
         )}
       </div>
     </div>
@@ -960,7 +960,7 @@ function SelectStep({
           </p>
           {!grant && (
             <Button variant="outline" size="sm" className="mt-4" onClick={onRetry}>
-              重试
+              Try again
             </Button>
           )}
         </div>
@@ -990,7 +990,7 @@ function SelectStep({
           <div className="mx-auto mb-4 w-fit bg-muted/50 p-4">
             <FolderSearch className="h-10 w-10 text-muted-foreground/50" />
           </div>
-          <p className="text-base font-semibold">未找到技能</p>
+          <p className="text-base font-semibold">No skills found</p>
           <p className="mt-1.5 text-sm text-muted-foreground">
             None of the well-known skill folders in this project's workspaces contain a{" "}
             <code className="rounded bg-muted px-1 py-0.5 text-xs">SKILL.md</code>. We searched{" "}
@@ -1005,7 +1005,7 @@ function SelectStep({
             onClick={() => onBrowseOpenChange(true)}
             data-testid="browse-project-folders-empty"
           >
-            <FolderOpen className="mr-1.5 h-3.5 w-3.5" /> 浏览项目文件夹
+            <FolderOpen className="mr-1.5 h-3.5 w-3.5" /> Browse project folders
           </Button>
           {onImportFromPath && (
             <p className="mt-3 text-sm text-muted-foreground">
@@ -1015,7 +1015,7 @@ function SelectStep({
                 className="font-medium text-foreground underline underline-offset-2"
                 onClick={onImportFromPath}
               >
-                从路径或 URL 导入
+                Import from path or URL
               </button>
               .
             </p>
@@ -1028,9 +1028,9 @@ function SelectStep({
   return (
     <div className="flex min-h-0 flex-1 flex-col" data-testid="candidate-list">
       <div className="flex shrink-0 items-center justify-between gap-3 border-b border-border/60 px-5 py-2.5">
-        <p className="text-xs text-muted-foreground">选择已发现的技能，或浏览任意工作区文件夹。</p>
+        <p className="text-xs text-muted-foreground">Choose discovered skills, or browse any workspace folder.</p>
         <Button variant="outline" size="sm" onClick={() => onBrowseOpenChange(true)} data-testid="browse-project-folders">
-          <FolderOpen className="mr-1.5 h-3.5 w-3.5" /> 浏览文件夹
+          <FolderOpen className="mr-1.5 h-3.5 w-3.5" /> Browse folders
         </Button>
       </div>
       <div className="shrink-0 border-b border-border/60 px-5 py-2.5">
@@ -1041,7 +1041,7 @@ function SelectStep({
             onChange={(event) => onFilterChange(event.target.value)}
             placeholder="Search discovered skills…"
             className="h-8 pl-8 text-xs"
-            aria-label="搜索已发现的技能"
+            aria-label="Search discovered skills"
           />
         </div>
       </div>
@@ -1055,7 +1055,7 @@ function SelectStep({
             <section key={group.key}>
               {groupIndex > 0 && !group.isPrimary && groups[groupIndex - 1]?.isPrimary && (
                 <header className="border-y border-border/60 bg-muted/30 px-5 py-2 text-xs uppercase tracking-wide text-muted-foreground">
-                  其他工作区
+                  Other Workspaces
                 </header>
               )}
               <header className="sticky top-0 z-10 border-b border-border/60 bg-background px-5 py-2 text-sm font-medium text-foreground">
@@ -1147,7 +1147,7 @@ function SelectStep({
                                 />
                                 {selectedValue && !isValidSelectionSlug(selectedValue) && (
                                   <span className="text-xs text-destructive">
-                                    使用小写且 URL 安全的短横线命名。
+                                    Use a lowercase URL-safe slug.
                                   </span>
                                 )}
                               </div>
@@ -1183,7 +1183,7 @@ function ResultStep({ result }: ResultStepProps) {
         <div className="flex items-start gap-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-3">
           <Link2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
           <div className="text-xs leading-relaxed text-muted-foreground">
-            <span className="font-medium text-foreground">未复制任何文件。</span> These skills
+            <span className="font-medium text-foreground">No files were copied.</span> These skills
             reference the files in the project workspace — editing them in Skill Studio saves
             directly back to those files.
           </div>
@@ -1220,7 +1220,7 @@ function ResultStep({ result }: ResultStepProps) {
                     to={skillStudioRoute(skill.id)}
                     className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-foreground no-underline hover:underline"
                   >
-                    打开 <ExternalLink className="h-3 w-3" />
+                    Open <ExternalLink className="h-3 w-3" />
                   </Link>
                 </li>
               ))}

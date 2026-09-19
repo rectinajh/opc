@@ -584,7 +584,7 @@ function TaskTreeNode({
                 </div>
                 {depth > 0 ? (
                   <div className="mt-0.5 text-(length:--text-nano) font-medium uppercase tracking-(--tracking-eyebrow) text-muted-foreground">
-                    子任务
+                    Child task
                   </div>
                 ) : null}
                 {node.task.description ? (
@@ -606,7 +606,7 @@ function TaskTreeNode({
             </Link>
           ) : isSkipped ? (
             <span className="inline-flex shrink-0 items-center rounded-sm border border-amber-500/60 bg-amber-500/10 px-2.5 py-1 text-(length:--text-micro) font-medium text-amber-900 dark:text-amber-100">
-              已跳过
+              Skipped
             </span>
           ) : null}
         </div>
@@ -614,16 +614,16 @@ function TaskTreeNode({
         {hasMetadata ? (
           <div className="mt-2 flex flex-wrap gap-1.5">
             {hasExplicitAssignee ? (
-              <TaskField label="负责人" value={assigneeLabel} />
+              <TaskField label="Responsible" value={assigneeLabel} />
             ) : null}
             {node.task.billingCode ? (
-              <TaskField label="计费" value={node.task.billingCode} />
+              <TaskField label="Billing" value={node.task.billingCode} />
             ) : null}
             {node.task.projectId ? (
-              <TaskField label="项目" value={node.task.projectId} tone="subtle" />
+              <TaskField label="Project" value={node.task.projectId} tone="subtle" />
             ) : null}
             {labels.map((label) => (
-              <TaskField key={label} label="标签" value={label} tone="subtle" />
+              <TaskField key={label} label="Label" value={label} tone="subtle" />
             ))}
           </div>
         ) : null}
@@ -792,7 +792,7 @@ function SuggestTasksCard({
       <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
         <span>{totalTasks === 1 ? "1 draft issue" : `${totalTasks} draft issues`}</span>
         {interaction.payload.defaultParentId ? (
-          <TaskField label="默认父级" value={interaction.payload.defaultParentId} tone="subtle" />
+          <TaskField label="Default parent" value={interaction.payload.defaultParentId} tone="subtle" />
         ) : null}
       </div>
 
@@ -816,7 +816,7 @@ function SuggestTasksCard({
       {interaction.status === "accepted" ? (
         <div className="rounded-sm border border-emerald-500/60 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-900 dark:text-emerald-100">
           <div className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-eyebrow) text-emerald-700">
-            解决摘要
+            Resolution summary
           </div>
           <p className="mt-1 leading-6">
             {skippedCount > 0
@@ -829,7 +829,7 @@ function SuggestTasksCard({
       {interaction.status === "rejected" ? (
         <div className="rounded-sm border border-rose-500/60 bg-rose-500/10 px-4 py-3 text-sm text-rose-900 dark:text-rose-100">
           <div className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-eyebrow) text-rose-700">
-            拒绝原因
+            Rejection reason
           </div>
           <p className={cn(
             "mt-1 leading-6",
@@ -865,7 +865,7 @@ function SuggestTasksCard({
                 {working === "accept" ? (
                   <>
                     <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
-                    接受中...
+                    Accepting...
                   </>
                 ) : (
                   selectedCount === totalTasks ? "Accept drafts" : "Accept selected drafts"
@@ -877,7 +877,7 @@ function SuggestTasksCard({
                 disabled={!onRejectInteraction || working !== null}
                 onClick={() => setRejecting((current) => !current)}
               >
-                拒绝
+                Reject
               </Button>
               {selectedCount < totalTasks ? (
                 <Button
@@ -886,7 +886,7 @@ function SuggestTasksCard({
                   disabled={working !== null}
                   onClick={() => setSelectedClientKeys(new Set(interaction.payload.tasks.map((task) => task.clientKey)))}
                 >
-                  重置选择
+                  Reset selection
                 </Button>
               ) : null}
             </div>
@@ -897,7 +897,7 @@ function SuggestTasksCard({
               <Textarea
                 value={rejectReason}
                 onChange={(event) => setRejectReason(event.target.value)}
-                placeholder="添加拒绝此建议的简短原因"
+                placeholder="Add a short reason for rejecting this suggestion"
                 className="min-h-24 bg-background text-sm"
               />
               <div className="flex justify-end">
@@ -910,7 +910,7 @@ function SuggestTasksCard({
                   {working === "reject" ? (
                     <>
                       <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
-                      正在保存...
+                      Saving...
                     </>
                   ) : (
                     "Save rejection"
@@ -1137,7 +1137,7 @@ function AskUserQuestionsCard({
       <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
         <Badge variant="outline" className="border-border/70 bg-background/70 px-2.5 py-1 uppercase tracking-(--tracking-eyebrow) text-foreground/70">
           <MessageSquareQuote className="h-3 w-3" />
-          询问用户问题
+          Ask user questions
         </Badge>
         <span>
           {questions.length === 1
@@ -1212,7 +1212,7 @@ function AskUserQuestionsCard({
                                 ...current,
                                 [question.id]: event.target.value,
                               }))}
-                            placeholder="输入你的答案"
+                            placeholder="Type your answer"
                             className="min-h-24 bg-background text-sm"
                             autoFocus
                           />
@@ -1242,7 +1242,7 @@ function AskUserQuestionsCard({
                       onClick={() =>
                         toggleOption(question.id, OTHER_ANSWER_ID, question.selectionMode)}
                     >
-                      其他
+                      Other
                     </button>
                     {otherActiveQuestions[question.id] ? (
                       <Textarea
@@ -1253,7 +1253,7 @@ function AskUserQuestionsCard({
                             ...current,
                             [question.id]: event.target.value,
                           }))}
-                        placeholder="输入你的答案"
+                        placeholder="Type your answer"
                         className="min-h-24 bg-background text-sm"
                       />
                     ) : null}
@@ -1266,7 +1266,7 @@ function AskUserQuestionsCard({
 
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border/70 bg-background/75 p-4">
             <div className="text-sm text-muted-foreground">
-              填写完整表格后提交一次。
+              Submit once after you finish the full form.
             </div>
             <div className="flex flex-wrap items-center gap-2">
               {onCancelInteraction ? (
@@ -1279,7 +1279,7 @@ function AskUserQuestionsCard({
                   {cancelling ? (
                     <>
                       <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
-                      取消中...
+                      Cancelling...
                     </>
                   ) : (
                     "Cancel question"
@@ -1294,7 +1294,7 @@ function AskUserQuestionsCard({
                 {working ? (
                   <>
                     <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
-                    提交中...
+                    Submitting...
                   </>
                 ) : (
                   interaction.payload.submitLabel ?? "Submit answers"
@@ -1317,7 +1317,7 @@ function AskUserQuestionsCard({
           ) : interaction.result?.reason ? (
             <p className="mt-1">{interaction.result.reason}</p>
           ) : (
-            <p className="mt-1">未记录答案。</p>
+            <p className="mt-1">No answer was recorded.</p>
           )}
         </div>
       ) : interaction.status === "expired" ? (
@@ -1342,7 +1342,7 @@ function AskUserQuestionsCard({
               href={`#comment-${interaction.result.commentId}`}
               className="mt-3 inline-flex text-sm font-medium underline underline-offset-4"
             >
-              跳转到评论
+              Jump to comment
             </a>
           ) : null}
         </div>
@@ -1364,10 +1364,10 @@ function AskUserQuestionsCard({
                 <div className="mt-2 flex flex-wrap gap-2">
                   {labels.length > 0 ? (
                     labels.map((label) => (
-                      <TaskField key={label} label="答案" value={label} />
+                      <TaskField key={label} label="Answer" value={label} />
                     ))
                   ) : (
-                    <span className="text-sm text-muted-foreground">未记录答案。</span>
+                    <span className="text-sm text-muted-foreground">No answer recorded.</span>
                   )}
                 </div>
               </div>
@@ -1377,7 +1377,7 @@ function AskUserQuestionsCard({
           {interaction.result?.summaryMarkdown ? (
             <div className="rounded-2xl border border-emerald-300/60 bg-emerald-50/85 p-4">
               <div className="mb-2 text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-eyebrow) text-emerald-700">
-                已提交摘要
+                Submitted summary
               </div>
               <MarkdownBody externalReferences={externalReferences}>{interaction.result.summaryMarkdown}</MarkdownBody>
             </div>
@@ -1468,12 +1468,12 @@ function RequestConfirmationResolution({
       return (
         <div className="space-y-2">
           <div className="flex flex-wrap items-center gap-2 text-sm leading-6 text-foreground">
-            <span className="font-medium">已确认</span>
+            <span className="font-medium">Confirmed</span>
             <RequestConfirmationTargetChip interaction={interaction} target={target} />
           </div>
           <div className="rounded-sm border border-amber-500/60 bg-amber-500/10 px-4 py-3 text-sm text-amber-900 dark:text-amber-100">
             <div className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-eyebrow) text-amber-700">
-              代理恢复失败
+              Agent resume failed
             </div>
             <p className="mt-1 leading-6">
               {resumeFailure.status === "retrying"
@@ -1482,7 +1482,7 @@ function RequestConfirmationResolution({
             </p>
             {resumeFailure.errorCode ? (
               <p className="mt-1 leading-6">
-                最近原因： <code className="font-mono text-(length:--text-micro)">{resumeFailure.errorCode}</code>
+                Latest cause: <code className="font-mono text-(length:--text-micro)">{resumeFailure.errorCode}</code>
               </p>
             ) : null}
           </div>
@@ -1491,7 +1491,7 @@ function RequestConfirmationResolution({
     }
     return (
       <div className="flex flex-wrap items-center gap-2 text-sm leading-6 text-foreground">
-        <span className="font-medium">已确认</span>
+        <span className="font-medium">Confirmed</span>
         <RequestConfirmationTargetChip interaction={interaction} target={target} />
       </div>
     );
@@ -1501,7 +1501,7 @@ function RequestConfirmationResolution({
     return (
       <div className="space-y-2">
         <div className="flex flex-wrap items-center gap-2 text-sm leading-6 text-foreground">
-          <span className="font-medium">已拒绝</span>
+          <span className="font-medium">Declined</span>
           <RequestConfirmationTargetChip interaction={interaction} target={target} />
         </div>
         {interaction.result?.reason ? (
@@ -1520,7 +1520,7 @@ function RequestConfirmationResolution({
     // and no duplicated reason text.
     return (
       <div className="flex flex-wrap items-center gap-2 text-sm leading-6 text-foreground">
-        <span className="font-medium">已撤回</span>
+        <span className="font-medium">Withdrawn</span>
         <RequestConfirmationTargetChip interaction={interaction} target={target} />
       </div>
     );
@@ -1552,7 +1552,7 @@ function RequestConfirmationResolution({
         </p>
         {expiredByComment && interaction.result?.commentId ? (
           <Button asChild size="sm" variant="ghost" className="h-7 px-2 text-amber-950 hover:bg-amber-500/15 dark:text-amber-50">
-            <a href={`#comment-${interaction.result.commentId}`}>跳转到评论</a>
+            <a href={`#comment-${interaction.result.commentId}`}>Jump to comment</a>
           </Button>
         ) : null}
         {expiredByTargetChange ? (
@@ -1575,7 +1575,7 @@ function RequestConfirmationResolution({
   if (interaction.status === "failed") {
     return (
       <p className="text-sm leading-6 text-muted-foreground">
-        无法解决此请求。请重试或创建新请求。
+        This request could not be resolved. Try again or create a new request.
       </p>
     );
   }
@@ -1656,7 +1656,7 @@ function ToolActionTechnicalDetails({
         ) : null}
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <span className="font-semibold uppercase tracking-(--tracking-eyebrow) text-(length:--text-nano)">
-            参数哈希
+            args hash
           </span>
           <code className="truncate font-mono">{payload.argumentsHash}</code>
         </div>
@@ -1695,7 +1695,7 @@ function ToolActionResolution({
         <div className="space-y-1 leading-6">
           <div className="font-medium">Approved by {who} — running the action now</div>
           <p className="text-amber-900/80 dark:text-amber-100/80">
-            该操作正在服务器端以您批准的精确参数执行。
+            The action is executing server-side with the exact arguments you approved.
           </p>
         </div>
       </div>
@@ -1725,14 +1725,14 @@ function ToolActionResolution({
           </div>
         ) : (
           <div className="rounded-sm border border-green-500/40 bg-background/60 px-3 py-2 text-foreground">
-            执行成功。
+            Executed successfully.
           </div>
         )}
         {href ? (
           <Button asChild size="sm" variant="outline" className="h-7 px-2">
             <a href={href} target="_blank" rel="noreferrer">
               <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
-              查看结果
+              View result
             </a>
           </Button>
         ) : null}
@@ -1783,7 +1783,7 @@ function ToolActionResolution({
           <div>
             <div className="font-medium">Declined by {who}{whenSuffix}</div>
             <p className="text-red-900/80 dark:text-red-100/80">
-              该操作已 <strong>not</strong> run. {requestedByLabel} was resumed with
+              The action did <strong>not</strong> run. {requestedByLabel} was resumed with
               your reason and told not to retry the same call.
             </p>
           </div>
@@ -1807,7 +1807,7 @@ function ToolActionResolution({
             Expired{when ? ` at ${when}` : ""} — no one responded within 60 minutes
           </div>
           <p>
-            该操作已 <strong>not</strong> run. If it's still needed, the agent can
+            The action did <strong>not</strong> run. If it's still needed, the agent can
             request approval again — a fresh card will appear.
           </p>
         </div>
@@ -1939,10 +1939,10 @@ function RequestToolActionCard({
                 disabled={!onRejectInteraction || working !== null}
                 onClick={() => setRejecting((current) => !current)}
               >
-                拒绝
+                Decline
               </Button>
               <span className="text-(length:--text-micro) text-muted-foreground">
-                批准将立即运行此操作。
+                Approving runs this action now.
               </span>
             </div>
 
@@ -1951,7 +1951,7 @@ function RequestToolActionCard({
                 <Textarea
                   value={rejectReason}
                   onChange={(event) => setRejectReason(event.target.value)}
-                  placeholder="可选：告诉代理原因，以免其重试相同的调用。"
+                  placeholder="Optional: tell the agent why, so it doesn't retry the same call."
                   className="min-h-20 bg-background text-sm"
                 />
                 <div className="flex flex-wrap justify-end gap-2">
@@ -1961,7 +1961,7 @@ function RequestToolActionCard({
                     disabled={working !== null}
                     onClick={() => setRejecting(false)}
                   >
-                    取消
+                    Cancel
                   </Button>
                   <Button
                     size="sm"
@@ -2046,7 +2046,7 @@ function SecretProposalIdentityHeader({
       </div>
       <div className="min-w-0 flex-1">
         <div className="text-base font-bold leading-tight text-foreground">
-          绑定现有密钥
+          Bind an existing secret
         </div>
       </div>
     </div>
@@ -2062,19 +2062,19 @@ function SecretProposalDetails({
     <dl className="grid gap-3 rounded-sm border border-border/70 bg-muted/30 p-3 sm:grid-cols-2">
       <div className="min-w-0 space-y-1">
         <dt className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-eyebrow) text-muted-foreground">
-          源密钥
+          Source secret
         </dt>
         <dd className="truncate text-sm font-medium text-foreground">{payload.sourceSecretLabel}</dd>
       </div>
       <div className="min-w-0 space-y-1">
         <dt className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-eyebrow) text-muted-foreground">
-          目标代理
+          Target agent
         </dt>
         <dd className="truncate text-sm font-medium text-foreground">{payload.targetAgentName}</dd>
       </div>
       <div className="min-w-0 space-y-1 sm:col-span-2">
         <dt className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-eyebrow) text-muted-foreground">
-          新配置路径
+          New config path
         </dt>
         <dd className="break-all font-mono text-sm text-foreground">{payload.configPath}</dd>
       </div>
@@ -2106,7 +2106,7 @@ function SecretProposalResolution({
         <div>
           <div className="font-medium">Approved by {who} — creating the binding</div>
           <p className="mt-1 text-amber-900/80 dark:text-amber-100/80">
-            Paperclip 正在写入前重新检查权限和提案快照。
+            Paperclip is re-checking authority and the proposal snapshot before writing.
           </p>
         </div>
       </div>
@@ -2138,14 +2138,14 @@ function SecretProposalResolution({
               FAILED · binding was not created
             </div>
             <p className="mt-1 text-red-900/80 dark:text-red-100/80">
-              请求已接受，但执行失败并关闭。未暴露任何秘密值。
+              The request was accepted, but execution failed closed. No secret value was exposed.
             </p>
           </div>
         </div>
         {errorCode ? (
           <div className="rounded-sm border border-red-500/50 bg-background/60 px-3 py-2">
             <span className="text-(length:--text-nano) font-semibold uppercase tracking-(--tracking-eyebrow)">
-              错误代码
+              Error code
             </span>{" "}
             <code className="font-mono text-foreground">{errorCode}</code>
           </div>
@@ -2162,7 +2162,7 @@ function SecretProposalResolution({
           <XCircle className="mt-0.5 h-4 w-4 shrink-0" />
           <div>
             <div className="font-medium">Rejected by {who}</div>
-            <p className="mt-1 text-red-900/80 dark:text-red-100/80">绑定未创建。</p>
+            <p className="mt-1 text-red-900/80 dark:text-red-100/80">The binding was not created.</p>
           </div>
         </div>
         {reason ? (
@@ -2179,7 +2179,7 @@ function SecretProposalResolution({
       <Clock className="mt-0.5 h-4 w-4 shrink-0" />
       <div>
         <div className="font-medium text-foreground">Proposal expired{when ? ` · ${when}` : ""}</div>
-        <p className="mt-1">绑定未创建。需要新的提案。</p>
+        <p className="mt-1">The binding was not created. A fresh proposal is required.</p>
       </div>
     </div>
   );
@@ -2443,7 +2443,7 @@ function ConfirmationActionRow({
             )}
           />
           {attempted && reasonMissing ? (
-            <p className="text-xs text-destructive">添加说明描述您想要的更改。</p>
+            <p className="text-xs text-destructive">Add a note describing the changes you want.</p>
           ) : null}
           {revisePanelChildren}
           <div className="flex flex-wrap justify-end gap-2">
@@ -2456,7 +2456,7 @@ function ConfirmationActionRow({
                 setAttempted(false);
               }}
             >
-              取消
+              Cancel
             </Button>
             <Button
               size="sm"
@@ -2670,12 +2670,12 @@ function RequestConfirmationCard({
                   {uploading ? (
                     <>
                       <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
-                      上传中...
+                      Uploading...
                     </>
                   ) : (
                     <>
                       <ImagePlus className="mr-2 h-3.5 w-3.5" />
-                      附加截图
+                      Attach screenshots
                     </>
                   )}
                 </Button>
@@ -2731,7 +2731,7 @@ function RequestCheckboxConfirmationResolution({
         {visibleLabels.length > 0 ? (
           <div className="flex flex-wrap gap-1.5">
             {visibleLabels.map((label, index) => (
-              <TaskField key={`${label}-${index}`} label="已选择" value={label} />
+              <TaskField key={`${label}-${index}`} label="Selected" value={label} />
             ))}
             {hasHiddenLabels ? (
               <button
@@ -2763,7 +2763,7 @@ function RequestCheckboxConfirmationResolution({
   if (interaction.status === "failed") {
     return (
       <p className="text-sm leading-6 text-muted-foreground">
-        无法解决此请求。请重试或创建新请求。
+        This request could not be resolved. Try again or create a new request.
       </p>
     );
   }
@@ -2979,7 +2979,7 @@ function RequestCheckboxConfirmationCard({
               disabled={working !== null || selectedCount === totalOptions || (maxSelected != null && selectedCount >= maxSelected)}
               onClick={handleSelectAll}
             >
-              全选
+              Select all
             </Button>
             <Button
               size="sm"
@@ -2987,14 +2987,14 @@ function RequestCheckboxConfirmationCard({
               disabled={working !== null || selectedCount === 0}
               onClick={handleClearSelection}
             >
-              清除选择
+              Clear selection
             </Button>
           </div>
         </div>
 
         <div
           role="group"
-          aria-label="可选项"
+          aria-label="Selectable options"
           className="max-h-80 overflow-y-auto rounded-sm border border-border/70"
         >
           {options.map((option) => {
@@ -3120,7 +3120,7 @@ function ItemVerdictSegmentedControl({
   return (
     <div
       role="group"
-      aria-label="选择裁决"
+      aria-label="Choose a verdict"
       className="flex shrink-0 flex-wrap items-center gap-2"
     >
       {verdicts.map((verdict) => {
@@ -3334,7 +3334,7 @@ function RequestItemVerdictsCard({
       ) : null}
 
       {/* Item list (S1/S2/S3/S4) */}
-      <ul className="space-y-2" aria-label="待审查项目">
+      <ul className="space-y-2" aria-label="Items to review">
         {items.map((item) => {
           const resolved = resolvedById.get(item.id);
           const applying = applyingItemIds.has(item.id);
@@ -3382,7 +3382,7 @@ function RequestItemVerdictsCard({
                   ) : isTerminal ? (
                     <span className="inline-flex items-center gap-1 rounded-sm border border-border/70 bg-muted/30 px-2 py-0.5 text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-eyebrow) text-muted-foreground">
                       <CircleDashed className="h-3.5 w-3.5" aria-hidden />
-                      未决定
+                      Not decided
                     </span>
                   ) : (
                     <ItemVerdictSegmentedControl
@@ -3409,7 +3409,7 @@ function RequestItemVerdictsCard({
                     id={`${interaction.id}-${item.id}-reason`}
                     value={draft.reason}
                     onChange={(event) => setDraftReason(item.id, event.target.value)}
-                    placeholder="给代理一个理由，以便其对此项目采取行动。"
+                    placeholder="Give the agent a reason so it can act on this item."
                     aria-invalid={attempted && invalidDraftIds.has(item.id)}
                     className={cn(
                       "min-h-16 bg-background text-sm",
@@ -3455,7 +3455,7 @@ function RequestItemVerdictsCard({
                 onClick={handleApproveAll}
               >
                 <ThumbsUp className="h-4 w-4" aria-hidden />
-                全部批准
+                Approve all
               </Button>
             ) : null}
             <Button
@@ -3498,7 +3498,7 @@ function VerdictProgressBadge({
       {pendingReason ? (
         <span className="inline-flex items-center gap-1 rounded-sm border border-amber-500/60 bg-amber-500/10 px-1.5 py-0.5 text-(length:--text-nano) font-semibold uppercase tracking-(--tracking-eyebrow) text-amber-900 dark:text-amber-100">
           <AlertTriangle className="h-3 w-3" aria-hidden />
-          需要原因
+          Reason needed
         </span>
       ) : null}
       <div
@@ -3657,7 +3657,7 @@ export function IssueThreadInteractionCard({
                 <StatusIcon className={cn("h-3.5 w-3.5", iconSpin && "animate-spin")} />
                 {isSecretProposal ? (
                   <span className="flex flex-col sm:flex-row sm:items-center sm:gap-1">
-                    <span>秘密绑定</span>
+                    <span>Secret binding</span>
                     <span className="hidden text-current/60 sm:inline">/</span>
                     <span>{statusText}</span>
                   </span>
@@ -3825,7 +3825,7 @@ export function IssueThreadInteractionCard({
             className="mt-4 flex flex-wrap items-center gap-x-1 gap-y-0.5 border-t border-border/60 pt-3 text-xs text-muted-foreground"
             data-testid="interaction-resolved-footer"
           >
-            解决者 <span className="font-medium text-foreground">{resolvedByLabel}</span>
+            Resolved by <span className="font-medium text-foreground">{resolvedByLabel}</span>
             {resolvedByAgent ? <ResolvedByAgentChip /> : null}
             {interaction.resolvedAt ? ` on ${formatShortDate(interaction.resolvedAt)}` : ""}
           </div>
@@ -3849,7 +3849,7 @@ function ResolvedByAgentChip() {
           data-testid="interaction-resolved-by-agent-chip"
         >
           <Bot className="h-3 w-3" />
-          代理
+          Agent
         </Badge>
       </TooltipTrigger>
       <TooltipContent side="bottom" className="max-w-xs text-xs">

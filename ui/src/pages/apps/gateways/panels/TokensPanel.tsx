@@ -156,11 +156,11 @@ export function TokensPanel({
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-sm text-muted-foreground">
-          每个令牌都是独立的入口。撤销其中一个不会影响其他令牌。
+          Each token is a separate way in. Revoke any one without breaking the others.
         </p>
         <Button size="sm" onClick={() => setMinting((value) => !value)}>
           <Plus className="mr-1.5 h-3.5 w-3.5" />
-          铸造令牌
+          Mint token
         </Button>
       </div>
 
@@ -168,31 +168,31 @@ export function TokensPanel({
         <form className="space-y-3 rounded-md border border-border p-4" onSubmit={submit}>
           <div className="grid gap-3 md:grid-cols-2">
             <label className="space-y-1.5 text-sm">
-              <span className="text-xs font-medium text-muted-foreground">名称</span>
+              <span className="text-xs font-medium text-muted-foreground">Name</span>
               <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="cto-cursor" required autoFocus />
             </label>
             <label className="space-y-1.5 text-sm">
-              <span className="text-xs font-medium text-muted-foreground">所有者 / 客户端</span>
+              <span className="text-xs font-medium text-muted-foreground">Owner / client</span>
               <Input
                 value={clientLabel}
                 onChange={(e) => setClientLabel(e.target.value)}
-                placeholder="工作笔记本上的光标"
+                placeholder="Cursor on work laptop"
               />
             </label>
           </div>
           <div className="grid gap-3 md:grid-cols-[1fr_auto]">
             <label className="space-y-1.5 text-sm">
-              <span className="text-xs font-medium text-muted-foreground">备注（存在原因）</span>
+              <span className="text-xs font-medium text-muted-foreground">Note (why it exists)</span>
               <Input value={ownerNote} onChange={(e) => setOwnerNote(e.target.value)} placeholder="Dotta’s MacBook" />
             </label>
             <label className="space-y-1.5 text-sm">
-              <span className="text-xs font-medium text-muted-foreground">过期时间</span>
+              <span className="text-xs font-medium text-muted-foreground">Expires</span>
               <Input type="date" value={expiresAt} onChange={(e) => setExpiresAt(e.target.value)} required />
             </label>
           </div>
           <div className="flex justify-end gap-2">
             <Button type="button" variant="ghost" size="sm" onClick={() => setMinting(false)}>
-              取消
+              Cancel
             </Button>
             <Button type="submit" size="sm" disabled={createMutation.isPending || !name.trim()}>
               {createMutation.isPending ? "Minting…" : "Mint token"}
@@ -210,8 +210,8 @@ export function TokensPanel({
                 You won’t see the full value again. Store it in your client’s config or your secret manager.
               </div>
             </div>
-            <Button variant="ghost" size="sm" onClick={() => setCreated(null)} aria-label="忽略新令牌">
-              关闭
+            <Button variant="ghost" size="sm" onClick={() => setCreated(null)} aria-label="Dismiss new token">
+              Dismiss
             </Button>
           </div>
           <div className="flex items-center gap-2">
@@ -221,11 +221,11 @@ export function TokensPanel({
             {revealed ? (
               <Button variant="outline" size="sm" onClick={() => void copyToken(created.token)}>
                 <Copy className="mr-1 h-3.5 w-3.5" />
-                复制
+                Copy
               </Button>
             ) : (
               <Button variant="outline" size="sm" onClick={() => setRevealed(true)}>
-                显示
+                Show
               </Button>
             )}
           </div>
@@ -234,7 +234,7 @@ export function TokensPanel({
 
       {tokens.length === 0 ? (
         <div className="rounded-md border border-dashed border-border p-6 text-center text-sm text-muted-foreground">
-          尚无令牌。为将连接到此网关的客户端铸造一个。
+          No tokens yet. Mint one for the client that will connect to this gateway.
         </div>
       ) : (
         <>
@@ -243,12 +243,12 @@ export function TokensPanel({
             <table className="w-full min-w-(--sz-44rem) text-sm">
               <thead>
                 <tr className="border-b border-border bg-muted/40 text-left text-(length:--text-micro) font-semibold uppercase tracking-wide text-muted-foreground">
-                  <th className="px-4 py-2.5">令牌</th>
-                  <th className="px-4 py-2.5">所有者</th>
-                  <th className="px-4 py-2.5">创建时间</th>
-                  <th className="px-4 py-2.5">上次使用</th>
-                  <th className="px-4 py-2.5">过期时间</th>
-                  <th className="px-4 py-2.5">状态</th>
+                  <th className="px-4 py-2.5">Token</th>
+                  <th className="px-4 py-2.5">Owner</th>
+                  <th className="px-4 py-2.5">Created</th>
+                  <th className="px-4 py-2.5">Last used</th>
+                  <th className="px-4 py-2.5">Expires</th>
+                  <th className="px-4 py-2.5">Status</th>
                   <th className="px-4 py-2.5 text-right" />
                 </tr>
               </thead>
@@ -284,7 +284,7 @@ export function TokensPanel({
                               setRevokeName("");
                             }}
                           >
-                            撤销
+                            Revoke
                           </Button>
                         ) : null}
                       </td>
@@ -310,14 +310,14 @@ export function TokensPanel({
                     <StatusBadge status={status} />
                   </div>
                   <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-                    <TokenField label="所有者" value={token.clientLabel || token.ownerNote || "—"} />
-                    <TokenField label="创建时间" value={<RelativeTime value={token.createdAt} />} />
+                    <TokenField label="Owner" value={token.clientLabel || token.ownerNote || "—"} />
+                    <TokenField label="Created" value={<RelativeTime value={token.createdAt} />} />
                     <TokenField
-                      label="上次使用"
+                      label="Last used"
                       value={token.lastUsedAt ? <RelativeTime value={token.lastUsedAt} /> : "—"}
                     />
                     <TokenField
-                      label="过期时间"
+                      label="Expires"
                       value={
                         token.revokedAt ? "—" : token.expiresAt ? <RelativeTime value={token.expiresAt} /> : "no expiry"
                       }
@@ -333,7 +333,7 @@ export function TokensPanel({
                         setRevokeName("");
                       }}
                     >
-                      撤销
+                      Revoke
                     </Button>
                   ) : null}
                 </div>
@@ -345,16 +345,16 @@ export function TokensPanel({
 
       <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
         <KeyRound className="h-3.5 w-3.5" />
-        每次铸造、显示和撤销都会记录在“活动”中。
+        Every mint, reveal, and revoke is recorded in Activity.
       </p>
 
       {confirmToken ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" role="dialog" aria-modal="true">
           <div className="w-full max-w-md space-y-3 rounded-lg border border-border bg-card p-5 shadow-lg">
             <div>
-              <h3 className="text-sm font-semibold text-foreground">撤销此令牌？</h3>
+              <h3 className="text-sm font-semibold text-foreground">Revoke this token?</h3>
               <p className="mt-1 text-sm text-muted-foreground">
-                任何使用 <span className="font-medium text-foreground">{confirmToken.name}</span> goes
+                Any client using <span className="font-medium text-foreground">{confirmToken.name}</span> goes
                 silent immediately. This can’t be undone. Type the token name to confirm.
               </p>
             </div>
@@ -362,7 +362,7 @@ export function TokensPanel({
               value={revokeName}
               onChange={(e) => setRevokeName(e.target.value)}
               placeholder={confirmToken.name}
-              aria-label="输入令牌名称以确认"
+              aria-label="Type the token name to confirm"
               autoFocus
             />
             <div className="flex justify-end gap-2">
@@ -374,7 +374,7 @@ export function TokensPanel({
                   setRevokeName("");
                 }}
               >
-                取消
+                Cancel
               </Button>
               <Button
                 variant="destructive"

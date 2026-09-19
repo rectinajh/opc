@@ -168,7 +168,7 @@ export function TaskChatLab() {
   return (
     <div className="flex h-full min-h-0 flex-col">
       <header className="border-b border-border px-4 py-2">
-        <h1 className="text-sm font-semibold">任务聊天实验室</h1>
+        <h1 className="text-sm font-semibold">Task Chat Lab</h1>
         <p className="text-xs text-muted-foreground">
           Synthetic harness for the task chat redesign · every state renders here with no live agent.
         </p>
@@ -176,7 +176,7 @@ export function TaskChatLab() {
 
       <div className="flex min-h-0 flex-1">
         {/* State switcher */}
-        <nav className="w-56 shrink-0 overflow-y-auto border-r border-border p-2" aria-label="状态">
+        <nav className="w-56 shrink-0 overflow-y-auto border-r border-border p-2" aria-label="States">
           {(["live", "tier-b"] as const).map((tier) => (
             <div key={tier} className="mb-3">
               <p className="mb-1 px-1 text-(length:--text-nano) font-semibold uppercase tracking-wide text-muted-foreground">
@@ -223,10 +223,10 @@ export function TaskChatLab() {
               className="flex items-center gap-1 rounded border border-border px-2 py-1 hover:bg-accent"
             >
               <RotateCcw className="h-3.5 w-3.5" />
-              重放
+              Replay
             </button>
             <label className="flex items-center gap-2">
-              <span className="text-muted-foreground">速度</span>
+              <span className="text-muted-foreground">Speed</span>
               <input
                 type="range"
                 min={0.1}
@@ -234,14 +234,14 @@ export function TaskChatLab() {
                 step={0.1}
                 value={speed}
                 onChange={(e) => setSpeed(parseFloat(e.target.value))}
-                aria-label="流式传输速度"
+                aria-label="Streaming speed"
                 className="w-32"
               />
               <span className="w-10 tabular-nums">{speed.toFixed(1)}×</span>
             </label>
             <div className="ml-auto flex items-center gap-2">
-              <span className="text-muted-foreground">代理气泡</span>
-              <div className="flex items-center gap-0.5 rounded border border-border p-0.5" role="group" aria-label="代理气泡处理">
+              <span className="text-muted-foreground">Agent bubble</span>
+              <div className="flex items-center gap-0.5 rounded border border-border p-0.5" role="group" aria-label="Agent bubble treatment">
                 {BUBBLE_VARIANTS.map((v) => (
                   <button
                     key={v.id || "current"}

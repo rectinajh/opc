@@ -21,8 +21,8 @@ export function FinanceTimelineCard({
   return (
     <Card>
       <CardHeader className="px-4 pt-4 pb-1">
-        <CardTitle className="text-base">最近的财务事件</CardTitle>
-        <CardDescription>充值、费用、信用、承诺及其他非请求费用。</CardDescription>
+        <CardTitle className="text-base">Recent financial events</CardTitle>
+        <CardDescription>Top-ups, fees, credits, commitments, and other non-request charges.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-3 px-4 pb-4 pt-3">
         {rows.length === 0 ? (

@@ -254,80 +254,6 @@ function buildTree(entries: CompanySkillFileInventoryEntry[]) {
   return root.children;
 }
 
-// Display-only label map for skill categories/tags: the underlying slug stays
-// English (used for filter/search/keys); only the rendered text is localized.
-const skillTagDisplay: Record<string, string> = {
-  browser: "浏览器",
-  puppeteer: "Puppeteer",
-  playwright: "Playwright",
-  verification: "验证",
-  product: "产品",
-  design: "设计",
-  research: "研究",
-  "last-30-days": "近30天",
-  context: "上下文",
-  content: "内容",
-  release: "发布",
-  "release-notes": "发布说明",
-  "software-development": "软件开发",
-  mcp: "MCP",
-  finance: "财务",
-  ramp: "Ramp",
-  "simplified-english": "简化英语",
-  docs: "文档",
-  documentation: "文档",
-  github: "GitHub",
-  "issue-triage": "问题分诊",
-  "paperclip-operations": "Paperclip 运营",
-  paperclip: "Paperclip",
-  capsules: "胶囊",
-  agents: "代理",
-  communication: "沟通",
-  operations: "运营",
-  reporting: "报告",
-  status: "状态",
-  ux: "交互设计",
-  acceptance: "验收",
-  "agent-cards": "代理卡片",
-  announcement: "公告",
-  approvals: "审批",
-  brand: "品牌",
-  changelog: "更新日志",
-  qa: "QA",
-  coaching: "辅导",
-  delegation: "委派",
-  planning: "规划",
-  workflow: "工作流",
-  review: "审阅",
-  "code-review": "代码审阅",
-  svg: "SVG",
-  wireframe: "线框图",
-  prototyping: "原型设计",
-  "visual-design": "视觉设计",
-  writing: "写作",
-  summary: "摘要",
-  style: "风格",
-  clarity: "清晰",
-  connectors: "连接器",
-  inbox: "收件箱",
-  integrations: "集成",
-  issues: "问题",
-  search: "搜索",
-  skills: "技能",
-  spend: "支出",
-  testing: "测试",
-  triage: "分诊",
-  validation: "校验",
-  reflection: "反思",
-  "human-approval": "人工审批",
-  hyperframes: "超帧",
-  "pull-requests": "拉取请求",
-};
-
-function skillTagLabel(slug: string): string {
-  return skillTagDisplay[slug] ?? slug;
-}
-
 function sourceMeta(sourceBadge: CompanySkillSourceBadge, sourceLabel: string | null) {
   const normalizedLabel = sourceLabel?.toLowerCase() ?? "";
   const isSkillsShManaged =
@@ -364,9 +290,9 @@ function middleTruncate(value: string, maxLength = 72) {
 
 function formatProjectScanSummary(result: CompanySkillProjectScanResult) {
   const parts = [
-    `发现 ${result.discovered} 个`,
-    `导入 ${result.imported.length} 个`,
-    `更新 ${result.updated.length} 个`,
+    `${result.discovered} found`,
+    `${result.imported.length} imported`,
+    `${result.updated.length} updated`,
   ];
   if (result.conflicts.length > 0) parts.push(`${result.conflicts.length} conflicts`);
   if (result.skipped.length > 0) parts.push(`${result.skipped.length} skipped`);
@@ -394,11 +320,11 @@ function parentDirectoryPaths(filePath: string) {
 type SourceFilter = "all" | "company" | "bundled" | "optional" | "external";
 
 const SOURCE_FILTER_LABELS: Record<SourceFilter, string> = {
-  all: "全部",
-  company: "公司",
-  bundled: "内置",
-  optional: "可选",
-  external: "外部",
+  all: "All",
+  company: "Company",
+  bundled: "Bundled",
+  optional: "Optional",
+  external: "External",
 };
 
 function readonlyMetadataValue(metadata: Record<string, unknown> | null | undefined, key: string): string | null {
@@ -456,7 +382,7 @@ function SourceFilterMenu({
           variant="ghost"
           size="icon-sm"
           className={cn("relative shrink-0", activeFilterCount > 0 && "text-blue-600 dark:text-blue-400")}
-          title={activeFilterCount > 0 ? `筛选：${activeFilterCount}` : "筛选"}
+          title={activeFilterCount > 0 ? `Filters: ${activeFilterCount}` : "Filter"}
         >
           <Filter className="h-3.5 w-3.5" />
           {activeFilterCount > 0 ? (
@@ -467,7 +393,7 @@ function SourceFilterMenu({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
-        <DropdownMenuLabel>来源</DropdownMenuLabel>
+        <DropdownMenuLabel>Source</DropdownMenuLabel>
         <DropdownMenuRadioGroup value={value} onValueChange={(next) => onChange(next as SourceFilter)}>
           {filters.map((filter) => (
             <DropdownMenuRadioItem key={filter} value={filter}>
@@ -502,7 +428,7 @@ function CatalogFilterMenu({
           variant="ghost"
           size="icon-sm"
           className={cn("relative shrink-0", activeFilterCount > 0 && "text-blue-600 dark:text-blue-400")}
-          title={activeFilterCount > 0 ? `筛选：${activeFilterCount}` : "筛选"}
+          title={activeFilterCount > 0 ? `Filters: ${activeFilterCount}` : "Filter"}
         >
           <Filter className="h-3.5 w-3.5" />
           {activeFilterCount > 0 ? (
@@ -513,19 +439,19 @@ function CatalogFilterMenu({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="max-h-(--sz-calc-32) w-56 overflow-y-auto">
-        <DropdownMenuLabel>类型</DropdownMenuLabel>
+        <DropdownMenuLabel>Type</DropdownMenuLabel>
         <DropdownMenuRadioGroup value={kindFilter} onValueChange={(next) => onKindChange(next as "all" | "bundled" | "optional")}>
-          <DropdownMenuRadioItem value="all">全部</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="bundled">捆绑</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="optional">可选</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="all">All</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="bundled">Bundled</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="optional">Optional</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuLabel>类别</DropdownMenuLabel>
+        <DropdownMenuLabel>Category</DropdownMenuLabel>
         <DropdownMenuRadioGroup value={categoryFilter || "__all__"} onValueChange={(next) => onCategoryChange(next === "__all__" ? "" : next)}>
-          <DropdownMenuRadioItem value="__all__">所有类别</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="__all__">All categories</DropdownMenuRadioItem>
           {categories.map((category) => (
             <DropdownMenuRadioItem key={category} value={category}>
-              {skillTagLabel(category)}
+              {category}
             </DropdownMenuRadioItem>
           ))}
         </DropdownMenuRadioGroup>
@@ -575,14 +501,14 @@ function CompatChip({ compatibility }: { compatibility: CompanySkillCompatibilit
   const map = {
     unknown: {
       icon: HelpCircle,
-      label: "未知格式",
-      tooltip: "Paperclip 无法将此技能验证为 Agent Skills Markdown。自行安装风险自负。",
+      label: "Unknown format",
+      tooltip: "Paperclip could not validate this skill as Agent Skills markdown. Install at your own risk.",
       className: "border-yellow-500/40 bg-yellow-500/10 text-yellow-800 dark:text-yellow-200",
     },
     invalid: {
       icon: XOctagon,
-      label: "无效",
-      tooltip: "该技能无法安装——内容不是有效的 Agent Skills Markdown。",
+      label: "Invalid",
+      tooltip: "This skill cannot be installed — content is not valid Agent Skills markdown.",
       className: "border-destructive/40 bg-destructive/10 text-destructive",
     },
   } as const;
@@ -611,7 +537,7 @@ function ProvenanceBadge({ packageName, packageVersion }: { packageName: string 
           <span>{packageName}{packageVersion ? ` v${packageVersion}` : ""}</span>
         </span>
       </TooltipTrigger>
-      <TooltipContent>从应用随附的技能目录安装。来源由包版本和内容哈希签名。</TooltipContent>
+      <TooltipContent>Installed from the app-shipped skills catalog. Provenance is signed by package version and content hash.</TooltipContent>
     </Tooltip>
   );
 }
@@ -653,7 +579,7 @@ export function skillDetailBreadcrumbs(
     ? folderBreadcrumbTrail(treeFromResult(folderResult), detail.folderId)
     : [];
   return [
-    { label: "技能", href: "/skills" },
+    { label: "Skills", href: "/skills" },
     ...trail.map((folder, index) => ({
       label: index === 0 ? reservedRootLabel(folder) : folder.name,
       href: `/skills?folder=${encodeURIComponent(folder.id)}`,
@@ -665,11 +591,11 @@ export function skillDetailBreadcrumbs(
 type DiscoverySort = "agents" | "stars" | "forks" | "recent" | "alphabetical";
 
 const DISCOVERY_SORT_LABELS: Record<DiscoverySort, string> = {
-  agents: "使用最多",
-  stars: "星标最多",
-  forks: "Fork 最多",
-  recent: "最近更新",
-  alphabetical: "按字母",
+  agents: "Most agents",
+  stars: "Most stars",
+  forks: "Most forks",
+  recent: "Recently updated",
+  alphabetical: "Alphabetical",
 };
 
 const DISCOVERY_SORTS: DiscoverySort[] = ["agents", "stars", "forks", "recent", "alphabetical"];
@@ -938,7 +864,7 @@ function SkillCard({
         <div className="min-w-0 flex-1">
           <div className="truncate font-mono text-sm font-medium text-foreground">{card.name}</div>
           <div className="truncate text-xs text-muted-foreground">
-            由 {card.author}{card.version ? ` · ${card.version}` : ""}
+            by {card.author}{card.version ? ` · ${card.version}` : ""}
           </div>
           {badgeFolder !== undefined ? (
             <div className="mt-1 flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
@@ -952,7 +878,7 @@ function SkillCard({
           const meta = sourceMeta(card.sourceBadge ?? "catalog", card.sourceLabel ?? null);
           const SourceIcon = meta.icon;
           return (
-            <span className="shrink-0 text-muted-foreground" title={`来自 ${meta.label}`} aria-label={`来自 ${meta.label}`}>
+            <span className="shrink-0 text-muted-foreground" title={`From ${meta.label}`} aria-label={`From ${meta.label}`}>
               <SourceIcon className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
           );
@@ -994,7 +920,7 @@ function SkillCard({
       {card.forkedFrom ? (
         <div className="mt-2 inline-flex items-center gap-1 text-(length:--text-micro) text-muted-foreground">
           <GitFork className="h-3 w-3" aria-hidden="true" />
-          已分叉
+          Forked
         </div>
       ) : null}
 
@@ -1011,7 +937,7 @@ function SkillCard({
       <div className="mt-auto pt-3">
         {/* Stats: installed agents · stars · forks — stars/forks only when > 0. */}
         <div className="flex items-center gap-2 text-(length:--text-micro) text-muted-foreground">
-          <span>{card.agentCount} 个代理</span>
+          <span>{card.agentCount} {card.agentCount === 1 ? "agent" : "agents"}</span>
           {card.starCount > 0 ? (
             <>
               <span aria-hidden="true">·</span>
@@ -1028,16 +954,16 @@ function SkillCard({
         <div className="mt-2 flex flex-wrap items-center gap-1">
           {card.installed ? (
             <Badge variant="outline" className="border-emerald-500/30 bg-emerald-500/10 text-(length:--text-nano) text-emerald-700 dark:text-emerald-300">
-              已安装
+              Installed
             </Badge>
           ) : null}
           {card.categories.slice(0, 2).map((category) => (
-            <SkillCategoryChip key={category} label={skillTagLabel(category)} />
+            <SkillCategoryChip key={category} label={category} />
           ))}
           {card.required ? (
             <Badge variant="outline" className="ml-auto border-border bg-muted/60 text-(length:--text-nano) text-muted-foreground">
               <Lock className="h-3 w-3" aria-hidden="true" />
-              捆绑
+              Bundled
             </Badge>
           ) : null}
         </div>
@@ -1069,7 +995,7 @@ function CategoryNav({
           active == null ? "bg-accent/60 font-medium text-foreground" : "text-muted-foreground",
         )}
       >
-        <span>全部</span>
+        <span>All</span>
         <span className="text-xs text-muted-foreground">{total}</span>
       </button>
       {categories.map((category) => (
@@ -1082,7 +1008,7 @@ function CategoryNav({
             active === category.slug ? "bg-accent/60 font-medium text-foreground" : "text-muted-foreground",
           )}
         >
-          <span className="truncate">{skillTagLabel(category.slug)}</span>
+          <span className="truncate">{category.slug}</span>
           <span className="ml-2 shrink-0 text-xs text-muted-foreground">{category.count}</span>
         </button>
       ))}
@@ -1250,11 +1176,11 @@ export function DiscoveryGrid({
           this is present (handled in Layout). */}
       <aside className={cn("hidden w-60 shrink-0 flex-col overflow-hidden border-r border-border md:flex", showFolderRail && "md:hidden")}>
         <div className="border-b border-border px-4 py-4">
-          <h2 className="text-sm font-semibold text-foreground">技能商店</h2>
-          <p className="text-xs text-muted-foreground">发现、安装、分叉、分享</p>
+          <h2 className="text-sm font-semibold text-foreground">Skills Store</h2>
+          <p className="text-xs text-muted-foreground">Discover, install, fork, share</p>
         </div>
         <div className="px-4 pb-1 pt-3 text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">
-          类别
+          Categories
         </div>
         <div className="min-h-0 flex-1 overflow-y-auto pb-4">
           <CategoryNav
@@ -1274,14 +1200,14 @@ export function DiscoveryGrid({
             <input
               value={search}
               onChange={(event) => onSearchChange(event.target.value)}
-              placeholder="搜索技能、作者、类别…"
+              placeholder="Search skills, authors, categories…"
               className="h-full w-full bg-transparent text-base outline-none placeholder:text-muted-foreground sm:text-sm"
             />
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
-                <span className="text-muted-foreground">排序</span>
+                <span className="text-muted-foreground">Sort</span>
                 <span className="ml-1.5">{DISCOVERY_SORT_LABELS[sort]}</span>
                 <ChevronDown className="ml-1 h-3.5 w-3.5" />
               </Button>
@@ -1300,7 +1226,7 @@ export function DiscoveryGrid({
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm">
-                  <span className="text-muted-foreground">来源</span>
+                  <span className="text-muted-foreground">Source</span>
                   <span className="ml-1.5 capitalize">
                     {sourceBadgeFilter === "all" ? "All" : sourceMeta(sourceBadgeFilter as CompanySkillSourceBadge, null).label}
                   </span>
@@ -1309,7 +1235,7 @@ export function DiscoveryGrid({
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuRadioGroup value={sourceBadgeFilter} onValueChange={setSourceBadgeFilter}>
-                  <DropdownMenuRadioItem value="all">所有来源</DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="all">All sources</DropdownMenuRadioItem>
                   {availableSources.map((badge) => (
                     <DropdownMenuRadioItem key={badge} value={badge}>
                       {sourceMeta(badge as CompanySkillSourceBadge, null).label}
@@ -1324,41 +1250,41 @@ export function DiscoveryGrid({
             size="icon-sm"
             onClick={() => onScan()}
             disabled={scanPending}
-            aria-label="扫描项目工作区以获取技能"
-            title="扫描项目工作区以获取技能"
+            aria-label="Scan project workspaces for skills"
+            title="Scan project workspaces for skills"
           >
             <RefreshCw className={cn("h-4 w-4", scanPending && "animate-spin")} />
           </Button>
           <Button asChild variant="outline" size="sm">
             <Link to="/skills/studio">
               <FlaskConical className="h-3.5 w-3.5" />
-              工作室
+              Studio
             </Link>
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button size="sm" variant="default">
                 <Plus className="mr-1 h-3.5 w-3.5" />
-                新
+                New
                 <ChevronDown className="ml-1 h-3.5 w-3.5" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onSelect={onCreate}>
                 <Pencil className="mr-2 h-4 w-4" />
-                创建新技能
+                Create new skill
               </DropdownMenuItem>
               <DropdownMenuItem onSelect={onBrowseCatalog}>
                 <Boxes className="mr-2 h-4 w-4" />
-                浏览目录
+                Browse catalog
               </DropdownMenuItem>
               <DropdownMenuItem onSelect={onImport}>
                 <Globe className="mr-2 h-4 w-4" />
-                从路径或 URL 导入
+                Import from path or URL
               </DropdownMenuItem>
               <DropdownMenuItem onSelect={onImportFromProject}>
                 <FolderSearch className="mr-2 h-4 w-4" />
-                从项目导入技能
+                Import skills from project
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -1367,7 +1293,7 @@ export function DiscoveryGrid({
               <FolderChip
                 result={folderResult}
                 selection={folderSelection}
-                allLabel="全部技能"
+                allLabel="All skills"
                 onClick={onOpenMobileFolders ?? (() => undefined)}
               />
             </div>
@@ -1375,7 +1301,7 @@ export function DiscoveryGrid({
           {onCreateFolder && !showFolderRail ? (
             <Button variant="outline" size="sm" onClick={onCreateFolder}>
               <Plus className="mr-1 h-3.5 w-3.5" />
-              新建文件夹
+              New folder
             </Button>
           ) : null}
           {onToggleSelectMode ? (
@@ -1400,10 +1326,10 @@ export function DiscoveryGrid({
                   value={activeCategory ?? "__all__"}
                   onValueChange={(value) => onCategoryChange(value === "__all__" ? null : value)}
                 >
-                  <DropdownMenuRadioItem value="__all__">全部 ({categoryTotal})</DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="__all__">All ({categoryTotal})</DropdownMenuRadioItem>
                   {categories.map((category) => (
                     <DropdownMenuRadioItem key={category.slug} value={category.slug} className="capitalize">
-                      {skillTagLabel(category.slug)} ({category.count})
+                      {category.slug} ({category.count})
                     </DropdownMenuRadioItem>
                   ))}
                 </DropdownMenuRadioGroup>
@@ -1417,19 +1343,19 @@ export function DiscoveryGrid({
           <Tabs value={tab} onValueChange={(value) => onTabChange(value as DiscoveryTab)}>
             <TabsList variant="line" className="p-0">
               <TabsTrigger value="all" className="px-3">
-                <span>全部</span>
+                <span>All</span>
                 <span className="ml-1.5 text-(length:--text-micro) text-muted-foreground">{tabCounts.all}</span>
               </TabsTrigger>
               <TabsTrigger value="installed" className="px-3">
-                <span>已安装</span>
+                <span>Installed</span>
                 <span className="ml-1.5 text-(length:--text-micro) text-muted-foreground">{tabCounts.installed}</span>
               </TabsTrigger>
               <TabsTrigger value="catalog" className="px-3">
-                <span>目录</span>
+                <span>Catalog</span>
                 <span className="ml-1.5 text-(length:--text-micro) text-muted-foreground">{tabCounts.catalog}</span>
               </TabsTrigger>
               <TabsTrigger value="bundled" className="px-3">
-                <span>捆绑</span>
+                <span>Bundled</span>
                 <span className="ml-1.5 text-(length:--text-micro) text-muted-foreground">{tabCounts.bundled}</span>
               </TabsTrigger>
             </TabsList>
@@ -1448,11 +1374,11 @@ export function DiscoveryGrid({
                   size="sm"
                   onClick={() => onScan(activeProjectId)}
                   disabled={scanPending}
-                  aria-label={`刷新 ${activeProjectFolder.name} 的项目技能`}
-                  title={`从 ${activeProjectFolder.name} 刷新技能`}
+                  aria-label={`Refresh ${activeProjectFolder.name} project skills`}
+                  title={`Refresh skills from ${activeProjectFolder.name}`}
                 >
                   <RefreshCw className={cn("h-3.5 w-3.5", scanPending && "animate-spin")} />
-                  刷新
+                  Refresh
                 </Button>
               ) : null}
             </div>
@@ -1460,7 +1386,7 @@ export function DiscoveryGrid({
           {folderNudgeStorageKey && onCreateFolder && folderResult && folderResult.folders.length === 0 && !loading && cards.length > 0 ? (
             <AllUnfiledBanner
               storageKey={folderNudgeStorageKey}
-              itemLabelPlural="个技能"
+              itemLabelPlural="skills"
               onCreateFolder={onCreateFolder}
             />
           ) : null}
@@ -1486,19 +1412,19 @@ export function DiscoveryGrid({
                 icon={LayoutGrid}
                 message={
                   totalCount === 0
-                    ? "还没有技能。创建一个或从目录安装。"
+                    ? "No skills yet. Create one or install from the catalog."
                     : search || activeCategory || sourceFilterActive
-                      ? "没有符合筛选条件的技能。"
-                      : "此页签中还没有技能。"
+                      ? "No skills match your filters."
+                      : "No skills in this tab yet."
                 }
               />
               {totalCount === 0 ? (
                 <div className="mt-3 flex flex-col items-center gap-2">
                   <Button size="sm" onClick={onBrowseCatalog}>
-                    <Boxes className="mr-1.5 h-3.5 w-3.5" /> 浏览目录
+                    <Boxes className="mr-1.5 h-3.5 w-3.5" /> Browse catalog
                   </Button>
                   <Button size="sm" variant="ghost" onClick={onCreate}>
-                    创建技能
+                    Create a skill
                   </Button>
                 </div>
               ) : (search || activeCategory || sourceFilterActive) ? (
@@ -1512,7 +1438,7 @@ export function DiscoveryGrid({
                       setSourceBadgeFilter("all");
                     }}
                   >
-                    清除筛选器
+                    Clear filters
                   </Button>
                 </div>
               ) : null}
@@ -1520,7 +1446,7 @@ export function DiscoveryGrid({
           ) : (
             <>
               <p className="mb-3 text-xs text-muted-foreground">
-                {sourceFilteredCards.length} 个技能
+                {sourceFilteredCards.length} {sourceFilteredCards.length === 1 ? "skill" : "skills"}
                 {activeCategory ? <span className="capitalize"> · {activeCategory}</span> : null}
               </p>
               <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(19rem,1fr))]">
@@ -1622,7 +1548,7 @@ function NewSkillWizard({
                   : draft.markdown,
               });
             }}
-            placeholder="技能名称"
+            placeholder="Skill name"
             className="h-9"
           />
           <Input
@@ -1647,7 +1573,7 @@ function NewSkillWizard({
                   : draft.markdown,
               });
             }}
-            placeholder="技能的一句话承诺"
+            placeholder="One-line promise for the skill"
             className="min-h-20"
           />
         </div>
@@ -1670,7 +1596,7 @@ function NewSkillWizard({
             </div>
           </div>
           <div>
-            <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted-foreground">颜色</label>
+            <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted-foreground">Color</label>
             <div className="flex flex-wrap gap-2">
               {SKILL_CREATE_ACCENTS.map((color) => (
                 <button
@@ -1693,11 +1619,11 @@ function NewSkillWizard({
             </div>
           </div>
           <div>
-            <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted-foreground">类别</label>
+            <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted-foreground">Categories</label>
             <Input
               value={categoryDraft}
               onChange={(event) => patchDraft({ categories: splitCategoryDraft(event.target.value) })}
-              placeholder="工程、审查、记忆"
+              placeholder="engineering, review, memory"
               className="h-9"
             />
           </div>
@@ -1713,17 +1639,17 @@ function NewSkillWizard({
       ) : (
         <div className="space-y-4 text-sm">
           <div className="grid grid-cols-(--gtc-26) gap-y-2">
-            <span className="text-muted-foreground">名称</span>
+            <span className="text-muted-foreground">Name</span>
             <span>{draft.name || "Untitled"}</span>
             <span className="text-muted-foreground">Slug</span>
             <span className="font-mono">{effectiveSlug || "skill"}</span>
-            <span className="text-muted-foreground">范围</span>
+            <span className="text-muted-foreground">Scope</span>
             <span>{draft.sharingScope === "private" ? "Private" : "Company"}</span>
-            <span className="text-muted-foreground">类别</span>
+            <span className="text-muted-foreground">Categories</span>
             <span>{draft.categories.length ? draft.categories.join(", ") : "none"}</span>
           </div>
           <div className="space-y-2">
-            <label className="block text-xs font-medium uppercase tracking-wide text-muted-foreground">共享</label>
+            <label className="block text-xs font-medium uppercase tracking-wide text-muted-foreground">Sharing</label>
             <div className="grid gap-2 sm:grid-cols-3">
               {(["company", "private"] as const).map((scope) => (
                 <button
@@ -1746,8 +1672,8 @@ function NewSkillWizard({
                 disabled
                 className="rounded-md border border-dashed border-border px-3 py-2 text-left text-sm text-muted-foreground"
               >
-                <span className="block font-medium">公开链接</span>
-                <span className="mt-1 block text-xs">稍后推出。</span>
+                <span className="block font-medium">Public link</span>
+                <span className="mt-1 block text-xs">Coming later.</span>
               </button>
             </div>
           </div>
@@ -1762,15 +1688,15 @@ function NewSkillWizard({
 
       <div className="flex items-center justify-between gap-2 border-t border-border pt-3">
         <Button variant="ghost" size="sm" onClick={onCancel} disabled={isPending}>
-          取消
+          Cancel
         </Button>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" onClick={() => setStep((value) => Math.max(0, value - 1))} disabled={isPending || step === 0}>
-            返回
+            Back
           </Button>
           {step < steps.length - 1 ? (
             <Button size="sm" onClick={() => setStep((value) => Math.min(steps.length - 1, value + 1))} disabled={!nameValid}>
-              下一个
+              Next
             </Button>
           ) : (
             <Button size="sm" onClick={submit} disabled={isPending || !nameValid}>
@@ -1824,7 +1750,7 @@ function CatalogList({
   if (filtered.length === 0) {
     return (
       <div className="px-4 py-6 text-sm text-muted-foreground">
-        没有目录技能符合此筛选条件。
+        No catalog skills match this filter.
       </div>
     );
   }
@@ -1952,7 +1878,7 @@ function CatalogDetailPane({
   loadingPrimaryAction: boolean;
 }) {
   if (!skill) {
-    return <EmptyState icon={Boxes} message="选择要检查的目录技能。" />;
+    return <EmptyState icon={Boxes} message="Select a catalog skill to inspect." />;
   }
 
   const installedHash = installedSkill?.originHash ?? null;
@@ -1967,11 +1893,11 @@ function CatalogDetailPane({
           <span>
             <Button disabled>
               <Download className="mr-1.5 h-3.5 w-3.5" />
-              安装技能
+              Install skill
             </Button>
           </span>
         </TooltipTrigger>
-        <TooltipContent>该技能无法安装——其内容不是有效的 Agent Skills Markdown。</TooltipContent>
+        <TooltipContent>This skill cannot be installed — its content is not valid Agent Skills markdown.</TooltipContent>
       </Tooltip>
     );
   } else if (!isInstalled) {
@@ -1985,7 +1911,7 @@ function CatalogDetailPane({
     cta = (
       <Button onClick={onUpdate} disabled={loadingPrimaryAction} className="border-amber-500/40 bg-amber-500/20 text-amber-900 dark:text-amber-100 hover:bg-amber-500/30">
         <ArrowUpCircle className="mr-1.5 h-3.5 w-3.5" />
-        从目录更新
+        Update from catalog
       </Button>
     );
   } else {
@@ -2028,10 +1954,10 @@ function CatalogDetailPane({
               <TooltipTrigger asChild>
                 <Badge variant="outline" className="border-amber-500/40 bg-amber-500/10 text-(length:--text-micro) text-amber-800 dark:text-amber-200">
                   <ArrowUpCircle className="h-3 w-3" aria-hidden="true" />
-                  有可用更新
+                  Update available
                 </Badge>
               </TooltipTrigger>
-              <TooltipContent>自安装此技能以来，目录内容哈希已更改。</TooltipContent>
+              <TooltipContent>Catalog content hash has changed since this skill was installed.</TooltipContent>
             </Tooltip>
           ) : null}
           {skill.requires.length > 0 ? (
@@ -2052,16 +1978,16 @@ function CatalogDetailPane({
         </div>
 
         <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-          <span className="uppercase tracking-(--tracking-caps)">键</span>
+          <span className="uppercase tracking-(--tracking-caps)">Key</span>
           <span className="font-mono">{skill.key}</span>
           <span className="uppercase tracking-(--tracking-caps)">·</span>
-          <span className="uppercase tracking-(--tracking-caps)">哈希</span>
+          <span className="uppercase tracking-(--tracking-caps)">Hash</span>
           <span className="font-mono">{skill.contentHash.slice(0, 24)}…</span>
           <CopyText
             text={skill.contentHash}
             copiedLabel="Copied hash"
             ariaLabel="Copy content hash"
-            title="复制内容哈希"
+            title="Copy content hash"
             className="inline-flex h-6 w-6 items-center justify-center rounded-sm border border-border text-muted-foreground hover:bg-accent hover:text-foreground"
           >
             <Copy className="h-3 w-3" />
@@ -2079,7 +2005,7 @@ function CatalogDetailPane({
         ) : fileQuery.error ? (
           <div className="text-sm text-destructive">{fileQuery.error instanceof Error ? fileQuery.error.message : "Failed to load file"}</div>
         ) : !fileQuery.data ? (
-          <div className="text-sm text-muted-foreground">选择要检查的文件。</div>
+          <div className="text-sm text-muted-foreground">Select a file to inspect.</div>
         ) : fileQuery.data.markdown ? (
           <MarkdownBody softBreaks={false} linkIssueReferences={false}>{body}</MarkdownBody>
         ) : (
@@ -2158,33 +2084,33 @@ function InstallPreviewDialog({
         <div className="space-y-4 text-sm">
           <div className="rounded-md border border-border p-3">
             <div className="grid grid-cols-(--gtc-26) gap-y-2 text-xs">
-              <div className="text-muted-foreground">信任</div>
+              <div className="text-muted-foreground">Trust</div>
               <div className="flex items-center gap-2">
                 <TrustChip level={skill.trustLevel} />
                 {skill.trustLevel === "markdown_only" ? (
-                  <span className="text-muted-foreground">安全</span>
+                  <span className="text-muted-foreground">Safe</span>
                 ) : skill.trustLevel === "scripts_executables" ? (
-                  <span className="text-amber-800 dark:text-amber-200">需要审查</span>
+                  <span className="text-amber-800 dark:text-amber-200">Review required</span>
                 ) : (
-                  <span className="text-muted-foreground">非脚本资产</span>
+                  <span className="text-muted-foreground">Non-script assets</span>
                 )}
               </div>
-              <div className="text-muted-foreground">兼容性</div>
+              <div className="text-muted-foreground">Compatibility</div>
               <div className="flex items-center gap-2">
                 {skill.compatibility === "compatible" ? (
                   <span className="inline-flex items-center gap-1 text-muted-foreground">
                     <Check className="h-3 w-3" aria-hidden="true" />
-                    兼容
+                    Compatible
                   </span>
                 ) : (
                   <CompatChip compatibility={skill.compatibility} />
                 )}
               </div>
-              <div className="text-muted-foreground">要求</div>
+              <div className="text-muted-foreground">Requires</div>
               <div className="text-foreground">{skill.requires.length === 0 ? "none" : skill.requires.join(", ")}</div>
-              <div className="text-muted-foreground">角色</div>
+              <div className="text-muted-foreground">Roles</div>
               <div className="text-foreground">{skill.recommendedForRoles.length === 0 ? "any" : skill.recommendedForRoles.join(" · ")}</div>
-              <div className="text-muted-foreground">来源</div>
+              <div className="text-muted-foreground">Provenance</div>
               <div className="min-w-0">
                 <div className="truncate">{packageName ?? "—"}{packageVersion ? ` v${packageVersion}` : ""}</div>
                 <div className="truncate font-mono text-(length:--text-micro) text-muted-foreground">{skill.contentHash}</div>
@@ -2209,7 +2135,7 @@ function InstallPreviewDialog({
 
           {conflict ? (
             <div className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-xs text-amber-800 dark:text-amber-200">
-              具有键的现有技能 <span className="font-mono">{conflict.key}</span> is installed (
+              An existing skill with key <span className="font-mono">{conflict.key}</span> is installed (
               {conflict.sourceLabel ?? conflict.sourceType}). Installing will {defaultAction === "update" ? "overwrite the catalog content" : "replace the existing skill"}.
             </div>
           ) : null}
@@ -2225,12 +2151,12 @@ function InstallPreviewDialog({
           {advancedOpen ? (
             <div className="space-y-3 rounded-md border border-border p-3 text-xs">
               <div>
-                <label className="mb-1 block uppercase tracking-wide text-muted-foreground">覆盖别名</label>
+                <label className="mb-1 block uppercase tracking-wide text-muted-foreground">Slug override</label>
                 <Input value={slug} onChange={(event) => setSlug(event.target.value)} placeholder={defaultSlug ?? skill.slug} className="h-8" />
               </div>
               <label className="flex items-center gap-2">
                 <Checkbox checked={force} onCheckedChange={(value) => setForce(Boolean(value))} />
-                <span>强制替换具有相同键的现有技能</span>
+                <span>Force replace existing same-key skill</span>
               </label>
             </div>
           ) : null}
@@ -2244,7 +2170,7 @@ function InstallPreviewDialog({
 
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)} disabled={isPending}>
-            取消
+            Cancel
           </Button>
           <Button
             variant={confirmVariant}
@@ -2310,13 +2236,13 @@ function AttachAgentsPopover({
       }}
       headerContent={sortedVersions.length > 0 ? (
         <div className="mt-2 flex items-center gap-2 text-xs">
-          <span className="shrink-0 text-muted-foreground">版本</span>
+          <span className="shrink-0 text-muted-foreground">Version</span>
           <select
             value={draftVersionId ?? "__latest__"}
             onChange={(event) => setDraftVersionId(event.target.value === "__latest__" ? null : event.target.value)}
             className="h-8 min-w-0 flex-1 rounded-md border border-border bg-background px-2 text-xs text-foreground"
           >
-            <option value="__latest__">最新</option>
+            <option value="__latest__">Latest</option>
             {sortedVersions.map((version) => (
               <option key={version.id} value={version.id}>
                 v{version.revisionNumber}{version.label ? ` · ${version.label}` : ""}
@@ -2337,7 +2263,7 @@ function AttachAgentsPopover({
       renderNameSuffix={(agent) => (agent as AttachAgentOption).paused ? (
         <Badge variant="outline" className="[&>svg]:size-2.5 border-amber-500/30 bg-amber-500/10 px-1.5 text-(length:--text-nano) uppercase tracking-wide text-amber-500">
           <Pause className="h-2.5 w-2.5" aria-hidden="true" />
-          已暂停
+          Paused
         </Badge>
       ) : null}
     />
@@ -2476,14 +2402,14 @@ function SkillList({
         <div className="px-4 py-6 text-sm text-muted-foreground">
           No {SOURCE_FILTER_LABELS[sourceFilter].toLowerCase()} skills installed.{" "}
           <button type="button" className="text-foreground underline" onClick={onClearFilters}>
-            清除筛选
+            Clear filter
           </button>
         </div>
       );
     }
     return (
       <div className="px-4 py-6 text-sm text-muted-foreground">
-        没有技能符合此筛选条件。
+        No skills match this filter.
       </div>
     );
   }
@@ -2657,20 +2583,20 @@ function SkillVersionDiffDialog({
           </DialogHeader>
           <div className="flex flex-wrap items-center gap-3 text-xs">
             <label className="flex items-center gap-2">
-              <Badge variant="outline" className="border-red-500/30 bg-red-500/10 uppercase tracking-wider text-red-400">旧</Badge>
+              <Badge variant="outline" className="border-red-500/30 bg-red-500/10 uppercase tracking-wider text-red-400">Old</Badge>
               <select
                 value={leftVersionId ?? ""}
                 onChange={(event) => onLeftVersionChange(event.target.value || null)}
                 className="h-8 w-44 rounded-md border border-border bg-background px-2 text-xs"
               >
-                <option value="">初始</option>
+                <option value="">Initial</option>
                 {sorted.map((version) => (
                   <option key={version.id} value={version.id}>{versionLabel(version)}</option>
                 ))}
               </select>
             </label>
             <label className="flex items-center gap-2">
-              <Badge variant="outline" className="border-green-500/30 bg-green-500/10 uppercase tracking-wider text-green-400">新</Badge>
+              <Badge variant="outline" className="border-green-500/30 bg-green-500/10 uppercase tracking-wider text-green-400">New</Badge>
               <select
                 value={right?.id ?? ""}
                 onChange={(event) => onRightVersionChange(event.target.value || null)}
@@ -2702,14 +2628,14 @@ function SkillVersionDiffDialog({
           </aside>
           <div className="min-w-0 flex-1 overflow-auto rounded-md border border-border text-xs">
             {!right ? (
-              <div className="p-6 text-center text-sm text-muted-foreground">选择要比较的版本。</div>
+              <div className="p-6 text-center text-sm text-muted-foreground">Select a version to compare.</div>
             ) : left?.id === right.id ? (
-              <div className="p-6 text-center text-sm text-muted-foreground">两侧版本相同。</div>
+              <div className="p-6 text-center text-sm text-muted-foreground">Both sides are the same version.</div>
             ) : (
               <div className="font-mono text-xs leading-6">
                 <div className="grid grid-cols-(--gtc-1) border-b border-border/60 bg-muted/30 px-3 py-2 text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">
-                  <span>旧</span>
-                  <span>新</span>
+                  <span>Old</span>
+                  <span>New</span>
                   <span />
                   <span>{effectivePath}</span>
                 </div>
@@ -2749,7 +2675,7 @@ function SkillLocationCard({
   const canonical = folderPath && folderPath.length > 0 ? folderPath : "Unfiled";
   return (
     <section>
-      <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">位置</div>
+      <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">Location</div>
       <div className="flex items-center gap-2 rounded-md border border-border bg-muted/30 px-2.5 py-1.5">
         <FolderOpen className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
         <span className="min-w-0 flex-1 truncate font-mono text-xs text-foreground" title={canonical}>{canonical}</span>
@@ -2773,7 +2699,7 @@ function SkillLocationCard({
         {onMove ? (
           <Button size="sm" variant="outline" onClick={onMove}>
             <FolderInput className="mr-1.5 h-3.5 w-3.5" />
-            移动
+            Move
           </Button>
         ) : null}
       </div>
@@ -2808,7 +2734,7 @@ function SkillTagsEditor({
     <section>
       <div className="mb-2 flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
         <Hash className="h-3 w-3" />
-        标签
+        Tags
       </div>
       <div className="flex flex-wrap gap-1.5">
         {categories.map((tag) => (
@@ -2829,7 +2755,7 @@ function SkillTagsEditor({
           </span>
         ))}
         {categories.length === 0 ? (
-          <span className="text-xs text-muted-foreground">暂无标签。</span>
+          <span className="text-xs text-muted-foreground">No tags yet.</span>
         ) : null}
       </div>
       <Input
@@ -2984,7 +2910,7 @@ export function SkillDetailPage({
   }, [isDirty]);
 
   if (!detail) {
-    return loading ? <PageSkeleton variant="detail" /> : <EmptyState icon={Boxes} message="未找到技能。" />;
+    return loading ? <PageSkeleton variant="detail" /> : <EmptyState icon={Boxes} message="Skill not found." />;
   }
 
   const skill = detail;
@@ -3035,7 +2961,7 @@ export function SkillDetailPage({
     return (
       <div className="grid min-h-(--sz-560px) gap-0 lg:grid-cols-(--gtc-28)">
         <aside className="border-b border-border pb-3 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-3">
-          <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">文件</div>
+          <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">Files</div>
           <SkillTree
             nodes={buildTree(skill.fileInventory)}
             skillId={skill.id}
@@ -3056,20 +2982,20 @@ export function SkillDetailPage({
                     className={cn("px-3 py-1.5 text-sm", viewMode === "preview" ? "text-foreground" : "text-muted-foreground")}
                     onClick={() => setViewMode("preview")}
                   >
-                    <span className="flex items-center gap-1.5"><Eye className="h-3.5 w-3.5" /> 查看</span>
+                    <span className="flex items-center gap-1.5"><Eye className="h-3.5 w-3.5" /> View</span>
                   </button>
                   <button
                     className={cn("border-l border-border px-3 py-1.5 text-sm", viewMode === "code" ? "text-foreground" : "text-muted-foreground")}
                     onClick={() => setViewMode("code")}
                   >
-                    <span className="flex items-center gap-1.5"><Code2 className="h-3.5 w-3.5" /> 代码</span>
+                    <span className="flex items-center gap-1.5"><Code2 className="h-3.5 w-3.5" /> Code</span>
                   </button>
                 </div>
               ) : null}
               {skill.editable && file?.editable ? (
                 editMode ? (
                   <>
-                    <Button variant="ghost" size="sm" onClick={() => setEditMode(false)} disabled={savePending}>取消</Button>
+                    <Button variant="ghost" size="sm" onClick={() => setEditMode(false)} disabled={savePending}>Cancel</Button>
                     <Button size="sm" onClick={onSave} disabled={savePending}>
                       <Save className="mr-1.5 h-3.5 w-3.5" />
                       {savePending ? "Saving..." : "Save"}
@@ -3077,7 +3003,7 @@ export function SkillDetailPage({
                   </>
                 ) : (
                   <Button variant="ghost" size="sm" onClick={() => setEditMode(true)}>
-                    <Pencil className="mr-1.5 h-3.5 w-3.5" /> 编辑
+                    <Pencil className="mr-1.5 h-3.5 w-3.5" /> Edit
                   </Button>
                 )
               ) : !skill.editable ? (
@@ -3089,7 +3015,7 @@ export function SkillDetailPage({
                   title={skill.editableReason ?? "Fork this skill to edit it."}
                 >
                   <GitFork className="mr-1.5 h-3.5 w-3.5" />
-                  派生
+                  Fork
                 </Button>
               ) : null}
             </div>
@@ -3097,7 +3023,7 @@ export function SkillDetailPage({
           {fileLoading ? (
             <PageSkeleton variant="detail" />
           ) : !file ? (
-            <div className="text-sm text-muted-foreground">选择要检查的文件。</div>
+            <div className="text-sm text-muted-foreground">Select a file to inspect.</div>
           ) : editMode && file.editable ? (
             file.markdown ? (
               <MarkdownEditor value={draft} onChange={setDraft} bordered={false} className="min-h-(--sz-520px)" />
@@ -3124,7 +3050,7 @@ export function SkillDetailPage({
     return (
       <div className="space-y-6">
         <section>
-          <h2 className="mb-2 text-sm font-medium">关于</h2>
+          <h2 className="mb-2 text-sm font-medium">About</h2>
           {fileLoading ? (
             <PageSkeleton variant="detail" />
           ) : file?.markdown ? (
@@ -3135,28 +3061,28 @@ export function SkillDetailPage({
         </section>
         <section className="grid min-w-0 gap-3 text-sm sm:grid-cols-2">
           <div className="min-w-0 border-b border-border py-2">
-            <div className="text-xs text-muted-foreground">键</div>
+            <div className="text-xs text-muted-foreground">Key</div>
             <div className="mt-1 truncate font-mono">{skill.key}</div>
           </div>
           <div className="min-w-0 border-b border-border py-2">
-            <div className="text-xs text-muted-foreground">来源</div>
+            <div className="text-xs text-muted-foreground">Source</div>
             <div className="mt-1 min-w-0 [overflow-wrap:anywhere]">{sourceLocatorText ?? source.label}</div>
           </div>
           <div className="min-w-0 border-b border-border py-2">
-            <div className="text-xs text-muted-foreground">版本</div>
+            <div className="text-xs text-muted-foreground">Version</div>
             <div className="mt-1">{versionLabel(skill.currentVersion ?? null)}</div>
           </div>
           <div className="min-w-0 border-b border-border py-2">
-            <div className="text-xs text-muted-foreground">模式</div>
+            <div className="text-xs text-muted-foreground">Mode</div>
             <div className="mt-1 flex flex-wrap items-center gap-2">
               {skill.editable ? (
                 "Editable"
               ) : (
                 <>
-                  <span>只读</span>
+                  <span>Read only</span>
                   <Button type="button" variant="outline" size="xs" onClick={onFork}>
                     <GitFork className="mr-1 h-3 w-3" />
-                    派生
+                    Fork
                   </Button>
                 </>
               )}
@@ -3181,14 +3107,14 @@ export function SkillDetailPage({
             onClick={() => openVersionDiff()}
             disabled={sortedVersions.length < 2}
           >
-            <History className="mr-1.5 h-3.5 w-3.5" /> 比较
+            <History className="mr-1.5 h-3.5 w-3.5" /> Compare
           </Button>
         </div>
         <div className="border-y border-border">
           {versionsLoading ? (
             <PageSkeleton variant="list" />
           ) : sortedVersions.length === 0 ? (
-            <div className="py-6 text-sm text-muted-foreground">暂无已保存的版本。</div>
+            <div className="py-6 text-sm text-muted-foreground">No saved versions yet.</div>
           ) : (
             sortedVersions.map((version) => (
               <div key={version.id} className="grid gap-2 border-b border-border px-0 py-3 text-sm last:border-b-0 sm:grid-cols-(--gtc-13)">
@@ -3204,7 +3130,7 @@ export function SkillDetailPage({
                   size="sm"
                   onClick={() => openVersionDiff(version.id)}
                 >
-                  查看差异
+                  View diff
                 </Button>
               </div>
             ))
@@ -3260,7 +3186,7 @@ export function SkillDetailPage({
                       {meta?.paused ? (
                         <Badge variant="outline" className="[&>svg]:size-2.5 border-amber-500/30 bg-amber-500/10 px-1.5 text-(length:--text-nano) uppercase tracking-wide text-amber-500">
                           <Pause className="h-2.5 w-2.5" aria-hidden="true" />
-                          已暂停
+                          Paused
                         </Badge>
                       ) : null}
                     </div>
@@ -3270,7 +3196,7 @@ export function SkillDetailPage({
                     to={`/agents/${agent.urlKey}/skills`}
                     className="shrink-0 text-xs text-muted-foreground no-underline hover:text-foreground"
                   >
-                    查看
+                    View
                   </Link>
                 </div>
               );
@@ -3365,7 +3291,7 @@ export function SkillDetailPage({
             <Button variant="outline" size="sm" asChild>
               <Link to={resolvedStudioHref}>
                 <FlaskConical className="mr-1.5 h-3.5 w-3.5" />
-                在 Studio 中打开
+                Open in Studio
               </Link>
             </Button>
             <div className="flex items-center overflow-hidden rounded-md border border-border">
@@ -3377,7 +3303,7 @@ export function SkillDetailPage({
                     <span className="hidden sm:inline">{detail.attachedAgentCount === 1 ? "install" : "installs"}</span>
                   </span>
                 </TooltipTrigger>
-                <TooltipContent>当前已安装此技能的公司代理。</TooltipContent>
+                <TooltipContent>Agents in this company that currently have this skill installed.</TooltipContent>
               </Tooltip>
               <button
                 type="button"
@@ -3394,10 +3320,10 @@ export function SkillDetailPage({
                 type="button"
                 onClick={onFork}
                 className="inline-flex items-center gap-1.5 border-l border-border px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-accent/40 hover:text-foreground"
-                title="派生此技能"
+                title="Fork this skill"
               >
                 <GitFork className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">派生</span>
+                <span className="hidden sm:inline">Fork</span>
                 <span className="font-medium text-foreground">{detail.forkCount}</span>
               </button>
             </div>
@@ -3436,7 +3362,7 @@ export function SkillDetailPage({
             onSave={(categories) => onUpdateSettings({ categories, sharingScope: detail.sharingScope === "public_link" ? "company" : detail.sharingScope })}
           />
           <section>
-            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">代理</div>
+            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">Agents</div>
             <div className="space-y-3">
               {/* Big primary action opens the agent multi-selector (PAP-10907). */}
               <AttachAgentsPopover
@@ -3449,7 +3375,7 @@ export function SkillDetailPage({
                 fullWidth
               />
               {detail.usedByAgents.length === 0 ? (
-                <p className="text-xs text-muted-foreground">尚未附加代理。</p>
+                <p className="text-xs text-muted-foreground">No agents attached yet.</p>
               ) : (
                 <div className="space-y-0.5">
                   {/* Preview up to three attached agents, then summarise the rest. */}
@@ -3464,7 +3390,7 @@ export function SkillDetailPage({
                         <AgentIcon icon={meta?.icon ?? null} className="h-4 w-4 shrink-0 text-muted-foreground" />
                         <span className="min-w-0 flex-1 truncate text-foreground">{agent.name}</span>
                         {meta?.paused ? (
-                          <Pause className="h-3 w-3 shrink-0 text-amber-500" aria-label="已暂停" />
+                          <Pause className="h-3 w-3 shrink-0 text-amber-500" aria-label="Paused" />
                         ) : null}
                       </Link>
                     );
@@ -3483,7 +3409,7 @@ export function SkillDetailPage({
               available. Bundled/catalog skills surface their source label too
               (PAP-10907). */}
           <section>
-            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">来源</div>
+            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">Source</div>
             {githubSource ? (
               <div className="flex items-start gap-2 text-sm">
                 <Github className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
@@ -3539,20 +3465,20 @@ export function SkillDetailPage({
               (PAP-10907 F). Only GitHub-sourced skills can pull updates. */}
           {detail.sourceType === "github" ? (
             <section>
-              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">更新</div>
+              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">Updates</div>
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Pin className="h-3.5 w-3.5 shrink-0" aria-label="固定的源修订版" />
+                      <Pin className="h-3.5 w-3.5 shrink-0" aria-label="Pinned source revision" />
                     </TooltipTrigger>
-                    <TooltipContent>固定的源修订版</TooltipContent>
+                    <TooltipContent>Pinned source revision</TooltipContent>
                   </Tooltip>
                   <span className="truncate font-mono text-foreground">{currentPin ?? "untracked"}</span>
                 </div>
                 <Button variant="outline" size="sm" className="w-full" onClick={onCheckUpdates} disabled={checkUpdatesPending || updateStatusLoading}>
                   <RefreshCw className={cn("mr-1.5 h-3.5 w-3.5", (checkUpdatesPending || updateStatusLoading) && "animate-spin")} />
-                  检查更新
+                  Check for updates
                 </Button>
                 {updateStatus?.supported && updateStatus.hasUpdate ? (
                   <Button size="sm" className="w-full" onClick={onInstallUpdate} disabled={installUpdatePending}>
@@ -3560,7 +3486,7 @@ export function SkillDetailPage({
                     Install update{latestPin ? ` ${latestPin}` : ""}
                   </Button>
                 ) : updateStatus?.supported && !updateStatus.hasUpdate && !updateStatusLoading ? (
-                  <p className="text-xs text-muted-foreground">已是最新。</p>
+                  <p className="text-xs text-muted-foreground">Up to date.</p>
                 ) : null}
               </div>
             </section>
@@ -3579,7 +3505,7 @@ export function SkillDetailPage({
               className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm text-muted-foreground transition-colors hover:bg-accent/30 hover:text-foreground"
             >
               <Settings className="h-4 w-4 shrink-0" />
-              <span className="flex-1">设置</span>
+              <span className="flex-1">Settings</span>
             </button>
           </section>
         </aside>
@@ -3589,7 +3515,7 @@ export function SkillDetailPage({
           unsaved state is obvious (PAP-10907 J). */}
       {isDirty ? (
         <div className="fixed bottom-6 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 rounded-full border border-border bg-background/95 px-4 py-2 shadow-lg backdrop-blur">
-          <span className="text-sm text-muted-foreground">未保存的更改</span>
+          <span className="text-sm text-muted-foreground">Unsaved changes</span>
           <Button
             variant="ghost"
             size="sm"
@@ -3599,7 +3525,7 @@ export function SkillDetailPage({
             }}
             disabled={savePending}
           >
-            放弃
+            Discard
           </Button>
           <Button size="sm" onClick={onSave} disabled={savePending}>
             <Save className="mr-1.5 h-3.5 w-3.5" />
@@ -3611,23 +3537,23 @@ export function SkillDetailPage({
       <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>技能设置</DialogTitle>
+            <DialogTitle>Skill settings</DialogTitle>
             <DialogDescription>Manage how {detail.name} is grouped and shared.</DialogDescription>
           </DialogHeader>
           <div className="space-y-5">
             <div className="space-y-1.5">
-              <label className="text-xs font-medium uppercase tracking-wide text-muted-foreground">类别</label>
+              <label className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Categories</label>
               <Input
                 value={settingsCategoryDraft}
                 onChange={(event) => setSettingsCategoryDraft(event.target.value)}
-                placeholder="工程、审查、记忆"
+                placeholder="engineering, review, memory"
                 className="h-9"
                 disabled={updateSettingsPending}
               />
-              <p className="text-xs text-muted-foreground">用逗号分隔类别。留空以清除类别。</p>
+              <p className="text-xs text-muted-foreground">Separate categories with commas. Leave empty to clear categories.</p>
             </div>
             <div className="space-y-1.5">
-              <label className="text-xs font-medium uppercase tracking-wide text-muted-foreground">共享</label>
+              <label className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Sharing</label>
               <select
                 value={settingsSharingScope}
                 onChange={(event) => setSettingsSharingScope(event.target.value as Exclude<CompanySkillSharingScope, "public_link">)}
@@ -3637,7 +3563,7 @@ export function SkillDetailPage({
                 <option value="company">Company — visible inside this company</option>
                 <option value="private">Private — only visible in your library</option>
               </select>
-              <p className="text-xs text-muted-foreground">公开链接共享即将推出。</p>
+              <p className="text-xs text-muted-foreground">Public link sharing is coming later.</p>
             </div>
             <div className="flex justify-end gap-2 border-t border-border pt-4">
               <Button
@@ -3650,7 +3576,7 @@ export function SkillDetailPage({
                 }}
                 disabled={!settingsDirty || updateSettingsPending}
               >
-                重置
+                Reset
               </Button>
               <Button
                 type="button"
@@ -3664,9 +3590,9 @@ export function SkillDetailPage({
             </div>
             {detail.editable ? (
               <div className="rounded-md border border-destructive/40 p-3">
-                <div className="text-xs font-semibold uppercase tracking-wide text-destructive">危险区域</div>
+                <div className="text-xs font-semibold uppercase tracking-wide text-destructive">Danger zone</div>
                 <div className="mt-2 flex items-center justify-between gap-3">
-                  <p className="min-w-0 text-xs text-muted-foreground">从公司库中移除此技能。</p>
+                  <p className="min-w-0 text-xs text-muted-foreground">Remove this skill from the company library.</p>
                   <Button
                     variant="destructive"
                     size="sm"
@@ -3746,7 +3672,7 @@ function SkillPane({
     return (
       <EmptyState
         icon={Boxes}
-        message="选择技能以检查其文件。"
+        message="Select a skill to inspect its files."
       />
     );
   }
@@ -3780,7 +3706,7 @@ function SkillPane({
             <Button variant="outline" size="sm" asChild>
               <Link to={skillStudioRoute(detail.id)}>
                 <FlaskConical className="mr-1.5 h-3.5 w-3.5" />
-                在 Studio 中打开
+                Open in Studio
               </Link>
             </Button>
             <Button
@@ -3810,7 +3736,7 @@ function SkillPane({
         <div className="mt-4 space-y-3 border-t border-border pt-4 text-sm">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <div className="flex min-w-0 items-center gap-2">
-              <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">来源</span>
+              <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">Source</span>
               <span className="flex min-w-0 items-center gap-2">
                 <SourceIcon className="h-3.5 w-3.5 text-muted-foreground" />
                 {detail.sourcePath && displaySourcePath ? (
@@ -3825,7 +3751,7 @@ function SkillPane({
                       text={detail.sourcePath}
                       copiedLabel="Copied path"
                       ariaLabel="Copy source path"
-                      title="复制源路径"
+                      title="Copy source path"
                       className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-sm border border-border text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                     >
                       <Copy className="h-3.5 w-3.5" />
@@ -3838,7 +3764,7 @@ function SkillPane({
             </div>
             {detail.sourceType === "github" && (
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">固定</span>
+                <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">Pin</span>
                 <span className="font-mono text-xs">{currentPin ?? "untracked"}</span>
                 {updateStatus?.trackingRef && (
                   <span className="text-xs text-muted-foreground">tracking {updateStatus.trackingRef}</span>
@@ -3850,7 +3776,7 @@ function SkillPane({
                   disabled={checkUpdatesPending || updateStatusLoading}
                 >
                   <RefreshCw className={cn("mr-1.5 h-3.5 w-3.5", (checkUpdatesPending || updateStatusLoading) && "animate-spin")} />
-                  检查更新
+                  Check for updates
                 </Button>
                 {updateStatus?.supported && updateStatus.hasUpdate && (
                   <Button
@@ -3863,7 +3789,7 @@ function SkillPane({
                   </Button>
                 )}
                 {updateStatus?.supported && !updateStatus.hasUpdate && !updateStatusLoading && (
-                  <span className="text-xs text-muted-foreground">已是最新</span>
+                  <span className="text-xs text-muted-foreground">Up to date</span>
                 )}
                 {!updateStatus?.supported && updateStatus?.reason && (
                   <span className="text-xs text-muted-foreground">{updateStatus.reason}</span>
@@ -3871,16 +3797,16 @@ function SkillPane({
               </div>
             )}
             <div className="flex items-center gap-2">
-              <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">键</span>
+              <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">Key</span>
               <span className="font-mono text-xs">{detail.key}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">模式</span>
+              <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">Mode</span>
               <span>{detail.editable ? "Editable" : "Read only"}</span>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">信任</span>
+            <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">Trust</span>
             <TrustChip level={detail.trustLevel} />
             <CompatChip compatibility={detail.compatibility} />
             {readonlyMetadataValue(detail.metadata, "userModifiedAt") ? (
@@ -3888,10 +3814,10 @@ function SkillPane({
                 <TooltipTrigger asChild>
                   <Badge variant="outline" className="border-violet-500/40 bg-violet-500/10 text-(length:--text-micro) text-violet-200">
                     <Pencil className="h-3 w-3" aria-hidden="true" />
-                    本地已修改
+                    Locally modified
                   </Badge>
                 </TooltipTrigger>
-                <TooltipContent>安装后您已编辑此技能。来自目录的更新将覆盖您的更改。</TooltipContent>
+                <TooltipContent>You have edited this skill after installing. Updates from the catalog will overwrite your changes.</TooltipContent>
               </Tooltip>
             ) : null}
             {(() => {
@@ -3902,7 +3828,7 @@ function SkillPane({
           </div>
           <div className="flex flex-wrap items-start gap-x-3 gap-y-2">
             <div className="flex items-center gap-2">
-              <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">使用方</span>
+              <span className="text-(length:--text-micro) uppercase tracking-(--tracking-caps) text-muted-foreground">Used by</span>
               <AttachAgentsPopover
                 agents={attachAgents}
                 attachedAgentIds={usedBy.map((agent) => agent.id)}
@@ -3913,7 +3839,7 @@ function SkillPane({
               />
             </div>
             {usedBy.length === 0 ? (
-              <span className="text-muted-foreground">未附加代理</span>
+              <span className="text-muted-foreground">No agents attached</span>
             ) : (
               <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
                 {usedBy.map((agent) => (
@@ -3945,7 +3871,7 @@ function SkillPane({
                 >
                   <span className="flex items-center gap-1.5">
                     <Eye className="h-3.5 w-3.5" />
-                    查看
+                    View
                   </span>
                 </button>
                 <button
@@ -3954,7 +3880,7 @@ function SkillPane({
                 >
                   <span className="flex items-center gap-1.5">
                     <Code2 className="h-3.5 w-3.5" />
-                    代码
+                    Code
                   </span>
                 </button>
               </div>
@@ -3962,7 +3888,7 @@ function SkillPane({
             {editMode && file?.editable && (
               <>
                 <Button variant="ghost" size="sm" onClick={() => setEditMode(false)} disabled={savePending}>
-                  取消
+                  Cancel
                 </Button>
                 <Button size="sm" onClick={onSave} disabled={savePending}>
                   <Save className="mr-1.5 h-3.5 w-3.5" />
@@ -3978,7 +3904,7 @@ function SkillPane({
         {fileLoading ? (
           <PageSkeleton variant="detail" />
         ) : !file ? (
-          <div className="text-sm text-muted-foreground">选择要检查的文件。</div>
+          <div className="text-sm text-muted-foreground">Select a file to inspect.</div>
         ) : editMode && file.editable ? (
           file.markdown ? (
             <MarkdownEditor
@@ -5090,7 +5016,7 @@ export function CompanySkills() {
   );
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Boxes} message="选择公司以管理技能。" />;
+    return <EmptyState icon={Boxes} message="Select a company to manage skills." />;
   }
 
   function handleAddSkillSource() {
@@ -5142,7 +5068,7 @@ export function CompanySkills() {
       <Dialog open={deleteOpen} onOpenChange={closeDeleteDialog}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>移除技能</DialogTitle>
+            <DialogTitle>Remove skill</DialogTitle>
             <DialogDescription>
               Remove this skill from the company library. If any agents still use it, removal will be blocked until it is detached.
             </DialogDescription>
@@ -5160,19 +5086,19 @@ export function CompanySkills() {
             ) : null}
             {(deleteTargetDetail?.usedByAgents.length ?? 0) > 0 ? (
               <p className="text-muted-foreground">
-                从所有代理中分离此技能以启用移除。
+                Detach this skill from all agents to enable removal.
               </p>
             ) : null}
           </div>
           <DialogFooter>
             {(deleteTargetDetail?.usedByAgents.length ?? 0) > 0 ? (
               <Button variant="ghost" onClick={() => closeDeleteDialog(false)}>
-                关闭
+                Close
               </Button>
             ) : (
               <>
                 <Button variant="ghost" onClick={() => closeDeleteDialog(false)} disabled={deleteSkill.isPending}>
-                  取消
+                  Cancel
                 </Button>
                 <Button
                   variant="destructive"
@@ -5190,7 +5116,7 @@ export function CompanySkills() {
       <Dialog open={emptySourceHelpOpen} onOpenChange={setEmptySourceHelpOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>添加技能源</DialogTitle>
+            <DialogTitle>Add a skill source</DialogTitle>
             <DialogDescription>
               Paste a local path, GitHub URL, or `skills.sh` command into the field first.
             </DialogDescription>
@@ -5203,9 +5129,9 @@ export function CompanySkills() {
               className="flex items-start justify-between rounded-md border border-border px-3 py-3 text-foreground no-underline transition-colors hover:bg-accent/40"
             >
               <span>
-                <span className="block font-medium">浏览 skills.sh</span>
+                <span className="block font-medium">Browse skills.sh</span>
                 <span className="mt-1 block text-muted-foreground">
-                  查找安装命令并粘贴到这里。
+                  Find install commands and paste one here.
                 </span>
               </span>
               <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
@@ -5217,7 +5143,7 @@ export function CompanySkills() {
               className="flex items-start justify-between rounded-md border border-border px-3 py-3 text-foreground no-underline transition-colors hover:bg-accent/40"
             >
               <span>
-                <span className="block font-medium">搜索 GitHub</span>
+                <span className="block font-medium">Search GitHub</span>
                 <span className="mt-1 block text-muted-foreground">
                   Look for repositories with `SKILL.md`, then paste the repo URL here.
                 </span>
@@ -5254,7 +5180,7 @@ export function CompanySkills() {
       <Dialog open={importDialogOpen} onOpenChange={setImportDialogOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>导入技能</DialogTitle>
+            <DialogTitle>Import a skill</DialogTitle>
             <DialogDescription>
               Paste a local path, GitHub URL, or `skills.sh` command to import a skill into this company.
             </DialogDescription>
@@ -5264,7 +5190,7 @@ export function CompanySkills() {
               <Input
                 value={source}
                 onChange={(event) => setSource(event.target.value)}
-                placeholder="粘贴路径、GitHub URL 或 skills.sh 命令"
+                placeholder="Paste path, GitHub URL, or skills.sh command"
                 className="h-9 rounded-none border-0 px-0 shadow-none focus-visible:ring-0"
               />
               <Button size="sm" onClick={handleAddSkillSource} disabled={importSkill.isPending}>
@@ -5278,8 +5204,8 @@ export function CompanySkills() {
               className="flex items-start justify-between rounded-md border border-border px-3 py-3 text-sm text-foreground no-underline transition-colors hover:bg-accent/40"
             >
               <span>
-                <span className="block font-medium">浏览 skills.sh</span>
-                <span className="mt-1 block text-muted-foreground">查找安装命令并粘贴到这里。</span>
+                <span className="block font-medium">Browse skills.sh</span>
+                <span className="mt-1 block text-muted-foreground">Find install commands and paste one here.</span>
               </span>
               <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
             </a>
@@ -5290,7 +5216,7 @@ export function CompanySkills() {
               className="flex items-start justify-between rounded-md border border-border px-3 py-3 text-sm text-foreground no-underline transition-colors hover:bg-accent/40"
             >
               <span>
-                <span className="block font-medium">搜索 GitHub</span>
+                <span className="block font-medium">Search GitHub</span>
                 <span className="mt-1 block text-muted-foreground">Look for repositories with `SKILL.md`, then paste the repo URL.</span>
               </span>
               <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
@@ -5367,7 +5293,7 @@ export function CompanySkills() {
               className="mb-3 inline-flex items-center gap-1.5 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground"
             >
               <ChevronLeft className="h-4 w-4" />
-              返回
+              Back
             </Link>
             <h1 className="text-2xl font-semibold">{studioTitle}</h1>
             <p className="mt-1 max-w-2xl text-sm text-muted-foreground">{studioDescription}</p>
@@ -5377,7 +5303,7 @@ export function CompanySkills() {
               {studioForkFromId && studioForkDetailQuery.isLoading ? (
                 <PageSkeleton variant="detail" />
               ) : studioForkFromId && !studioForkDetailQuery.data ? (
-                <EmptyState icon={Boxes} message="未找到派生源技能。" />
+                <EmptyState icon={Boxes} message="Fork source skill not found." />
               ) : (
                 <NewSkillWizard
                   initialDraft={studioDraft}
@@ -5549,17 +5475,17 @@ export function CompanySkills() {
               className="inline-flex items-center gap-1.5 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground"
             >
               <ChevronLeft className="h-4 w-4" />
-              返回商店
+              Back to store
             </Link>
           </div>
           {catalogListQuery.isLoading || catalogDetailQuery.isLoading ? (
             <PageSkeleton variant="detail" />
           ) : !selectedCatalogSkill ? (
-            <EmptyState icon={Boxes} message="未找到目录技能。" />
+            <EmptyState icon={Boxes} message="Catalog skill not found." />
           ) : (
             <div className="grid gap-0 xl:grid-cols-(--gtc-30)">
               <aside className="border-b border-border px-3 py-4 xl:border-b-0 xl:border-r">
-                <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">文件</div>
+                <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">Files</div>
                 <SkillTree
                   nodes={buildTree(selectedCatalogSkill.files.map((file) => ({ path: file.path, kind: file.kind })))}
                   skillId={selectedCatalogSkill.id}
@@ -5600,7 +5526,7 @@ export function CompanySkills() {
           {skillsQuery.isLoading ? (
             <PageSkeleton variant="detail" />
           ) : (
-            <EmptyState icon={Boxes} message="未找到技能。" />
+            <EmptyState icon={Boxes} message="Skill not found." />
           )}
         </div>
       )}

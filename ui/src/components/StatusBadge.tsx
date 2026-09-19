@@ -3,7 +3,6 @@ import { cn } from "../lib/utils";
 import {
   statusBadge,
   statusBadgeDefault,
-  statusDisplayLabel,
   agentStatusMotion,
   agentStatusVar,
   agentStatusVarDefault,
@@ -36,7 +35,7 @@ export function StatusBadge({ status, label }: { status: string; label?: string 
         statusBadge[status] ?? statusBadgeDefault
       )}
     >
-      {label ?? statusDisplayLabel[status] ?? status.replace(/[_-]/g, " ")}
+      {label ?? status.replace(/[_-]/g, " ")}
     </span>
   );
 }
@@ -54,7 +53,7 @@ export function AgentStatusBadge({ status }: { status: string }) {
       className="status-chip inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium leading-none whitespace-nowrap shrink-0"
       style={scStyle(cssVar)}
     >
-      {statusDisplayLabel[label] ?? label.replace(/_/g, " ")}
+      {label.replace(/_/g, " ")}
     </span>
   );
 }
@@ -95,7 +94,7 @@ export function IssueStatusBadge({ status }: { status: string }) {
       style={scStyle(cssVar)}
     >
       <StatusGlyph status={status} size="sm" />
-      {statusDisplayLabel[status] ?? sentenceCaseStatus(status)}
+      {sentenceCaseStatus(status)}
     </span>
   );
 }

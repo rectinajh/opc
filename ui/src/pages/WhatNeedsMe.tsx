@@ -507,7 +507,7 @@ export function WhatNeedsMe() {
   }, [handleDismiss, keyboardItems, navigate, selectedAttentionId]);
 
   if (!selectedCompanyId) {
-    return <p className="text-sm text-muted-foreground">请先选择公司。</p>;
+    return <p className="text-sm text-muted-foreground">Select a company first.</p>;
   }
 
   if (isLoading) {
@@ -519,7 +519,7 @@ export function WhatNeedsMe() {
   return (
     <div ref={rootRef} className="max-w-3xl space-y-4">
       <div className="flex items-center justify-between gap-2">
-        <h1 className="text-xl font-bold">决策</h1>
+        <h1 className="text-xl font-bold">Decisions</h1>
         <DecisionsToolbar
           visibleCount={visibleCount}
           filterOptions={filterOptions}
@@ -632,7 +632,7 @@ export function WhatNeedsMe() {
 
           {snoozedItems.length > 0 && (
             <Curtain
-              label="已暂停"
+              label="Snoozed"
               count={snoozedItems.length}
               open={snoozedOpen}
               onToggle={() => setSnoozedOpen((prev) => !prev)}
@@ -656,7 +656,7 @@ export function WhatNeedsMe() {
 
           {dismissedItems.length > 0 && (
             <Curtain
-              label="已忽略"
+              label="Dismissed"
               count={dismissedItems.length}
               open={dismissedOpen}
               onToggle={() => setDismissedOpen((prev) => !prev)}
@@ -680,7 +680,7 @@ export function WhatNeedsMe() {
 
           {agingItems.length > 0 && (
             <Curtain
-              label="老化"
+              label="Aging"
               count={agingItems.length}
               open={agingOpen}
               onToggle={() => setAgingOpen((prev) => !prev)}
@@ -711,7 +711,7 @@ export function WhatNeedsMe() {
 
       <div className="space-y-4">
         <Curtain
-          label="已决定"
+          label="Decided"
           count={decisionHistoryCount(decidedDecisions?.length)}
           open={decidedOpen}
           onToggle={() => setDecidedOpen((prev) => !prev)}
@@ -729,12 +729,12 @@ export function WhatNeedsMe() {
               />
             ))
           ) : (
-            <p className="text-xs text-muted-foreground">没有已决定的决策。</p>
+            <p className="text-xs text-muted-foreground">No decided decisions.</p>
           )}
         </Curtain>
 
         <Curtain
-          label="已过期"
+          label="Expired"
           count={decisionHistoryCount(expiredDecisions?.length)}
           open={expiredOpen}
           onToggle={() => setExpiredOpen((prev) => !prev)}
@@ -752,7 +752,7 @@ export function WhatNeedsMe() {
               />
             ))
           ) : (
-            <p className="text-xs text-muted-foreground">没有已过期的决策。</p>
+            <p className="text-xs text-muted-foreground">No expired decisions.</p>
           )}
         </Curtain>
       </div>
@@ -807,7 +807,7 @@ function CaughtUpNote({ filtered }: { filtered: boolean }) {
         {filtered ? "No decisions match your filters." : "You're all caught up."}
       </p>
       {filtered && (
-        <p className="mt-1 text-xs text-muted-foreground">调整或清除筛选器以查看其余内容。</p>
+        <p className="mt-1 text-xs text-muted-foreground">Adjust or clear the filters to see the rest.</p>
       )}
     </div>
   );
@@ -819,10 +819,10 @@ function ZeroState() {
       <div className="mb-4 rounded-full bg-green-500/10 p-4">
         <CheckCircle2 className="h-10 w-10 text-green-500" />
       </div>
-      <p className="text-lg font-semibold text-foreground">您已全部处理完毕</p>
+      <p className="text-lg font-semibold text-foreground">You're all caught up</p>
       <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
         <Inbox className="h-4 w-4" />
-        目前无需您做出决定。
+        Nothing needs a decision from you right now.
       </p>
     </div>
   );

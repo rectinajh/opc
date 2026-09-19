@@ -68,8 +68,8 @@ export function DecisionsToolbar({
             variant="outline"
             size="icon"
             className={cn("h-8 w-8 shrink-0", activeFilterCount > 0 && "bg-accent")}
-            title="筛选"
-            aria-label="筛选"
+            title="Filter"
+            aria-label="Filter"
           >
             <ListFilter className="h-3.5 w-3.5" />
           </Button>
@@ -86,8 +86,8 @@ export function DecisionsToolbar({
             variant="outline"
             size="icon"
             className={cn("h-8 w-8 shrink-0", groupBy !== "none" && "bg-accent")}
-            title="分组"
-            aria-label="分组"
+            title="Group"
+            aria-label="Group"
           >
             <Layers className="h-3.5 w-3.5" />
           </Button>
@@ -119,8 +119,8 @@ export function DecisionsToolbar({
             variant="outline"
             size="icon"
             className="h-8 w-8 shrink-0"
-            title="排序"
-            aria-label="排序"
+            title="Sort"
+            aria-label="Sort"
           >
             <ArrowUpDown className="h-3.5 w-3.5" />
           </Button>
@@ -167,20 +167,20 @@ function FilterMenu({
   return (
     <div className="max-h-(--sz-70vh) overflow-y-auto">
       <div className="flex items-center justify-between px-3 py-2">
-        <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">筛选</span>
+        <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Filter</span>
         {hasActive && (
           <button
             type="button"
             className="text-xs text-muted-foreground hover:text-foreground"
             onClick={() => onChange(defaultAttentionFilterState)}
           >
-            清除
+            Clear
           </button>
         )}
       </div>
 
       {options.sourceKinds.length > 1 && (
-        <FilterSection title="类型">
+        <FilterSection title="Type">
           {options.sourceKinds.map((kind) => (
             <FilterRow
               key={kind}
@@ -193,7 +193,7 @@ function FilterMenu({
       )}
 
       {options.severities.length > 1 && (
-        <FilterSection title="严重性">
+        <FilterSection title="Severity">
           {options.severities.map((severity) => (
             <FilterRow
               key={severity}
@@ -206,7 +206,7 @@ function FilterMenu({
       )}
 
       {(options.projects.length > 0 || options.hasNoProject) && (
-        <FilterSection title="项目">
+        <FilterSection title="Project">
           {options.projects.map((project) => (
             <FilterRow
               key={project.id}
@@ -217,7 +217,7 @@ function FilterMenu({
           ))}
           {options.hasNoProject && (
             <FilterRow
-              label="无项目"
+              label="No project"
               checked={filters.projectIds.includes(NO_GROUP_SENTINEL)}
               onToggle={() => toggle("projectIds", NO_GROUP_SENTINEL)}
             />
@@ -226,7 +226,7 @@ function FilterMenu({
       )}
 
       {(options.workspaces.length > 0 || options.hasNoWorkspace) && (
-        <FilterSection title="工作区">
+        <FilterSection title="Workspace">
           {options.workspaces.map((workspace) => (
             <FilterRow
               key={workspace.id}
@@ -237,7 +237,7 @@ function FilterMenu({
           ))}
           {options.hasNoWorkspace && (
             <FilterRow
-              label="无工作区"
+              label="No workspace"
               checked={filters.workspaceIds.includes(NO_GROUP_SENTINEL)}
               onToggle={() => toggle("workspaceIds", NO_GROUP_SENTINEL)}
             />

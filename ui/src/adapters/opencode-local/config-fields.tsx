@@ -24,7 +24,7 @@ export function OpenCodeLocalConfigFields({
   return (
     <>
       {!hideInstructionsFile && (
-        <Field label="代理指令文件" hint={instructionsFileHint}>
+        <Field label="Agent instructions file" hint={instructionsFileHint}>
           <div className="flex items-center gap-2">
             <DraftInput
               value={
@@ -50,7 +50,7 @@ export function OpenCodeLocalConfigFields({
         </Field>
       )}
       <ToggleField
-        label="跳过权限"
+        label="Skip permissions"
         hint={help.dangerouslySkipPermissions}
         checked={
           isCreate

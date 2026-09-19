@@ -104,7 +104,7 @@ export function SidebarStarredProjects() {
   }
 
   return (
-    <div className="flex flex-col gap-0.5" aria-label="星标项目">
+    <div className="flex flex-col gap-0.5" aria-label="Starred projects">
       {starredProjects.map((project) => {
         const routeRef = projectRouteRef(project);
         const isActive = activeProjectRef === routeRef || activeProjectRef === project.id;
@@ -131,7 +131,7 @@ export function SidebarStarredProjects() {
             <ProjectTile color={project.color ?? null} icon={project.icon ?? null} size="xs" />
             <span className={rail ? SIDEBAR_RAIL_HIDDEN_LABEL : "flex-1 truncate"}>{project.name}</span>
             {!rail && project.pauseReason === "budget" ? (
-              <BudgetSidebarMarker title="项目因预算暂停" />
+              <BudgetSidebarMarker title="Project paused by budget" />
             ) : null}
           </NavLink>
         );
@@ -190,7 +190,7 @@ export function SidebarStarredProjects() {
                     ) : (
                       <Star className="size-4 fill-amber-500 text-amber-500" />
                     )}
-                    <span>从星标中移除</span>
+                    <span>Remove from starred</span>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
@@ -205,7 +205,7 @@ export function SidebarStarredProjects() {
                     ) : (
                       <LogOut className="size-4" />
                     )}
-                    <span>离开项目</span>
+                    <span>Leave project</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

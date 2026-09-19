@@ -200,7 +200,7 @@ export function RoutineHistoryTab({
     return (
       <div className="rounded-md border border-l-2 border-l-destructive border-border p-4 space-y-3">
         <div>
-          <p className="text-sm font-medium">无法加载修订</p>
+          <p className="text-sm font-medium">Could not load revisions</p>
           <p className="text-xs text-muted-foreground">
             {revisionsQuery.error instanceof Error
               ? revisionsQuery.error.message
@@ -208,7 +208,7 @@ export function RoutineHistoryTab({
           </p>
         </div>
         <Button size="sm" variant="outline" onClick={() => revisionsQuery.refetch()}>
-          重试
+          Retry
         </Button>
       </div>
     );
@@ -241,7 +241,7 @@ export function RoutineHistoryTab({
           <div className="space-y-2">
             <EmptyState
               icon={HistoryIcon}
-              message="暂无编辑"
+              message="No edits yet"
             />
             <p className="text-center text-xs text-muted-foreground">
               Revision 1 is the only history this routine has. Saving an edit creates the first
@@ -346,7 +346,7 @@ function HistoricalPreviewBanner({
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <Button variant="outline" size="sm" onClick={onReturn} disabled={pending}>
-            返回当前
+            Return to current
           </Button>
           <Button size="sm" onClick={onRestore} disabled={pending}>
             <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
@@ -375,7 +375,7 @@ function ConflictBanner({
     <div className="rounded-md border border-amber-500/30 bg-amber-500/5 px-4 py-3">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="space-y-1">
-          <p className="text-sm font-medium text-amber-800 dark:text-amber-200">未保存的例程编辑</p>
+          <p className="text-sm font-medium text-amber-800 dark:text-amber-200">Unsaved routine edits</p>
           <p className="text-xs text-muted-foreground">
             You changed {fieldsText} but haven&apos;t saved yet. Save or discard before previewing or
             restoring an older revision.
@@ -383,10 +383,10 @@ function ConflictBanner({
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <Button variant="outline" size="sm" onClick={onDiscard}>
-            放弃更改
+            Discard changes
           </Button>
           <Button size="sm" onClick={onSave}>
-            保存并继续
+            Save and continue
           </Button>
         </div>
       </div>
@@ -429,7 +429,7 @@ function RevisionList({
     <aside className="space-y-1">
       <header className="flex items-center justify-between pb-2">
         <p className="text-xs font-medium uppercase tracking-(--tracking-caps) text-muted-foreground">
-          修订版本
+          Revisions
         </p>
         <span className="text-(length:--text-micro) text-muted-foreground">{totalRevisions} total</span>
       </header>
@@ -462,12 +462,12 @@ function RevisionList({
               <span>rev {revision.revisionNumber}</span>
               {isCurrent && (
                 <Badge variant="outline" className="border-border px-1.5 text-(length:--text-nano) uppercase tracking-(--tracking-eyebrow) text-muted-foreground">
-                  当前
+                  Current
                 </Badge>
               )}
               {revision.restoredFromRevisionId && (
                 <Badge variant="outline" className="border-amber-500/40 bg-amber-500/10 px-1.5 text-(length:--text-nano) uppercase tracking-(--tracking-eyebrow) text-amber-800 dark:text-amber-200">
-                  已恢复
+                  Restored
                 </Badge>
               )}
             </div>
@@ -585,7 +585,7 @@ function RevisionPreview({
           <div className="flex flex-wrap items-center gap-2">
             <Button variant="outline" size="sm" onClick={onCompare}>
               <Search className="mr-1.5 h-3.5 w-3.5" />
-              与当前比较
+              Compare with current
             </Button>
             <Button
               size="sm"
@@ -603,7 +603,7 @@ function RevisionPreview({
 
       <div className={`${cardWrapper} p-3`}>
         <p className="pb-2 text-xs font-medium uppercase tracking-(--tracking-caps) text-muted-foreground">
-          结构化字段
+          Structured fields
         </p>
         <div className="grid gap-3 md:grid-cols-2 divide-y md:divide-y-0 divide-border">
           {fieldRows.map((row) => (
@@ -613,7 +613,7 @@ function RevisionPreview({
                 {row.value || <span className="text-muted-foreground">—</span>}
                 {row.differs && (
                   <Badge variant="outline" className="ml-2 border-amber-500/40 bg-amber-500/10 px-1.5 text-(length:--text-nano) uppercase tracking-(--tracking-eyebrow) text-amber-800 dark:text-amber-200">
-                    与当前不同
+                    differs from current
                   </Badge>
                 )}
               </p>
@@ -624,13 +624,13 @@ function RevisionPreview({
 
       <div className={`${cardWrapper} p-3 space-y-2`}>
         <p className="text-xs font-medium uppercase tracking-(--tracking-caps) text-muted-foreground">
-          描述
+          Description
         </p>
         <div className="rounded-md bg-background/40 p-3 text-sm leading-7">
           {snapshot.description ? (
             <MarkdownBody>{snapshot.description}</MarkdownBody>
           ) : (
-            <span className="text-muted-foreground">无描述</span>
+            <span className="text-muted-foreground">No description</span>
           )}
         </div>
       </div>
@@ -640,7 +640,7 @@ function RevisionPreview({
           Triggers ({triggers.length})
         </p>
         {triggers.length === 0 ? (
-          <p className="text-sm text-muted-foreground">此修订中无触发器。</p>
+          <p className="text-sm text-muted-foreground">No triggers in this revision.</p>
         ) : (
           <ul className="divide-y divide-border">
             {triggers.map((trigger) => (
@@ -726,7 +726,7 @@ function RestoreConfirmDialog({
         <ul className="space-y-2 text-sm">
           <li className="flex items-start gap-2">
             <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            例程字段值、变量和计划 cron 将恢复。
+            Routine field values, variables, and schedule cron will revert.
           </li>
           {envDiffCounts.total > 0 && (
             <li className="flex items-start gap-2">
@@ -736,7 +736,7 @@ function RestoreConfirmDialog({
           )}
           <li className="flex items-start gap-2">
             <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            先前的运行历史将保留。
+            Previous run history is preserved.
           </li>
           {recreatedWebhookLabels.map((label) => (
             <li key={label} className="flex items-start gap-2 text-amber-800 dark:text-amber-200">
@@ -748,18 +748,18 @@ function RestoreConfirmDialog({
         </ul>
         <div className="space-y-1.5">
           <Label htmlFor="restore-change-summary" className="text-xs">
-            更改摘要（可选）
+            Change summary (optional)
           </Label>
           <Input
             id="restore-change-summary"
             value={changeSummary}
-            placeholder="为什么恢复？在历史记录中可见。"
+            placeholder="Why are you restoring? Visible in history."
             onChange={(event) => onChangeSummaryChange(event.target.value)}
           />
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)} disabled={pending}>
-            取消
+            Cancel
           </Button>
           <Button onClick={onConfirm} disabled={pending}>
             <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
@@ -821,18 +821,18 @@ function RoutineRevisionDiffModal({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="!max-w-(--pct-90) w-full max-h-(--sz-85vh) overflow-hidden flex flex-col">
         <DialogHeader>
-          <DialogTitle>比较例程修订</DialogTitle>
+          <DialogTitle>Compare routine revisions</DialogTitle>
         </DialogHeader>
         <div className="flex flex-wrap items-center gap-3">
           <RevisionPicker
-            label="旧"
+            label="Old"
             value={leftId}
             onChange={setLeftId}
             revisions={revisions}
             tone="red"
           />
           <RevisionPicker
-            label="新"
+            label="New"
             value={rightId}
             onChange={setRightId}
             revisions={revisions}
@@ -842,17 +842,17 @@ function RoutineRevisionDiffModal({
         <div className="overflow-auto flex-1 space-y-4">
           <section className="space-y-2">
             <p className="text-xs font-medium uppercase tracking-(--tracking-caps) text-muted-foreground">
-              字段更改
+              Field changes
             </p>
             {fieldChanges.length === 0 ? (
-              <p className="text-sm text-muted-foreground">无结构性字段更改。</p>
+              <p className="text-sm text-muted-foreground">No structural field changes.</p>
             ) : (
               <table className="w-full text-sm border border-border rounded-md overflow-hidden">
                 <thead>
                   <tr className="text-xs uppercase tracking-wide bg-muted/30 text-muted-foreground">
-                    <th className="px-3 py-2 text-left">字段</th>
-                    <th className="px-3 py-2 text-left">旧值</th>
-                    <th className="px-3 py-2 text-left">新值</th>
+                    <th className="px-3 py-2 text-left">Field</th>
+                    <th className="px-3 py-2 text-left">Old value</th>
+                    <th className="px-3 py-2 text-left">New value</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -873,14 +873,14 @@ function RoutineRevisionDiffModal({
           </section>
           <section className="space-y-2">
             <p className="text-xs font-medium uppercase tracking-(--tracking-caps) text-muted-foreground">
-              描述差异
+              Description diff
             </p>
             <DiffTable rows={descriptionDiff} />
           </section>
         </div>
         <DialogFooter className="justify-between sm:justify-between">
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            关闭
+            Close
           </Button>
           {leftIsHistorical && left && (
             <Button onClick={() => onRestore(left)}>
@@ -935,10 +935,10 @@ function RevisionPicker({
 
 function DiffTable({ rows }: { rows: DiffRow[] }) {
   if (rows.length === 0) {
-    return <p className="text-sm text-muted-foreground">两个修订均无描述。</p>;
+    return <p className="text-sm text-muted-foreground">No description on either revision.</p>;
   }
   if (rows.every((row) => row.kind === "context")) {
-    return <p className="text-sm text-muted-foreground">描述相同。</p>;
+    return <p className="text-sm text-muted-foreground">Descriptions are identical.</p>;
   }
   const lineClassesByKind: Record<DiffRow["kind"], string> = {
     context: "bg-transparent",
@@ -953,10 +953,10 @@ function DiffTable({ rows }: { rows: DiffRow[] }) {
   return (
     <div className="rounded-md border border-border text-xs font-mono leading-6 overflow-hidden">
       <div className="grid grid-cols-(--gtc-1) border-b border-border/60 bg-muted/30 px-3 py-2 text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">
-        <span>旧</span>
-        <span>新</span>
+        <span>Old</span>
+        <span>New</span>
         <span />
-        <span>内容</span>
+        <span>Content</span>
       </div>
       {rows.map((row, index) => (
         <div

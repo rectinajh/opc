@@ -142,7 +142,7 @@ export function OpenClawGatewayConfigFields({
 
   return (
     <>
-      <Field label="网关URL" hint={help.webhookUrl}>
+      <Field label="Gateway URL" hint={help.webhookUrl}>
         <DraftInput
           value={
             isCreate
@@ -170,7 +170,7 @@ export function OpenClawGatewayConfigFields({
 
       {/* Auth and Identity - available in both create and edit modes */}
       <SecretField
-        label="网关认证令牌"
+        label="Gateway auth token"
         value={
           isCreate
             ? values!.authToken ?? ""
@@ -181,10 +181,10 @@ export function OpenClawGatewayConfigFields({
             ? set!({ authToken: v })
             : commitGatewayToken(v)
         }
-        placeholder="OpenClaw网关令牌"
+        placeholder="OpenClaw gateway token"
       />
 
-      <Field label="代理ID">
+      <Field label="Agent ID">
         <DraftInput
           value={
             isCreate
@@ -202,7 +202,7 @@ export function OpenClawGatewayConfigFields({
         />
       </Field>
 
-      <Field label="会话策略">
+      <Field label="Session strategy">
         <select
           value={
             isCreate
@@ -216,14 +216,14 @@ export function OpenClawGatewayConfigFields({
           }
           className={inputClass}
         >
-          <option value="fixed">固定</option>
-          <option value="issue">每个问题</option>
-          <option value="run">每次运行</option>
+          <option value="fixed">Fixed</option>
+          <option value="issue">Per issue</option>
+          <option value="run">Per run</option>
         </select>
       </Field>
 
       {(isCreate ? values!.sessionKeyStrategy ?? "fixed" : sessionStrategy) === "fixed" && (
-        <Field label="会话密钥">
+        <Field label="Session key">
           <DraftInput
             value={
               isCreate
@@ -243,7 +243,7 @@ export function OpenClawGatewayConfigFields({
       )}
 
       <SecretField
-        label="密码（替代认证）"
+        label="Password (alternative auth)"
         value={
           isCreate
             ? values!.password ?? ""
@@ -254,10 +254,10 @@ export function OpenClawGatewayConfigFields({
             ? set!({ password: v })
             : mark("adapterConfig", "password", v || undefined)
         }
-        placeholder="网关共享密码"
+        placeholder="Gateway shared password"
       />
 
-      <Field label="角色">
+      <Field label="Role">
         <DraftInput
           value={
             isCreate
@@ -275,7 +275,7 @@ export function OpenClawGatewayConfigFields({
         />
       </Field>
 
-      <Field label="作用域（逗号分隔）">
+      <Field label="Scopes (comma-separated)">
         <DraftInput
           value={
             isCreate
@@ -307,7 +307,7 @@ export function OpenClawGatewayConfigFields({
         mark={mark}
       />
 
-      <Field label="Paperclip API URL 覆盖">
+      <Field label="Paperclip API URL override">
         <DraftInput
           value={
             isCreate
@@ -325,7 +325,7 @@ export function OpenClawGatewayConfigFields({
         />
       </Field>
 
-      <Field label="超时（秒）">
+      <Field label="Timeout (seconds)">
         <DraftInput
           value={
             isCreate
@@ -347,7 +347,7 @@ export function OpenClawGatewayConfigFields({
         />
       </Field>
 
-      <Field label="请求头 JSON">
+      <Field label="Headers JSON">
         <HeadersJsonTextarea
           isCreate={isCreate}
           createDraft={isCreate ? values!.headersJson ?? "" : ""}
@@ -373,7 +373,7 @@ export function OpenClawGatewayConfigFields({
       </Field>
 
       {!isCreate && (
-        <Field label="声明的 API 密钥路径">
+        <Field label="Claimed API key path">
           <DraftInput
             value={eff("adapterConfig", "claimedApiKeyPath", String(config.claimedApiKeyPath ?? ""))}
             onCommit={(v) => mark("adapterConfig", "claimedApiKeyPath", v || undefined)}
@@ -384,7 +384,7 @@ export function OpenClawGatewayConfigFields({
         </Field>
       )}
 
-      <Field label="等待超时（毫秒）">
+      <Field label="Wait timeout (ms)">
         <DraftInput
           value={
             isCreate
@@ -408,7 +408,7 @@ export function OpenClawGatewayConfigFields({
         />
       </Field>
 
-      <Field label="禁用设备认证">
+      <Field label="Disable device auth">
         <label className="flex items-center gap-2 text-sm">
           <input
             type="checkbox"
@@ -423,11 +423,11 @@ export function OpenClawGatewayConfigFields({
                 : mark("adapterConfig", "disableDeviceAuth", e.target.checked || undefined)
             }
           />
-          跳过设备密钥认证
+          Skip device key authentication
         </label>
       </Field>
 
-      <Field label="首次连接时自动配对">
+      <Field label="Auto-pair on first connect">
         <label className="flex items-center gap-2 text-sm">
           <input
             type="checkbox"
@@ -442,11 +442,11 @@ export function OpenClawGatewayConfigFields({
                 : mark("adapterConfig", "autoPairOnFirstConnect", e.target.checked)
             }
           />
-          自动批准设备配对
+          Automatically approve device pairing
         </label>
       </Field>
 
-      <Field label="设备认证">
+      <Field label="Device auth">
         <div className="text-xs text-muted-foreground leading-relaxed">
           When enabled, Paperclip persists a device key during onboarding so pairing approvals
           remain stable across runs.

@@ -37,7 +37,7 @@ export function FooterNav({
           disabled={loading}
         >
           <ArrowLeft className="mr-1 size-3.5" />
-          返回
+          Back
         </Button>
       ) : (
         <span />

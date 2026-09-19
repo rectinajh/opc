@@ -10,10 +10,10 @@ export function FrontDoor({ onChoose }: FrontDoorProps) {
     <div className="flex flex-col items-center justify-center min-h-(--sz-60vh) px-8">
       <div className="text-center mb-10">
         <h2 className="text-2xl font-bold tracking-tight">
-          欢迎使用 Paperclip
+          Welcome to Paperclip
         </h2>
         <p className="text-sm text-muted-foreground mt-2">
-          您想如何开始？
+          How would you like to get started?
         </p>
       </div>
 
@@ -30,9 +30,9 @@ export function FrontDoor({ onChoose }: FrontDoorProps) {
             <Rocket className="h-6 w-6" />
           </div>
           <div>
-            <h3 className="font-semibold text-sm">创建新公司</h3>
+            <h3 className="font-semibold text-sm">Build a new company</h3>
             <p className="text-xs text-muted-foreground mt-1">
-              从使命开始，引入主管代理，并组建代理团队来完成工作。
+              Begin with a mission, bring on a lead agent, and grow a team of agents to do the work.
             </p>
           </div>
         </button>
@@ -49,9 +49,9 @@ export function FrontDoor({ onChoose }: FrontDoorProps) {
             <Zap className="h-6 w-6" />
           </div>
           <div>
-            <h3 className="font-semibold text-sm">将代理添加到您的组织</h3>
+            <h3 className="font-semibold text-sm">Add agents to your org</h3>
             <p className="text-xs text-muted-foreground mt-1">
-              将 AI 代理引入您现有的团队或工作流程。
+              Bring AI agents into your existing team or workflows.
             </p>
           </div>
         </button>

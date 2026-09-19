@@ -92,7 +92,7 @@ export function NewGatewayDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>新建网关</DialogTitle>
+          <DialogTitle>New gateway</DialogTitle>
           <DialogDescription>
             One safe MCP endpoint that exposes only the apps in its access profile. Hand it to a client
             like Cursor or Claude Desktop.
@@ -100,17 +100,17 @@ export function NewGatewayDialog({
         </DialogHeader>
         <form className="space-y-4" onSubmit={submit}>
           <label className="block space-y-1.5">
-            <span className="text-xs font-medium text-muted-foreground">名称</span>
+            <span className="text-xs font-medium text-muted-foreground">Name</span>
             <Input
               value={name}
               onChange={(event) => setName(event.target.value)}
-              placeholder="CTO 代理"
+              placeholder="CTO agents"
               required
               autoFocus
             />
           </label>
           <label className="block space-y-1.5">
-            <span className="text-xs font-medium text-muted-foreground">访问配置文件</span>
+            <span className="text-xs font-medium text-muted-foreground">Access profile</span>
             <select
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
               value={profileId}
@@ -128,26 +128,26 @@ export function NewGatewayDialog({
               ))}
             </select>
             <span className="text-xs text-muted-foreground">
-              配置文件决定此网关允许哪些工具。您可以稍后更改。
+              The profile decides which tools this gateway allows. You can change it later.
             </span>
           </label>
           <label className="block space-y-1.5">
-            <span className="text-xs font-medium text-muted-foreground">描述（可选）</span>
+            <span className="text-xs font-medium text-muted-foreground">Description (optional)</span>
             <textarea
               className="min-h-16 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
-              placeholder="此端点的适用对象及轮换时机。"
+              placeholder="Who this endpoint is for and when it should be rotated."
             />
           </label>
           {noProfiles ? (
             <p className="text-xs text-destructive">
-              在添加网关之前，请在“高级”下创建访问配置文件。
+              Create an access profile under Advanced before adding a gateway.
             </p>
           ) : null}
           <DialogFooter>
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>
-              取消
+              Cancel
             </Button>
             <Button
               type="submit"

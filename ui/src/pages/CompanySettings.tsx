@@ -180,7 +180,7 @@ export function CompanySettings() {
   if (!selectedCompany) {
     return (
       <div className="text-sm text-muted-foreground">
-        未选择公司。请从上面的切换器中选择一个公司。
+        No company selected. Select a company from the switcher above.
       </div>
     );
   }
@@ -198,16 +198,16 @@ export function CompanySettings() {
     <div className="max-w-6xl space-y-8">
       <div className="flex items-center gap-2">
         <SlidersHorizontal className="h-5 w-5 text-muted-foreground" />
-        <h1 className="text-lg font-semibold">常规</h1>
+        <h1 className="text-lg font-semibold">General</h1>
       </div>
 
       {/* General */}
       <div className="max-w-2xl space-y-4">
         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          常规
+          General
         </div>
         <div className="space-y-3">
-          <Field label="公司名称" hint="您公司的显示名称。">
+          <Field label="Company name" hint="The display name for your company.">
             <input
               className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
               type="text"
@@ -216,14 +216,14 @@ export function CompanySettings() {
             />
           </Field>
           <Field
-            label="描述"
-            hint="公司简介中显示的可选描述。"
+            label="Description"
+            hint="Optional description shown in the company profile."
           >
             <input
               className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
               type="text"
               value={description}
-              placeholder="可选公司描述"
+              placeholder="Optional company description"
               onChange={(e) => setDescription(e.target.value)}
             />
           </Field>
@@ -233,7 +233,7 @@ export function CompanySettings() {
       {/* Appearance */}
       <div className="max-w-2xl space-y-4">
         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          外观
+          Appearance
         </div>
         <div className="space-y-3">
           <div className="flex items-start gap-4">
@@ -247,8 +247,8 @@ export function CompanySettings() {
             </div>
             <div className="flex-1 space-y-3">
               <Field
-                label="标志"
-                hint="上传 PNG、JPEG、WEBP、GIF 或 SVG 格式的标志图片。"
+                label="Logo"
+                hint="Upload a PNG, JPEG, WEBP, GIF, or SVG logo image."
               >
                 <div className="space-y-2">
                   <input
@@ -283,13 +283,13 @@ export function CompanySettings() {
                     </span>
                   )}
                   {logoUploadMutation.isPending && (
-                    <span className="text-xs text-muted-foreground">正在上传徽标...</span>
+                    <span className="text-xs text-muted-foreground">Uploading logo...</span>
                   )}
                 </div>
               </Field>
               <Field
-                label="品牌颜色"
-                hint="设置公司图标的色调。留空则自动生成颜色。"
+                label="Brand color"
+                hint="Sets the hue for the company icon. Leave empty for auto-generated color."
               >
                 <div className="flex items-center gap-2">
                   {/* token-extraction: allowlisted — <input type="color"> value must be a real hex string, not a var() reference. */}
@@ -308,7 +308,7 @@ export function CompanySettings() {
                         setBrandColor(v);
                       }
                     }}
-                    placeholder="自动"
+                    placeholder="Auto"
                     className="w-28 rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm font-mono outline-none"
                   />
                   {brandColor && (
@@ -318,13 +318,13 @@ export function CompanySettings() {
                       onClick={() => setBrandColor("")}
                       className="text-xs text-muted-foreground"
                     >
-                      清除
+                      Clear
                     </Button>
                   )}
                 </div>
               </Field>
               <Field
-                label="附件大小限制"
+                label="Attachment size limit"
                 hint={`Accepted range: 1-${MAX_COMPANY_ATTACHMENT_MAX_MIB} MiB.`}
               >
                 <div className="flex flex-col gap-1.5">
@@ -363,7 +363,7 @@ export function CompanySettings() {
             {generalMutation.isPending ? "Saving..." : "Save changes"}
           </Button>
           {generalMutation.isSuccess && (
-            <span className="text-xs text-muted-foreground">已保存</span>
+            <span className="text-xs text-muted-foreground">Saved</span>
           )}
           {generalMutation.isError && (
             <span className="text-xs text-destructive">
@@ -378,12 +378,12 @@ export function CompanySettings() {
       {/* Hiring */}
       <div className="max-w-2xl space-y-4" data-testid="company-settings-team-section">
         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          招聘
+          Hiring
         </div>
         <div>
           <ToggleField
-            label="新员工需董事会批准"
-            hint="新代理的聘用将保持待处理状态，直到董事会批准。"
+            label="Require board approval for new hires"
+            hint="New agent hires stay pending until approved by board."
             checked={!!selectedCompany.requireBoardApprovalForNewAgents}
             onChange={(v) => settingsMutation.mutate(v)}
             toggleTestId="company-settings-team-approval-toggle"
@@ -410,7 +410,7 @@ export function CompanySettings() {
       {/* Danger Zone */}
       <div className="space-y-4">
         <div className="text-xs font-medium text-destructive uppercase tracking-wide">
-          危险区域
+          Danger Zone
         </div>
         <div className="space-y-3 bg-destructive/5 px-4 py-4">
           <p className="text-sm text-muted-foreground">

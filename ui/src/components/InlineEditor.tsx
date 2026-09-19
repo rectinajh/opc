@@ -411,7 +411,7 @@ export function InlineEditor({
   }
 
   // Use div instead of Tag when rendering markdown to avoid invalid nesting
-  // (e.g. <p> 不能包含 <div>/<p> elements that markdown produces)
+  // (e.g. <p> cannot contain the <div>/<p> elements that markdown produces)
   const DisplayTag = value && multiline ? "div" : Tag;
 
   return (

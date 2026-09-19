@@ -189,7 +189,7 @@ export function ErrorState({ error, onRetry }: { error: unknown; onRetry?: () =>
         <div className="flex items-start gap-2 text-sm text-destructive">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
           <div>
-            <p className="font-medium">无法加载此视图</p>
+            <p className="font-medium">Could not load this view</p>
             <p className="text-destructive/80">{message}</p>
           </div>
         </div>
@@ -199,7 +199,7 @@ export function ErrorState({ error, onRetry }: { error: unknown; onRetry?: () =>
             onClick={onRetry}
             className="self-start rounded-md border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent"
           >
-            重试
+            Retry
           </button>
         ) : null}
       </CardContent>

@@ -230,7 +230,7 @@ export function NewAgentDialog() {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-2.5 border-b border-border">
-          <span className="text-sm text-muted-foreground">添加新代理</span>
+          <span className="text-sm text-muted-foreground">Add a new agent</span>
           <Button
             variant="ghost"
             size="icon-xs"
@@ -260,18 +260,18 @@ export function NewAgentDialog() {
 
               <Button className="w-full" size="lg" onClick={handleAskCeo}>
                 <Bot className="h-4 w-4 mr-2" />
-                请 CEO 创建新代理
+                Ask the CEO to create a new agent
               </Button>
 
               <div className="grid gap-2">
                 <Button variant="outline" className="w-full" onClick={handleAdvancedConfig}>
                   <Settings2 className="h-4 w-4 mr-2" />
-                  手动配置运行时
+                  Configure a runtime manually
                 </Button>
                 <div className="space-y-1">
                   <Button variant="outline" className="w-full" onClick={handleInviteExternalAgent}>
                     <MailPlus className="h-4 w-4 mr-2" />
-                    邀请外部代理
+                    Invite an external agent
                   </Button>
                   <p className="text-xs text-muted-foreground text-center">
                     (OpenClaw, Hermes, or any agent that can call the invite API.)
@@ -287,10 +287,10 @@ export function NewAgentDialog() {
                   onClick={() => setMode("choices")}
                 >
                   <ArrowLeft className="h-3.5 w-3.5" />
-                  返回
+                  Back
                 </button>
                 <p className="text-sm text-muted-foreground">
-                  选择 Paperclip 应直接启动或恢复的运行时。
+                  Choose the runtime Paperclip should start or resume directly.
                 </p>
               </div>
 
@@ -310,7 +310,7 @@ export function NewAgentDialog() {
                   >
                     {opt.recommended && (
                       <Badge variant="ghost" className="absolute -top-1.5 right-1.5 bg-green-500 text-white text-(length:--text-nano) font-semibold px-1.5 leading-none">
-                        推荐
+                        Recommended
                       </Badge>
                     )}
                     <opt.icon className="h-4 w-4" />
@@ -330,10 +330,10 @@ export function NewAgentDialog() {
                   onClick={() => setMode("choices")}
                 >
                   <ArrowLeft className="h-3.5 w-3.5" />
-                  返回
+                  Back
                 </button>
                 <div className="space-y-1">
-                  <h2 className="text-sm font-semibold">邀请外部代理</h2>
+                  <h2 className="text-sm font-semibold">Invite an external agent</h2>
                   <p className="text-sm text-muted-foreground">
                     Generate a one-time onboarding prompt that any compatible agent can use to request access, wait for approval, and claim its Paperclip API key.
                   </p>
@@ -341,12 +341,12 @@ export function NewAgentDialog() {
               </div>
 
               <label className="block space-y-2">
-                <span className="text-sm font-medium">给代理的可选消息</span>
+                <span className="text-sm font-medium">Optional message for the agent</span>
                 <Textarea
                   value={agentMessage}
                   onChange={(event) => setAgentMessage(event.target.value)}
                   className="min-h-24 resize-y"
-                  placeholder="添加入职背景、预期角色或首次说明。"
+                  placeholder="Add onboarding context, expected role, or first instructions."
                   maxLength={4000}
                 />
               </label>
@@ -372,20 +372,20 @@ export function NewAgentDialog() {
                   onClick={() => setMode("invite")}
                 >
                   <ArrowLeft className="h-3.5 w-3.5" />
-                  返回
+                  Back
                 </button>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between gap-3">
-                    <h2 className="text-sm font-semibold">代理入职提示</h2>
+                    <h2 className="text-sm font-semibold">Agent onboarding prompt</h2>
                     {latestAgentPromptCopied ? (
                       <div className="inline-flex items-center gap-1 text-xs font-medium text-foreground">
                         <Check className="h-3.5 w-3.5" />
-                        已复制
+                        Copied
                       </div>
                     ) : null}
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    将此提示发送给应加入本公司的外部代理。
+                    Send this prompt to the external agent that should join this company.
                   </p>
                 </div>
               </div>

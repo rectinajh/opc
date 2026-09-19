@@ -36,7 +36,7 @@ export function CaseAttachmentsGallery({ attachments }: { attachments: CaseAttac
   );
 
   if (attachments.length === 0) {
-    return <p className="text-xs text-muted-foreground">无附件。</p>;
+    return <p className="text-xs text-muted-foreground">No attachments.</p>;
   }
 
   return (

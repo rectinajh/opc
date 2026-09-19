@@ -378,7 +378,7 @@ type LookupMaps = {
 function RuleSentence({ sentence }: { sentence: ReturnType<typeof policySentence> }) {
   return (
     <span>
-      当 <strong>{sentence.who}</strong> uses <strong>{sentence.uses}</strong> →{" "}
+      When <strong>{sentence.who}</strong> uses <strong>{sentence.uses}</strong> →{" "}
       <strong>{sentence.outcome}</strong>
     </span>
   );
@@ -440,17 +440,17 @@ function PolicySimulator({
         <SheetHeader className="border-b border-border">
           <SheetTitle className="flex items-center gap-2 text-base">
             <FlaskConical className="h-4 w-4" />
-            测试规则
+            Test a rule
           </SheetTitle>
-          <SheetDescription>选择一个代理和一个操作，查看 Paperclip 会做什么。</SheetDescription>
+          <SheetDescription>Pick an agent and an action to see what Paperclip would do.</SheetDescription>
         </SheetHeader>
         <div className="flex-1 space-y-4 overflow-y-auto p-4">
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="space-y-1.5">
-              <Label>代理</Label>
+              <Label>Agent</Label>
               <Select value={agentId} onValueChange={setAgentId}>
                 <SelectTrigger>
-                  <SelectValue placeholder="选择代理" />
+                  <SelectValue placeholder="Select an agent" />
                 </SelectTrigger>
                 <SelectContent>
                   {agents.map((a) => (
@@ -462,7 +462,7 @@ function PolicySimulator({
               </Select>
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="test-action">操作</Label>
+              <Label htmlFor="test-action">Action</Label>
               <Input
                 id="test-action"
                 value={toolName}
@@ -492,7 +492,7 @@ function PolicySimulator({
                 )}
               </div>
               <details className="text-xs text-muted-foreground">
-                <summary className="cursor-pointer text-foreground">详情</summary>
+                <summary className="cursor-pointer text-foreground">Details</summary>
                 <div className="mt-2 space-y-1 font-mono">
                   <div>reason: {result.reasonCode}</div>
                   <div>matched rule ids: {result.matchedPolicyIds.length ? result.matchedPolicyIds.join(", ") : "none"}</div>
@@ -503,7 +503,7 @@ function PolicySimulator({
           ) : null}
         </div>
         <SheetFooter className="border-t border-border">
-          <Button variant="outline" onClick={() => onOpenChange(false)}>关闭</Button>
+          <Button variant="outline" onClick={() => onOpenChange(false)}>Close</Button>
         </SheetFooter>
       </SheetContent>
     </Sheet>
@@ -559,12 +559,12 @@ function RuleBuilder({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-1">
           <Button variant="ghost" size="sm" className="px-0" onClick={onCancel}>
-            返回规则
+            Back to rules
           </Button>
           <h2 className="text-lg font-semibold text-foreground">{form.id ? "Edit rule" : "New rule"}</h2>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" size="sm" onClick={onCancel}>取消</Button>
+          <Button variant="outline" size="sm" onClick={onCancel}>Cancel</Button>
           <Button size="sm" onClick={onSave} disabled={saving}>
             {saving ? "Saving..." : "Save rule"}
           </Button>
@@ -577,7 +577,7 @@ function RuleBuilder({
 
       <div className="grid gap-4 lg:grid-cols-(--gtc-61)">
         <section className="space-y-3">
-          <h3 className="text-sm font-semibold text-foreground">当</h3>
+          <h3 className="text-sm font-semibold text-foreground">When</h3>
           <div className="grid gap-2">
             {[
               ["everyone", "Everyone"],
@@ -597,18 +597,18 @@ function RuleBuilder({
           </div>
           {form.whenMode === "agent" ? (
             <Select value={form.agentId} onValueChange={(agentId) => setForm({ ...form, agentId })}>
-              <SelectTrigger><SelectValue placeholder="选择代理" /></SelectTrigger>
+              <SelectTrigger><SelectValue placeholder="Choose agent" /></SelectTrigger>
               <SelectContent>
-                <SelectItem value={ANY_VALUE}>选择代理</SelectItem>
+                <SelectItem value={ANY_VALUE}>Choose agent</SelectItem>
                 {agents.map((agent) => <SelectItem key={agent.id} value={agent.id}>{agent.name}</SelectItem>)}
               </SelectContent>
             </Select>
           ) : null}
           {form.whenMode === "project" ? (
             <Select value={form.projectId} onValueChange={(projectId) => setForm({ ...form, projectId })}>
-              <SelectTrigger><SelectValue placeholder="选择项目" /></SelectTrigger>
+              <SelectTrigger><SelectValue placeholder="Choose project" /></SelectTrigger>
               <SelectContent>
-                <SelectItem value={ANY_VALUE}>选择项目</SelectItem>
+                <SelectItem value={ANY_VALUE}>Choose project</SelectItem>
                 {projects.map((project) => <SelectItem key={project.id} value={project.id}>{project.name}</SelectItem>)}
               </SelectContent>
             </Select>
@@ -616,7 +616,7 @@ function RuleBuilder({
         </section>
 
         <section className="space-y-3">
-          <h3 className="text-sm font-semibold text-foreground">使用次数</h3>
+          <h3 className="text-sm font-semibold text-foreground">Uses</h3>
           <div className="grid gap-2">
             {[
               ["anything", "Anything"],
@@ -637,18 +637,18 @@ function RuleBuilder({
           </div>
           {form.usesMode === "app" ? (
             <Select value={form.applicationId} onValueChange={(applicationId) => setForm({ ...form, applicationId })}>
-              <SelectTrigger><SelectValue placeholder="选择应用" /></SelectTrigger>
+              <SelectTrigger><SelectValue placeholder="Choose app" /></SelectTrigger>
               <SelectContent>
-                <SelectItem value={ANY_VALUE}>选择应用</SelectItem>
+                <SelectItem value={ANY_VALUE}>Choose app</SelectItem>
                 {applications.map((app) => <SelectItem key={app.id} value={app.id}>{app.name}</SelectItem>)}
               </SelectContent>
             </Select>
           ) : null}
           {form.usesMode === "capability" ? (
             <Select value={form.riskLevel} onValueChange={(riskLevel) => setForm({ ...form, riskLevel })}>
-              <SelectTrigger><SelectValue placeholder="选择能力" /></SelectTrigger>
+              <SelectTrigger><SelectValue placeholder="Choose capability" /></SelectTrigger>
               <SelectContent>
-                <SelectItem value={ANY_VALUE}>选择能力</SelectItem>
+                <SelectItem value={ANY_VALUE}>Choose capability</SelectItem>
                 {CAPABILITY_OPTIONS.map((option) => (
                   <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
                 ))}
@@ -658,7 +658,7 @@ function RuleBuilder({
           {form.usesMode === "actions" ? (
             <div className="max-h-80 overflow-y-auto rounded-md border border-border">
               {appGroups.length === 0 ? (
-                <div className="p-3 text-sm text-muted-foreground">尚未发现任何应用操作。</div>
+                <div className="p-3 text-sm text-muted-foreground">No app actions discovered yet.</div>
               ) : (
                 appGroups.map((group) => {
                   const selectedCount = group.tools.filter((tool) => selectedTools.has(tool.toolName)).length;
@@ -689,7 +689,7 @@ function RuleBuilder({
         </section>
 
         <section className="space-y-3">
-          <h3 className="text-sm font-semibold text-foreground">然后</h3>
+          <h3 className="text-sm font-semibold text-foreground">Then</h3>
           <div className="grid gap-2">
             {OUTCOMES.map((outcome) => (
               <Button
@@ -706,17 +706,17 @@ function RuleBuilder({
           {form.policyType === "rate_limit" ? (
             <div className="grid grid-cols-2 gap-2">
               <div className="space-y-1.5">
-                <Label htmlFor="limit-count">次</Label>
+                <Label htmlFor="limit-count">Times</Label>
                 <Input id="limit-count" inputMode="numeric" value={form.rateLimitLimit} onChange={(e) => setForm({ ...form, rateLimitLimit: e.target.value })} />
               </div>
               <div className="space-y-1.5">
-                <Label>每</Label>
+                <Label>Per</Label>
                 <Select value={form.rateLimitWindowSeconds} onValueChange={(rateLimitWindowSeconds) => setForm({ ...form, rateLimitWindowSeconds })}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="3600">小时</SelectItem>
-                    <SelectItem value="86400">天</SelectItem>
-                    <SelectItem value="60">分钟</SelectItem>
+                    <SelectItem value="3600">Hour</SelectItem>
+                    <SelectItem value="86400">Day</SelectItem>
+                    <SelectItem value="60">Minute</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -728,31 +728,31 @@ function RuleBuilder({
       <details className="rounded-md border border-border p-3">
         <summary className="flex cursor-pointer items-center gap-2 text-sm font-semibold text-foreground">
           <ChevronDown className="h-4 w-4" />
-          高级
+          Advanced
         </summary>
         <div className="mt-3 grid gap-3 lg:grid-cols-2">
           <div className="space-y-1.5">
-            <Label htmlFor="rule-name">规则名称</Label>
+            <Label htmlFor="rule-name">Rule name</Label>
             <Input id="rule-name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder={sentenceText(sentence)} />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="rule-priority">优先级</Label>
+            <Label htmlFor="rule-priority">Priority</Label>
             <Input id="rule-priority" inputMode="numeric" value={form.priority} onChange={(e) => setForm({ ...form, priority: e.target.value })} />
           </div>
           <div className="space-y-1.5">
-            <Label>原始连接</Label>
+            <Label>Raw connection</Label>
             <Select value={form.connectionId} onValueChange={(connectionId) => setForm({ ...form, connectionId })}>
               <SelectTrigger><SelectValue /></SelectTrigger>
               <SelectContent>
-                <SelectItem value={ANY_VALUE}>任何连接</SelectItem>
+                <SelectItem value={ANY_VALUE}>Any connection</SelectItem>
                 {[...maps.connection.entries()].map(([id, name]) => <SelectItem key={id} value={id}>{name}</SelectItem>)}
               </SelectContent>
             </Select>
           </div>
           <div className="flex items-center justify-between gap-3 rounded-md border border-border px-3 py-2 lg:col-span-2">
             <div>
-              <p className="text-sm font-medium text-foreground">开启</p>
-              <p className="text-xs text-muted-foreground">关闭此选项以保存规则但不进行匹配。</p>
+              <p className="text-sm font-medium text-foreground">On</p>
+              <p className="text-xs text-muted-foreground">Turn this off to keep the rule saved without matching.</p>
             </div>
             <ToggleSwitch checked={form.enabled} onCheckedChange={(enabled) => setForm({ ...form, enabled })} />
           </div>
@@ -982,17 +982,17 @@ export function PoliciesTab({ companyId }: { companyId: string }) {
   return (
     <div className="space-y-5">
       <ToolsPageHeader
-        title="规则"
+        title="Rules"
         description="Rules are checked top to bottom — the first one that matches decides."
         actions={
           <>
             <Button size="sm" variant="outline" onClick={() => setTestOpen(true)}>
               <FlaskConical className="mr-1 h-4 w-4" />
-              测试规则
+              Test a rule
             </Button>
             <Button size="sm" onClick={() => setForm(emptyPolicyForm())}>
               <Plus className="mr-1 h-4 w-4" />
-              新规则
+              New rule
             </Button>
           </>
         }
@@ -1007,8 +1007,8 @@ export function PoliciesTab({ companyId }: { companyId: string }) {
           <div className="space-y-3">
             <EmptyState
               icon={Shield}
-              message="暂无规则"
-              description="从模板开始或从头创建规则。"
+              message="No rules yet"
+              description="Start with a template or create a rule from scratch."
               action="New rule"
               onAction={() => setForm(emptyPolicyForm())}
             />
@@ -1021,10 +1021,10 @@ export function PoliciesTab({ companyId }: { companyId: string }) {
                 <thead>
                   <tr className="border-b border-border text-left text-xs text-muted-foreground">
                     <th className="w-8 px-2 py-2.5 font-medium" />
-                    <th className="px-2 py-2.5 font-medium">规则</th>
-                    <th className="px-2 py-2.5 font-medium">结果</th>
-                    <th className="px-2 py-2.5 text-right font-medium">最近24小时</th>
-                    <th className="px-2 py-2.5 text-center font-medium">开启</th>
+                    <th className="px-2 py-2.5 font-medium">Rule</th>
+                    <th className="px-2 py-2.5 font-medium">Outcome</th>
+                    <th className="px-2 py-2.5 text-right font-medium">Last 24h</th>
+                    <th className="px-2 py-2.5 text-center font-medium">On</th>
                     <th className="w-10 px-2 py-2.5 text-right font-medium" />
                   </tr>
                 </thead>
@@ -1071,22 +1071,22 @@ export function PoliciesTab({ companyId }: { companyId: string }) {
                         <td className="px-2 py-2 text-right">
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                              <Button size="icon" variant="ghost" aria-label="规则操作">
+                              <Button size="icon" variant="ghost" aria-label="Rule actions">
                                 <MoreHorizontal className="h-4 w-4" />
                               </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
                               <DropdownMenuItem onSelect={() => setForm(policyToForm(policy))}>
                                 <Pencil className="mr-2 h-4 w-4" />
-                                编辑
+                                Edit
                               </DropdownMenuItem>
                               <DropdownMenuItem onSelect={() => duplicate.mutate(policy)}>
                                 <Copy className="mr-2 h-4 w-4" />
-                                重复
+                                Duplicate
                               </DropdownMenuItem>
                               <DropdownMenuItem onSelect={() => updatePolicy.mutate({ policyId: policy.id, body: { enabled: false } })}>
                                 <RotateCcw className="mr-2 h-4 w-4" />
-                                关闭
+                                Turn off
                               </DropdownMenuItem>
                               <DropdownMenuSeparator />
                               <DropdownMenuItem
@@ -1094,7 +1094,7 @@ export function PoliciesTab({ companyId }: { companyId: string }) {
                                 onSelect={() => setConfirm({ kind: "delete-rule", policy, hits })}
                               >
                                 <Trash2 className="mr-2 h-4 w-4" />
-                                删除
+                                Delete
                               </DropdownMenuItem>
                             </DropdownMenuContent>
                           </DropdownMenu>
@@ -1110,15 +1110,15 @@ export function PoliciesTab({ companyId }: { companyId: string }) {
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-sm font-semibold text-foreground">记住的批准</h3>
-        <p className="text-sm text-muted-foreground">当您批准“先询问”请求时，Paperclip 可以记住该决定。</p>
+        <h3 className="text-sm font-semibold text-foreground">Remembered approvals</h3>
+        <p className="text-sm text-muted-foreground">When you approve an Ask-first request, Paperclip can remember the decision.</p>
         {trustRules.isLoading ? (
           <LoadingState />
         ) : trustRules.error ? (
           <ErrorState error={trustRules.error} onRetry={() => trustRules.refetch()} />
         ) : (trustRules.data?.trustRules ?? []).length === 0 ? (
           <div className="rounded-md border border-border px-4 py-6 text-sm text-muted-foreground">
-            尚无记住的批准。
+            No remembered approvals yet.
           </div>
         ) : (
           <div className="divide-y divide-border rounded-md border border-border">
@@ -1129,7 +1129,7 @@ export function PoliciesTab({ companyId }: { companyId: string }) {
                     <RuleSentence sentence={policySentence(rule, maps, catalogByToolName)} />
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    已记住 <RelativeTime value={rule.updatedAt} />
+                    Remembered <RelativeTime value={rule.updatedAt} />
                   </div>
                 </div>
                 <Button
@@ -1138,7 +1138,7 @@ export function PoliciesTab({ companyId }: { companyId: string }) {
                   disabled={!rule.enabled || revoke.isPending}
                   onClick={() => setConfirm({ kind: "forget-approval", policy: rule })}
                 >
-                  忘记
+                  Forget
                 </Button>
               </div>
             ))}
@@ -1172,7 +1172,7 @@ export function PoliciesTab({ companyId }: { companyId: string }) {
               </DialogDescription>
             </DialogHeader>
             <DialogFooter>
-              <Button variant="outline" onClick={() => setConfirm(null)}>取消</Button>
+              <Button variant="outline" onClick={() => setConfirm(null)}>Cancel</Button>
               <Button
                 variant="destructive"
                 disabled={deletePolicy.isPending || revoke.isPending}

@@ -67,9 +67,9 @@ const RECENT_AGENT_LIMIT = 3;
 const LIVE_AGENT_LINGER_MS = 120_000;
 
 const AGENT_SORT_CHOICES: SidebarSectionRadioChoice[] = [
-  { value: "top", label: "置顶" },
-  { value: "alphabetical", label: "按字母" },
-  { value: "recent", label: "最近" },
+  { value: "top", label: "Top" },
+  { value: "alphabetical", label: "Alphabetical" },
+  { value: "recent", label: "Recent" },
 ];
 
 function agentTimestamp(agent: Agent, field: "lastHeartbeatAt" | "updatedAt" | "createdAt"): number {
@@ -181,14 +181,14 @@ function SidebarAgentItem({
           <span className="ml-1 flex shrink-0 items-center gap-1">
             {showBuiltInLifecycle ? <BuiltInLifecycleChip status={builtInStatus} compact /> : null}
             {hasInvalidOrgChain ? (
-              <AlertTriangle className="h-3.5 w-3.5 shrink-0 text-amber-500" aria-label="无效的报告链" />
+              <AlertTriangle className="h-3.5 w-3.5 shrink-0 text-amber-500" aria-label="Invalid reporting chain" />
             ) : null}
           </span>
         ) : undefined
       }
       trailingLabel={trailingLabel}
       liveAccessory={
-        agent.pauseReason === "budget" ? <BudgetSidebarMarker title="代理因预算暂停" /> : undefined
+        agent.pauseReason === "budget" ? <BudgetSidebarMarker title="Agent paused by budget" /> : undefined
       }
     />
   );
@@ -261,7 +261,7 @@ function SidebarAgentItem({
               }}
             >
               <Pencil className="size-4" />
-              <span>编辑代理</span>
+              <span>Edit agent</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -631,7 +631,7 @@ export function SidebarAgents({ streamlined = false }: { streamlined?: boolean }
 
   return (
     <SidebarSection
-      label="代理"
+      label="Agents"
       collapsible={{ open, onOpenChange: setOpen }}
       headerAction={{
         ariaLabel: "New agent",
@@ -639,12 +639,12 @@ export function SidebarAgents({ streamlined = false }: { streamlined?: boolean }
         onClick: openNewAgent,
       }}
       menu={{
-        ariaLabel: "代理分区操作",
+        ariaLabel: "Agents section actions",
         actions: [
-          { type: "item", label: "浏览代理", icon: Users, href: "/agents/all" },
+          { type: "item", label: "Browse agents", icon: Users, href: "/agents/all" },
           { type: "separator" },
         ],
-        radioLabel: "代理排序",
+        radioLabel: "Agent sort",
         radioChoices: AGENT_SORT_CHOICES,
         radioValue: sortMode,
         onRadioValueChange: persistSortMode,
@@ -659,20 +659,20 @@ export function SidebarAgents({ streamlined = false }: { streamlined?: boolean }
           <Link
             to="/agents/all"
             state={SIDEBAR_SCROLL_RESET_STATE}
-            aria-label={rail ? "查看所有代理" : undefined}
+            aria-label={rail ? "See all agents" : undefined}
             onClick={() => {
               if (isMobile) setSidebarOpen(false);
             }}
             className="flex items-center gap-2.5 mx-2 rounded-lg px-2 py-1.5 pointer-coarse:py-1 text-(length:--text-compact) font-medium text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground"
           >
             <Users className="shrink-0 h-4 w-4" />
-            <span className={rail ? SIDEBAR_RAIL_HIDDEN_LABEL : undefined}>查看所有代理</span>
+            <span className={rail ? SIDEBAR_RAIL_HIDDEN_LABEL : undefined}>See all agents</span>
           </Link>
         );
         return rail ? (
           <Tooltip>
             <TooltipTrigger asChild>{seeAllLink}</TooltipTrigger>
-            <TooltipContent side="right">查看所有代理</TooltipContent>
+            <TooltipContent side="right">See all agents</TooltipContent>
           </Tooltip>
         ) : (
           seeAllLink

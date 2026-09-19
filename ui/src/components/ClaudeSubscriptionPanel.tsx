@@ -63,10 +63,10 @@ export function ClaudeSubscriptionPanel({
       <div className="flex items-start justify-between gap-3 border-b border-border pb-3">
         <div className="min-w-0">
           <div className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
-            Anthropic 订阅
+            Anthropic subscription
           </div>
           <div className="mt-1 text-sm text-muted-foreground">
-            实时 Claude 配额窗口。
+            Live Claude quota windows.
           </div>
         </div>
         {source ? (

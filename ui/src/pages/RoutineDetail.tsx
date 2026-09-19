@@ -674,7 +674,7 @@ export function RoutineDetail() {
   );
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Repeat} message="选择公司以查看例程。" />;
+    return <EmptyState icon={Repeat} message="Select a company to view routines." />;
   }
 
   // Back-compat redirect: `?tab=x` → `/routines/:id/x`.
@@ -798,7 +798,7 @@ export function RoutineDetail() {
         href="#routine-section"
         className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-20 focus:rounded focus:bg-background focus:px-3 focus:py-1.5 focus:text-sm"
       >
-        跳转到章节
+        Skip to section
       </a>
 
       {/* Bounded to the main scroll area's height so the header + sub-nav stay
@@ -812,7 +812,7 @@ export function RoutineDetail() {
               ref={titleInputRef}
               data-autosize-title
               className="min-w-0 flex-1 resize-none overflow-hidden bg-transparent text-base font-semibold leading-7 outline-none placeholder:text-muted-foreground/50"
-              placeholder="例程标题"
+              placeholder="Routine title"
               rows={1}
               value={editDraft.title}
               onChange={(event) => {

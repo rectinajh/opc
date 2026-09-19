@@ -38,7 +38,7 @@ export function ZeroResultsRecovery({
     >
       <FilterX className="h-10 w-10 text-muted-foreground" aria-hidden />
       <div className="space-y-1">
-        <div className="text-base font-semibold">没有符合这些筛选条件的结果</div>
+        <div className="text-base font-semibold">No results with these filters</div>
         <p className="text-sm text-muted-foreground">
           {unfilteredTotal === 1 ? "1 result matches" : `${unfilteredTotal} results match`}
           {query ? <> &ldquo;{query}&rdquo;</> : null}, but your{" "}
@@ -49,7 +49,7 @@ export function ZeroResultsRecovery({
       {suggestions.length > 0 ? (
         <div className="flex w-full flex-col gap-1.5">
           <div className="text-(length:--text-micro) font-semibold uppercase tracking-wide text-muted-foreground">
-            放宽筛选条件
+            Loosen a filter
           </div>
           {suggestions.map((suggestion) => (
             <button
@@ -74,7 +74,7 @@ export function ZeroResultsRecovery({
 
       <Button onClick={onClearAll} variant="default" size="sm">
         <RotateCcw className="mr-1.5 h-4 w-4" />
-        清除所有筛选条件
+        Clear all filters
       </Button>
     </div>
   );

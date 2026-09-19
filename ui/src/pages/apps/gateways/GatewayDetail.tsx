@@ -129,7 +129,7 @@ export function GatewayDetail() {
   });
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">选择公司以管理网关。</div>;
+    return <div className="p-6 text-sm text-muted-foreground">Select a company to manage gateways.</div>;
   }
   if (!activeTab) {
     return <Navigate replace to={gatewayTabHref(gatewayId, "overview")} />;
@@ -151,7 +151,7 @@ export function GatewayDetail() {
       <div className="max-w-3xl p-6">
         <p className="text-sm text-muted-foreground">We couldn’t find that gateway.</p>
         <Button className="mt-4" variant="outline" onClick={() => navigate("/apps/gateways")}>
-          返回网关
+          Back to gateways
         </Button>
       </div>
     );
@@ -179,11 +179,11 @@ export function GatewayDetail() {
         </div>
         <Button onClick={() => setSnippetOpen(true)}>
           <Send className="mr-1.5 h-4 w-4" />
-          显示代码片段
+          Show snippet
         </Button>
       </div>
 
-      <nav className="flex items-center gap-6 overflow-x-auto border-b border-border text-sm" aria-label="网关选项卡">
+      <nav className="flex items-center gap-6 overflow-x-auto border-b border-border text-sm" aria-label="Gateway tabs">
         {GATEWAY_TABS.map((item) => {
           const isActive = item.key === activeTab;
           return (

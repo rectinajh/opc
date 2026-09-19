@@ -217,7 +217,7 @@ export function TestPanel({
         <p className="mx-auto mt-1 max-w-md text-sm text-muted-foreground">
           Only agents you can assign tasks to can preview {appName}. Give an agent access in{" "}
           <Link className="font-medium text-primary hover:underline" to={appTabHref(connectionId, "permissions")}>
-            权限
+            Permissions
           </Link>{" "}
           to test it here.
         </p>
@@ -251,7 +251,7 @@ export function TestPanel({
           <div className="relative min-w-(--sz-12rem) flex-1">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
-              aria-label="查找操作"
+              aria-label="Find an action"
               placeholder="Find an action…"
               className="pl-9"
               value={query}
@@ -312,12 +312,12 @@ export function TestPanel({
 function EmptyState({ connectionId, appName }: { connectionId: string; appName: string }) {
   return (
     <div className="rounded-lg border border-border bg-card p-8 text-center">
-      <p className="text-base font-bold text-foreground">暂无测试内容</p>
+      <p className="text-base font-bold text-foreground">Nothing to test yet</p>
       <p className="mx-auto mt-1.5 max-w-md text-sm text-muted-foreground">
         Once {appName} is connected, the actions it offers will show up here so you can try them out.
       </p>
       <Button asChild className="mt-4" variant="outline">
-        <Link to={appTabHref(connectionId, "setup")}>前往设置</Link>
+        <Link to={appTabHref(connectionId, "setup")}>Go to Setup</Link>
       </Button>
     </div>
   );
@@ -413,7 +413,7 @@ function AgentPicker({
             "items-center gap-1.5 text-foreground outline-none hover:text-primary focus-visible:text-primary",
             inline ? "inline-flex font-semibold underline-offset-2 hover:underline" : "mt-0.5 flex text-lg font-bold",
           )}
-          aria-label="选择要测试的代理"
+          aria-label="Choose which agent to test as"
         >
           {selectedAgent.name}
           <ChevronsUpDown className={cn("text-muted-foreground", inline ? "h-3.5 w-3.5" : "h-4 w-4")} />
@@ -424,7 +424,7 @@ function AgentPicker({
           <div className="relative">
             <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
             <Input
-              aria-label="搜索代理"
+              aria-label="Search agents"
               placeholder="Search agents…"
               className="h-8 pl-8 text-sm"
               value={search}
@@ -435,7 +435,7 @@ function AgentPicker({
         </div>
         <div className="max-h-60 overflow-y-auto p-1">
           {filtered.length === 0 ? (
-            <p className="px-3 py-4 text-center text-xs text-muted-foreground">没有匹配的代理。</p>
+            <p className="px-3 py-4 text-center text-xs text-muted-foreground">No agents match.</p>
           ) : (
             filtered.map((agent) => {
               const summary = agent.effectiveAccess;
@@ -474,18 +474,18 @@ function AgentPicker({
           )}
         </div>
         <div className="border-t border-border px-3 py-2 text-(length:--text-micro) text-muted-foreground">
-          <p>仅列出您可以分配任务的代理。</p>
+          <p>Only agents you can assign tasks to are listed.</p>
           <p>Pick one to preview what they'd see in {appName}.</p>
         </div>
         <div className="border-t border-border p-3">
-          <p className="text-xs font-semibold text-foreground">徽章含义</p>
+          <p className="text-xs font-semibold text-foreground">What the badges mean</p>
           <ul className="mt-1.5 space-y-1 text-xs text-muted-foreground">
-            <li><span className="font-medium text-foreground">允许</span> — runs immediately when you press Run.</li>
-            <li><span className="font-medium text-foreground">先询问</span> — Run is parked in Review for your OK.</li>
+            <li><span className="font-medium text-foreground">Allowed</span> — runs immediately when you press Run.</li>
+            <li><span className="font-medium text-foreground">Ask first</span> — Run is parked in Review for your OK.</li>
             <li>
-              <span className="font-medium text-foreground">关闭</span> — won't run. Change it in{" "}
+              <span className="font-medium text-foreground">Off</span> — won't run. Change it in{" "}
               <Link className="text-primary hover:underline" to={appTabHref(connectionId, "permissions")}>
-                权限
+                Permissions
               </Link>.
             </li>
           </ul>
@@ -805,7 +805,7 @@ function ActionTester({
           advancedLabel="More options"
         />
       ) : (
-        <p className="text-xs text-muted-foreground">此操作无需输入。</p>
+        <p className="text-xs text-muted-foreground">This action takes no inputs.</p>
       )}
 
       <p className="text-xs text-muted-foreground">{GUT_CHECK[decision](appName, agent.name)}</p>
@@ -823,7 +823,7 @@ function ActionTester({
           )}
         </Button>
         <Button onClick={onReset} disabled={running} size="sm" variant="ghost">
-          重置
+          Reset
         </Button>
       </div>
 
@@ -874,7 +874,7 @@ function RunningCard({
       <div className="mt-3 flex items-center justify-between">
         <span className="text-xs text-muted-foreground">Started {seconds(elapsedMs)} ago · Press cancel to stop</span>
         <Button onClick={onCancel} size="sm" variant="outline">
-          取消
+          Cancel
         </Button>
       </div>
     </div>
@@ -1004,7 +1004,7 @@ function AllowedResult({
 
       {!isEmptyResult(value) && (
         <div className="mt-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">预览</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Preview</p>
           <div className="mt-1.5">
             <PrettyPreview value={value} />
           </div>
@@ -1016,7 +1016,7 @@ function AllowedResult({
       <p className="mt-3 text-xs text-muted-foreground">
         This call is in the{" "}
         <Link className="text-primary hover:underline" to={appTabHref(connectionId, "activity")}>
-          活动标签
+          Activity tab
         </Link>
         .
       </p>
@@ -1124,7 +1124,7 @@ function ErrorResult({
     <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-4">
       <div className="flex items-center gap-2">
         <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-        <span className="text-sm font-medium text-foreground">未成功。</span>
+        <span className="text-sm font-medium text-foreground">It didn't work.</span>
       </div>
       <p className="mt-0.5 flex items-center gap-1.5 text-xs text-muted-foreground">
         <Clock className="h-3 w-3" />
@@ -1136,18 +1136,18 @@ function ErrorResult({
         {error.reasonCode && <p className="mt-0.5 text-xs text-muted-foreground">code: {error.reasonCode}</p>}
       </div>
       <div className="mt-3">
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">尝试方法</p>
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">What to try</p>
         <ul className="mt-1 list-disc space-y-0.5 pl-4 text-sm text-foreground">
           {hints.map((hint) => (
             <li key={hint}>{hint}</li>
           ))}
         </ul>
       </div>
-      <p className="mt-3 text-xs text-muted-foreground">调整上述输入并重试。</p>
+      <p className="mt-3 text-xs text-muted-foreground">Adjust the input above and try again.</p>
       <p className="mt-1 text-xs text-muted-foreground">
         Also visible in the{" "}
         <Link className="text-primary hover:underline" to={appTabHref(connectionId, "activity")}>
-          活动标签
+          Activity tab
         </Link>
         .
       </p>
@@ -1259,23 +1259,23 @@ function AskFirstResult({
     <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-4">
       <div className="flex items-center gap-2">
         <ShieldQuestion className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-        <span className="text-sm font-medium text-foreground">已发送等待您的批准。</span>
+        <span className="text-sm font-medium text-foreground">Sent for your OK.</span>
       </div>
       <p className="mt-0.5 text-xs text-muted-foreground">{outcome.agentName} needs your approval before this runs.</p>
 
       <dl className="mt-3 space-y-1.5 text-sm">
         <div className="flex gap-3">
-          <dt className="w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-muted-foreground">操作</dt>
+          <dt className="w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Action</dt>
           <dd className="text-foreground">{entry.title ?? entry.toolName}</dd>
         </div>
         {where && (
           <div className="flex gap-3">
-            <dt className="w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-muted-foreground">位置</dt>
+            <dt className="w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Where</dt>
             <dd className="break-words text-foreground">{where}</dd>
           </div>
         )}
         <div className="flex gap-3">
-          <dt className="w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-muted-foreground">状态</dt>
+          <dt className="w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Status</dt>
           <dd className={cn("flex items-center gap-1.5 text-foreground", settled && "text-muted-foreground")}>
             {phase === "running" && <Loader2 className="h-3 w-3 animate-spin" />}
             {statusLabel}
@@ -1287,7 +1287,7 @@ function AskFirstResult({
         <p className="mt-3 text-sm text-foreground">
           Approve it in the{" "}
           <Link className="font-medium text-primary hover:underline" to={appTabHref(connectionId, "review")}>
-            审核标签页
+            Review tab
           </Link>{" "}
           to finish the test. You can also cancel the request.
         </p>
@@ -1295,7 +1295,7 @@ function AskFirstResult({
 
       <div className="mt-3 flex flex-wrap items-center gap-2">
         <Button asChild size="sm" variant="outline">
-          <Link to={appTabHref(connectionId, "review")}>打开审核标签页</Link>
+          <Link to={appTabHref(connectionId, "review")}>Open Review tab</Link>
         </Button>
         {phase === "waiting" && actionRequestId && selectedCompanyId && (
           <Button size="sm" variant="ghost" onClick={() => cancel.mutate()} disabled={cancel.isPending}>
@@ -1362,11 +1362,11 @@ function OffExplanation({
           <Ban className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
           <div className="text-sm text-muted-foreground">
             <p className="font-medium text-foreground">{title} is off for {agent.name}.</p>
-            <p className="mt-0.5">它不会在此运行，也不会从任务运行。</p>
+            <p className="mt-0.5">It won't run here, and it won't run from a task either.</p>
             <p className="mt-2">
               Want to test it? Turn it on for {agent.name} in{" "}
               <Link className="font-medium text-primary hover:underline" to={appTabHref(connectionId, "permissions")}>
-                权限
+                Permissions
               </Link>{" "}
               — set it to Allowed or Ask first.
             </p>
@@ -1379,7 +1379,7 @@ function OffExplanation({
       </div>
 
       <aside className="rounded-md border border-border bg-card p-3">
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">为何关闭</p>
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Why this is off</p>
         <p className="mt-1.5 text-xs text-muted-foreground">{whyBody}</p>
         {auditHint && <p className="mt-1.5 text-(length:--text-micro) text-muted-foreground">{auditHint}</p>}
         {otherSettings.length > 0 && (

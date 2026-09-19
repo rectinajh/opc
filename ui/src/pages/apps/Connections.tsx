@@ -236,7 +236,7 @@ export function Connections() {
   const visibleRows = filter === "attention" ? rowsNeedingAttention : rows;
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">选择公司以管理应用。</div>;
+    return <div className="p-6 text-sm text-muted-foreground">Select a company to manage apps.</div>;
   }
 
   const loading = applicationsQuery.isLoading || connectionsQuery.isLoading || galleryQuery.isLoading;
@@ -254,12 +254,12 @@ export function Connections() {
         <div className="space-y-5">
           <header className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <h1 className="text-2xl font-bold tracking-tight">连接</h1>
+              <h1 className="text-2xl font-bold tracking-tight">Connections</h1>
               <p className="mt-1 text-sm text-muted-foreground">
                 The tools you’ve connected, and whether they’re working.
               </p>
             </div>
-            <Button onClick={() => navigate(BROWSE_HREF)}>连接应用</Button>
+            <Button onClick={() => navigate(BROWSE_HREF)}>Connect an app</Button>
           </header>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -288,7 +288,7 @@ export function Connections() {
                   {reviewCount} {reviewCount === 1 ? "action is" : "actions are"} waiting for your OK
                 </div>
                 <div className="truncate text-xs text-amber-700 dark:text-amber-300">
-                  您的代理在更改前暂停以与您确认。
+                  Your agents paused to check with you before making a change.
                 </div>
               </div>
               <span className="shrink-0 text-xs font-semibold text-amber-800 dark:text-amber-200">Review →</span>
@@ -318,10 +318,10 @@ export function Connections() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border bg-muted/40 text-left text-(length:--text-micro) font-semibold uppercase tracking-wide text-muted-foreground">
-                  <th className="px-4 py-2.5">应用</th>
-                  <th className="px-4 py-2.5">状态</th>
-                  <th className="px-4 py-2.5">操作</th>
-                  <th className="px-4 py-2.5">上次使用</th>
+                  <th className="px-4 py-2.5">App</th>
+                  <th className="px-4 py-2.5">Status</th>
+                  <th className="px-4 py-2.5">Actions</th>
+                  <th className="px-4 py-2.5">Last used</th>
                   <th className="px-4 py-2.5" />
                 </tr>
               </thead>
@@ -461,7 +461,7 @@ export function Connections() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={deleteConnection.isPending}>取消</AlertDialogCancel>
+            <AlertDialogCancel disabled={deleteConnection.isPending}>Cancel</AlertDialogCancel>
             <AlertDialogAction
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
               disabled={!connectionToDelete || deleteConnection.isPending}
@@ -531,7 +531,7 @@ function EmptyConnections({ onBrowse }: { onBrowse: () => void }) {
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-2xl font-bold tracking-tight">连接</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Connections</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           The tools you’ve connected, and whether they’re working.
         </p>
@@ -541,13 +541,13 @@ function EmptyConnections({ onBrowse }: { onBrowse: () => void }) {
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-muted">
           <AppWindow className="h-6 w-6 text-muted-foreground" />
         </div>
-        <p className="mt-4 text-sm font-medium text-foreground">尚无连接。</p>
+        <p className="mt-4 text-sm font-medium text-foreground">No connections yet.</p>
         <p className="mt-1 text-sm text-muted-foreground">
-          从...添加一个 <span className="font-medium text-foreground">应用</span> to give your agents
+          Add one from <span className="font-medium text-foreground">Apps</span> to give your agents
           the tools they need.
         </p>
         <Button className="mt-6" onClick={onBrowse}>
-          浏览应用
+          Browse apps
         </Button>
       </div>
     </div>

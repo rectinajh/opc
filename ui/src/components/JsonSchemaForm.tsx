@@ -525,12 +525,12 @@ const EnumField = React.memo(({
         disabled={disabled}
       >
         <SelectTrigger className="w-full">
-          <SelectValue placeholder="选择一个选项" />
+          <SelectValue placeholder="Select an option" />
         </SelectTrigger>
         <SelectContent>
           {showUnsetOption && (
             <SelectItem value={ENUM_UNSET_VALUE} textValue="None">
-              <span className="text-muted-foreground">无</span>
+              <span className="text-muted-foreground">None</span>
             </SelectItem>
           )}
           {options.map((option) => (
@@ -710,7 +710,7 @@ const SecretField = React.memo(({
           value={bindingValue}
           onChange={handlePickerChange}
           label=""
-          placeholder="选择现有密钥"
+          placeholder="Select an existing secret"
           allowVersionSelector={false}
           emptyHint="No active secrets yet. Create one or paste a raw value below."
           disabled={disabled}
@@ -729,7 +729,7 @@ const SecretField = React.memo(({
                   }}
                   disabled={disabled}
                 >
-                  隐藏原始值输入
+                  Hide raw value input
                 </button>
               ) : null}
             </div>
@@ -740,7 +740,7 @@ const SecretField = React.memo(({
               onClick={() => setShowRawInput(true)}
               disabled={disabled}
             >
-              或粘贴原始值
+              Or paste a raw value
             </button>
           )
         ) : null}
@@ -980,13 +980,13 @@ const ArrayField = React.memo(({
               }}
             >
               <Trash2 className="h-4 w-4" />
-              <span className="sr-only">移除项目</span>
+              <span className="sr-only">Remove item</span>
             </Button>
           </div>
         ))}
         {items.length === 0 && (
           <div className="rounded-lg border border-dashed p-4 text-center text-xs text-muted-foreground">
-            尚未添加项目。
+            No items added yet.
           </div>
         )}
       </div>
@@ -1319,7 +1319,7 @@ export function JsonSchemaForm({
           className,
         )}
       >
-        没有可用的配置选项。
+        No configuration options available.
       </div>
     );
   }

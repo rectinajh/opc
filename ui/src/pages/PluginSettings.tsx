@@ -132,7 +132,7 @@ export function PluginSettings() {
   }, [pluginId]);
 
   if (pluginLoading) {
-    return <div className="p-4 text-sm text-muted-foreground">正在加载插件详情...</div>;
+    return <div className="p-4 text-sm text-muted-foreground">Loading plugin details...</div>;
   }
 
   if (!plugin) {
@@ -190,19 +190,19 @@ export function PluginSettings() {
         <TabsContent value="configuration" className="space-y-6">
           <div className="space-y-8">
             <section className="space-y-5">
-              <h2 className="text-base font-semibold">关于</h2>
+              <h2 className="text-base font-semibold">About</h2>
               <div className="grid gap-8 lg:grid-cols-(--gtc-52)">
                 <div className="space-y-2">
-                  <h3 className="text-sm font-medium text-muted-foreground">描述</h3>
+                  <h3 className="text-sm font-medium text-muted-foreground">Description</h3>
                   <p className="text-sm leading-6 text-foreground/90">{pluginDescription}</p>
                 </div>
                 <div className="space-y-4 text-sm">
                   <div className="space-y-1.5">
-                    <h3 className="font-medium text-muted-foreground">作者</h3>
+                    <h3 className="font-medium text-muted-foreground">Author</h3>
                     <p className="text-foreground">{plugin.manifestJson.author}</p>
                   </div>
                   <div className="space-y-2">
-                    <h3 className="font-medium text-muted-foreground">类别</h3>
+                    <h3 className="font-medium text-muted-foreground">Categories</h3>
                     <div className="flex flex-wrap gap-2">
                       {plugin.categories.length > 0 ? (
                         plugin.categories.map((category) => (
@@ -211,7 +211,7 @@ export function PluginSettings() {
                           </Badge>
                         ))
                       ) : (
-                        <span className="text-foreground">无</span>
+                        <span className="text-foreground">None</span>
                       )}
                     </div>
                   </div>
@@ -223,7 +223,7 @@ export function PluginSettings() {
 
             <section className="space-y-4">
               <div className="space-y-1">
-                <h2 className="text-base font-semibold">设置</h2>
+                <h2 className="text-base font-semibold">Settings</h2>
               </div>
               {hasLocalFolders ? (
                 <PluginLocalFoldersSettings
@@ -265,13 +265,13 @@ export function PluginSettings() {
                   </p>
                   <div className="mt-3">
                     <Link to="/company/settings/instance/environments">
-                      <Button variant="outline" size="sm">打开环境</Button>
+                      <Button variant="outline" size="sm">Open Environments</Button>
                     </Link>
                   </div>
                 </div>
               ) : !hasLocalFolders ? (
                 <p className="text-sm text-muted-foreground">
-                  此插件不需要任何设置。
+                  This plugin does not require any settings.
                 </p>
               ) : null}
             </section>
@@ -285,10 +285,10 @@ export function PluginSettings() {
                 <CardHeader>
                   <CardTitle className="text-base flex items-center gap-1.5">
                     <Cpu className="h-4 w-4" />
-                    运行时仪表板
+                    Runtime Dashboard
                   </CardTitle>
                   <CardDescription>
-                    工作进程、计划任务和 Webhook 投递
+                    Worker process, scheduled jobs, and webhook deliveries
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
@@ -297,12 +297,12 @@ export function PluginSettings() {
                       <div>
                         <h3 className="text-sm font-medium mb-3 flex items-center gap-1.5">
                           <Cpu className="h-3.5 w-3.5 text-muted-foreground" />
-                          工作进程
+                          Worker Process
                         </h3>
                         {dashboardData.worker ? (
                           <div className="grid grid-cols-2 gap-3 text-sm">
                             <div className="flex justify-between">
-                              <span className="text-muted-foreground">状态</span>
+                              <span className="text-muted-foreground">Status</span>
                               <Badge variant={dashboardData.worker.status === "running" ? "default" : "secondary"}>
                                 {dashboardData.worker.status}
                               </Badge>
@@ -312,11 +312,11 @@ export function PluginSettings() {
                               <span className="font-mono text-xs">{dashboardData.worker.pid ?? "—"}</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-muted-foreground">正常运行时间</span>
+                              <span className="text-muted-foreground">Uptime</span>
                               <span className="text-xs">{formatUptime(dashboardData.worker.uptime)}</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-muted-foreground">待处理 RPC</span>
+                              <span className="text-muted-foreground">Pending RPCs</span>
                               <span className="text-xs">{dashboardData.worker.pendingRequests}</span>
                             </div>
                             {dashboardData.worker.totalCrashes > 0 && (
@@ -324,7 +324,7 @@ export function PluginSettings() {
                                 <div className="flex justify-between col-span-2">
                                   <span className="text-muted-foreground flex items-center gap-1">
                                     <AlertTriangle className="h-3 w-3 text-amber-500" />
-                                    崩溃次数
+                                    Crashes
                                   </span>
                                   <span className="text-xs">
                                     {dashboardData.worker.consecutiveCrashes} consecutive / {dashboardData.worker.totalCrashes} total
@@ -332,7 +332,7 @@ export function PluginSettings() {
                                 </div>
                                 {dashboardData.worker.lastCrashAt && (
                                   <div className="flex justify-between col-span-2">
-                                    <span className="text-muted-foreground">上次崩溃</span>
+                                    <span className="text-muted-foreground">Last Crash</span>
                                     <span className="text-xs">{formatTimestamp(dashboardData.worker.lastCrashAt)}</span>
                                   </div>
                                 )}
@@ -340,7 +340,7 @@ export function PluginSettings() {
                             )}
                           </div>
                         ) : (
-                          <p className="text-sm text-muted-foreground italic">未注册工作进程。</p>
+                          <p className="text-sm text-muted-foreground italic">No worker process registered.</p>
                         )}
                       </div>
 
@@ -349,7 +349,7 @@ export function PluginSettings() {
                       <div>
                         <h3 className="text-sm font-medium mb-3 flex items-center gap-1.5">
                           <CalendarClock className="h-3.5 w-3.5 text-muted-foreground" />
-                          最近任务运行
+                          Recent Job Runs
                         </h3>
                         {dashboardData.recentJobRuns.length > 0 ? (
                           <div className="space-y-2">
@@ -375,7 +375,7 @@ export function PluginSettings() {
                             ))}
                           </div>
                         ) : (
-                          <p className="text-sm text-muted-foreground italic">尚未记录任务运行。</p>
+                          <p className="text-sm text-muted-foreground italic">No job runs recorded yet.</p>
                         )}
                       </div>
 
@@ -384,7 +384,7 @@ export function PluginSettings() {
                       <div>
                         <h3 className="text-sm font-medium mb-3 flex items-center gap-1.5">
                           <Webhook className="h-3.5 w-3.5 text-muted-foreground" />
-                          最近 Webhook 投递
+                          Recent Webhook Deliveries
                         </h3>
                         {dashboardData.recentWebhookDeliveries.length > 0 ? (
                           <div className="space-y-2">
@@ -407,7 +407,7 @@ export function PluginSettings() {
                             ))}
                           </div>
                         ) : (
-                          <p className="text-sm text-muted-foreground italic">尚未记录 Webhook 投递。</p>
+                          <p className="text-sm text-muted-foreground italic">No webhook deliveries recorded yet.</p>
                         )}
                       </div>
 
@@ -418,7 +418,7 @@ export function PluginSettings() {
                     </>
                   ) : (
                     <p className="text-sm text-muted-foreground">
-                      运行时诊断当前不可用。
+                      Runtime diagnostics are unavailable right now.
                     </p>
                   )}
                 </CardContent>
@@ -429,7 +429,7 @@ export function PluginSettings() {
                   <CardHeader>
                     <CardTitle className="text-base flex items-center gap-1.5">
                       <ActivitySquare className="h-4 w-4" />
-                      最近日志
+                      Recent Logs
                     </CardTitle>
                     <CardDescription>Last {recentLogs.length} log entries</CardDescription>
                   </CardHeader>
@@ -464,16 +464,16 @@ export function PluginSettings() {
                 <CardHeader>
                   <CardTitle className="text-base flex items-center gap-1.5">
                     <ActivitySquare className="h-4 w-4" />
-                    健康状态
+                    Health Status
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   {healthLoading ? (
-                    <p className="text-sm text-muted-foreground">正在检查健康状态...</p>
+                    <p className="text-sm text-muted-foreground">Checking health...</p>
                   ) : healthData ? (
                     <div className="space-y-4 text-sm">
                       <div className="flex items-center justify-between">
-                        <span className="text-muted-foreground">总体</span>
+                        <span className="text-muted-foreground">Overall</span>
                         <Badge variant={healthData.healthy ? "default" : "destructive"}>
                           {healthData.status}
                         </Badge>
@@ -505,10 +505,10 @@ export function PluginSettings() {
                   ) : (
                     <div className="space-y-3 text-sm text-muted-foreground">
                       <div className="flex items-center justify-between">
-                        <span>生命周期</span>
+                        <span>Lifecycle</span>
                         <Badge variant={statusVariant}>{displayStatus}</Badge>
                       </div>
-                      <p>插件就绪后运行健康检查。</p>
+                      <p>Health checks run once the plugin is ready.</p>
                       {plugin.lastError ? (
                         <div className="break-words rounded border border-destructive/20 bg-destructive/10 p-2 text-xs text-destructive">
                           {plugin.lastError}
@@ -521,25 +521,25 @@ export function PluginSettings() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">详情</CardTitle>
+                  <CardTitle className="text-base">Details</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3 text-sm text-muted-foreground">
                   <div className="flex justify-between gap-3">
-                    <span>插件 ID</span>
+                    <span>Plugin ID</span>
                     <span className="font-mono text-xs text-right">{plugin.id}</span>
                   </div>
                   <div className="flex justify-between gap-3">
-                    <span>插件键</span>
+                    <span>Plugin Key</span>
                     <span className="font-mono text-xs text-right">{plugin.pluginKey}</span>
                   </div>
                   <div className="flex justify-between gap-3">
-                    <span>NPM 包</span>
+                    <span>NPM Package</span>
                     <span className="max-w-(--sz-170px) truncate text-right text-xs" title={plugin.packageName}>
                       {plugin.packageName}
                     </span>
                   </div>
                   <div className="flex justify-between gap-3">
-                    <span>版本</span>
+                    <span>Version</span>
                     <span className="text-right text-foreground">v{plugin.manifestJson.version ?? plugin.version}</span>
                   </div>
                 </CardContent>
@@ -549,7 +549,7 @@ export function PluginSettings() {
                 <CardHeader>
                   <CardTitle className="text-base flex items-center gap-1.5">
                     <ShieldAlert className="h-4 w-4" />
-                    权限
+                    Permissions
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -562,7 +562,7 @@ export function PluginSettings() {
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-sm text-muted-foreground italic">未请求特殊权限。</p>
+                    <p className="text-sm text-muted-foreground italic">No special permissions requested.</p>
                   )}
                 </CardContent>
               </Card>
@@ -598,7 +598,7 @@ function PluginLocalFoldersSettings({ pluginId, companyId, declarations }: Plugi
   if (!companyId) {
     return (
       <div className="rounded-md border border-border/60 bg-muted/20 px-4 py-3 text-sm text-muted-foreground">
-        选择公司以配置此插件的本地文件夹。
+        Select a company to configure this plugin's local folders.
       </div>
     );
   }
@@ -607,7 +607,7 @@ function PluginLocalFoldersSettings({ pluginId, companyId, declarations }: Plugi
     <div className="space-y-3">
       <div className="flex items-center gap-2">
         <FolderOpen className="h-4 w-4 text-muted-foreground" />
-        <h3 className="text-sm font-medium">本地文件夹</h3>
+        <h3 className="text-sm font-medium">Local folders</h3>
       </div>
       {error ? (
         <div className="rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-sm text-destructive">
@@ -617,7 +617,7 @@ function PluginLocalFoldersSettings({ pluginId, companyId, declarations }: Plugi
       {isLoading ? (
         <div className="flex items-center gap-2 py-3 text-sm text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" />
-          正在加载本地文件夹...
+          Loading local folders...
         </div>
       ) : (
         <div className="space-y-3">
@@ -718,10 +718,10 @@ function PluginLocalFolderRow({ pluginId, companyId, declaration, status }: Plug
       </div>
 
       <div className="grid gap-3 text-sm sm:grid-cols-3">
-        <FolderStatusMetric label="已配置" value={status?.configured ? "Yes" : "No"} ok={!!status?.configured} />
-        <FolderStatusMetric label="可读" value={status?.readable ? "Yes" : "No"} ok={!!status?.readable} />
+        <FolderStatusMetric label="Configured" value={status?.configured ? "Yes" : "No"} ok={!!status?.configured} />
+        <FolderStatusMetric label="Readable" value={status?.readable ? "Yes" : "No"} ok={!!status?.readable} />
         <FolderStatusMetric
-          label="可写"
+          label="Writable"
           value={access === "read" ? "Not requested" : status?.writable ? "Yes" : "No"}
           ok={access === "read" || !!status?.writable}
         />
@@ -729,7 +729,7 @@ function PluginLocalFolderRow({ pluginId, companyId, declaration, status }: Plug
 
       {status?.path ? (
         <div className="space-y-1 text-sm">
-          <div className="text-xs font-medium text-muted-foreground">已配置路径</div>
+          <div className="text-xs font-medium text-muted-foreground">Configured path</div>
           <div className="break-all rounded-md bg-muted/60 px-2 py-1.5 font-mono text-xs text-foreground">
             {status.path}
           </div>
@@ -738,7 +738,7 @@ function PluginLocalFolderRow({ pluginId, companyId, declaration, status }: Plug
 
       <div className="space-y-1.5">
         <label className="text-xs font-medium text-muted-foreground" htmlFor={`local-folder-${declaration.folderKey}`}>
-          本地文件夹路径
+          Local folder path
         </label>
         <div className="flex items-center gap-2">
           <input
@@ -771,7 +771,7 @@ function PluginLocalFolderRow({ pluginId, companyId, declaration, status }: Plug
 
       {status?.problems?.length ? (
         <div className="space-y-2 rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-sm text-destructive">
-          <div className="font-medium">验证问题</div>
+          <div className="font-medium">Validation problems</div>
           <ul className="space-y-1">
             {status.problems.map((problem, index) => (
               <li key={`${problem.code}:${problem.path ?? ""}:${index}`}>
@@ -825,14 +825,14 @@ function FolderRequirements({
   return (
     <div className="grid gap-3 text-sm md:grid-cols-2">
       <RequirementList
-        title="必需目录"
+        title="Required directories"
         items={requiredDirectories}
         missingItems={missingDirectories}
         missingLabel="Missing directories"
         inspectionUnavailable={rootNotInspected}
       />
       <RequirementList
-        title="必需文件"
+        title="Required files"
         items={requiredFiles}
         missingItems={missingFiles}
         missingLabel="Missing files"
@@ -868,14 +868,14 @@ function RequirementList({
         <span className="text-xs font-medium text-muted-foreground">{title}</span>
         {inspectionUnavailable ? (
           <Badge variant="secondary" className="text-(length:--text-nano)">
-            未检查
+            Not inspected
           </Badge>
         ) : missingItems.length > 0 ? (
           <Badge variant="destructive" className="text-(length:--text-nano)">
             {missingItems.length} missing
           </Badge>
         ) : (
-          <Badge variant="outline" className="text-(length:--text-nano)">存在</Badge>
+          <Badge variant="outline" className="text-(length:--text-nano)">Present</Badge>
         )}
       </div>
       {items.length > 0 ? (
@@ -899,10 +899,10 @@ function RequirementList({
           })}
         </div>
       ) : (
-        <p className="text-xs text-muted-foreground">未声明。</p>
+        <p className="text-xs text-muted-foreground">None declared.</p>
       )}
       {inspectionUnavailable ? (
-        <p className="text-xs text-amber-700 dark:text-amber-300">未检查已配置的根目录。</p>
+        <p className="text-xs text-amber-700 dark:text-amber-300">Configured root was not inspected.</p>
       ) : missingItems.length > 0 ? (
         <p className="text-xs text-destructive">{missingLabel}: {missingItems.join(", ")}</p>
       ) : null}
@@ -1051,7 +1051,7 @@ function PluginConfigForm({ pluginId, companyId, schema, initialValues, isLoadin
     return (
       <div className="flex items-center gap-2 text-sm text-muted-foreground py-4">
         <Loader2 className="h-4 w-4 animate-spin" />
-        正在加载配置...
+        Loading configuration...
       </div>
     );
   }
@@ -1101,7 +1101,7 @@ function PluginConfigForm({ pluginId, companyId, schema, initialValues, isLoadin
           {saveMutation.isPending ? (
             <>
               <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              正在保存...
+              Saving...
             </>
           ) : (
             "Save Configuration"
@@ -1117,7 +1117,7 @@ function PluginConfigForm({ pluginId, companyId, schema, initialValues, isLoadin
             {testMutation.isPending ? (
               <>
                 <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                正在测试...
+                Testing...
               </>
             ) : (
               "Test Configuration"

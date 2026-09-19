@@ -77,13 +77,13 @@ export function RemovableIssueReferencePill({
                 <DropdownMenuItem asChild>
                   <Link to={`/issues/${issue.identifier}`}>
                     <ArrowUpRight className="h-4 w-4" />
-                    访问任务
+                    Visit task
                   </Link>
                 </DropdownMenuItem>
               ) : null}
               <DropdownMenuItem variant="destructive" onSelect={openRemoveConfirmation}>
                 <X className="h-4 w-4" />
-                移除阻塞项
+                Remove blocker
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -124,17 +124,17 @@ export function RemovableIssueReferencePill({
       <Dialog open={isConfirmOpen} onOpenChange={setIsConfirmOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>移除阻塞项？</DialogTitle>
+            <DialogTitle>Remove blocker?</DialogTitle>
             <DialogDescription>
               Remove {confirmLabel} as a blocker for this task.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <DialogClose asChild>
-              <Button type="button" variant="outline">取消</Button>
+              <Button type="button" variant="outline">Cancel</Button>
             </DialogClose>
             <Button type="button" variant="destructive" onClick={confirmRemove}>
-              移除阻塞项
+              Remove blocker
             </Button>
           </DialogFooter>
         </DialogContent>

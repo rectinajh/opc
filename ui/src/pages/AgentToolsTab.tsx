@@ -94,7 +94,7 @@ function InstalledAppsSection({
     <section className="rounded-lg border border-border bg-card">
       <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border px-3 py-2.5">
         <div>
-          <h3 className="text-sm font-semibold text-foreground">已安装应用</h3>
+          <h3 className="text-sm font-semibold text-foreground">Installed apps</h3>
           <p className="mt-0.5 text-xs text-muted-foreground">
             Installed apps load tools into {agentName}'s context on every run. Permitted-only apps do not add context cost.
           </p>
@@ -109,7 +109,7 @@ function InstalledAppsSection({
 
         {connections.length === 0 ? (
           <p className="rounded-md border border-border bg-muted/30 px-3 py-4 text-sm text-muted-foreground">
-            尚无允许的应用。绑定访问配置文件以使应用在此可用。
+            No permitted apps yet. Bind an access profile to make apps available here.
           </p>
         ) : (
           <div className="divide-y divide-border rounded-md border border-border">
@@ -132,7 +132,7 @@ function InstalledAppsSection({
                       <span className="flex flex-wrap items-center gap-2">
                         <span className="truncate text-sm font-medium text-foreground">{connection.name}</span>
                         <InstallBadge installed={checked} installedForAll={installedForAll} permitted={permitted} />
-                        {rowPending ? <span className="text-xs text-muted-foreground">正在保存...</span> : null}
+                        {rowPending ? <span className="text-xs text-muted-foreground">Saving...</span> : null}
                       </span>
                       <span className="mt-0.5 block text-xs text-muted-foreground">
                         {installedForAll
@@ -153,7 +153,7 @@ function InstalledAppsSection({
                           to={`/apps/${connection.id}/permissions`}
                           className="text-xs font-medium text-primary hover:underline"
                         >
-                          打开权限
+                          Open permissions
                         </Link>
                       )}
                     >
@@ -202,10 +202,10 @@ function InstallSaveStatusChip({
   unsaved: boolean;
   error: boolean;
 }) {
-  if (pending) return <span className="text-xs text-muted-foreground">正在保存...</span>;
-  if (error) return <span className="text-xs text-destructive">无法保存</span>;
-  if (unsaved) return <span className="text-xs text-muted-foreground">未保存的更改</span>;
-  return <span className="text-xs text-muted-foreground">已保存</span>;
+  if (pending) return <span className="text-xs text-muted-foreground">Saving...</span>;
+  if (error) return <span className="text-xs text-destructive">Could not save</span>;
+  if (unsaved) return <span className="text-xs text-muted-foreground">Unsaved changes</span>;
+  return <span className="text-xs text-muted-foreground">Saved</span>;
 }
 
 const POLICY_EFFECT_LABEL: Record<string, string> = {
@@ -429,13 +429,13 @@ export function AgentToolsTab({ agent, companyId }: { agent: AgentDetailRecord; 
     <div className="space-y-4">
       <EnforcementBanner
         tone="info"
-        title="有效访问权限"
+        title="Effective access"
         body={
           <>
             This is exactly the tool set Paperclip will accept for{" "}
             <span className="font-medium">{agent.name}</span>. Profile and policy edits are
             reflected within ~5 seconds. The agent's prompt can narrow this list but{" "}
-            <span className="font-medium">无法展开</span> — everything else is blocked by
+            <span className="font-medium">cannot expand it</span> — everything else is blocked by
             default.
           </>
         }
@@ -462,23 +462,23 @@ export function AgentToolsTab({ agent, companyId }: { agent: AgentDetailRecord; 
         <div className="lg:col-span-2">
           <div className="rounded-lg border border-border">
             <div className="flex items-center justify-between gap-2 border-b border-border px-3 py-2.5">
-              <h3 className="text-sm font-semibold text-foreground">允许的工具</h3>
+              <h3 className="text-sm font-semibold text-foreground">Allowed tools</h3>
               <span className="text-xs text-muted-foreground tabular-nums">
                 {allowedTools.length} {allowedTools.length === 1 ? "tool" : "tools"}
               </span>
             </div>
             {allowedTools.length === 0 ? (
               <p className="px-3 py-6 text-sm text-muted-foreground">
-                此代理不允许使用任何工具。绑定工具配置文件以授予访问权限。
+                No tools are allowed for this agent. Bind a tool profile to grant access.
               </p>
             ) : (
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border text-left text-xs text-muted-foreground">
-                    <th className="px-3 py-2 font-medium">工具</th>
-                    <th className="px-3 py-2 font-medium">能力</th>
-                    <th className="px-3 py-2 font-medium">风险</th>
-                    <th className="px-3 py-2 font-medium">来源</th>
+                    <th className="px-3 py-2 font-medium">Tool</th>
+                    <th className="px-3 py-2 font-medium">Capability</th>
+                    <th className="px-3 py-2 font-medium">Risk</th>
+                    <th className="px-3 py-2 font-medium">Source</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
@@ -516,25 +516,25 @@ export function AgentToolsTab({ agent, companyId }: { agent: AgentDetailRecord; 
           <div className="rounded-lg border border-border bg-background/60 p-3">
             <h3 className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
               <HelpCircle className="h-3.5 w-3.5 text-muted-foreground" />
-              为什么使用这些工具？
+              Why these tools?
             </h3>
 
             {/* Access profiles */}
             <div className="mt-3 space-y-1.5">
               <div className="flex items-center justify-between gap-2">
                 <div className="text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">
-                  访问配置文件
+                  Access profiles
                 </div>
                 <Link
                   to={`${profilesHref}?check=1`}
                   className="text-(length:--text-micro) font-medium text-primary hover:underline"
                 >
-                  检查访问权限
+                  Check access
                 </Link>
               </div>
               {profiles.length === 0 ? (
                 <p className="text-xs text-muted-foreground">
-                  没有适用于此代理的活跃配置文件，因此它没有允许的工具。
+                  No active profile applies to this agent, so it has no allowed tools.
                 </p>
               ) : (
                 profiles.map((profile) => {
@@ -549,7 +549,7 @@ export function AgentToolsTab({ agent, companyId }: { agent: AgentDetailRecord; 
                       {profile.summary.isCompanyDefault ? (
                         <div className="mt-1">
                           <span className="rounded border border-border px-1.5 py-0.5 text-(length:--text-nano) uppercase text-muted-foreground">
-                            公司默认
+                            Company default
                           </span>
                         </div>
                       ) : null}
@@ -562,13 +562,13 @@ export function AgentToolsTab({ agent, companyId }: { agent: AgentDetailRecord; 
             {/* Policies mutating the allow list */}
             <div className="mt-3 space-y-1.5">
               <div className="text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">
-                活跃策略
+                Active policies
               </div>
               {policiesQuery.isLoading ? (
                 <p className="text-xs text-muted-foreground">Loading policies…</p>
               ) : governingPolicies.length === 0 ? (
                 <p className="text-xs text-muted-foreground">
-                  当前没有启用的策略修改此代理的允许列表。
+                  No enabled policy currently mutates this agent's allow list.
                 </p>
               ) : (
                 governingPolicies.map(({ policy, order }) => (
@@ -598,18 +598,18 @@ export function AgentToolsTab({ agent, companyId }: { agent: AgentDetailRecord; 
             {/* Unavailable tools */}
             <div className="mt-3 space-y-1.5">
               <div className="text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">
-                不可用的工具
+                Unavailable tools
               </div>
               {catalogLoading ? (
                 <p className="text-xs text-muted-foreground">Checking tools…</p>
               ) : deniedTools.length === 0 ? (
                 <p className="text-xs text-muted-foreground">
-                  此代理可能命名的所有已知工具均被允许。
+                  Every known tool this agent could name is allowed.
                 </p>
               ) : (
                 <>
                   <p className="text-(length:--text-micro) text-muted-foreground">
-                    代理可能命名但Paperclip会阻止的工具：
+                    Tools the agent could name but Paperclip would block:
                   </p>
                   <div className="flex flex-wrap gap-1">
                     {deniedTools.slice(0, DENIED_TOOLS_DISPLAY_LIMIT).map((tool) => (

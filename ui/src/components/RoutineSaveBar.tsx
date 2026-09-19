@@ -81,7 +81,7 @@ export function RoutineSaveBar({
         {saveConflict ? (
           <div className="flex items-center gap-2 text-sm text-amber-800 dark:text-amber-200">
             <AlertTriangle className="h-4 w-4" />
-            <span>例程在其他地方已更改。重新加载以合并。</span>
+            <span>Routine changed elsewhere. Reload to merge.</span>
           </div>
         ) : (
           <Popover>
@@ -98,7 +98,7 @@ export function RoutineSaveBar({
             </PopoverTrigger>
             <PopoverContent align="start" className="w-64">
               <p className="mb-2 text-xs font-medium text-muted-foreground">
-                待处理更改
+                Pending changes
               </p>
               <ul className="space-y-1 text-sm">
                 {dirtyFields.map((field) => (
@@ -116,7 +116,7 @@ export function RoutineSaveBar({
           {saveConflict ? (
             <>
               <Button variant="outline" size="sm" onClick={onReload}>
-                重新加载最新
+                Reload latest
               </Button>
               <TooltipProvider>
                 <Tooltip>
@@ -132,7 +132,7 @@ export function RoutineSaveBar({
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
-                    用您的本地编辑替换较新的修订。
+                    Replaces the newer revision with your local edits.
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -145,7 +145,7 @@ export function RoutineSaveBar({
                 disabled={isSaving || disabled}
                 onClick={() => setConfirmDiscardOpen(true)}
               >
-                放弃
+                Discard
               </Button>
               <Button
                 size="sm"
@@ -166,7 +166,7 @@ export function RoutineSaveBar({
       <Dialog open={confirmDiscardOpen} onOpenChange={setConfirmDiscardOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>放弃更改？</DialogTitle>
+            <DialogTitle>Discard changes?</DialogTitle>
             <DialogDescription>
               This will revert {dirtyCount} unsaved{" "}
               {dirtyCount === 1 ? "change" : "changes"} in this section.
@@ -174,7 +174,7 @@ export function RoutineSaveBar({
           </DialogHeader>
           <DialogFooter>
             <Button variant="ghost" size="sm" onClick={() => setConfirmDiscardOpen(false)}>
-              继续编辑
+              Keep editing
             </Button>
             <Button
               variant="destructive"
@@ -184,7 +184,7 @@ export function RoutineSaveBar({
                 setConfirmDiscardOpen(false);
               }}
             >
-              放弃更改
+              Discard changes
             </Button>
           </DialogFooter>
         </DialogContent>

@@ -37,11 +37,11 @@ export function DashboardLive() {
             className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            仪表盘
+            Dashboard
           </Link>
-          <h1 className="mt-2 text-2xl font-semibold tracking-normal text-foreground">实时代理运行</h1>
+          <h1 className="mt-2 text-2xl font-semibold tracking-normal text-foreground">Live agent runs</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            先显示活动中的运行，然后是最近完成的运行。
+            Active runs first, followed by the most recent completed runs.
           </p>
         </div>
         <div className="text-sm text-muted-foreground">Showing up to {DASHBOARD_LIVE_RUN_LIMIT}</div>
@@ -49,7 +49,7 @@ export function DashboardLive() {
 
       <ActiveAgentsPanel
         companyId={selectedCompanyId}
-        title="活跃 / 最近"
+        title="Active / recent"
         minRunCount={DASHBOARD_LIVE_RUN_LIMIT}
         fetchLimit={DASHBOARD_LIVE_RUN_LIMIT}
         cardLimit={DASHBOARD_LIVE_RUN_LIMIT}

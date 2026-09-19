@@ -454,11 +454,11 @@ export function SidebarCompanyMenu({ open: controlledOpen, onOpenChange }: Sideb
                       }}
                     >
                       <RefreshCw className="h-4 w-4 mr-2" />
-                      重试
+                      Try again
                     </DropdownMenuItem>
                   </>
                 ) : (
-                  <DropdownMenuItem disabled>没有公司</DropdownMenuItem>
+                  <DropdownMenuItem disabled>No companies</DropdownMenuItem>
                 )
               ) : null}
             </>
@@ -475,7 +475,7 @@ export function SidebarCompanyMenu({ open: controlledOpen, onOpenChange }: Sideb
               disabled={isEditingOrder}
             >
               <Plus className="size-4" />
-              <span>创建新组织...</span>
+              <span>Create new organization...</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
           </>

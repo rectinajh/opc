@@ -37,13 +37,13 @@ export function ToolsAdminGate({ children }: { children: ReactNode }) {
         <div className="flex flex-col gap-3 rounded-lg border border-border bg-card p-6">
           <div className="flex items-center gap-2 text-foreground">
             <ShieldAlert className="h-5 w-5 text-muted-foreground" />
-            <h1 className="text-lg font-semibold">访问配置文件适用于管理员</h1>
+            <h1 className="text-lg font-semibold">Access profiles are for administrators</h1>
           </div>
           <p className="text-sm text-muted-foreground">
             Access profiles decide which tools your agents can use. Ask an administrator to set these up, or
             head back to{" "}
             <Link to="/apps" className="font-medium text-primary hover:underline">
-              您的应用
+              your apps
             </Link>
             .
           </p>

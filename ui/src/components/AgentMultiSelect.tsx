@@ -74,7 +74,7 @@ export function AgentSelect({
           <Input
             value={filter}
             onChange={(event) => setFilter(event.target.value)}
-            placeholder="筛选代理"
+            placeholder="Filter agents"
             className="h-8"
             autoFocus
           />
@@ -102,7 +102,7 @@ export function AgentSelect({
               </button>
             ))}
             {filteredAgents.length === 0 ? (
-              <div className="px-3 py-4 text-sm text-muted-foreground">无匹配项。</div>
+              <div className="px-3 py-4 text-sm text-muted-foreground">No matches.</div>
             ) : null}
           </div>
         )}
@@ -224,7 +224,7 @@ export function AgentMultiSelect({
           <Input
             value={filter}
             onChange={(event) => setFilter(event.target.value)}
-            placeholder="筛选代理"
+            placeholder="Filter agents"
             className="h-8"
             autoFocus
           />
@@ -273,7 +273,7 @@ export function AgentMultiSelect({
               );
             })}
             {filteredAgents.length === 0 ? (
-              <div className="px-3 py-4 text-sm text-muted-foreground">无匹配项。</div>
+              <div className="px-3 py-4 text-sm text-muted-foreground">No matches.</div>
             ) : null}
           </div>
         )}
@@ -284,7 +284,7 @@ export function AgentMultiSelect({
             <div className="flex items-center gap-2">
               {staged ? (
                 <Button type="button" variant="ghost" size="sm" onClick={() => setOpen(false)} disabled={pending}>
-                  取消
+                  Cancel
                 </Button>
               ) : null}
               <Button

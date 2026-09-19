@@ -27,7 +27,7 @@ export function MyIssues() {
   });
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={ListTodo} message="选择公司以查看您的任务。" />;
+    return <EmptyState icon={ListTodo} message="Select a company to view your tasks." />;
   }
 
   if (isLoading) {
@@ -44,7 +44,7 @@ export function MyIssues() {
       {error && <p className="text-sm text-destructive">{error.message}</p>}
 
       {myIssues.length === 0 && (
-        <EmptyState icon={ListTodo} message="没有分配给您的任务。" />
+        <EmptyState icon={ListTodo} message="No tasks assigned to you." />
       )}
 
       {myIssues.length > 0 && (

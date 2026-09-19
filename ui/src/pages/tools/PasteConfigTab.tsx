@@ -160,12 +160,12 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
   return (
     <div className="space-y-5">
       <p className="max-w-2xl text-sm text-muted-foreground">
-        粘贴工具 README 中的 MCP 配置片段，我们将把它转换为友好的设置。
+        Paste the MCP config snippet from the tool's README and we'll turn it into a friendly setup.
       </p>
       <p className="text-xs text-muted-foreground">
         Just a URL?{" "}
         <Link to="/apps" className="text-primary hover:underline">
-          浏览计划的应用连接
+          Browse planned app connections
         </Link>{" "}
         instead.
       </p>
@@ -201,7 +201,7 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
           {importMutation.isPending ? "Checking…" : "Check config"}
         </Button>
         <span className="text-xs text-muted-foreground">
-          我们将读取它并在保存任何内容之前显示我们找到的内容。
+          We'll read it and show what we found before anything is saved.
         </span>
       </div>
 
@@ -210,7 +210,7 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
       {preview ? (
         drafts.length === 0 ? (
           <div className="rounded-lg border border-dashed border-border p-6 text-sm text-muted-foreground">
-            我们无法在该配置中找到应用。请检查您是否粘贴了完整的片段。
+            We couldn't find an app in that config. Double-check you pasted the whole snippet.
           </div>
         ) : (
           <div className="space-y-3">
@@ -319,7 +319,7 @@ function DraftCard({
                   type="password"
                   value={credentialValues[credentialValueKey(draft, field.configPath)] ?? ""}
                   onChange={(event) => onCredentialChange(field.configPath, event.target.value)}
-                  placeholder="粘贴替换值"
+                  placeholder="Paste replacement value"
                   className="h-8 max-w-sm text-xs"
                 />
               </div>
@@ -328,10 +328,10 @@ function DraftCard({
         </div>
       ) : draft.credentialRefs.length > 0 ? (
         <p className="mt-3 text-xs text-muted-foreground">
-          此配置中的密钥在管理员将其映射到已批准的模板之前仅作为草稿。
+          Keys from this config stay draft-only until an admin maps them to an approved template.
         </p>
       ) : (
-        <p className="mt-3 text-xs text-muted-foreground">此配置不需要密钥。</p>
+        <p className="mt-3 text-xs text-muted-foreground">No keys needed for this one.</p>
       )}
 
       {draft.warnings.length > 0 ? (
@@ -385,7 +385,7 @@ function CatalogReview({
         </Button>
       </div>
       <ActionGroup
-        title="只读"
+        title="Read-only"
         actions={result.actions.readOnly}
         enabled={enabled}
         onToggle={onToggle}
@@ -393,7 +393,7 @@ function CatalogReview({
         askFirstLevels={askFirstLevels}
       />
       <ActionGroup
-        title="可以更改"
+        title="Can make changes"
         actions={result.actions.canMakeChanges}
         enabled={enabled}
         onToggle={onToggle}
@@ -429,10 +429,10 @@ function ActionGroup({
         <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{title}</div>
         <div className="flex gap-2">
           <Button type="button" size="sm" variant="ghost" className="h-7 px-2 text-xs" onClick={() => onBulk(true)}>
-            全部开启
+            Turn all on
           </Button>
           <Button type="button" size="sm" variant="ghost" className="h-7 px-2 text-xs" onClick={() => onBulk(false)}>
-            全部关闭
+            Turn all off
           </Button>
         </div>
       </div>

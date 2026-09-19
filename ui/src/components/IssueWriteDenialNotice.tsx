@@ -99,11 +99,11 @@ export function IssueWriteDenialNotice({
               label and the first words of the value together at every width. */}
           <dl className={cn("space-y-0.5 text-xs leading-5", tone.action)}>
             <div className="min-w-0">
-              <dt className="inline font-medium">可操作者：</dt>{" "}
+              <dt className="inline font-medium">Who can act:</dt>{" "}
               <dd className="inline">{copy.whoCanAct}</dd>
             </div>
             <div className="min-w-0">
-              <dt className="inline font-medium">试试这个：</dt>{" "}
+              <dt className="inline font-medium">Try this:</dt>{" "}
               <dd className="inline">{copy.sanctionedPath}</dd>
             </div>
           </dl>

@@ -99,7 +99,7 @@ export function Org() {
   });
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={GitBranch} message="选择公司以查看组织架构图。" />;
+    return <EmptyState icon={GitBranch} message="Select a company to view org chart." />;
   }
 
   if (isLoading) {
@@ -113,7 +113,7 @@ export function Org() {
       {data && data.length === 0 && (
         <EmptyState
           icon={GitBranch}
-          message="组织中没有代理。创建代理以构建您的组织架构图。"
+          message="No agents in the organization. Create agents to build your org chart."
         />
       )}
 

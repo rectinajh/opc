@@ -539,7 +539,7 @@ function ExportPreviewPane({
 }) {
   if (!selectedFile || content === null) {
     return (
-      <EmptyState icon={Package} message="选择文件以预览其内容。" />
+      <EmptyState icon={Package} message="Select a file to preview its contents." />
     );
   }
 
@@ -576,7 +576,7 @@ function ExportPreviewPane({
           </pre>
         ) : (
           <div className="rounded-lg border border-border bg-accent/10 px-4 py-3 text-sm text-muted-foreground">
-            此文件类型不支持二进制资产预览。
+            Binary asset preview is not available for this file type.
           </div>
         )}
       </div>
@@ -1024,7 +1024,7 @@ export function CompanyExport() {
   }
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Package} message="选择要导出的公司。" />;
+    return <EmptyState icon={Package} message="Select a company to export." />;
   }
 
   if (exportPreviewMutation.isPending && !exportData) {
@@ -1035,8 +1035,8 @@ export function CompanyExport() {
     return (
       <EmptyState
         icon={Package}
-        title="导出预览已取消"
-        message="预览请求已取消。您的导出设置未更改。"
+        title="Export preview cancelled"
+        message="The preview request was cancelled. Your export settings are unchanged."
         action="Retry preview"
         onAction={startPreviewRequest}
         hideActionIcon
@@ -1048,9 +1048,9 @@ export function CompanyExport() {
     return (
       <EmptyState
         icon={Package}
-        title="导出预览失败"
+        title="Export preview failed"
         message={previewErrorMessage(exportPreviewMutation.error)}
-        description="重试预览。您无需重新加载此页面。"
+        description="Retry the preview. You do not need to reload this page."
         action="Retry preview"
         onAction={startPreviewRequest}
         hideActionIcon
@@ -1062,8 +1062,8 @@ export function CompanyExport() {
     return (
       <EmptyState
         icon={Package}
-        title="导出预览不可用"
-        message="未加载导出预览。"
+        title="Export preview unavailable"
+        message="No export preview is loaded."
         action="Load preview"
         onAction={startPreviewRequest}
         hideActionIcon
@@ -1127,7 +1127,7 @@ export function CompanyExport() {
       {/* Export fidelity: data the bundle will not carry */}
       {fidelityReport && fidelityReport.warnings.length > 0 && (
         <div className="mx-5 mt-3 rounded-md border border-amber-500/30 bg-amber-500/5 px-4 py-3">
-          <h3 className="mb-1.5 text-xs font-medium">不包含在此导出中</h3>
+          <h3 className="mb-1.5 text-xs font-medium">Not included in this export</h3>
           {fidelityReport.warnings.map((warning) => (
             <div
               key={warning.code}
@@ -1146,11 +1146,11 @@ export function CompanyExport() {
       <div className="grid gap-4 xl:h-(--sz-calc-30) xl:grid-cols-(--gtc-25) xl:gap-0">
         <aside className="flex max-h-(--sz-24rem) flex-col overflow-hidden border-b border-border xl:max-h-none xl:border-b-0 xl:border-r">
           <div className="border-b border-border px-4 py-3 shrink-0">
-            <h2 className="text-base font-semibold">包文件</h2>
+            <h2 className="text-base font-semibold">Package files</h2>
           </div>
           <div className="border-b border-border px-4 py-3 shrink-0">
-            <h3 className="mb-2 text-xs font-medium text-muted-foreground">包含内容</h3>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-1.5" role="group" aria-label="包含内容">
+            <h3 className="mb-2 text-xs font-medium text-muted-foreground">What to include</h3>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-1.5" role="group" aria-label="What to include">
               {EXPORT_CATEGORY_ORDER.map((key) => {
                 const isAttachments = key === "attachments";
                 const disabled = isAttachments && !isAttachmentsCategoryEnabled(categories);
@@ -1188,7 +1188,7 @@ export function CompanyExport() {
               })}
             </div>
             <p className="mt-2 text-xs text-muted-foreground">
-              任务和例程历史记录是可选加入的，因为它可能很大。
+              Task and routine history is opt-in because it can be large.
             </p>
           </div>
           <div className="border-b border-border px-3 py-2 shrink-0">
@@ -1198,7 +1198,7 @@ export function CompanyExport() {
                 type="text"
                 value={treeSearch}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                placeholder="搜索文件..."
+                placeholder="Search files..."
                 className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
                 data-page-search-target="true"
               />
@@ -1254,7 +1254,7 @@ export function CompanyExport() {
                 </div>
                 <Button type="button" variant="outline" size="sm" onClick={handleCancelPreview}>
                   <X />
-                  取消更新
+                  Cancel update
                 </Button>
               </div>
             </div>
@@ -1265,14 +1265,14 @@ export function CompanyExport() {
             >
               <div className="flex max-w-md flex-col items-center gap-3">
                 <div>
-                  <p className="text-sm font-medium">预览更新已取消</p>
+                  <p className="text-sm font-medium">Preview update cancelled</p>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    之前的预览仍然可用。准备好后重试。
+                    The previous preview remains available. Retry when you are ready.
                   </p>
                 </div>
                 <Button type="button" variant="outline" size="sm" onClick={startPreviewRequest}>
                   <RotateCcw />
-                  重试预览
+                  Retry preview
                 </Button>
               </div>
             </div>
@@ -1284,14 +1284,14 @@ export function CompanyExport() {
             >
               <div className="flex max-w-md flex-col items-center gap-3">
                 <div>
-                  <p className="text-sm font-medium text-destructive">导出预览失败</p>
+                  <p className="text-sm font-medium text-destructive">Export preview failed</p>
                   <p className="mt-1 text-xs text-muted-foreground">
                     {previewErrorMessage(exportPreviewMutation.error)}
                   </p>
                 </div>
                 <Button type="button" variant="outline" size="sm" onClick={startPreviewRequest}>
                   <RotateCcw />
-                  重试预览
+                  Retry preview
                 </Button>
               </div>
             </div>

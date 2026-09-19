@@ -123,7 +123,7 @@ export function CrossIssueCollaborationUxLab() {
       <div className="mx-auto max-w-5xl space-y-6">
         <header>
           <div className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
-            打开跨任务协作
+            Open cross-task collaboration
           </div>
           <h1 className="mt-1 text-xl font-semibold text-foreground">
             Open cross-task collaboration — attribution, audit, and denial copy
@@ -153,14 +153,14 @@ export function CrossIssueCollaborationUxLab() {
               body="Dotta asked me to flag that the retry window here overlaps TASK-482. Worth a look before you close this."
             />
           </Frame>
-          <Frame label="负责用户不在已加载的目录中">
+          <Frame label="Responsible user not in the loaded directory">
             <AgentCommentBubble
               authorName="Fable"
               onBehalfOf="the responsible user"
               body="Falls back to a generic label rather than printing a raw user id."
             />
           </Frame>
-          <Frame label="长用户名在标签中截断">
+          <Frame label="Long user name truncates in the chip">
             <AgentCommentBubble
               authorName="Fable"
               onBehalfOf="Alexandra Konstantinopoulos-Whitfield"
@@ -171,10 +171,10 @@ export function CrossIssueCollaborationUxLab() {
 
         <LabSection
           index="2 · Field-edit audit receipt (plan §3b)"
-          title="每个 PATCH 都说明谁更改了什么，以及基于何种授权"
-          description="代理和董事会编辑都需要。每个字段的前后对比、写入背后的负责用户以及允许通过的授权原因。"
+          title="Every PATCH says who changed what, and under which authorization"
+          description="Required for agent and board edits alike. Before/after per field, the responsible user behind the write, and the authorization reason that let it through."
         >
-          <Frame label="跨任务代理编辑">
+          <Frame label="Cross-task agent edit">
             <ActivityRow actorName="Fable" verb="changed the status from todo to in progress">
               <IssueFieldChangeReceipt
                 event={{
@@ -215,7 +215,7 @@ export function CrossIssueCollaborationUxLab() {
               />
             </ActivityRow>
           </Frame>
-          <Frame label="一次写入即可完成重新分配、阻塞和工作模式">
+          <Frame label="Reassignment, blockers, and work mode in one write">
             <ActivityRow actorName="CTO" verb="updated the issue">
               <IssueFieldChangeReceipt
                 event={{
@@ -245,7 +245,7 @@ export function CrossIssueCollaborationUxLab() {
 
         <LabSection
           index="3 · Actionable denial copy (plan §6)"
-          title="每面墙都标明边界、谁可以操作以及允许的路径"
+          title="Every wall names the boundary, who can act, and the sanctioned path"
           description="A real incident burned a full detour discovering a workaround behind an opaque 403. These are all the ways an issue write can now be refused — the same copy the API error body carries."
           columns={1}
         >

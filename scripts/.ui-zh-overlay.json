@@ -1,0 +1,432 @@
+[
+  {
+    "file": "ui/src/components/CompanySwitcher.tsx",
+    "edits": [
+      {
+        "line": 104,
+        "remove": 1,
+        "text": "            管理公司\n"
+      },
+      {
+        "line": 91,
+        "remove": 1,
+        "text": "            <DropdownMenuItem disabled>暂无公司</DropdownMenuItem>\n"
+      },
+      {
+        "line": 78,
+        "remove": 1,
+        "text": "              <DropdownMenuItem disabled>无法加载公司</DropdownMenuItem>\n"
+      },
+      {
+        "line": 60,
+        "remove": 1,
+        "text": "        <DropdownMenuLabel>公司</DropdownMenuLabel>\n"
+      },
+      {
+        "line": 53,
+        "remove": 1,
+        "text": "              {selectedCompany?.name ?? \"选择公司\"}\n"
+      }
+    ]
+  },
+  {
+    "file": "ui/src/components/Sidebar.tsx",
+    "edits": [
+      {
+        "line": 282,
+        "remove": 1,
+        "text": "          <SidebarNavItem to=\"/activity\" label=\"动态\" icon={History} />\n"
+      },
+      {
+        "line": 279,
+        "remove": 1,
+        "text": "          <SidebarNavItem to=\"/timeline\" label=\"时间线\" icon={GanttChartSquare} />\n"
+      },
+      {
+        "line": 245,
+        "remove": 1,
+        "text": "          <SidebarNavItem to=\"/artifacts\" label=\"产物\" icon={Package} />\n"
+      },
+      {
+        "line": 234,
+        "remove": 1,
+        "text": "            <SidebarNavItem to=\"/pipelines\" label=\"流水线\" icon={GitBranch} />\n"
+      },
+      {
+        "line": 232,
+        "remove": 1,
+        "text": "          <SidebarNavItem to=\"/routines\" label=\"例行任务\" icon={Repeat} />\n"
+      },
+      {
+        "line": 223,
+        "remove": 1,
+        "text": "            <SidebarNavItem to=\"/board-chat\" label=\"会议室\" icon={MessagesSquare} />\n"
+      },
+      {
+        "line": 189,
+        "remove": 1,
+        "text": "                <TooltipContent side=\"right\">新建任务</TooltipContent>\n"
+      },
+      {
+        "line": 183,
+        "remove": 1,
+        "text": "                <span className={rail ? SIDEBAR_RAIL_HIDDEN_LABEL : \"truncate\"}>新建任务</span>\n"
+      },
+      {
+        "line": 179,
+        "remove": 1,
+        "text": "                aria-label={rail ? \"新建任务\" : undefined}\n"
+      },
+      {
+        "line": 159,
+        "remove": 2,
+        "text": "                  aria-label={collapsed ? \"展开侧边栏\" : \"折叠侧边栏\"}\n                  title={collapsed ? \"展开侧边栏\" : \"折叠侧边栏\"}\n"
+      },
+      {
+        "line": 147,
+        "remove": 2,
+        "text": "                  aria-label=\"保持侧边栏展开\"\n                  title=\"保持侧边栏展开\"\n"
+      }
+    ]
+  },
+  {
+    "file": "ui/src/components/SidebarAgents.tsx",
+    "edits": [
+      {
+        "line": 675,
+        "remove": 1,
+        "text": "            <TooltipContent side=\"right\">查看所有代理</TooltipContent>\n"
+      },
+      {
+        "line": 669,
+        "remove": 1,
+        "text": "            <span className={rail ? SIDEBAR_RAIL_HIDDEN_LABEL : undefined}>查看所有代理</span>\n"
+      },
+      {
+        "line": 662,
+        "remove": 1,
+        "text": "            aria-label={rail ? \"查看所有代理\" : undefined}\n"
+      },
+      {
+        "line": 647,
+        "remove": 1,
+        "text": "        radioLabel: \"代理排序\",\n"
+      },
+      {
+        "line": 644,
+        "remove": 1,
+        "text": "          { type: \"item\", label: \"浏览代理\", icon: Users, href: \"/agents/all\" },\n"
+      },
+      {
+        "line": 642,
+        "remove": 1,
+        "text": "        ariaLabel: \"代理分区操作\",\n"
+      },
+      {
+        "line": 70,
+        "remove": 3,
+        "text": "  { value: \"top\", label: \"置顶\" },\n  { value: \"alphabetical\", label: \"按字母\" },\n  { value: \"recent\", label: \"最近\" },\n"
+      }
+    ]
+  },
+  {
+    "file": "ui/src/components/StatusBadge.tsx",
+    "edits": [
+      {
+        "line": 97,
+        "remove": 1,
+        "text": "      {statusDisplayLabel[status] ?? sentenceCaseStatus(status)}\n"
+      },
+      {
+        "line": 56,
+        "remove": 1,
+        "text": "      {statusDisplayLabel[label] ?? label.replace(/_/g, \" \")}\n"
+      },
+      {
+        "line": 38,
+        "remove": 1,
+        "text": "      {label ?? statusDisplayLabel[status] ?? status.replace(/[_-]/g, \" \")}\n"
+      },
+      {
+        "line": 6,
+        "remove": 0,
+        "text": "  statusDisplayLabel,\n"
+      }
+    ]
+  },
+  {
+    "file": "ui/src/i18n/locales.ts",
+    "edits": [
+      {
+        "line": 5,
+        "remove": 1,
+        "text": "export const DEFAULT_LOCALE = \"zh-CN\" as const;\n"
+      }
+    ]
+  },
+  {
+    "file": "ui/src/lib/status-colors.ts",
+    "edits": [
+      {
+        "line": 140,
+        "remove": 0,
+        "text": "// Display label map: status *codes* stay English (used in API/comparisons),\n// only the rendered text is localized. Unknown statuses fall back to the\n// sentence-cased English code.\nexport const statusDisplayLabel: Record<string, string> = {\n  // Agent / run statuses\n  running: \"运行中\",\n  queued: \"排队中\",\n  succeeded: \"成功\",\n  failed: \"失败\",\n  cancelled: \"已取消\",\n  timed_out: \"超时\",\n  scheduled_retry: \"计划重试\",\n  idle: \"空闲\",\n  paused: \"已暂停\",\n  active: \"运行中\",\n  error: \"错误\",\n  terminated: \"已终止\",\n  pending: \"待处理\",\n  // Goal statuses\n  planned: \"已计划\",\n  achieved: \"已达成\",\n  completed: \"已完成\",\n  // Issue / task statuses\n  backlog: \"待办\",\n  todo: \"待办\",\n  in_progress: \"进行中\",\n  in_review: \"审核中\",\n  blocked: \"已阻塞\",\n  done: \"已完成\",\n  draft: \"草稿\",\n  archived: \"已归档\",\n  // Approval statuses\n  pending_approval: \"待审批\",\n  revision_requested: \"已请求修改\",\n  approved: \"已批准\",\n  rejected: \"已拒绝\",\n  // Generic\n  ok: \"正常\",\n  warning: \"警告\",\n  info: \"信息\",\n};\n\n"
+      }
+    ]
+  },
+  {
+    "file": "ui/src/pages/AgentDetail.tsx",
+    "edits": [
+      {
+        "line": 1314,
+        "remove": 1,
+        "text": "            workActionsDisabledReason=\"修复此代理的汇报链后再分配任务或启动运行\"\n"
+      },
+      {
+        "line": 1310,
+        "remove": 2,
+        "text": "            assignLabel=\"分配任务\"\n            runLabel=\"运行心跳\"\n"
+      },
+      {
+        "line": 1084,
+        "remove": 1,
+        "text": "        crumbs.push({ label: \"仪表盘\" });\n"
+      },
+      {
+        "line": 1082,
+        "remove": 1,
+        "text": "        crumbs.push({ label: \"预算\" });\n"
+      },
+      {
+        "line": 1080,
+        "remove": 1,
+        "text": "        crumbs.push({ label: \"运行\" });\n"
+      },
+      {
+        "line": 1078,
+        "remove": 1,
+        "text": "        crumbs.push({ label: \"工具\" });\n"
+      },
+      {
+        "line": 1074,
+        "remove": 1,
+        "text": "        crumbs.push({ label: \"密钥\" });\n"
+      },
+      {
+        "line": 1072,
+        "remove": 1,
+        "text": "        crumbs.push({ label: \"配置\" });\n"
+      },
+      {
+        "line": 1070,
+        "remove": 1,
+        "text": "        crumbs.push({ label: \"指令\" });\n"
+      },
+      {
+        "line": 1067,
+        "remove": 2,
+        "text": "        crumbs.push({ label: \"运行\", href: `/agents/${canonicalAgentRef}/runs` });\n        crumbs.push({ label: `运行 ${urlRunId.slice(0, 8)}` });\n"
+      },
+      {
+        "line": 1061,
+        "remove": 1,
+        "text": "    const agentName = agent?.name ?? routeAgentRef ?? \"代理\";\n"
+      },
+      {
+        "line": 1059,
+        "remove": 1,
+        "text": "      { label: \"代理\", href: \"/agents\" },\n"
+      },
+      {
+        "line": 281,
+        "remove": 9,
+        "text": "  { value: \"dashboard\", label: \"仪表盘\" },\n  { value: \"instructions\", label: \"指令\" },\n  { value: \"skills\", label: \"技能\" },\n  { value: \"configuration\", label: \"配置\" },\n  { value: \"secrets\", label: \"密钥\" },\n  { value: \"tools\", label: \"工具\" },\n  { value: \"runs\", label: \"运行\" },\n  { value: \"audit\", label: \"审计\" },\n  { value: \"budget\", label: \"预算\" },\n"
+      }
+    ]
+  },
+  {
+    "file": "ui/src/pages/CompanySkills.tsx",
+    "edits": [
+      {
+        "line": 1900,
+        "remove": 1,
+        "text": "        <TooltipContent>该技能无法安装——其内容不是有效的 Agent Skills Markdown。</TooltipContent>\n"
+      },
+      {
+        "line": 1449,
+        "remove": 1,
+        "text": "                {sourceFilteredCards.length} 个技能\n"
+      },
+      {
+        "line": 1417,
+        "remove": 2,
+        "text": "                      ? \"没有符合筛选条件的技能。\"\n                      : \"此页签中还没有技能。\"\n"
+      },
+      {
+        "line": 1415,
+        "remove": 1,
+        "text": "                    ? \"还没有技能。创建一个或从目录安装。\"\n"
+      },
+      {
+        "line": 1389,
+        "remove": 1,
+        "text": "              itemLabelPlural=\"个技能\"\n"
+      },
+      {
+        "line": 1377,
+        "remove": 2,
+        "text": "                  aria-label={`刷新 ${activeProjectFolder.name} 的项目技能`}\n                  title={`从 ${activeProjectFolder.name} 刷新技能`}\n"
+      },
+      {
+        "line": 1332,
+        "remove": 1,
+        "text": "                      {skillTagLabel(category.slug)} ({category.count})\n"
+      },
+      {
+        "line": 1329,
+        "remove": 1,
+        "text": "                  <DropdownMenuRadioItem value=\"__all__\">全部 ({categoryTotal})</DropdownMenuRadioItem>\n"
+      },
+      {
+        "line": 1296,
+        "remove": 1,
+        "text": "                allLabel=\"全部技能\"\n"
+      },
+      {
+        "line": 1203,
+        "remove": 1,
+        "text": "              placeholder=\"搜索技能、作者、类别…\"\n"
+      },
+      {
+        "line": 1011,
+        "remove": 1,
+        "text": "          <span className=\"truncate\">{skillTagLabel(category.slug)}</span>\n"
+      },
+      {
+        "line": 961,
+        "remove": 1,
+        "text": "            <SkillCategoryChip key={category} label={skillTagLabel(category)} />\n"
+      },
+      {
+        "line": 940,
+        "remove": 1,
+        "text": "          <span>{card.agentCount} 个代理</span>\n"
+      },
+      {
+        "line": 881,
+        "remove": 1,
+        "text": "            <span className=\"shrink-0 text-muted-foreground\" title={`来自 ${meta.label}`} aria-label={`来自 ${meta.label}`}>\n"
+      },
+      {
+        "line": 867,
+        "remove": 1,
+        "text": "            由 {card.author}{card.version ? ` · ${card.version}` : \"\"}\n"
+      },
+      {
+        "line": 594,
+        "remove": 5,
+        "text": "  agents: \"使用最多\",\n  stars: \"星标最多\",\n  forks: \"Fork 最多\",\n  recent: \"最近更新\",\n  alphabetical: \"按字母\",\n"
+      },
+      {
+        "line": 582,
+        "remove": 1,
+        "text": "    { label: \"技能\", href: \"/skills\" },\n"
+      },
+      {
+        "line": 510,
+        "remove": 2,
+        "text": "      label: \"无效\",\n      tooltip: \"该技能无法安装——内容不是有效的 Agent Skills Markdown。\",\n"
+      },
+      {
+        "line": 504,
+        "remove": 2,
+        "text": "      label: \"未知格式\",\n      tooltip: \"Paperclip 无法将此技能验证为 Agent Skills Markdown。自行安装风险自负。\",\n"
+      },
+      {
+        "line": 454,
+        "remove": 1,
+        "text": "              {skillTagLabel(category)}\n"
+      },
+      {
+        "line": 431,
+        "remove": 1,
+        "text": "          title={activeFilterCount > 0 ? `筛选：${activeFilterCount}` : \"筛选\"}\n"
+      },
+      {
+        "line": 385,
+        "remove": 1,
+        "text": "          title={activeFilterCount > 0 ? `筛选：${activeFilterCount}` : \"筛选\"}\n"
+      },
+      {
+        "line": 323,
+        "remove": 5,
+        "text": "  all: \"全部\",\n  company: \"公司\",\n  bundled: \"内置\",\n  optional: \"可选\",\n  external: \"外部\",\n"
+      },
+      {
+        "line": 293,
+        "remove": 3,
+        "text": "    `发现 ${result.discovered} 个`,\n    `导入 ${result.imported.length} 个`,\n    `更新 ${result.updated.length} 个`,\n"
+      },
+      {
+        "line": 257,
+        "remove": 0,
+        "text": "// Display-only label map for skill categories/tags: the underlying slug stays\n// English (used for filter/search/keys); only the rendered text is localized.\nconst skillTagDisplay: Record<string, string> = {\n  browser: \"浏览器\",\n  puppeteer: \"Puppeteer\",\n  playwright: \"Playwright\",\n  verification: \"验证\",\n  product: \"产品\",\n  design: \"设计\",\n  research: \"研究\",\n  \"last-30-days\": \"近30天\",\n  context: \"上下文\",\n  content: \"内容\",\n  release: \"发布\",\n  \"release-notes\": \"发布说明\",\n  \"software-development\": \"软件开发\",\n  mcp: \"MCP\",\n  finance: \"财务\",\n  ramp: \"Ramp\",\n  \"simplified-english\": \"简化英语\",\n  docs: \"文档\",\n  documentation: \"文档\",\n  github: \"GitHub\",\n  \"issue-triage\": \"问题分诊\",\n  \"paperclip-operations\": \"Paperclip 运营\",\n  paperclip: \"Paperclip\",\n  capsules: \"胶囊\",\n  agents: \"代理\",\n  communication: \"沟通\",\n  operations: \"运营\",\n  reporting: \"报告\",\n  status: \"状态\",\n  ux: \"交互设计\",\n  acceptance: \"验收\",\n  \"agent-cards\": \"代理卡片\",\n  announcement: \"公告\",\n  approvals: \"审批\",\n  brand: \"品牌\",\n  changelog: \"更新日志\",\n  qa: \"QA\",\n  coaching: \"辅导\",\n  delegation: \"委派\",\n  planning: \"规划\",\n  workflow: \"工作流\",\n  review: \"审阅\",\n  \"code-review\": \"代码审阅\",\n  svg: \"SVG\",\n  wireframe: \"线框图\",\n  prototyping: \"原型设计\",\n  \"visual-design\": \"视觉设计\",\n  writing: \"写作\",\n  summary: \"摘要\",\n  style: \"风格\",\n  clarity: \"清晰\",\n  connectors: \"连接器\",\n  inbox: \"收件箱\",\n  integrations: \"集成\",\n  issues: \"问题\",\n  search: \"搜索\",\n  skills: \"技能\",\n  spend: \"支出\",\n  testing: \"测试\",\n  triage: \"分诊\",\n  validation: \"校验\",\n  reflection: \"反思\",\n  \"human-approval\": \"人工审批\",\n  hyperframes: \"超帧\",\n  \"pull-requests\": \"拉取请求\",\n};\n\nfunction skillTagLabel(slug: string): string {\n  return skillTagDisplay[slug] ?? slug;\n}\n\n"
+      }
+    ]
+  },
+  {
+    "file": "ui/src/pages/IssueDetail.tsx",
+    "edits": [
+      {
+        "line": 647,
+        "remove": 2,
+        "text": "        {assignee ? <AttributionAvatar label=\"Assignee\" actor={assignee} /> : null}\n        {originator ? <AttributionAvatar label=\"Originating\" actor={originator} via={originatorVia} /> : null}\n"
+      }
+    ]
+  },
+  {
+    "file": "ui/src/pages/agent-skills/AgentSkillsTab.tsx",
+    "edits": [
+      {
+        "line": 529,
+        "remove": 1,
+        "text": "            适配器：{adapterLabels[agent.adapterType] ?? agent.adapterType}\n"
+      },
+      {
+        "line": 494,
+        "remove": 2,
+        "text": "                    ? \"将技能导入公司库即可在此启用。\"\n                    : \"此代理已启用全部库技能。\"}\n"
+      },
+      {
+        "line": 492,
+        "remove": 1,
+        "text": "                  ? \"没有匹配搜索的可用技能。\"\n"
+      },
+      {
+        "line": 481,
+        "remove": 1,
+        "text": "                {search ? \"没有匹配搜索的已启用技能。\" : \"此代理尚未启用任何技能。\"}\n"
+      },
+      {
+        "line": 393,
+        "remove": 1,
+        "text": "            已启用 {enabledRows.length}/{libraryRows.length}\n"
+      },
+      {
+        "line": 301,
+        "remove": 1,
+        "text": "        return \"仅跟踪\";\n"
+      },
+      {
+        "line": 299,
+        "remove": 1,
+        "text": "        return \"下次运行生效\";\n"
+      },
+      {
+        "line": 297,
+        "remove": 1,
+        "text": "        return \"保留在工作区\";\n"
+      }
+    ]
+  }
+]

@@ -66,10 +66,10 @@ export function CodexSubscriptionPanel({
       <div className="flex items-start justify-between gap-3 border-b border-border pb-3">
         <div className="min-w-0">
           <div className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
-            Codex 订阅
+            Codex subscription
           </div>
           <div className="mt-1 text-sm text-muted-foreground">
-            实时 Codex 配额窗口。
+            Live Codex quota windows.
           </div>
         </div>
         {source ? (
@@ -88,7 +88,7 @@ export function CodexSubscriptionPanel({
       <div className="mt-4 space-y-5">
         <div className="space-y-3">
           <div className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
-            账户窗口
+            Account windows
           </div>
           <div className="space-y-3">
             {accountWindows.map((window) => (
@@ -100,7 +100,7 @@ export function CodexSubscriptionPanel({
         {modelWindows.length > 0 ? (
           <div className="space-y-3">
             <div className="text-(length:--text-micro) font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
-              模型窗口
+              Model windows
             </div>
             <div className="space-y-3">
               {modelWindows.map((window) => (

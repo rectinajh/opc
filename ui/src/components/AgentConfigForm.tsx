@@ -1305,7 +1305,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
         {isDirty && !props.hideInlineSave && (
           <div className="sticky top-0 z-10 flex items-center justify-end border-b border-primary/20 bg-background/90 px-4 py-2 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <span className="text-xs text-muted-foreground">未保存的更改</span>
+              <span className="text-xs text-muted-foreground">Unsaved changes</span>
               <Button size="sm" onClick={handleSave} disabled={props.isSaving}>
                 {props.isSaving ? "Saving..." : "Save"}
               </Button>
@@ -1315,8 +1315,8 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
 
         <div className={cn(!cards && "border-b border-border")}>
           {cards
-            ? <h3 className="mb-3 text-sm font-medium">密钥访问</h3>
-            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground">密钥访问</div>
+            ? <h3 className="mb-3 text-sm font-medium">Secret access</h3>
+            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground">Secret access</div>
           }
           <div className={cn(cards ? "space-y-3 rounded-lg border border-border p-4" : "space-y-3 px-4 pb-3")}>
             <p className="text-xs text-muted-foreground">{help.secretAccess}</p>
@@ -1342,7 +1342,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
       {isDirty && !props.hideInlineSave && (
         <div className="sticky top-0 z-10 flex items-center justify-end px-4 py-2 bg-background/90 backdrop-blur-sm border-b border-primary/20">
           <div className="flex items-center gap-3">
-            <span className="text-xs text-muted-foreground">未保存的更改</span>
+            <span className="text-xs text-muted-foreground">Unsaved changes</span>
             <Button
               size="sm"
               onClick={handleSave}
@@ -1358,29 +1358,29 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
       {!isCreate && (
         <div className={cn(!cards && "border-b border-border")}>
           {cards
-            ? <h3 className="text-sm font-medium mb-3">身份</h3>
-            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground">身份</div>
+            ? <h3 className="text-sm font-medium mb-3">Identity</h3>
+            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground">Identity</div>
           }
           <div className={cn(cards ? "border border-border rounded-lg p-4 space-y-3" : "px-4 pb-3 space-y-3")}>
-            <Field label="名称" hint={help.name}>
+            <Field label="Name" hint={help.name}>
               <DraftInput
                 value={eff("identity", "name", props.agent.name)}
                 onCommit={(v) => mark("identity", "name", v)}
                 immediate
                 className={inputClass}
-                placeholder="代理名称"
+                placeholder="Agent name"
               />
             </Field>
-            <Field label="标题" hint={help.title}>
+            <Field label="Title" hint={help.title}>
               <DraftInput
                 value={eff("identity", "title", props.agent.title ?? "")}
                 onCommit={(v) => mark("identity", "title", v || null)}
                 immediate
                 className={inputClass}
-                placeholder="例如：工程副总裁"
+                placeholder="e.g. VP of Engineering"
               />
             </Field>
-            <Field label="汇报给" hint={help.reportsTo}>
+            <Field label="Reports to" hint={help.reportsTo}>
               <ReportsToPicker
                 agents={companyAgents}
                 value={eff("identity", "reportsTo", props.agent.reportsTo ?? null)}
@@ -1389,11 +1389,11 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
                 chooseLabel="Choose manager…"
               />
             </Field>
-            <Field label="能力" hint={help.capabilities}>
+            <Field label="Capabilities" hint={help.capabilities}>
               <MarkdownEditor
                 value={eff("identity", "capabilities", props.agent.capabilities ?? "") ?? ""}
                 onChange={(v) => mark("identity", "capabilities", v || null)}
-                placeholder="描述此代理能做什么..."
+                placeholder="Describe what this agent can do..."
                 contentClassName="min-h-(--sz-44px) text-sm font-mono"
                 imageUploadHandler={async (file) => {
                   const asset = await uploadMarkdownImage.mutateAsync({
@@ -1406,7 +1406,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
             </Field>
             {isLocal && !props.hidePromptTemplate && (
               <>
-                <Field label="提示模板" hint={help.promptTemplate}>
+                <Field label="Prompt Template" hint={help.promptTemplate}>
                   <MarkdownEditor
                     value={eff(
                       "adapterConfig",
@@ -1439,13 +1439,13 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
         // Render the environment read-only instead of the selectable picker.
         <div className={cn(!cards && (isCreate ? "border-t border-border" : "border-b border-border"))}>
           {cards
-            ? <h3 className="text-sm font-medium mb-3">环境</h3>
-            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground">环境</div>
+            ? <h3 className="text-sm font-medium mb-3">Environment</h3>
+            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground">Environment</div>
           }
           <div className={cn(cards ? "border border-border rounded-lg p-4 space-y-3" : "px-4 pb-3 space-y-3")}>
             <Field
-              label="默认环境"
-              hint="此实例在 Kubernetes 沙箱中运行所有代理。本地执行已禁用。"
+              label="Default environment"
+              hint="This instance runs all agents in the Kubernetes sandbox. Local execution is disabled."
             >
               {kubernetesEnvironment ? (
                 <div className={cn(inputClass, "flex items-center text-muted-foreground")}>
@@ -1464,11 +1464,11 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
       ) : showEnvironmentOverrideControl ? (
         <div className={cn(!cards && (isCreate ? "border-t border-border" : "border-b border-border"))}>
           {cards
-            ? <h3 className="text-sm font-medium mb-3">环境</h3>
-            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground">环境</div>
+            ? <h3 className="text-sm font-medium mb-3">Environment</h3>
+            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground">Environment</div>
           }
           <div className={cn(cards ? "border border-border rounded-lg p-4 space-y-3" : "px-4 pb-3 space-y-3")}>
-            <Field label="环境覆盖">
+            <Field label="Environment override">
               <div className="space-y-2">
                 <select
                   className={inputClass}
@@ -1499,8 +1499,8 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
       <div className={cn(!cards && (isCreate ? "border-t border-border" : "border-b border-border"))}>
         <div className={cn(cards ? "flex items-center justify-between mb-3" : "px-4 py-2 flex items-center justify-between gap-2")}>
           {cards
-            ? <h3 className="text-sm font-medium">适配器</h3>
-            : <span className="text-xs font-medium text-muted-foreground">适配器</span>
+            ? <h3 className="text-sm font-medium">Adapter</h3>
+            : <span className="text-xs font-medium text-muted-foreground">Adapter</span>
           }
           {showInlineAdapterTestEnvironmentButton && (
             <Button
@@ -1517,7 +1517,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
         </div>
         <div className={cn(cards ? "border border-border rounded-lg p-4 space-y-3" : "px-4 pb-3 space-y-3")}>
           {showAdapterTypeField && (
-            <Field label="适配器类型" hint={help.adapterType}>
+            <Field label="Adapter type" hint={help.adapterType}>
               <AdapterTypeDropdown
                 value={adapterType}
                 disabledTypes={disabledTypes}
@@ -1603,7 +1603,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
 
           {/* Working directory */}
           {showLegacyWorkingDirectoryField && (
-            <Field label="工作目录（已弃用）" hint={help.cwd}>
+            <Field label="Working directory (deprecated)" hint={help.cwd}>
               <div className="flex items-center gap-2 rounded-md border border-border px-2.5 py-1.5">
                 <FolderOpen className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
                 <DraftInput
@@ -1641,7 +1641,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
             : <div className="px-4 py-2 text-xs font-medium text-muted-foreground">Permissions &amp; Configuration</div>
           }
           <div className={cn(cards ? "border border-border rounded-lg p-4 space-y-3" : "px-4 pb-3 space-y-3")}>
-              <Field label="命令" hint={help.localCommand}>
+              <Field label="Command" hint={help.localCommand}>
                 <DraftInput
                   value={
                     isCreate
@@ -1676,7 +1676,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
               </Field>
 
               {supportsModelProfiles && (
-                <div className="text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">主要模型</div>
+                <div className="text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">Primary model</div>
               )}
               <ModelDropdown
                 models={models}
@@ -1763,7 +1763,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
               )}
               {!isCreate && typeof config.bootstrapPromptTemplate === "string" && config.bootstrapPromptTemplate && (
                 <>
-                  <Field label="引导提示（旧版）" hint={help.bootstrapPrompt}>
+                  <Field label="Bootstrap prompt (legacy)" hint={help.bootstrapPrompt}>
                     <MarkdownEditor
                       value={eff(
                         "adapterConfig",
@@ -1773,7 +1773,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
                       onChange={(v) =>
                         mark("adapterConfig", "bootstrapPromptTemplate", v || undefined)
                       }
-                      placeholder="首次运行的可选初始设置提示"
+                      placeholder="Optional initial setup prompt for the first run"
                       contentClassName="min-h-(--sz-44px) text-sm font-mono"
                       imageUploadHandler={async (file) => {
                         const namespace = `agents/${props.agent.id}/bootstrap-prompt`;
@@ -1792,7 +1792,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
               )}
               <uiAdapter.ConfigFields {...adapterFieldProps} />
 
-              <Field label="额外参数（逗号分隔）" hint={help.extraArgs}>
+              <Field label="Extra args (comma-separated)" hint={help.extraArgs}>
                 <DraftInput
                   value={
                     isCreate
@@ -1809,7 +1809,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
                 />
               </Field>
 
-              <Field label="环境变量" hint={help.envVars}>
+              <Field label="Environment variables" hint={help.envVars}>
                 <EnvironmentVariablesEditor
                   ref={environmentVariablesEditorRef}
                   value={
@@ -1834,7 +1834,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
               {/* Edit-only: timeout + grace period */}
               {!isCreate && (
                 <>
-                  <Field label="超时（秒）" hint={help.timeoutSec}>
+                  <Field label="Timeout (sec)" hint={help.timeoutSec}>
                     <DraftNumberInput
                       value={eff(
                         "adapterConfig",
@@ -1846,7 +1846,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
                       className={inputClass}
                     />
                   </Field>
-                  <Field label="中断宽限期（秒）" hint={help.graceSec}>
+                  <Field label="Interrupt grace period (sec)" hint={help.graceSec}>
                     <DraftNumberInput
                       value={eff(
                         "adapterConfig",
@@ -1868,12 +1868,12 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
       {isCreate && showCreateRunPolicySection ? (
         <div className={cn(!cards && "border-b border-border")}>
           {cards
-            ? <h3 className="text-sm font-medium flex items-center gap-2 mb-3"><Heart className="h-3 w-3" /> 运行策略</h3>
-            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground flex items-center gap-2"><Heart className="h-3 w-3" /> 运行策略</div>
+            ? <h3 className="text-sm font-medium flex items-center gap-2 mb-3"><Heart className="h-3 w-3" /> Run Policy</h3>
+            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground flex items-center gap-2"><Heart className="h-3 w-3" /> Run Policy</div>
           }
           <div className={cn(cards ? "border border-border rounded-lg p-4 space-y-3" : "px-4 pb-3 space-y-3")}>
             <ToggleWithNumber
-              label="间隔心跳"
+              label="Heartbeat on interval"
               hint={help.heartbeatInterval}
               checked={val!.heartbeatEnabled}
               onCheckedChange={(v) => set!({ heartbeatEnabled: v })}
@@ -1889,13 +1889,13 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
       ) : !isCreate ? (
         <div className={cn(!cards && "border-b border-border")}>
           {cards
-            ? <h3 className="text-sm font-medium flex items-center gap-2 mb-3"><Heart className="h-3 w-3" /> 运行策略</h3>
-            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground flex items-center gap-2"><Heart className="h-3 w-3" /> 运行策略</div>
+            ? <h3 className="text-sm font-medium flex items-center gap-2 mb-3"><Heart className="h-3 w-3" /> Run Policy</h3>
+            : <div className="px-4 py-2 text-xs font-medium text-muted-foreground flex items-center gap-2"><Heart className="h-3 w-3" /> Run Policy</div>
           }
           <div className={cn(cards ? "border border-border rounded-lg overflow-hidden" : "")}>
             <div className={cn(cards ? "p-4 space-y-3" : "px-4 pb-3 space-y-3")}>
               <ToggleWithNumber
-                label="间隔心跳"
+                label="Heartbeat on interval"
                 hint={help.heartbeatInterval}
                 checked={eff("heartbeat", "enabled", heartbeat.enabled === true)}
                 onCheckedChange={(v) => mark("heartbeat", "enabled", v)}
@@ -1908,14 +1908,14 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
               />
             </div>
             <CollapsibleSection
-              title="高级运行策略"
+              title="Advanced Run Policy"
               bordered={cards}
               open={runPolicyAdvancedOpen}
               onToggle={() => setRunPolicyAdvancedOpen(!runPolicyAdvancedOpen)}
             >
             <div className="space-y-3">
               <ToggleField
-                label="按需唤醒"
+                label="Wake on demand"
                 hint={help.wakeOnDemand}
                 checked={eff(
                   "heartbeat",
@@ -1924,7 +1924,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
                 )}
                 onChange={(v) => mark("heartbeat", "wakeOnDemand", v)}
               />
-              <Field label="冷却时间（秒）" hint={help.cooldownSec}>
+              <Field label="Cooldown (sec)" hint={help.cooldownSec}>
                 <DraftNumberInput
                   value={eff(
                     "heartbeat",
@@ -1936,7 +1936,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
                   className={inputClass}
                 />
               </Field>
-              <Field label="最大并发运行数" hint={help.maxConcurrentRuns}>
+              <Field label="Max concurrent runs" hint={help.maxConcurrentRuns}>
                 <DraftNumberInput
                   value={eff(
                     "heartbeat",
@@ -1950,14 +1950,14 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
               </Field>
               <div className="rounded-md border border-border/70 px-3 py-2">
                 <ToggleField
-                  label="达到最大轮次后继续"
+                  label="Continue after max-turn stop"
                   hint={help.maxTurnContinuationEnabled}
                   checked={maxTurnContinuationEnabled}
                   onChange={(v) => updateMaxTurnContinuation({ enabled: v })}
                 />
                 {maxTurnContinuationEnabled ? (
                   <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                    <Field label="继续尝试次数" hint={help.maxTurnContinuationMaxAttempts}>
+                    <Field label="Continuation attempts" hint={help.maxTurnContinuationMaxAttempts}>
                       <DraftNumberInput
                         value={maxTurnContinuationMaxAttempts}
                         onCommit={(v) =>
@@ -1968,7 +1968,7 @@ export function AgentConfigForm(props: AgentConfigFormProps) {
                         className={inputClass}
                       />
                     </Field>
-                    <Field label="继续延迟（秒）" hint={help.maxTurnContinuationDelaySec}>
+                    <Field label="Continuation delay (sec)" hint={help.maxTurnContinuationDelaySec}>
                       <DraftNumberInput
                         value={maxTurnContinuationDelaySec}
                         onCommit={(v) =>
@@ -2053,7 +2053,7 @@ function AdapterLoginTerminalState({
     return (
       <div className="flex items-center gap-2 text-(length:--text-micro) text-foreground">
         <Check className="size-3 shrink-0" />
-        <span>已认证。环境现在具有凭据。</span>
+        <span>Authenticated. The environment has credentials now.</span>
       </div>
     );
   }
@@ -2181,7 +2181,7 @@ function DisplayedCodeLoginPanel({
   return (
     <div className="rounded-md border border-border bg-muted/40 px-3 py-2 space-y-2">
       <div className="flex items-center justify-between gap-2">
-        <span className="text-xs font-medium text-foreground">登录环境</span>
+        <span className="text-xs font-medium text-foreground">Sign in to the environment</span>
         <div className="flex items-center gap-1.5">
           {isActive && (
             <Button
@@ -2192,7 +2192,7 @@ function DisplayedCodeLoginPanel({
               disabled={cancelLogin.isPending}
               onClick={() => cancelLogin.mutate()}
             >
-              取消
+              Cancel
             </Button>
           )}
           <Button
@@ -2203,7 +2203,7 @@ function DisplayedCodeLoginPanel({
             disabled={startDisabled}
             onClick={() => startLogin.mutate()}
           >
-            登录
+            Log in
           </Button>
         </div>
       </div>
@@ -2227,33 +2227,33 @@ function DisplayedCodeLoginPanel({
         {isActive && prompt && (
           <div className="space-y-2">
             <div className="text-(length:--text-micro) text-muted-foreground">
-              打开认证页面并输入代码。
+              Open the authentication page and enter the code.
             </div>
           <div className="flex items-center justify-between gap-2">
             <div className="min-w-0">
               <div className="text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">
-                代码
+                Code
               </div>
               <span className="font-mono text-xs text-foreground break-all">{prompt.code}</span>
             </div>
-            <AdapterLoginCopyButton value={prompt.code} label="复制代码" />
+            <AdapterLoginCopyButton value={prompt.code} label="Copy code" />
           </div>
           <div className="flex items-center justify-between gap-2">
             <div className="min-w-0">
               <div className="text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">
-                认证 URL
+                Authentication URL
               </div>
               <span className="font-mono text-xs text-foreground break-all">{prompt.url}</span>
             </div>
             <div className="flex items-center">
-              <AdapterLoginCopyButton value={prompt.url} label="复制 URL" />
+              <AdapterLoginCopyButton value={prompt.url} label="Copy URL" />
               <Button
                 asChild
                 type="button"
                 variant="ghost"
                 size="icon-xs"
-                aria-label="打开认证页面"
-                title="打开认证页面"
+                aria-label="Open the authentication page"
+                title="Open the authentication page"
                 className="text-muted-foreground hover:text-foreground"
               >
                 <a href={prompt.url} target="_blank" rel="noreferrer noopener">
@@ -2629,7 +2629,7 @@ function SubmittedBrowserCodeLoginPanel({
   return (
     <div className="rounded-md border border-border bg-muted/40 px-3 py-2 space-y-2">
       <div className="flex items-center justify-between gap-2">
-        <span className="text-xs font-medium text-foreground">登录环境</span>
+        <span className="text-xs font-medium text-foreground">Sign in to the environment</span>
         <div className="flex items-center gap-1.5">
           {isActive && (
             <Button
@@ -2640,7 +2640,7 @@ function SubmittedBrowserCodeLoginPanel({
               disabled={cancelLogin.isPending}
               onClick={() => cancelLogin.mutate()}
             >
-              取消
+              Cancel
             </Button>
           )}
           {/* Apply the existing stored login with no new login round trip. The
@@ -2657,7 +2657,7 @@ function SubmittedBrowserCodeLoginPanel({
                 setAppliedStored(true);
               }}
             >
-              使用已保存的登录
+              Use saved login
             </Button>
           )}
           <Button
@@ -2686,7 +2686,7 @@ function SubmittedBrowserCodeLoginPanel({
       {appliedStored && (
         <div className="flex items-center gap-2 text-(length:--text-micro) text-foreground">
           <Check className="size-3 shrink-0" />
-          <span>已保存的 Claude 登录现已绑定到此代理。</span>
+          <span>The saved Claude login is bound to this agent now.</span>
         </div>
       )}
 
@@ -2720,24 +2720,24 @@ function SubmittedBrowserCodeLoginPanel({
               </div>
             )}
             <div className="text-(length:--text-micro) text-muted-foreground">
-              打开授权页面，然后输入显示的浏览器代码。
+              Open the authorization page, then enter the browser code it shows.
             </div>
             <div className="flex items-center justify-between gap-2">
               <div className="min-w-0">
                 <div className="text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">
-                  授权 URL
+                  Authorization URL
                 </div>
                 <span className="font-mono text-xs text-foreground break-all">{authorizationUrl}</span>
               </div>
               <div className="flex items-center">
-                <AdapterLoginCopyButton value={authorizationUrl} label="复制 URL" />
+                <AdapterLoginCopyButton value={authorizationUrl} label="Copy URL" />
                 <Button
                   asChild
                   type="button"
                   variant="ghost"
                   size="icon-xs"
-                  aria-label="打开授权页面"
-                  title="打开授权页面"
+                  aria-label="Open the authorization page"
+                  title="Open the authorization page"
                   className="text-muted-foreground hover:text-foreground"
                 >
                   <a href={authorizationUrl} target="_blank" rel="noreferrer noopener">
@@ -2748,11 +2748,11 @@ function SubmittedBrowserCodeLoginPanel({
             </div>
             <div className="space-y-1">
               <div className="text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">
-                浏览器代码
+                Browser code
               </div>
               <div className="flex items-center gap-2">
                 <input
-                  aria-label="浏览器代码"
+                  aria-label="Browser code"
                   type="text"
                   autoComplete="off"
                   spellCheck={false}
@@ -2774,7 +2774,7 @@ function SubmittedBrowserCodeLoginPanel({
                   disabled={!canSubmit}
                   onClick={handleSubmit}
                 >
-                  提交
+                  Submit
                 </Button>
               </div>
             </div>
@@ -2791,7 +2791,7 @@ function SubmittedBrowserCodeLoginPanel({
         {isStored && (
           <div className="flex items-center gap-2 text-(length:--text-micro) text-foreground">
             <Check className="size-3 shrink-0" />
-            <span>已认证。环境现在具有凭据。</span>
+            <span>Authenticated. The environment has credentials now.</span>
           </div>
         )}
 
@@ -2906,7 +2906,7 @@ export function AdapterTypeDropdown({
               {item.experimental && <ExperimentalBadge />}
             </span>
             {item.comingSoon && (
-              <span className="text-(length:--text-nano) text-muted-foreground">即将推出</span>
+              <span className="text-(length:--text-nano) text-muted-foreground">Coming soon</span>
             )}
           </button>
         ))}
@@ -2918,7 +2918,7 @@ export function AdapterTypeDropdown({
 function ExperimentalBadge() {
   return (
     <span className="shrink-0 rounded border border-amber-500/30 bg-amber-500/10 px-1.5 py-0.5 text-(length:--text-nano) font-medium leading-none text-amber-700 dark:text-amber-200">
-      实验性
+      Experimental
     </span>
   );
 }
@@ -3032,7 +3032,7 @@ export function ModelDropdown({
   }
 
   return (
-    <Field label="模型" hint={help.model}>
+    <Field label="Model" hint={help.model}>
       <Popover
         open={open}
         onOpenChange={(nextOpen) => {
@@ -3182,7 +3182,7 @@ export function ModelDropdown({
                   onOpenChange(false);
                 }}
               >
-                默认
+                Default
               </button>
             )}
             {canCreateManualModel && (
@@ -3195,7 +3195,7 @@ export function ModelDropdown({
                   setModelSearch("");
                 }}
               >
-                <span>使用手动模型</span>
+                <span>Use manual model</span>
                 <span className="text-xs font-mono text-muted-foreground">{manualModel}</span>
               </button>
             )}
@@ -3270,7 +3270,7 @@ function CheapModelSection({
     <div className="rounded-md border border-border/70 bg-muted/20 p-3 space-y-3">
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">廉价模型</div>
+          <div className="text-(length:--text-micro) uppercase tracking-wide text-muted-foreground">Cheap model</div>
           <p className="text-xs text-muted-foreground">
             Used when a run requests the cheap profile (e.g. routine summaries). The primary model stays unchanged.
           </p>
@@ -3324,7 +3324,7 @@ function ThinkingEffortDropdown({
   const selected = options.find((option) => option.id === value) ?? options[0];
 
   return (
-    <Field label="思考努力" hint={help.thinkingEffort}>
+    <Field label="Thinking effort" hint={help.thinkingEffort}>
       <Popover open={open} onOpenChange={onOpenChange}>
         <PopoverTrigger asChild>
           <button className="inline-flex items-center gap-1.5 rounded-md border border-border px-2.5 py-1.5 text-sm hover:bg-accent/50 transition-colors w-full justify-between">

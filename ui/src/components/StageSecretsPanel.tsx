@@ -52,7 +52,7 @@ export function StageSecretsPanel({
     return (
       <EmptyState
         icon={KeyRound}
-        message="密钥仅对步骤自动化可用。选择代理运行此步骤，然后添加其所需的密钥。"
+        message="Secrets are available only to step automation. Pick an agent to run this step, then add the secrets it needs."
         action="Set up automation"
         onAction={onSetupAutomation}
       />
@@ -93,7 +93,7 @@ export function StageSecretsPanel({
           <Save className="h-4 w-4 mr-1.5" />
           {saving ? "Saving…" : "Save secrets"}
         </Button>
-        {dirty && !saving ? <span className="text-xs text-muted-foreground">未保存的更改</span> : null}
+        {dirty && !saving ? <span className="text-xs text-muted-foreground">Unsaved changes</span> : null}
       </div>
     </div>
   );

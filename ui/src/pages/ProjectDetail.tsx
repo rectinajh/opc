@@ -89,21 +89,21 @@ function OverviewContent({
         nullable
         as="p"
         className="text-sm text-muted-foreground"
-        placeholder="添加描述..."
+        placeholder="Add a description..."
         multiline
         imageUploadHandler={imageUploadHandler}
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
         <div>
-          <span className="text-muted-foreground">状态</span>
+          <span className="text-muted-foreground">Status</span>
           <div className="mt-1">
             <StatusBadge status={project.status} />
           </div>
         </div>
         {project.targetDate && (
           <div>
-            <span className="text-muted-foreground">目标日期</span>
+            <span className="text-muted-foreground">Target Date</span>
             <p>{project.targetDate}</p>
           </div>
         )}
@@ -151,16 +151,16 @@ function ProjectTilePicker({
         <button
           type="button"
           className="shrink-0 rounded-lg cursor-pointer hover:ring-2 hover:ring-foreground/20 transition-(--tp-box-shadow)"
-          aria-label="更改项目图标和颜色"
+          aria-label="Change project icon and color"
         >
           <ProjectTile color={color} icon={icon} size="md" />
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-72 p-3" align="start">
         {/* Icon search + grid */}
-        <p className="text-xs font-medium text-muted-foreground mb-2">图标</p>
+        <p className="text-xs font-medium text-muted-foreground mb-2">Icon</p>
         <Input
-          placeholder="搜索图标..."
+          placeholder="Search icons..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="mb-2 h-8 text-sm"
@@ -182,13 +182,13 @@ function ProjectTilePicker({
             </button>
           ))}
           {filteredIcons.length === 0 && (
-            <p className="col-span-7 text-xs text-muted-foreground text-center py-2">没有匹配的图标</p>
+            <p className="col-span-7 text-xs text-muted-foreground text-center py-2">No icons match</p>
           )}
         </div>
 
         {/* Color swatches */}
         <div className="mt-3 border-t border-border pt-3">
-          <p className="text-xs font-medium text-muted-foreground mb-2">颜色</p>
+          <p className="text-xs font-medium text-muted-foreground mb-2">Color</p>
           <div className="grid grid-cols-5 gap-1.5">
             {/* Neutral / reset-to-gray option */}
             <button
@@ -199,8 +199,8 @@ function ProjectTilePicker({
                   ? "ring-2 ring-foreground ring-offset-1 ring-offset-background rounded-md"
                   : ""
               }`}
-              aria-label="重置为中性灰色"
-              title="中性（默认）"
+              aria-label="Reset to neutral gray"
+              title="Neutral (default)"
             >
               <ProjectTile color={null} size="sm" />
             </button>
@@ -760,7 +760,7 @@ export function ProjectDetail() {
       {showLeftProjectNotice ? (
         <div className="flex items-center gap-3 border border-yellow-300/35 bg-yellow-300/10 px-3 py-2 text-sm text-yellow-900 dark:text-yellow-100">
           <p className="min-w-0 flex-1">
-            您已离开此项目。它不再显示在您的侧边栏中。
+            You left this project. It no longer appears in your sidebar.
           </p>
           <MembershipAction
             compact
@@ -784,7 +784,7 @@ export function ProjectDetail() {
           <button
             type="button"
             className="h-6 w-6 shrink-0 text-yellow-900/70 hover:text-yellow-900 dark:text-yellow-100/70 dark:hover:text-yellow-100"
-            aria-label="关闭项目成员通知"
+            aria-label="Dismiss project membership notice"
             onClick={() => setDismissedLeftProjectIds((current) => new Set(current).add(project.id))}
           >
             ×
@@ -810,7 +810,7 @@ export function ProjectDetail() {
           {project.pauseReason === "budget" ? (
             <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-(length:--text-micro) font-medium uppercase tracking-(--tracking-caps) text-red-800 dark:text-red-200">
               <span className="h-2 w-2 rounded-full bg-red-400" />
-              因预算硬性停止而暂停
+              Paused by budget hard stop
             </div>
           ) : null}
           {project.managedByPlugin ? (
@@ -840,8 +840,8 @@ export function ProjectDetail() {
         companyId={resolvedCompanyId}
         scopeKind="project"
         scopeId={project.id}
-        title="项目摘要"
-        description="摘要器在此处保留最新项目状态、下一步和需要操作员处理的项目。"
+        title="Project summary"
+        description="Summarizer keeps the latest project status, next step, and operator-needed items here."
       />
 
       <PluginSlotOutlet
@@ -931,7 +931,7 @@ export function ProjectDetail() {
             />
           )
         ) : (
-          <p className="text-sm text-muted-foreground">正在加载工作区...</p>
+          <p className="text-sm text-muted-foreground">Loading workspaces...</p>
         )
       ) : null}
 

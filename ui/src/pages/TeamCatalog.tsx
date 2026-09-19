@@ -293,7 +293,7 @@ function ProvenanceBadge({ team }: { team: CatalogTeam }) {
           {team.packageVersion ? `@${team.packageVersion}` : ""}
         </Badge>
       </TooltipTrigger>
-      <TooltipContent>目录包来源</TooltipContent>
+      <TooltipContent>Catalog package provenance</TooltipContent>
     </Tooltip>
   );
 }
@@ -478,7 +478,7 @@ export function TeamHierarchyPreview({ team }: { team: CatalogTeam }) {
           >
             <Crown className="h-3.5 w-3.5 text-amber-500" />
             <span className="font-medium">{titleCase(slug)}</span>
-            <span className="text-xs text-muted-foreground">根代理</span>
+            <span className="text-xs text-muted-foreground">root agent</span>
           </li>
         ))}
         {members.map((slug) => (
@@ -488,7 +488,7 @@ export function TeamHierarchyPreview({ team }: { team: CatalogTeam }) {
           </li>
         ))}
         {team.agentSlugs.length === 0 && (
-          <li className="px-3 py-2 text-xs text-muted-foreground">此团队中没有代理。</li>
+          <li className="px-3 py-2 text-xs text-muted-foreground">No agents in this team.</li>
         )}
       </ul>
     </div>
@@ -528,7 +528,7 @@ function MetricTile({
 }
 
 export function RequiredSkillsList({ skills }: { skills: CatalogTeamSkillRequirement[] }) {
-  if (skills.length === 0) return <p className="text-sm text-muted-foreground">无必需技能。</p>;
+  if (skills.length === 0) return <p className="text-sm text-muted-foreground">No required skills.</p>;
   return (
     <ul className="space-y-1">
       {skills.map((skill) => (
@@ -560,7 +560,7 @@ export function EnvInputsList({ inputs }: { inputs: CatalogTeamEnvInputSummary[]
   if (inputs.length === 0) return null;
   return (
     <div className="space-y-1.5">
-      <SectionHeader>机密和环境变量输入</SectionHeader>
+      <SectionHeader>Secrets & env inputs</SectionHeader>
       <ul className="space-y-1">
         {inputs.map((input) => (
           <li
@@ -621,13 +621,13 @@ export function ExternalSourcesList({ sources }: { sources: CatalogTeamSourceRef
                 <span className="font-mono text-xs truncate">{source.ref}</span>
                 <span className="ml-auto text-(length:--text-micro)">
                   {code === "ok" && (
-                    <span className="text-emerald-600 dark:text-emerald-300">已固定</span>
+                    <span className="text-emerald-600 dark:text-emerald-300">Pinned</span>
                   )}
                   {code === "unpinned" && (
-                    <span className="text-amber-600 dark:text-amber-300">未固定</span>
+                    <span className="text-amber-600 dark:text-amber-300">Unpinned</span>
                   )}
                   {code === "unsupported_in_ui" && (
-                    <span className="text-rose-600 dark:text-rose-300">浏览器安装不支持</span>
+                    <span className="text-rose-600 dark:text-rose-300">Unsupported in browser install</span>
                   )}
                 </span>
               </li>
@@ -707,7 +707,7 @@ export function TeamDetailPane({
               <ProvenanceBadge team={team} />
               {isInstalled && !outOfDate && (
                 <Badge variant="secondary" className="gap-1 text-(length:--text-nano)">
-                  <CheckCircle2 className="h-3 w-3" /> 已安装
+                  <CheckCircle2 className="h-3 w-3" /> Installed
                 </Badge>
               )}
               {outOfDate && (
@@ -715,7 +715,7 @@ export function TeamDetailPane({
                   variant="outline"
                   className="gap-1 border-amber-500/40 bg-amber-500/10 text-(length:--text-nano) text-amber-600 dark:text-amber-300"
                 >
-                  <ChevronUp className="h-3 w-3" /> 有可用更新
+                  <ChevronUp className="h-3 w-3" /> Update available
                 </Badge>
               )}
             </div>
@@ -732,7 +732,7 @@ export function TeamDetailPane({
               <TooltipTrigger asChild>
                 <span tabIndex={0}>{installButton}</span>
               </TooltipTrigger>
-              <TooltipContent>需要看板操作员或代理创建权限。</TooltipContent>
+              <TooltipContent>Requires board operator or agent-create permissions.</TooltipContent>
             </Tooltip>
           ) : (
             installButton
@@ -750,22 +750,22 @@ export function TeamDetailPane({
 
         {/* Summary grid */}
         <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
-          <MetricTile label="代理" value={team.counts.agents} Icon={Users2} />
-          <MetricTile label="项目" value={team.counts.projects} Icon={FolderKanban} />
-          <MetricTile label="例程" value={team.counts.routines} Icon={Repeat} />
-          <MetricTile label="所需技能" value={skillCount(team)} Icon={Boxes} />
+          <MetricTile label="Agents" value={team.counts.agents} Icon={Users2} />
+          <MetricTile label="Projects" value={team.counts.projects} Icon={FolderKanban} />
+          <MetricTile label="Routines" value={team.counts.routines} Icon={Repeat} />
+          <MetricTile label="Required skills" value={skillCount(team)} Icon={Boxes} />
         </div>
 
         {/* Agent hierarchy */}
         <div className="space-y-2">
-          <SectionHeader>代理层级</SectionHeader>
+          <SectionHeader>Agent hierarchy</SectionHeader>
           <TeamHierarchyPreview team={team} />
         </div>
 
         {/* Projects */}
         {team.projectSlugs.length > 0 && (
           <div className="space-y-2">
-            <SectionHeader>项目</SectionHeader>
+            <SectionHeader>Projects</SectionHeader>
             <ul className="space-y-1">
               {team.projectSlugs.map((slug) => (
                 <li key={slug} className="flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm">
@@ -780,7 +780,7 @@ export function TeamDetailPane({
 
         {/* Required skills */}
         <div className="space-y-2">
-          <SectionHeader>所需技能</SectionHeader>
+          <SectionHeader>Required skills</SectionHeader>
           <RequiredSkillsList skills={team.requiredSkills} />
         </div>
 
@@ -792,7 +792,7 @@ export function TeamDetailPane({
 
         {/* File inventory */}
         <div className="space-y-2">
-          <SectionHeader>文件</SectionHeader>
+          <SectionHeader>Files</SectionHeader>
           <div className="rounded-md border border-border p-1.5">
             <TeamFileTree
               nodes={tree}
@@ -811,7 +811,7 @@ export function TeamDetailPane({
                   className="text-xs text-muted-foreground hover:text-foreground"
                   onClick={() => onSelectFile(null)}
                 >
-                  关闭
+                  Close
                 </button>
               </div>
               <div className="max-h-96 overflow-auto p-3">
@@ -1296,10 +1296,10 @@ function TeamInstallerDialog({
             <div role="alert" className="flex items-start gap-2 rounded-md border border-rose-500/30 bg-rose-500/10 px-3 py-2.5 text-sm text-rose-700 dark:text-rose-300">
               <XCircle className="mt-0.5 h-4 w-4 shrink-0" />
               <div>
-                <p className="font-medium">安装失败</p>
+                <p className="font-medium">Install failed</p>
                 <p className="mt-0.5 text-xs">{applyError}</p>
                 <p className="mt-1 text-xs opacity-80">
-                  部分状态未回滚。重试前请查看公司活动日志。
+                  Partial state is not rolled back. Review the company activity log before retrying.
                 </p>
               </div>
             </div>
@@ -1313,9 +1313,9 @@ function TeamInstallerDialog({
       <div className="flex items-center justify-between gap-3">
         <div>
           {stepIndex > 0 ? (
-            <Button variant="ghost" onClick={goBack}>返回</Button>
+            <Button variant="ghost" onClick={goBack}>Back</Button>
           ) : (
-            <Button variant="ghost" onClick={onClose}>取消</Button>
+            <Button variant="ghost" onClick={onClose}>Cancel</Button>
           )}
         </div>
         <div className="flex items-center gap-3">
@@ -1342,13 +1342,13 @@ function TeamInstallerDialog({
               </Button>
             )
           ) : (
-            <Button onClick={goNext} disabled={!canContinue(currentStep)}>继续</Button>
+            <Button onClick={goNext} disabled={!canContinue(currentStep)}>Continue</Button>
           )}
         </div>
       </div>
     ) : phase === "error" ? (
       <div className="flex justify-end">
-        <Button variant="ghost" onClick={onClose}>关闭</Button>
+        <Button variant="ghost" onClick={onClose}>Close</Button>
       </div>
     ) : null;
 
@@ -1412,7 +1412,7 @@ export function StepTargetManager({
       </div>
 
       <div className="space-y-1.5">
-        <SectionHeader>根代理</SectionHeader>
+        <SectionHeader>Root agents</SectionHeader>
         <ul className="rounded-md border border-border">
           {team.rootAgentSlugs.map((slug) => (
             <li key={slug} className="flex items-center gap-2 border-b border-border/60 px-3 py-2 text-sm last:border-b-0">
@@ -1428,11 +1428,11 @@ export function StepTargetManager({
 
       {!fullCompany && (
         <div className="space-y-1.5" aria-describedby="target-manager-help">
-          <SectionHeader>目标管理器</SectionHeader>
+          <SectionHeader>Target manager</SectionHeader>
           <Command className="rounded-md border border-border">
             <CommandInput placeholder="Search agents…" />
             <CommandList>
-              <CommandEmpty>未找到代理。</CommandEmpty>
+              <CommandEmpty>No agents found.</CommandEmpty>
               <CommandGroup>
                 {agents.map((agent) => (
                   <CommandItem
@@ -1525,19 +1525,19 @@ export function StepSourcePolicy({
 
       <div className="space-y-2.5 rounded-md border border-border p-3">
         <PolicyToggle
-          label="允许外部来源"
-          description="在安装时解析 github/url 技能和团队来源。"
+          label="Allow external sources"
+          description="Resolve github/url skill and team sources at install time."
           checked={allowExternalSources}
           onChange={(v) => onChange("external", v)}
         />
         <PolicyToggle
-          label="允许未固定的可选来源"
-          description="允许未固定到引用或校验和的可选来源。"
+          label="Allow unpinned optional sources"
+          description="Permit optional sources that are not pinned to a ref or checksum."
           checked={allowUnpinnedOptionalSources}
           onChange={(v) => onChange("unpinned", v)}
         />
         <PolicyToggle
-          label="允许本地路径来源"
+          label="Allow local-path sources"
           description="Required for local_path / agent_package sources. Development use only."
           checked={allowLocalPathSources}
           onChange={(v) => onChange("localPath", v)}
@@ -1734,7 +1734,7 @@ export function StepPreview({
           {error}
         </div>
         <Button variant="outline" onClick={onRetry}>
-          <RotateCcw className="h-4 w-4" /> 重试
+          <RotateCcw className="h-4 w-4" /> Retry
         </Button>
       </div>
     );
@@ -1750,25 +1750,25 @@ export function StepPreview({
     <div className="space-y-4">
       {/* Summary */}
       <div className="space-y-2">
-        <SectionHeader>摘要</SectionHeader>
+        <SectionHeader>Summary</SectionHeader>
         <div className="grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
-          <SummaryCount label="代理" value={plan.agentPlans.length} />
-          <SummaryCount label="项目" value={plan.projectPlans.length} />
-          <SummaryCount label="入门任务" value={plan.issuePlans.length} />
-          <SummaryCount label="所需技能" value={result.skillPreparations.length} />
+          <SummaryCount label="Agents" value={plan.agentPlans.length} />
+          <SummaryCount label="Projects" value={plan.projectPlans.length} />
+          <SummaryCount label="Starter tasks" value={plan.issuePlans.length} />
+          <SummaryCount label="Required skills" value={result.skillPreparations.length} />
         </div>
       </div>
 
       {/* Collision strategy */}
       <div className="flex items-center gap-3">
-        <span className="text-sm font-medium">冲突策略</span>
+        <span className="text-sm font-medium">Collision strategy</span>
         <Select value={collisionStrategy} onValueChange={(v) => onCollisionStrategyChange(v as CompanyPortabilityCollisionStrategy)}>
           <SelectTrigger className="h-8 w-40">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="rename">重命名冲突</SelectItem>
-            <SelectItem value="skip">跳过冲突</SelectItem>
+            <SelectItem value="rename">Rename collisions</SelectItem>
+            <SelectItem value="skip">Skip collisions</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -1776,7 +1776,7 @@ export function StepPreview({
       {/* Errors / warnings */}
       {result.errors.length > 0 && (
         <div role="alert" className="rounded-md border border-rose-500/30 bg-rose-500/10 px-3 py-2.5 text-sm text-rose-700 dark:text-rose-300">
-          <p className="font-medium">安装被阻止</p>
+          <p className="font-medium">Install blocked</p>
           <ul className="mt-1 list-disc space-y-0.5 pl-4 text-xs">
             {result.errors.map((e, i) => <li key={i}>{e}</li>)}
           </ul>
@@ -1922,7 +1922,7 @@ export function StepPreview({
 
       {/* Provenance */}
       <div className="rounded-md border border-border px-3 py-2.5 text-xs text-muted-foreground">
-        导入的实体标记为 <code className="font-mono">metadata.paperclip.catalogTeam</code>{" "}
+        Imported entities are stamped with <code className="font-mono">metadata.paperclip.catalogTeam</code>{" "}
         ({team.packageName ?? team.key}, content hash <code className="font-mono">{team.contentHash.slice(0, 16)}…</code>),
         and an activity event is recorded for preview and install.
       </div>
@@ -1960,7 +1960,7 @@ export function ApplyProgress({ team }: { team: CatalogTeam }) {
       <div>
         <p className="font-medium">Installing {team.name}…</p>
         <p className="text-xs text-muted-foreground">
-          正在解析技能、导入代理、项目和例程。这可能需要一点时间。
+          Resolving skills, importing agents, projects, and routines. This may take a moment.
         </p>
       </div>
     </div>
@@ -1995,16 +1995,16 @@ export function ApplySuccess({
     <div className="space-y-4 py-2">
       <div className="flex items-center gap-2">
         <CheckCircle2 className="h-6 w-6 text-emerald-500" />
-        <p className="text-base font-semibold">团队已安装</p>
+        <p className="text-base font-semibold">Team installed</p>
       </div>
       <p className="text-sm text-muted-foreground">
         {team.name} was imported into your company. Imported entities are stamped with catalog provenance.
       </p>
       {result && (
         <ul className="divide-y divide-border/60 rounded-md border border-border px-3">
-          <ResultRow label="已导入代理" count={agentsCreated} />
-          <ResultRow label="已导入项目" count={projectsCreated} />
-          <ResultRow label="已解析技能" count={skillsResolved} />
+          <ResultRow label="Agents imported" count={agentsCreated} />
+          <ResultRow label="Projects imported" count={projectsCreated} />
+          <ResultRow label="Skills resolved" count={skillsResolved} />
         </ul>
       )}
       {warnings.length > 0 && (
@@ -2021,7 +2021,7 @@ export function ApplySuccess({
         <li><a className="text-primary hover:underline" href="/activity">View activity log →</a></li>
       </ul>
       <div className="flex justify-end">
-        <Button onClick={onClose}>完成</Button>
+        <Button onClick={onClose}>Done</Button>
       </div>
     </div>
   );
@@ -2062,7 +2062,7 @@ export function TeamRow({
           <Tooltip>
             <TooltipTrigger asChild>
               <span
-                aria-label="有可用更新"
+                aria-label="Update available"
                 className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-300"
               >
                 <ChevronUp className="h-3 w-3" />
@@ -2076,7 +2076,7 @@ export function TeamRow({
             <TooltipTrigger asChild>
               <AlertTriangle className={cn("ml-auto h-3.5 w-3.5", risk === "blocked" ? "text-rose-500" : "text-amber-500")} />
             </TooltipTrigger>
-            <TooltipContent>有外部来源</TooltipContent>
+            <TooltipContent>Has external sources</TooltipContent>
           </Tooltip>
         )}
       </div>
@@ -2299,7 +2299,7 @@ export function TeamCatalog() {
   if (!selectedCompanyId) {
     return (
       <div className="p-8">
-        <EmptyState icon={Users2} message="选择公司以浏览团队目录。" />
+        <EmptyState icon={Users2} message="Select a company to browse the team catalog." />
       </div>
     );
   }
@@ -2308,13 +2308,13 @@ export function TeamCatalog() {
     <div className="flex h-full flex-col">
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-2 border-b border-border px-5 py-3">
-        <h1 className="text-lg font-semibold">团队</h1>
+        <h1 className="text-lg font-semibold">Teams</h1>
         <div className="relative">
           <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={q}
             onChange={(e) => setFilterParam("search", e.target.value)}
-            placeholder="搜索团队"
+            placeholder="Search teams"
             className="h-8 w-56 pl-8"
           />
         </div>
@@ -2328,11 +2328,11 @@ export function TeamCatalog() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
-            <DropdownMenuLabel>种类</DropdownMenuLabel>
+            <DropdownMenuLabel>Kind</DropdownMenuLabel>
             <DropdownMenuRadioGroup value={kindFilter} onValueChange={(v) => setFilterParam("kind", v)}>
-              <DropdownMenuRadioItem value="all">所有类型</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="bundled">捆绑</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="optional">可选</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="all">All kinds</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="bundled">Bundled</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="optional">Optional</DropdownMenuRadioItem>
             </DropdownMenuRadioGroup>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -2346,9 +2346,9 @@ export function TeamCatalog() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
-              <DropdownMenuLabel>类别</DropdownMenuLabel>
+              <DropdownMenuLabel>Category</DropdownMenuLabel>
               <DropdownMenuRadioGroup value={categoryFilter} onValueChange={(v) => setFilterParam("category", v)}>
-                <DropdownMenuRadioItem value="">所有类别</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="">All categories</DropdownMenuRadioItem>
                 {categories.map((cat) => (
                   <DropdownMenuRadioItem key={cat} value={cat}>{titleCase(cat)}</DropdownMenuRadioItem>
                 ))}
@@ -2365,12 +2365,12 @@ export function TeamCatalog() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
-            <DropdownMenuLabel>风险</DropdownMenuLabel>
+            <DropdownMenuLabel>Risk</DropdownMenuLabel>
             <DropdownMenuRadioGroup value={riskFilter} onValueChange={(v) => setFilterParam("risk", v)}>
-              <DropdownMenuRadioItem value="any">任何风险</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="safe">仅安全</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="has_warnings">有警告</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="blocked">已阻止</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="any">Any risk</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="safe">Safe only</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="has_warnings">Has warnings</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="blocked">Blocked</DropdownMenuRadioItem>
             </DropdownMenuRadioGroup>
             {anyFilterActive && (
               <>
@@ -2380,7 +2380,7 @@ export function TeamCatalog() {
                   className="flex w-full items-center gap-1.5 px-2 py-1.5 text-xs text-muted-foreground hover:text-foreground"
                   onClick={() => setSearchParams(new URLSearchParams())}
                 >
-                  <RotateCcw className="h-3 w-3" /> 重置筛选器
+                  <RotateCcw className="h-3 w-3" /> Reset filters
                 </button>
               </>
             )}
@@ -2389,7 +2389,7 @@ export function TeamCatalog() {
 
         {anyFilterActive && (
           <Button variant="ghost" size="sm" className="h-8 text-xs" onClick={() => setSearchParams(new URLSearchParams())}>
-            重置筛选器
+            Reset filters
           </Button>
         )}
       </div>
@@ -2411,18 +2411,18 @@ export function TeamCatalog() {
           ) : catalogQuery.isError ? (
             <div className="p-4">
               <div role="alert" className="rounded-md border border-rose-500/30 bg-rose-500/10 px-3 py-2.5 text-sm text-rose-700 dark:text-rose-300">
-                加载团队目录失败。
+                Failed to load team catalog.
               </div>
               <Button variant="outline" size="sm" className="mt-3" onClick={() => catalogQuery.refetch()}>
-                <RotateCcw className="h-3.5 w-3.5" /> 重试
+                <RotateCcw className="h-3.5 w-3.5" /> Retry
               </Button>
             </div>
           ) : teams.length === 0 ? (
-            <EmptyState icon={Users2} message="未配置团队目录。" />
+            <EmptyState icon={Users2} message="No team catalog configured." />
           ) : filtered.length === 0 ? (
             <EmptyState
               icon={Search}
-              message="没有团队符合此筛选条件。"
+              message="No teams match this filter."
               action="Reset filters"
               onAction={() => setSearchParams(new URLSearchParams())}
             />
@@ -2492,7 +2492,7 @@ export function TeamCatalog() {
                 onClick={() => navigate(withFilters(TEAM_CATALOG_ROUTE_ROOT))}
                 className="flex items-center gap-1.5 border-b border-border px-4 py-2 text-sm text-muted-foreground hover:text-foreground"
               >
-                <ChevronLeft className="h-4 w-4" /> 返回目录
+                <ChevronLeft className="h-4 w-4" /> Back to catalog
               </button>
             )}
             {selectedTeam ? (
@@ -2509,7 +2509,7 @@ export function TeamCatalog() {
               />
             ) : (
               <div className="flex flex-1 items-center justify-center text-sm text-muted-foreground">
-                选择团队以查看详情。
+                Select a team to view details.
               </div>
             )}
           </div>

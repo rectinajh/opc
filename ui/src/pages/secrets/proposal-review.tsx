@@ -108,7 +108,7 @@ export function ProposalJustification({
 }) {
   return (
     <div className={cn("space-y-0.5", className)}>
-      <p className="text-(length:--text-micro) text-muted-foreground">代理给出的原因</p>
+      <p className="text-(length:--text-micro) text-muted-foreground">Reason given by the agent</p>
       <p className="whitespace-pre-wrap break-words text-xs text-foreground/80">
         “{justification}”
       </p>
@@ -164,7 +164,7 @@ export function ProposedBadge({ className }: { className?: string }) {
         className,
       )}
     >
-      <ShieldAlert className="size-3" /> 提议
+      <ShieldAlert className="size-3" /> Proposed
     </Badge>
   );
 }
@@ -409,7 +409,7 @@ function ApproveDialog({
             {/* Provenance recap — keeps the social-engineering surface visible. */}
             <div className="space-y-1.5 rounded-md border border-border bg-muted/30 p-2.5 text-xs">
               <div className="flex items-center gap-1.5 text-muted-foreground">
-                <span>提议者</span>
+                <span>Proposed by</span>
                 <AgentRefChip agent={draft.proposal.proposedBy} className="font-medium text-foreground" />
               </div>
               <ProposalJustification justification={draft.proposal.justification} />
@@ -419,7 +419,7 @@ function ApproveDialog({
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-2">
                   <div className="space-y-1">
-                    <Label htmlFor="approve-folder">文件夹</Label>
+                    <Label htmlFor="approve-folder">Folder</Label>
                     <Input
                       id="approve-folder"
                       value={draft.folder}
@@ -429,7 +429,7 @@ function ApproveDialog({
                     />
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="approve-name">名称</Label>
+                    <Label htmlFor="approve-name">Name</Label>
                     <Input
                       id="approve-name"
                       value={draft.leaf}
@@ -446,23 +446,23 @@ function ApproveDialog({
                   {previewName ? (
                     <SecretPathName name={previewName} className="font-mono" />
                   ) : (
-                    <span className="italic">输入名称</span>
+                    <span className="italic">enter a name</span>
                   )}
                 </p>
 
                 <div className="space-y-1">
-                  <Label htmlFor="approve-description">描述</Label>
+                  <Label htmlFor="approve-description">Description</Label>
                   <Input
                     id="approve-description"
                     value={draft.description}
                     onChange={(event) => onChange({ ...draft, description: event.target.value })}
-                    placeholder="可选"
+                    placeholder="Optional"
                   />
                 </div>
 
                 {localConfigs.length > 0 ? (
                   <div className="space-y-1">
-                    <Label htmlFor="approve-provider-config">提供方保险库</Label>
+                    <Label htmlFor="approve-provider-config">Provider vault</Label>
                     <select
                       id="approve-provider-config"
                       value={draft.providerConfigId}
@@ -471,7 +471,7 @@ function ApproveDialog({
                       }
                       className="h-9 w-full rounded-md border border-input bg-transparent px-2 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
                     >
-                      <option value="">部署默认</option>
+                      <option value="">Deployment default</option>
                       {localConfigs.map((config) => (
                         <option key={config.id} value={config.id}>
                           {config.displayName}
@@ -500,7 +500,7 @@ function ApproveDialog({
 
             <DialogFooter>
               <Button variant="ghost" onClick={onCancel} disabled={pending}>
-                取消
+                Cancel
               </Button>
               <Button onClick={onConfirm} disabled={pending || !canConfirm}>
                 {pending
@@ -533,7 +533,7 @@ function BindingApproveBody({
     <div className="space-y-3 text-sm">
       <div className="space-y-2 rounded-md border border-border p-3">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs text-muted-foreground">目标代理</span>
+          <span className="text-xs text-muted-foreground">Target agent</span>
           {proposal.target ? (
             <AgentRefChip agent={proposal.target} className="text-sm font-medium" />
           ) : (
@@ -548,7 +548,7 @@ function BindingApproveBody({
           </span>
         </div>
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs text-muted-foreground">机密</span>
+          <span className="text-xs text-muted-foreground">Secret</span>
           <span className="flex items-center gap-1.5">
             <KeyRound className="size-3.5 text-muted-foreground" />
             <span className="font-medium">{secret.name}</span>
@@ -564,7 +564,7 @@ function BindingApproveBody({
             checked={draft.cascade}
             onCheckedChange={(checked) => onChange({ ...draft, cascade: checked === true })}
             className="mt-0.5"
-            aria-label="同时批准提议的机密"
+            aria-label="Also approve the proposed secret"
           />
           <span className="text-foreground/90">
             Also approve the proposed secret{" "}
@@ -605,7 +605,7 @@ function RejectDialog({
         {proposal ? (
           <>
             <DialogHeader>
-              <DialogTitle>拒绝提议</DialogTitle>
+              <DialogTitle>Reject proposal</DialogTitle>
               <DialogDescription>
                 The reason is sent back to{" "}
                 <AgentRefChip agent={proposal.proposedBy} className="text-foreground" />. Dependent
@@ -613,14 +613,14 @@ function RejectDialog({
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-1">
-              <Label htmlFor="reject-reason">原因</Label>
+              <Label htmlFor="reject-reason">Reason</Label>
               <Textarea
                 id="reject-reason"
                 value={reason}
                 onChange={(event) => onReasonChange(event.target.value)}
                 rows={3}
                 autoFocus
-                placeholder="为什么拒绝此提案？"
+                placeholder="Why is this being rejected?"
               />
             </div>
             {error ? (
@@ -630,7 +630,7 @@ function RejectDialog({
             ) : null}
             <DialogFooter>
               <Button variant="ghost" onClick={onCancel} disabled={pending}>
-                取消
+                Cancel
               </Button>
               <Button variant="destructive" onClick={onConfirm} disabled={pending || !canConfirm}>
                 {pending ? "Rejecting…" : "Reject"}
@@ -669,7 +669,7 @@ export function ProposalActions({
       disabled={disabled || blocked}
       onClick={() => onApprove(proposal)}
     >
-      批准
+      Approve
     </Button>
   );
   return (
@@ -695,7 +695,7 @@ export function ProposalActions({
         disabled={disabled}
         onClick={() => onReject(proposal)}
       >
-        拒绝
+        Reject
       </Button>
     </div>
   );

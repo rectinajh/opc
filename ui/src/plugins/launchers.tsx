@@ -596,7 +596,7 @@ function LauncherModalShell({
             className="ml-auto"
             onClick={() => void closeLauncher(instance.key, { reason: "programmatic" })}
           >
-            关闭
+            Close
           </Button>
         </div>
         <div

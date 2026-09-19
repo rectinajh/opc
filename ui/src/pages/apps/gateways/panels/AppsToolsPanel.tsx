@@ -32,9 +32,9 @@ export function AppsToolsPanel({
           <table className="w-full min-w-(--sz-32rem) text-sm">
             <thead>
               <tr className="border-b border-border bg-muted/40 text-left text-(length:--text-micro) font-semibold uppercase tracking-wide text-muted-foreground">
-                <th className="px-4 py-2.5">应用</th>
-                <th className="px-4 py-2.5">工具</th>
-                <th className="px-4 py-2.5">状态</th>
+                <th className="px-4 py-2.5">App</th>
+                <th className="px-4 py-2.5">Tools</th>
+                <th className="px-4 py-2.5">Status</th>
                 <th className="px-4 py-2.5 text-right" />
               </tr>
             </thead>

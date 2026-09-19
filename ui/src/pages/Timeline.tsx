@@ -247,22 +247,22 @@ function TimelineLegend() {
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-border px-3.5 py-2 text-xs text-muted-foreground">
       <span className="flex items-center gap-1.5">
         <span className="h-2.5 w-4 rounded-sm" style={{ backgroundColor: TIMELINE_COLORS.delegated }} />
-        已委派
+        Delegated
       </span>
       <span className="flex items-center gap-1.5">
         <span className="h-2.5 w-4 rounded-sm" style={{ backgroundColor: TIMELINE_COLORS.automation }} />
-        自动化
+        Automation
       </span>
       <span className="flex items-center gap-1.5">
         <span
           className="h-2.5 w-4 rounded-sm border border-dashed bg-transparent"
           style={{ borderColor: TIMELINE_COLORS.cancelled }}
         />
-        已取消
+        Cancelled
       </span>
       <span className="flex items-center gap-1.5">
         <span className="h-3.5 w-0.5" style={{ backgroundColor: TIMELINE_COLORS.now }} />
-        现在
+        Now
       </span>
     </div>
   );
@@ -352,7 +352,7 @@ export function Timeline() {
     return (
       <>
         <RequestCollapsedSidebar />
-        <EmptyState icon={GanttChartSquare} message="选择公司以查看其工作时间线。" />
+        <EmptyState icon={GanttChartSquare} message="Select a company to view its work timeline." />
       </>
     );
   }
@@ -360,7 +360,7 @@ export function Timeline() {
   const header = (
     <div className="flex items-center gap-2">
       <GanttChartSquare className="h-6 w-6 text-muted-foreground" />
-      <h1 className="text-3xl font-semibold tracking-tight">工作时间线</h1>
+      <h1 className="text-3xl font-semibold tracking-tight">Work Timeline</h1>
     </div>
   );
 
@@ -385,7 +385,7 @@ export function Timeline() {
 
   const rangeControls = (
     <label className="flex min-w-0 flex-wrap items-center gap-2 text-xs text-muted-foreground">
-      范围
+      Range
       <Segmented
         value={rangePreset}
         onChange={(preset) => {
@@ -407,7 +407,7 @@ export function Timeline() {
           setDateRange((prev) => ({ ...prev, fromDate: event.target.value }));
         }}
         className="h-8 w-(--sz-150px) text-xs"
-        aria-label="时间线开始日期"
+        aria-label="Timeline start date"
       />
       <span>to</span>
       <Input
@@ -418,7 +418,7 @@ export function Timeline() {
           setDateRange((prev) => ({ ...prev, toDate: event.target.value }));
         }}
         className="h-8 w-(--sz-150px) text-xs"
-        aria-label="时间线结束日期"
+        aria-label="Timeline end date"
       />
     </label>
   );
@@ -426,14 +426,14 @@ export function Timeline() {
   const toolbar = (
     <div className="flex flex-wrap items-start gap-3">
       {summary && <TimelineSummaryStats summary={summary} />}
-      <div className="ml-auto flex items-center gap-1 pt-3" aria-label="时间线缩放控制">
+      <div className="ml-auto flex items-center gap-1 pt-3" aria-label="Timeline zoom controls">
         <Button
           type="button"
           variant="outline"
           size="icon-xs"
           onClick={() => adjustZoom(0.8)}
-          aria-label="缩小"
-          title="缩小"
+          aria-label="Zoom out"
+          title="Zoom out"
         >
           <Minus className="h-3 w-3" />
         </Button>
@@ -442,8 +442,8 @@ export function Timeline() {
           variant="outline"
           size="icon-xs"
           onClick={() => adjustZoom(1.25)}
-          aria-label="放大"
-          title="放大"
+          aria-label="Zoom in"
+          title="Zoom in"
         >
           <Plus className="h-3 w-3" />
         </Button>
@@ -452,8 +452,8 @@ export function Timeline() {
           variant="outline"
           size="icon-xs"
           onClick={resetZoom}
-          aria-label="重置缩放"
-          title="重置缩放"
+          aria-label="Reset zoom"
+          title="Reset zoom"
         >
           <RotateCcw className="h-3 w-3" />
         </Button>
@@ -484,14 +484,14 @@ export function Timeline() {
       {error && (
         <EmptyState
           icon={GanttChartSquare}
-          message="无法加载时间线。聚合端点可能不可用。"
+          message="Couldn't load the timeline. The aggregation endpoint may be unavailable."
         />
       )}
 
       {data && !isLoading && !dateRangeError && (
         data.spans.length === 0 ? (
           <div className="space-y-3">
-            <EmptyState icon={GanttChartSquare} message="此窗口内无活动。" />
+            <EmptyState icon={GanttChartSquare} message="No activity in this window." />
             <div className="flex flex-wrap items-center justify-end gap-3">
               {rangeControls}
             </div>

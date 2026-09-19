@@ -82,14 +82,14 @@ export function WizardToolsStep(props: WizardToolsStepProps) {
       <div className="flex flex-col items-center gap-3 rounded-lg border border-dashed border-border py-12 text-center">
         <Plug className="h-6 w-6 text-muted-foreground" />
         <div>
-          <p className="text-sm font-medium text-foreground">应用连接即将推出</p>
+          <p className="text-sm font-medium text-foreground">App connections are coming soon</p>
           <p className="mx-auto max-w-sm text-sm text-muted-foreground">
             Profiles will be available once app connections are ready. Browse the planned integrations in the
             meantime.
           </p>
         </div>
         <Button asChild variant="outline">
-          <Link to="/apps">浏览应用连接</Link>
+          <Link to="/apps">Browse app connections</Link>
         </Button>
       </div>
     );
@@ -138,7 +138,7 @@ export function WizardToolsStep(props: WizardToolsStepProps) {
             }}
             className="text-sm font-medium text-primary hover:underline"
           >
-            清除搜索
+            Clear search
           </button>
         </div>
       ) : (
@@ -270,7 +270,7 @@ function NewToolsRadio({
   ];
   return (
     <fieldset className="space-y-2 rounded-lg border border-border p-4">
-      <legend className="px-1 text-sm font-medium text-foreground">稍后出现的新工具</legend>
+      <legend className="px-1 text-sm font-medium text-foreground">New tools that appear later</legend>
       <div className="space-y-2">
         {options.map((opt) => (
           <label key={opt.value} className="flex cursor-pointer items-start gap-2.5">
@@ -286,7 +286,7 @@ function NewToolsRadio({
                 {opt.label}
                 {opt.recommended ? (
                   <Badge variant="outline" className="text-(length:--text-nano)">
-                    推荐
+                    Recommended
                   </Badge>
                 ) : (
                   <span className="text-xs font-normal text-amber-600">(risky)</span>
@@ -349,7 +349,7 @@ function AdvancedRules({
   return (
     <Collapsible open={open} onOpenChange={setOpen} className="rounded-lg border border-border">
       <CollapsibleTrigger className="flex w-full items-center justify-between px-4 py-3 text-left">
-        <span className="text-sm font-medium text-foreground">高级规则</span>
+        <span className="text-sm font-medium text-foreground">Advanced rules</span>
         <ChevronDown className={cn("h-4 w-4 text-muted-foreground transition-transform", open && "rotate-180")} />
       </CollapsibleTrigger>
       <CollapsibleContent className="space-y-3 border-t border-border px-4 py-3">
@@ -368,7 +368,7 @@ function AdvancedRules({
                 <span className="text-foreground">{ruleSummary(rule)}</span>
                 <button
                   type="button"
-                  aria-label="移除规则"
+                  aria-label="Remove rule"
                   onClick={() => onChange(rules.filter((r) => r.id !== rule.id))}
                   className="text-muted-foreground hover:text-destructive"
                 >
@@ -385,8 +385,8 @@ function AdvancedRules({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="include">允许</SelectItem>
-              <SelectItem value="exclude">阻止</SelectItem>
+              <SelectItem value="include">Allow</SelectItem>
+              <SelectItem value="exclude">Block</SelectItem>
             </SelectContent>
           </Select>
           <Select value={kind} onValueChange={(v) => setKind(v as AdvancedRuleKind)}>
@@ -407,9 +407,9 @@ function AdvancedRules({
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="read">只读</SelectItem>
-                <SelectItem value="write">进行更改</SelectItem>
-                <SelectItem value="destructive">破坏性</SelectItem>
+                <SelectItem value="read">Read-only</SelectItem>
+                <SelectItem value="write">Makes changes</SelectItem>
+                <SelectItem value="destructive">Destructive</SelectItem>
               </SelectContent>
             </Select>
           ) : (
@@ -422,7 +422,7 @@ function AdvancedRules({
           )}
           <Button type="button" variant="outline" size="sm" onClick={addRule}>
             <Plus className="mr-1 h-3.5 w-3.5" />
-            添加规则
+            Add rule
           </Button>
         </div>
       </CollapsibleContent>

@@ -127,11 +127,11 @@ export function SetMyUserSecretDialog({
 
             {isExternal ? (
               <div className="space-y-1">
-                <label className="text-xs font-medium text-foreground">外部引用</label>
+                <label className="text-xs font-medium text-foreground">External reference</label>
                 <Input
                   value={externalRef}
                   onChange={(event) => setExternalRef(event.target.value)}
-                  placeholder="提供者引用或ARN"
+                  placeholder="provider reference or ARN"
                   className="font-mono text-sm"
                   autoFocus
                 />
@@ -142,16 +142,16 @@ export function SetMyUserSecretDialog({
               </div>
             ) : (
               <div className="space-y-1">
-                <label className="text-xs font-medium text-foreground">您的值</label>
+                <label className="text-xs font-medium text-foreground">Your value</label>
                 <Textarea
                   value={value}
                   onChange={(event) => setValue(event.target.value)}
-                  placeholder="粘贴您的令牌或凭据"
+                  placeholder="Paste your token or credential"
                   className="font-mono text-sm min-h-(--sz-80px)"
                   autoFocus
                 />
                 <p className="text-(length:--text-micro) text-muted-foreground">
-                  加密存储。绝不会向任何人（包括管理员）显示。
+                  Stored encrypted. Never shown back to anyone, including admins.
                 </p>
               </div>
             )}
@@ -162,7 +162,7 @@ export function SetMyUserSecretDialog({
 
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)} disabled={save.isPending}>
-            取消
+            Cancel
           </Button>
           <Button onClick={() => save.mutate()} disabled={!canSave || save.isPending}>
             {save.isPending ? "Saving…" : existingSecret ? "Update value" : "Save value"}

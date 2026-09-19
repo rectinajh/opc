@@ -53,6 +53,11 @@ FROM base AS build
 WORKDIR /app
 COPY --from=deps /app /app
 COPY . .
+# This fork ships a Simplified Chinese UI. The translation pass runs on the
+# build-stage copy only, so the committed source — and the upstream test suite
+# that asserts against it — stays English. `pnpm localize:ui` does the same
+# thing locally for anyone who wants the Chinese UI in dev.
+RUN node scripts/apply-ui-translations.mjs && node scripts/apply-ui-zh-overlay.mjs
 RUN pnpm --filter @paperclipai/ui build
 RUN pnpm --filter @paperclipai/plugin-sdk build
 # The server build runs scripts/write-build-stamp.mjs, which stamps the built

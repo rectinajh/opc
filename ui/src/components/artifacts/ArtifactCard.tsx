@@ -35,7 +35,7 @@ function PlaceholderPreview({ label }: { label?: string }) {
 function ImagePreview({ artifact }: { artifact: CompanyArtifact }) {
   const [errored, setErrored] = useState(false);
   if (errored || !artifact.contentPath) {
-    return <PlaceholderPreview label="图片" />;
+    return <PlaceholderPreview label="Image" />;
   }
   return (
     <PreviewFrame>
@@ -158,7 +158,7 @@ export function ArtifactPreview({ artifact }: { artifact: CompanyArtifact }) {
     case "document":
       return <TextPreview artifact={artifact} />;
     case "file":
-      return <PlaceholderPreview label="文件" />;
+      return <PlaceholderPreview label="File" />;
     case "empty":
     default:
       return <PlaceholderPreview />;
@@ -212,12 +212,12 @@ export function ArtifactCard({ artifact }: ArtifactCardProps) {
           </h3>
           <div className="flex shrink-0 items-center gap-0.5 opacity-0 transition-opacity group-hover:opacity-100 focus-within:opacity-100">
             {artifact.openPath ? (
-              <SecondaryAction href={artifact.openPath} title="在新标签页中打开文件">
+              <SecondaryAction href={artifact.openPath} title="Open file in new tab">
                 <ExternalLink className="h-3.5 w-3.5" />
               </SecondaryAction>
             ) : null}
             {artifact.downloadPath ? (
-              <SecondaryAction href={artifact.downloadPath} download title="下载文件">
+              <SecondaryAction href={artifact.downloadPath} download title="Download file">
                 <Download className="h-3.5 w-3.5" />
               </SecondaryAction>
             ) : null}

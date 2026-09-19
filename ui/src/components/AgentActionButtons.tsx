@@ -84,7 +84,7 @@ export function PauseResumeButton({
     return (
       <Button variant="outline" size={size} onClick={onResume} disabled={disabled}>
         <Play className="h-3.5 w-3.5 sm:mr-1" />
-        <span className="hidden sm:inline">恢复</span>
+        <span className="hidden sm:inline">Resume</span>
       </Button>
     );
   }
@@ -92,7 +92,7 @@ export function PauseResumeButton({
   return (
     <Button variant="outline" size={size} onClick={onPause} disabled={disabled}>
       <Pause className="h-3.5 w-3.5 sm:mr-1" />
-      <span className="hidden sm:inline">暂停</span>
+      <span className="hidden sm:inline">Pause</span>
     </Button>
   );
 }
@@ -113,10 +113,10 @@ export function ClearErrorButton({
       onClick={onClick}
       disabled={disabled}
       className="border-destructive/60 text-destructive hover:bg-destructive/10 hover:text-destructive dark:border-destructive/50"
-      aria-label="清除错误并将代理恢复为空闲状态"
+      aria-label="Clear error and return agent to idle"
     >
       <CheckCircle2 className="h-3.5 w-3.5 sm:mr-1" />
-      <span className="hidden sm:inline">清除错误</span>
+      <span className="hidden sm:inline">Clear error</span>
     </Button>
   );
 }
@@ -395,9 +395,9 @@ export function AgentActionButtons({
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>取消</AlertDialogCancel>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction onClick={() => agentAction.mutate("pause")}>
-                仍然暂停
+                Pause anyway
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
@@ -438,7 +438,7 @@ export function AgentActionButtons({
             }}
           >
             <Copy className="h-3 w-3" />
-            复制代理 ID
+            Copy Agent ID
           </button>
           <button
             className="flex items-center gap-2 w-full px-2 py-1.5 text-xs rounded hover:bg-accent/50"
@@ -448,7 +448,7 @@ export function AgentActionButtons({
             }}
           >
             <RotateCcw className="h-3 w-3" />
-            重置会话
+            Reset Sessions
           </button>
           {!hideTerminate && (
             <button
@@ -460,7 +460,7 @@ export function AgentActionButtons({
               }}
             >
               <Trash2 className="h-3 w-3" />
-              终止
+              Terminate
             </button>
           )}
         </PopoverContent>

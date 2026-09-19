@@ -126,10 +126,10 @@ function CaseRelationshipsSection({
   if (!parent && children.length === 0) return null;
 
   return (
-    <section className="space-y-3" aria-label="案例关系">
+    <section className="space-y-3" aria-label="Case relationships">
       {parent ? (
         <div className="space-y-1">
-          <h2 className="text-xs font-medium text-muted-foreground">父任务</h2>
+          <h2 className="text-xs font-medium text-muted-foreground">Parent</h2>
           <CaseChildrenTree children={[parent]} />
         </div>
       ) : null}
@@ -202,7 +202,7 @@ function CaseStatusPicker({
           type="button"
           disabled={disabled}
           className="inline-flex items-center gap-1 rounded-md hover:bg-accent/50 disabled:opacity-50"
-          aria-label="更改案例状态"
+          aria-label="Change case status"
         >
           <StatusBadge status={status} />
           <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
@@ -275,7 +275,7 @@ function CaseLabelsPicker({
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button variant="ghost" size="sm" className="h-6 gap-1 px-2 text-xs text-muted-foreground">
-          <Plus className="h-3.5 w-3.5" /> 标签
+          <Plus className="h-3.5 w-3.5" /> Labels
         </Button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-64 p-2">
@@ -299,7 +299,7 @@ function CaseLabelsPicker({
             </button>
           ))}
           {filtered.length === 0 && !search.trim() && (
-            <p className="px-2 py-1 text-xs text-muted-foreground">暂无标签。</p>
+            <p className="px-2 py-1 text-xs text-muted-foreground">No labels yet.</p>
           )}
         </div>
         {search.trim() && !all.some((l) => l.name.toLowerCase() === search.trim().toLowerCase()) && (
@@ -309,7 +309,7 @@ function CaseLabelsPicker({
               value={newColor}
               onChange={(e) => setNewColor(e.target.value)}
               className="h-6 w-6 shrink-0 cursor-pointer rounded border border-border bg-transparent"
-              aria-label="新标签颜色"
+              aria-label="New label color"
             />
             <Button
               size="sm"
@@ -348,21 +348,21 @@ function CasePropertiesContent({
 
   return (
     <div className={cn("space-y-4", isFull && "space-y-6")}>
-      <PropertySection title="案例" first>
-        <CasePropertyRow label="类型" mode={mode}>
+      <PropertySection title="Case" first>
+        <CasePropertyRow label="Type" mode={mode}>
           <PropertyChip>{caseData.caseType}</PropertyChip>
         </CasePropertyRow>
         {caseData.key ? (
-          <CasePropertyRow label="键" mode={mode}>
+          <CasePropertyRow label="Key" mode={mode}>
             <CaseCopyableToken
               value={caseData.key}
-              label="案例键"
+              label="case key"
               className="font-mono text-xs text-muted-foreground"
               truncate={!isFull}
             />
           </CasePropertyRow>
         ) : null}
-        <CasePropertyRow label="标签" wrap mode={mode}>
+        <CasePropertyRow label="Labels" wrap mode={mode}>
           {caseData.labels.length > 0 ? (
             caseData.labels.map((label) => (
               <PropertyChip
@@ -374,7 +374,7 @@ function CasePropertiesContent({
               </PropertyChip>
             ))
           ) : (
-            <span className="text-xs text-muted-foreground">无</span>
+            <span className="text-xs text-muted-foreground">None</span>
           )}
           {companyId ? (
             <CaseLabelsPicker
@@ -383,12 +383,12 @@ function CasePropertiesContent({
               onChange={onLabelIdsChange}
             />
           ) : null}
-          {labelsPending ? <span className="text-xs text-muted-foreground">正在保存...</span> : null}
+          {labelsPending ? <span className="text-xs text-muted-foreground">Saving...</span> : null}
         </CasePropertyRow>
       </PropertySection>
 
       {propertyRows.length > 0 ? (
-        <PropertySection title="字段">
+        <PropertySection title="Fields">
           {propertyRows.map(({ key, label, value }) => (
             <CasePropertyRow
               key={key}
@@ -404,13 +404,13 @@ function CasePropertiesContent({
         </PropertySection>
       ) : null}
 
-      <PropertySection title="关联任务">
+      <PropertySection title="Linked tasks">
         {caseData.issueLinks.length === 0 ? (
-          <CasePropertyRow label="任务" mode={mode}>
-            <span className="text-xs text-muted-foreground">暂无</span>
+          <CasePropertyRow label="Tasks" mode={mode}>
+            <span className="text-xs text-muted-foreground">None yet</span>
           </CasePropertyRow>
         ) : (
-          <CasePropertyRow label="任务" wrap mode={mode}>
+          <CasePropertyRow label="Tasks" wrap mode={mode}>
             <div className="flex flex-wrap items-center gap-1.5">
               {caseData.issueLinks.map((link) => (
                 <IssueReferencePill
@@ -433,8 +433,8 @@ function CasePropertiesContent({
       </PropertySection>
 
       {caseData.attachments.length > 0 ? (
-        <PropertySection title="附件">
-          <CasePropertyRow label="文件" mode={mode}>
+        <PropertySection title="Attachments">
+          <CasePropertyRow label="Files" mode={mode}>
             <span className="text-xs text-muted-foreground">
               {caseData.attachments.length} {caseData.attachments.length === 1 ? "file" : "files"}
             </span>
@@ -588,7 +588,7 @@ export function CaseDetail() {
   if (caseQuery.isError || !caseData) {
     return (
       <div className="mx-auto max-w-md py-16 text-center">
-        <p className="text-sm text-muted-foreground">未找到案例。</p>
+        <p className="text-sm text-muted-foreground">Case not found.</p>
         <Link to={caseHref()} className="mt-2 inline-block text-sm text-primary hover:underline">
           ← Back to cases
         </Link>
@@ -629,7 +629,7 @@ export function CaseDetail() {
             />
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="ghost" size="icon-xs" aria-label="更多案例操作" title="更多案例操作">
+                <Button variant="ghost" size="icon-xs" aria-label="More case actions" title="More case actions">
                   <MoreVertical className="h-4 w-4" />
                 </Button>
               </PopoverTrigger>
@@ -650,7 +650,7 @@ export function CaseDetail() {
                   }}
                 >
                   <SlidersHorizontal className="h-3 w-3" />
-                  属性
+                  Properties
                 </button>
               </PopoverContent>
             </Popover>
@@ -666,8 +666,8 @@ export function CaseDetail() {
 
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList variant="line" className="w-full justify-start gap-1">
-          <TabsTrigger value="overview">概览</TabsTrigger>
-          <TabsTrigger value="properties">属性</TabsTrigger>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="properties">Properties</TabsTrigger>
           <TabsTrigger value="activity">
             Activity{events.length > 0 && <span className="ml-1 text-muted-foreground">{events.length}</span>}
           </TabsTrigger>
@@ -684,7 +684,7 @@ export function CaseDetail() {
 
           {description ? (
             <section className="space-y-2">
-              <h2 className="text-sm font-semibold">描述</h2>
+              <h2 className="text-sm font-semibold">Description</h2>
               <Card className="px-4 py-3">
                 <CaseFieldValue value={description} />
               </Card>

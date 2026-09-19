@@ -51,7 +51,7 @@ export function ReportsToPicker({
           {unknownManager ? (
             <>
               <User className="h-3 w-3 shrink-0 text-muted-foreground" />
-              <span className="min-w-0 truncate text-muted-foreground">未知经理（过期 ID）</span>
+              <span className="min-w-0 truncate text-muted-foreground">Unknown manager (stale ID)</span>
             </>
           ) : current ? (
             <>
@@ -87,7 +87,7 @@ export function ReportsToPicker({
             setOpen(false);
           }}
         >
-          无经理
+          No manager
         </button>
         {terminatedManager && (
           <div className="flex min-w-0 items-center gap-2 overflow-hidden px-2 py-1.5 text-xs text-muted-foreground border-b border-border mb-0.5">
@@ -99,7 +99,7 @@ export function ReportsToPicker({
         )}
         {unknownManager && (
           <div className="px-2 py-1.5 text-xs text-muted-foreground border-b border-border mb-0.5">
-            此公司缺少已保存的经理。请选择新经理或清除。
+            Saved manager is missing from this company. Choose a new manager or clear.
           </div>
         )}
         {rows.map((a) => (

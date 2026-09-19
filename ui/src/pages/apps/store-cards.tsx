@@ -30,9 +30,9 @@ export function ByoConnectCard({ onConnect }: { onConnect: () => void }) {
         <ServerCog className="h-5 w-5 text-muted-foreground" />
       </span>
       <div className="min-w-0 flex-1">
-        <div className="text-sm font-semibold text-foreground">连接您自己的工具</div>
+        <div className="text-sm font-semibold text-foreground">Connect your own tool</div>
         <div className="text-xs text-muted-foreground">
-          粘贴自定义或自托管 MCP 服务器的 URL，并在启用前审查其操作。
+          Paste the URL from a custom or self-hosted MCP server and review its actions before enabling it.
         </div>
       </div>
       <span className="shrink-0 text-xs font-semibold text-primary">Connect →</span>
@@ -48,7 +48,7 @@ export function AdvancedToolsLink() {
       className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
     >
       <Wrench className="h-3.5 w-3.5" />
-      开发者工具（高级）
+      Developer tools (advanced)
     </Link>
   );
 }

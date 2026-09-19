@@ -111,7 +111,7 @@ function ExternalObjectsSection({
   return (
     <section className="space-y-3 rounded-lg border border-border p-3">
       <div className="space-y-1">
-        <h3 className="text-sm font-semibold">外部对象</h3>
+        <h3 className="text-sm font-semibold">External objects</h3>
         <p className="text-xs text-muted-foreground">
           Remote work referenced from this issue — pull requests, deployments, tickets in other systems, and more.
         </p>
@@ -126,7 +126,7 @@ function ExternalObjectsSection({
               onClick={onRetry}
               className="text-primary underline-offset-2 hover:underline"
             >
-              重试
+              Retry
             </button>
           ) : null}
         </p>
@@ -134,7 +134,7 @@ function ExternalObjectsSection({
         <p className="text-xs text-muted-foreground">Loading external objects…</p>
       ) : sorted.length === 0 ? (
         <p className="text-xs text-muted-foreground">
-          此问题尚未引用任何外部对象。
+          This issue does not reference any external objects yet.
         </p>
       ) : (
         <ul className="-mx-1 flex flex-col">
@@ -191,8 +191,8 @@ export function IssueRelatedWorkPanel({
   return (
     <div className="space-y-3">
       <Section
-        title="引用"
-        description="此任务当前在其标题、描述、评论或文档中指向的其他任务。"
+        title="References"
+        description="Other tasks this task currently points at in its title, description, comments, or documents."
         items={outbound}
         emptyLabel="This task does not reference any other tasks yet."
       />
@@ -205,8 +205,8 @@ export function IssueRelatedWorkPanel({
         />
       ) : null}
       <Section
-        title="被引用"
-        description="当前指向此任务的其他任务。"
+        title="Referenced by"
+        description="Other tasks that currently point at this task."
         items={inbound}
         emptyLabel="No other tasks reference this task yet."
       />

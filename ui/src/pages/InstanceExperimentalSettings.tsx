@@ -83,7 +83,7 @@ function ManagedByCloudBadge() {
   return (
     <Badge variant="outline" className="text-muted-foreground">
       <Lock aria-hidden="true" />
-      由 Paperclip Cloud 管理
+      Managed by Paperclip Cloud
     </Badge>
   );
 }
@@ -158,7 +158,7 @@ function RecoveryPreviewDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-3xl">
         <DialogHeader>
-          <DialogTitle>确认自动恢复</DialogTitle>
+          <DialogTitle>Confirm auto-recovery</DialogTitle>
           <DialogDescription>
             {preview
               ? `${count} recovery ${count === 1 ? "task" : "tasks"} match the last ${preview.lookbackHours} hours.`
@@ -212,10 +212,10 @@ function RecoveryPreviewDialog({
 
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)} disabled={isPending}>
-            取消
+            Cancel
           </Button>
           <Button variant="outline" onClick={onEnableOnly} disabled={isPending || !preview}>
-            仅启用
+            Enable only
           </Button>
           <Button onClick={onEnableAndRun} disabled={isPending || !preview}>
             {count > 0 ? `Enable and create ${count}` : "Enable"}
@@ -337,7 +337,7 @@ export function InstanceExperimentalSettings() {
   }, [autoRecoveryManaged]);
 
   if (experimentalQuery.isLoading) {
-    return <div className="text-sm text-muted-foreground">正在加载实验性设置...</div>;
+    return <div className="text-sm text-muted-foreground">Loading experimental settings...</div>;
   }
 
   if (experimentalQuery.error) {
@@ -438,10 +438,10 @@ export function InstanceExperimentalSettings() {
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <FlaskConical className="h-5 w-5 text-muted-foreground" />
-          <h1 className="text-lg font-semibold">实验性</h1>
+          <h1 className="text-lg font-semibold">Experimental</h1>
         </div>
         <p className="text-sm text-muted-foreground">
-          选择加入仍在评估中的功能，这些功能尚未成为默认行为。
+          Opt into features that are still being evaluated before they become default behavior.
         </p>
       </div>
 
@@ -452,7 +452,7 @@ export function InstanceExperimentalSettings() {
         <div className="flex items-start gap-3">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" />
           <div className="space-y-1 text-sm">
-            <p className="font-medium text-foreground">实验性功能可能随时失效。</p>
+            <p className="font-medium text-foreground">Experimental features may break at any time.</p>
             <p className="text-muted-foreground">
               These features are opt-in and come with no compatibility guarantees. They may change, break, or be
               removed without notice. Avoid relying on them for critical or production workflows.
@@ -468,8 +468,8 @@ export function InstanceExperimentalSettings() {
       )}
 
       <ExperimentalToggleCard
-        title="应用"
-        description="显示应用导航并允许访问应用连接、网关和高级应用工具。"
+        title="Apps"
+        description="Show the Apps navigation and allow access to app connections, gateways, and advanced app tooling."
         checked={enableApps}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableApps: checked })}
         disabled={toggleMutation.isPending}
@@ -483,7 +483,7 @@ export function InstanceExperimentalSettings() {
           <div className="flex items-start justify-between gap-4">
             <div className="space-y-1.5">
               <div className="flex flex-wrap items-center gap-2">
-                <h2 className="text-sm font-semibold">自动创建恢复任务</h2>
+                <h2 className="text-sm font-semibold">Auto-Create Recovery Tasks</h2>
                 {autoRecoveryManaged ? <ManagedByCloudBadge /> : null}
               </div>
               <p className="max-w-2xl text-sm text-muted-foreground">
@@ -502,7 +502,7 @@ export function InstanceExperimentalSettings() {
                 previewForEnable();
               }}
               disabled={recoveryActionPending || autoRecoveryManaged}
-              aria-label="切换任务图活性自动恢复"
+              aria-label="Toggle task graph liveness auto-recovery"
             />
           </div>
 
@@ -510,7 +510,7 @@ export function InstanceExperimentalSettings() {
             <label className="space-y-1.5">
               <span className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
                 <Clock className="h-3.5 w-3.5" />
-                回溯小时数
+                Lookback hours
               </span>
               <Input
                 type="number"
@@ -536,7 +536,7 @@ export function InstanceExperimentalSettings() {
                 }}
                 disabled={recoveryActionPending || parsedLookbackHours === lookbackHours}
               >
-                保存小时数
+                Save hours
               </Button>
               <Button
                 variant="outline"
@@ -544,7 +544,7 @@ export function InstanceExperimentalSettings() {
                 disabled={recoveryActionPending}
               >
                 <Search className="h-4 w-4" />
-                预览
+                Preview
               </Button>
               <Button
                 onClick={() => {
@@ -557,7 +557,7 @@ export function InstanceExperimentalSettings() {
                 disabled={recoveryActionPending || !enableIssueGraphLivenessAutoRecovery}
               >
                 <Play className="h-4 w-4" />
-                立即运行
+                Run now
               </Button>
             </div>
           </div>
@@ -569,7 +569,7 @@ export function InstanceExperimentalSettings() {
       </Card>
 
       <ExperimentalToggleCard
-        title="空闲时自动重启开发服务器"
+        title="Auto-Restart Dev Server When Idle"
         description="In `pnpm dev:once`, wait for all queued and running local agent runs to finish, then restart the server automatically when backend changes or migrations make the current boot stale."
         checked={autoRestartDevServerWhenIdle}
         onCheckedChange={(checked) => toggleMutation.mutate({ autoRestartDevServerWhenIdle: checked })}
@@ -580,8 +580,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="测试版技能"
-        description="允许代理固定 Paperclip 核心技能的测试版。禁用此选项将使所有代理恢复默认实时技能，但不会移除已保存的固定。"
+        title="Beta skills"
+        description="Allow agents to pin beta releases of the Paperclip core skill. Disabling this returns every agent to the default live skill without removing saved pins."
         checked={enableBetaSkills}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableBetaSkills: checked })}
         disabled={toggleMutation.isPending}
@@ -591,8 +591,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="内置代理"
-        description="显示 Paperclip 管理的内置代理界面，包括内置名册徽章、内置代理选项卡和内置代理设置控件。"
+        title="Built-in Agents"
+        description="Show Paperclip-managed built-in agent surfaces, including built-in roster badges, the Built-in agents tab, and built-in agent setup controls."
         checked={enableBuiltInAgents}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableBuiltInAgents: checked })}
         disabled={toggleMutation.isPending}
@@ -602,7 +602,7 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="案例"
+        title="Cases"
         description="Durable work products (blog posts, tweet storms…) that tasks create and iterate on. Adds the Cases tab and the agent case API."
         footnote="Turning Cases off hides the tab and blocks the case API; existing case data is kept."
         checked={enableCases}
@@ -614,7 +614,7 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="经典任务界面"
+        title="Classic Task Interface"
         description="Restores the previous task detail page: the page-level header with inline description editing, the plain comment thread, and the fixed Properties sidebar. Chat-only features — streaming activity folding, inline plan and question cards, the three-mode composer — are unavailable in the classic view."
         footnote="Switching takes effect immediately. No task data is affected."
         checked={enableClassicTaskInterface}
@@ -627,7 +627,7 @@ export function InstanceExperimentalSettings() {
 
       {SHOW_CONFERENCE_ROOM_EXPERIMENTAL_SETTING ? (
         <ExperimentalToggleCard
-          title="会议室聊天"
+          title="Conference Room Chat"
           description="Adds a Conference Room — one chat where you and your whole team work together — plus the live activity feed and the redesigned onboarding. Also restyles task threads as chat bubbles. Turn off anytime to restore the classic UI."
           checked={enableConferenceRoomChat}
           onCheckedChange={(checked) => toggleMutation.mutate({ enableConferenceRoomChat: checked })}
@@ -639,7 +639,7 @@ export function InstanceExperimentalSettings() {
       ) : null}
 
       <ExperimentalToggleCard
-        title="决策"
+        title="Decisions"
         description="Show the Decisions item in the main sidebar — the attention home that surfaces the tasks awaiting your input — while the surface is still being evaluated."
         checked={enableDecisions}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableDecisions: checked })}
@@ -650,8 +650,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="启用环境"
-        description="在公司设置中显示环境管理，并允许项目和代理环境分配控件。"
+        title="Enable Environments"
+        description="Show environment management in company settings and allow project and agent environment assignment controls."
         checked={enableEnvironments}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableEnvironments: checked })}
         disabled={toggleMutation.isPending}
@@ -661,8 +661,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="启用外部对象"
-        description="检测问题中的外部 URL，并显示拉取请求、工单和其他引用工作对象的已解决状态。"
+        title="Enable External Objects"
+        description="Detect external URLs in issues and show resolved status for pull requests, tickets, and other referenced work objects."
         checked={enableExternalObjects}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableExternalObjects: checked })}
         disabled={toggleMutation.isPending}
@@ -672,8 +672,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="启用隔离工作区"
-        description="在项目配置中显示执行工作区控件，并允许新任务和现有任务运行使用隔离工作区行为。"
+        title="Enable Isolated Workspaces"
+        description="Show execution workspace controls in project configuration and allow isolated workspace behavior for new and existing task runs."
         checked={enableIsolatedWorkspaces}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableIsolatedWorkspaces: checked })}
         disabled={toggleMutation.isPending}
@@ -683,8 +683,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="实验性文件查看器"
-        description="显示任务详情控件，用于浏览和预览与任务相关的工作区文件。"
+        title="Experimental File Viewer"
+        description="Show task detail controls for browsing and previewing workspace files relative to a task."
         checked={enableExperimentalFileViewer}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableExperimentalFileViewer: checked })}
         disabled={toggleMutation.isPending}
@@ -694,8 +694,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="目标侧边栏链接"
-        description="在评估目标界面时，恢复主侧边栏中的“目标”项。"
+        title="Goals Sidebar Link"
+        description="Restore the Goals item in the main sidebar while the goals surface is being evaluated."
         checked={enableGoalsSidebarLink}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableGoalsSidebarLink: checked })}
         disabled={toggleMutation.isPending}
@@ -705,8 +705,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="仅托管环境"
-        description="隐藏本地环境，并在平台托管环境中运行所有代理。"
+        title="Managed Environment Only"
+        description="Hide the local environment and run all agents in the platform-managed environment."
         checked={enableManagedSandboxOnly}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableManagedSandboxOnly: checked })}
         disabled={toggleMutation.isPending}
@@ -721,7 +721,7 @@ export function InstanceExperimentalSettings() {
             <div className="flex items-start justify-between gap-4">
               <div className="space-y-1.5">
                 <div className="flex flex-wrap items-center gap-2">
-                  <h2 className="text-sm font-semibold">在此工作树中运行任务</h2>
+                  <h2 className="text-sm font-semibold">Run tasks in this worktree</h2>
                   {worktreeRunExecutionManaged ? <ManagedByCloudBadge /> : null}
                 </div>
                 <p className="max-w-2xl text-sm text-muted-foreground">
@@ -737,7 +737,7 @@ export function InstanceExperimentalSettings() {
                   toggleMutation.mutate({ enableWorktreeRunExecution: checked });
                 }}
                 disabled={toggleMutation.isPending || worktreeRunExecutionManaged}
-                aria-label="切换工作树运行执行设置"
+                aria-label="Toggle worktree run execution setting"
               />
             </div>
 
@@ -773,7 +773,7 @@ export function InstanceExperimentalSettings() {
       ) : null}
 
       <ExperimentalToggleCard
-        title="服务器信息调试视图"
+        title="Server Info Debug View"
         description='Show a "Server" section in the account drawer with the current server restart time and running commit.'
         checked={enableServerInfoDebugView}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableServerInfoDebugView: checked })}
@@ -784,8 +784,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="简化英语交互"
-        description="指示代理使用ASD-STE100简化技术英语编写用户交互（计划确认、问题、建议任务、复选框提示），并简要说明决策所需信息以及每个选择的结果。"
+        title="Simplified English Interactions"
+        description="Instruct agents to write user interactions (plan confirmations, questions, suggested tasks, checkbox prompts) in ASD-STE100 Simplified Technical English, with brief context on what information the decision needs and what happens for each choice."
         checked={enableSimplifiedEnglishInteractions}
         onCheckedChange={(checked) =>
           toggleMutation.mutate({ enableSimplifiedEnglishInteractions: checked })
@@ -797,7 +797,7 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="冒烟实验室"
+        title="Smoke Lab"
         description='Add a "Smoke Lab" tab under Apps → Developer and an "Integration smoke" card on the dashboard for exercising every integration path against deterministic local fixtures (fake OAuth provider + loopback MCP servers). Private (non-public) deployments only.'
         checked={enableSmokeLab}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableSmokeLab: checked })}
@@ -808,8 +808,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="状态卡片"
-        description="启用实验性共享状态卡片板及其受限API。禁用时保留现有卡片数据。"
+        title="Status Cards"
+        description="Enable the experimental shared status-card board and its gated API. Existing card data is kept when this is disabled."
         footnote="Enabling Status Cards also enables Summaries."
         checked={enableStatusCards}
         onCheckedChange={(checked) =>
@@ -826,8 +826,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="摘要"
-        description="在项目和工作区页面显示由Summarizer生成的状态槽，支持按需刷新和修订历史。禁用时保留现有摘要数据。"
+        title="Summaries"
+        description="Show Summarizer-generated status slots on project and workspace pages, with on-demand refresh and revision history. Existing summary data is kept when this is disabled."
         footnote="Status Cards requires Summaries. Disabling Summaries also disables Status Cards."
         checked={enableSummaries}
         onCheckedChange={(checked) =>
@@ -844,8 +844,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="任务计划分解面板"
-        description="在任务详情页面显示已接受计划的分解历史。用于调试和验证子任务创建行为，同时演示仍在完善中。"
+        title="Task Plan Decomposition Panel"
+        description="Show accepted-plan decomposition history on task detail pages. Intended for debugging and validating subtask creation behavior while the presentation is still being refined."
         checked={enableIssuePlanDecompositions}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableIssuePlanDecompositions: checked })}
         disabled={toggleMutation.isPending}
@@ -855,8 +855,8 @@ export function InstanceExperimentalSettings() {
       />
 
       <ExperimentalToggleCard
-        title="任务看门狗"
-        description="显示任务详情控件，用于配置看门狗代理，这些代理验证已停止的任务子树，并在需要继续工作时恢复活动路径。"
+        title="Task Watchdogs"
+        description="Show task detail controls for configuring watchdog agents that verify stopped task subtrees and restore live paths when work should continue."
         checked={enableTaskWatchdogs}
         onCheckedChange={(checked) => toggleMutation.mutate({ enableTaskWatchdogs: checked })}
         disabled={toggleMutation.isPending}

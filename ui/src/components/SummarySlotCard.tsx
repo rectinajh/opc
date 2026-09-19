@@ -261,9 +261,9 @@ export function SummarySlotCard({
           <div className="flex flex-wrap items-center gap-2">
             <Sparkles className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
             <h2 className="text-sm font-semibold">{title}</h2>
-            {isGenerating ? <Badge variant="secondary">生成中</Badge> : null}
-            {displayingHistoricalRevision ? <Badge variant="outline">历史修订</Badge> : null}
-            {latestDocument && !displayingHistoricalRevision ? <Badge variant="outline">最新修订</Badge> : null}
+            {isGenerating ? <Badge variant="secondary">Generating</Badge> : null}
+            {displayingHistoricalRevision ? <Badge variant="outline">Historical revision</Badge> : null}
+            {latestDocument && !displayingHistoricalRevision ? <Badge variant="outline">Latest revision</Badge> : null}
           </div>
           {description ? <p className="text-sm text-muted-foreground">{description}</p> : null}
         </div>
@@ -275,7 +275,7 @@ export function SummarySlotCard({
               variant="outline"
               onClick={() => setSelectedRevisionId(null)}
             >
-              最新
+              Latest
             </Button>
           ) : null}
           {latestDocument && !generationFailed ? (
@@ -316,7 +316,7 @@ export function SummarySlotCard({
             </div>
             {needsSetup.status === "pending_approval" ? null : (
               <Button type="button" size="sm" onClick={() => setConfigureOpen(true)}>
-                设置摘要器
+                Set up Summarizer
               </Button>
             )}
           </div>
@@ -335,7 +335,7 @@ export function SummarySlotCard({
       {!needsSetup && summarizerState?.status === "paused" && summarizerState.agent ? (
         <InlineBanner
           tone="warning"
-          title="摘要器已暂停"
+          title="Summarizer is paused"
           actions={
             <Button
               type="button"
@@ -347,12 +347,12 @@ export function SummarySlotCard({
             </Button>
           }
         >
-          现有摘要仍可读，但在代理恢复之前不会生成新摘要。
+          Existing summaries remain readable, but new summaries will not be generated until the agent resumes.
         </InlineBanner>
       ) : null}
 
       {actionError ? (
-        <InlineBanner tone="warning" title="摘要请求失败">
+        <InlineBanner tone="warning" title="Summary request failed">
           {actionError}
         </InlineBanner>
       ) : null}
@@ -360,10 +360,10 @@ export function SummarySlotCard({
       {slotQuery.isError ? (
         <InlineBanner
           tone="warning"
-          title="无法加载摘要"
+          title="Summary could not be loaded"
           actions={
             <Button type="button" size="sm" variant="outline" onClick={() => void slotQuery.refetch()}>
-              重试
+              Retry
             </Button>
           }
         >
@@ -374,7 +374,7 @@ export function SummarySlotCard({
       {!slotQuery.isError && generationFailed ? (
         <InlineBanner
           tone="danger"
-          title="摘要生成失败"
+          title="Summary generation failed"
           actions={
             <Button
               type="button"
@@ -394,7 +394,7 @@ export function SummarySlotCard({
         <div className="flex items-start gap-3 text-sm">
           <Loader2 className="mt-0.5 h-4 w-4 shrink-0 animate-spin text-muted-foreground" />
           <div className="min-w-0 space-y-1">
-            <p className="font-medium text-foreground">正在生成摘要</p>
+            <p className="font-medium text-foreground">Generating summary</p>
             {generationStatusLine ? (
               <p
                 className="animate-pulse truncate text-muted-foreground"
@@ -437,8 +437,8 @@ export function SummarySlotCard({
       {!slotQuery.isError && !latestDocument && !isGenerating && !generationFailed && canGenerateFirstSummary ? (
         <div className="flex flex-col items-start gap-3 rounded-lg border border-border bg-muted/30 p-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1 text-sm">
-            <p className="font-medium text-foreground">暂无摘要</p>
-            <p className="text-muted-foreground">为此界面生成简洁的状态快照。</p>
+            <p className="font-medium text-foreground">No summary yet</p>
+            <p className="text-muted-foreground">Generate a concise status snapshot for this surface.</p>
           </div>
           <Button
             type="button"
@@ -473,7 +473,7 @@ export function SummarySlotCard({
                 <SelectTrigger
                   size="sm"
                   className="h-auto border-0 bg-transparent p-0 text-xs shadow-none hover:text-foreground focus-visible:ring-0"
-                  aria-label="选择摘要修订版"
+                  aria-label="Select summary revision"
                   title={historicalRevision ? revisionOptionLabel(historicalRevision) : latestSelectLabel}
                 >
                   <SelectValue>

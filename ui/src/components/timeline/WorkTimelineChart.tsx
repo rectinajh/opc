@@ -954,7 +954,7 @@ function MiniMap({
           height={H - 2}
           width={handleW}
           testId="timeline-minimap-left-handle"
-          label="拖动左边缘调整可见范围"
+          label="Drag left edge to resize visible range"
           onMouseDown={(e) => startRangeDrag("left", e)}
         />
         <MiniMapHandle
@@ -963,7 +963,7 @@ function MiniMap({
           height={H - 2}
           width={handleW}
           testId="timeline-minimap-right-handle"
-          label="拖动右边缘调整可见范围"
+          label="Drag right edge to resize visible range"
           onMouseDown={(e) => startRangeDrag("right", e)}
         />
       </svg>

@@ -131,7 +131,7 @@ export function ArtifactsPanel({ taskId, isAgentWorking, openDocKey, openDocTitl
     <div className="flex flex-col h-full" data-artifacts-panel>
       <div className="px-4 py-3 border-b border-border flex items-center gap-2">
         <Package className="h-4 w-4 text-muted-foreground shrink-0" />
-        <h3 className="text-sm font-semibold">工件</h3>
+        <h3 className="text-sm font-semibold">Artifacts</h3>
       </div>
 
       {/* Filter chips */}
@@ -157,7 +157,7 @@ export function ArtifactsPanel({ taskId, isAgentWorking, openDocKey, openDocTitl
         {isLoading ? (
           <div className="flex items-center justify-center py-8 text-muted-foreground text-sm">
             <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-            加载中...
+            Loading...
           </div>
         ) : filtered.length === 0 ? (
           <div className="px-4 py-8 text-center">
@@ -215,7 +215,7 @@ export function ArtifactsPanel({ taskId, isAgentWorking, openDocKey, openDocTitl
                         {showGenerating ? (
                           <Badge variant="ghost" className="[&>svg]:size-2.5 text-(length:--text-nano) px-1.5 bg-blue-500/10 text-blue-600 dark:text-blue-400">
                             <Loader2 className="h-2.5 w-2.5 animate-spin" />
-                            生成中...
+                            Generating...
                           </Badge>
                         ) : (
                           <Badge variant="ghost" className={cn("text-(length:--text-nano) px-1.5", badge.className)}>
@@ -283,32 +283,32 @@ function DocumentViewer({
         {isLoading ? (
           <div className="flex items-center justify-center py-8 text-muted-foreground text-sm">
             <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-            加载文档中...
+            Loading document...
           </div>
         ) : error ? (
-          <p className="text-sm text-muted-foreground">文档尚不可用。</p>
+          <p className="text-sm text-muted-foreground">Document not available yet.</p>
         ) : doc?.body ? (
           <div className="prose prose-sm dark:prose-invert max-w-none">
             <MarkdownBody>{doc.body}</MarkdownBody>
           </div>
         ) : (
-          <p className="text-sm text-muted-foreground">文档为空。</p>
+          <p className="text-sm text-muted-foreground">Document is empty.</p>
         )}
       </div>
 
       {/* Sticky action footer */}
       {needsAction && (
         <div className="border-t border-border px-4 py-3 bg-background shrink-0">
-          <p className="text-(length:--text-micro) text-muted-foreground mb-2">此文档需要您审阅。</p>
+          <p className="text-(length:--text-micro) text-muted-foreground mb-2">This document needs your review.</p>
           <div className="flex items-center gap-3">
             <Button size="lg" className="h-11 px-8 text-base font-semibold flex-1 rounded-lg bg-green-700 hover:bg-green-800 text-white border-0" onClick={onApprove}>
-              批准
+              Approve
             </Button>
             <Button size="lg" className="h-11 px-8 text-base font-semibold flex-1 rounded-lg bg-red-900 hover:bg-red-950 text-white border-0" onClick={() => {
               onReject?.();
               onBack();
             }}>
-              拒绝
+              Reject
             </Button>
           </div>
         </div>

@@ -158,13 +158,13 @@ export function ProfileDetail({
     onError: (error: unknown) => pushToast({ title: "Could not submit review", body: errorBody(error), tone: "error" }),
   });
 
-  if (data.profiles.isLoading) return <LoadingState label="正在加载配置文件..." />;
+  if (data.profiles.isLoading) return <LoadingState label="Loading profile..." />;
   if (data.profiles.isError) return <ErrorState error={data.profiles.error} onRetry={() => data.profiles.refetch()} />;
   if (!profile) {
     return (
       <div className="space-y-4">
-        <ToolsPageHeader title="未找到配置文件" description="此访问配置文件可能已被删除。" />
-        <Button variant="outline" onClick={() => navigate("/apps/advanced/profiles")}>返回配置文件</Button>
+        <ToolsPageHeader title="Profile not found" description="This access profile may have been deleted." />
+        <Button variant="outline" onClick={() => navigate("/apps/advanced/profiles")}>Back to profiles</Button>
       </div>
     );
   }
@@ -181,23 +181,23 @@ export function ProfileDetail({
           <div className="flex flex-wrap gap-2">
             <Button variant="outline" disabled={archived} onClick={() => setDialog("edit")}>
               <Pencil className="mr-1.5 h-4 w-4" />
-              编辑
+              Edit
             </Button>
             <Button variant="outline" disabled={archived} onClick={() => setDialog("duplicate")}>
               <Copy className="mr-1.5 h-4 w-4" />
-              重复
+              Duplicate
             </Button>
             {archived ? (
               <Button variant="outline" onClick={() => setDialog("restore")}>
                 <ArchiveRestore className="mr-1.5 h-4 w-4" />
-                恢复
+                Restore
               </Button>
             ) : (
-              <Button variant="outline" onClick={() => setDialog("archive")}>归档</Button>
+              <Button variant="outline" onClick={() => setDialog("archive")}>Archive</Button>
             )}
             <Button variant="outline" className="text-destructive hover:text-destructive" onClick={() => setDialog("delete")}>
               <Trash2 className="mr-1.5 h-4 w-4" />
-              删除
+              Delete
             </Button>
           </div>
         }
@@ -205,24 +205,24 @@ export function ProfileDetail({
 
       <div className="flex flex-wrap items-center gap-3 text-sm">
         <Badge variant={archived ? "outline" : "default"}>{STATUS_LABEL[profile.status]}</Badge>
-        <span className="text-muted-foreground">更新时间 <RelativeTime value={profile.updatedAt} /></span>
+        <span className="text-muted-foreground">Updated <RelativeTime value={profile.updatedAt} /></span>
         <span className="text-muted-foreground">{allowsLabel(profile.summary)}</span>
       </div>
 
       {created ? (
         <div className="flex items-center justify-between gap-3 rounded-lg border border-primary/30 bg-primary/5 px-4 py-3">
           <div>
-            <p className="text-sm font-medium text-foreground">配置文件已保存</p>
+            <p className="text-sm font-medium text-foreground">Profile saved</p>
             <p className="text-sm text-muted-foreground">
               {unassigned ? "Assign it to agents before it changes their access." : "Assignments are active now."}
             </p>
           </div>
           <div className="flex gap-2">
             <Button size="sm" onClick={() => navigate(`/apps/advanced/profiles/${profile.id}/edit?step=3`)}>
-              分配
+              Assign
             </Button>
             <Button size="sm" variant="ghost" onClick={() => setSearchParams({})}>
-              关闭
+              Dismiss
             </Button>
           </div>
         </div>
@@ -230,7 +230,7 @@ export function ProfileDetail({
 
       {archived ? (
         <div className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-950">
-          此配置文件已归档。在恢复之前不适用于代理。
+          This profile is archived. It does not apply to agents until it is restored.
         </div>
       ) : null}
 
@@ -245,9 +245,9 @@ export function ProfileDetail({
 
       <section className="space-y-3">
         <div className="flex items-center justify-between gap-3">
-          <h2 className="text-base font-semibold text-foreground">允许的内容</h2>
+          <h2 className="text-base font-semibold text-foreground">What it allows</h2>
           <Button variant="outline" size="sm" disabled={archived} onClick={() => navigate(`/apps/advanced/profiles/${profile.id}/edit?step=2`)}>
-            编辑工具
+            Edit tools
           </Button>
         </div>
         <AllowList rows={allowRows} total={profile.summary.totalToolCount} />
@@ -255,9 +255,9 @@ export function ProfileDetail({
 
       <section className="space-y-3">
         <div className="flex items-center justify-between gap-3">
-          <h2 className="text-base font-semibold text-foreground">拥有者</h2>
+          <h2 className="text-base font-semibold text-foreground">Who has it</h2>
           <Button variant="outline" size="sm" disabled={archived} onClick={() => navigate(`/apps/advanced/profiles/${profile.id}/edit?step=3`)}>
-            分配
+            Assign
           </Button>
         </div>
         <Assignments
@@ -270,7 +270,7 @@ export function ProfileDetail({
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-base font-semibold text-foreground">稍后出现的新工具</h2>
+        <h2 className="text-base font-semibold text-foreground">New tools that appear later</h2>
         <NewToolsSetting
           value={profile.defaultAction}
           disabled={archived || updateProfile.isPending}
@@ -280,7 +280,7 @@ export function ProfileDetail({
 
       <Button variant="link" className="h-auto px-0" onClick={() => navigate("/apps/advanced/profiles?check=1")}>
         <ShieldCheck className="mr-1.5 h-4 w-4" />
-        检查代理实际能做什么
+        Check what an agent can actually do
       </Button>
 
       <ProfileDialogs
@@ -340,9 +340,9 @@ function NewToolsReviewBanner({
         <p className="font-medium">
           {loading ? "New tools need review" : `${appLabel} added ${count} new ${count === 1 ? "tool" : "tools"} since your last review`}
         </p>
-        <p className="text-amber-900/80">选择此配置文件应允许哪些。</p>
+        <p className="text-amber-900/80">Choose which ones this profile should allow.</p>
       </div>
-      <Button size="sm" onClick={onReview}>审查</Button>
+      <Button size="sm" onClick={onReview}>Review</Button>
     </div>
   );
 }
@@ -374,18 +374,18 @@ function NewToolsReviewDialog({
     <Dialog open={open} onOpenChange={(next) => !next && onClose()}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle>审查新工具</DialogTitle>
+          <DialogTitle>Review new tools</DialogTitle>
           <DialogDescription>
-            允许此配置文件应使用的工具。其余保持阻止。
+            Allow the tools this profile should use. Keep the rest blocked.
           </DialogDescription>
         </DialogHeader>
         {loading ? (
-          <LoadingState label="正在加载新工具..." />
+          <LoadingState label="Loading new tools..." />
         ) : error ? (
           <ErrorState error={error} onRetry={onRetry} />
         ) : tools.length === 0 ? (
           <div className="rounded-lg border border-dashed border-border px-4 py-6 text-sm text-muted-foreground">
-            没有等待审查的新工具。
+            There are no new tools waiting for review.
           </div>
         ) : (
           <div className="max-h-(--sz-52vh) divide-y divide-border overflow-y-auto rounded-lg border border-border">
@@ -413,7 +413,7 @@ function NewToolsReviewDialog({
                       checked={(decisions[tool.catalogEntryId] ?? "keep_blocked") === "allow"}
                       onChange={() => onDecision(tool.catalogEntryId, "allow")}
                     />
-                    允许
+                    Allow
                   </label>
                   <label className="inline-flex items-center gap-1.5 text-sm">
                     <input
@@ -422,7 +422,7 @@ function NewToolsReviewDialog({
                       checked={(decisions[tool.catalogEntryId] ?? "keep_blocked") === "keep_blocked"}
                       onChange={() => onDecision(tool.catalogEntryId, "keep_blocked")}
                     />
-                    保持阻止
+                    Keep blocked
                   </label>
                 </div>
               </div>
@@ -430,9 +430,9 @@ function NewToolsReviewDialog({
           </div>
         )}
         <DialogFooter>
-          <Button variant="ghost" onClick={onClose}>取消</Button>
+          <Button variant="ghost" onClick={onClose}>Cancel</Button>
           <Button disabled={pending || loading || tools.length === 0} onClick={onSubmit}>
-            提交审查
+            Submit review
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -444,7 +444,7 @@ function AllowList({ rows, total }: { rows: AllowRow[]; total: number }) {
   if (rows.length === 0) {
     return (
       <div className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-950">
-        此配置文件允许 0 个工具。仅拥有此配置文件的代理将无法使用应用工具。
+        This profile allows 0 tools. Agents with only this profile will not be able to use app tools.
       </div>
     );
   }
@@ -453,10 +453,10 @@ function AllowList({ rows, total }: { rows: AllowRow[]; total: number }) {
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-border bg-muted/40 text-left text-xs font-medium text-muted-foreground">
-            <th className="px-3 py-2 font-medium">工具</th>
-            <th className="px-3 py-2 font-medium">应用</th>
-            <th className="px-3 py-2 font-medium">能力</th>
-            <th className="px-3 py-2 font-medium">来源</th>
+            <th className="px-3 py-2 font-medium">Tool</th>
+            <th className="px-3 py-2 font-medium">App</th>
+            <th className="px-3 py-2 font-medium">Capabilities</th>
+            <th className="px-3 py-2 font-medium">Source</th>
           </tr>
         </thead>
         <tbody>
@@ -468,7 +468,7 @@ function AllowList({ rows, total }: { rows: AllowRow[]; total: number }) {
                   {row.degraded ? (
                     <a className="mt-0.5 inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline" href={`/apps/${row.connectionId}`}>
                       <PlugZap className="h-3 w-3" />
-                      重新连接
+                      Reconnect
                     </a>
                   ) : null}
                 </div>
@@ -523,8 +523,8 @@ function Assignments({
   if (profile.bindings.length === 0) {
     return (
       <div className="rounded-lg border border-dashed border-border px-4 py-5">
-        <p className="text-sm font-medium text-foreground">尚未分配</p>
-        <p className="text-sm text-muted-foreground">在更改访问权限之前分配此配置文件。</p>
+        <p className="text-sm font-medium text-foreground">Not assigned yet</p>
+        <p className="text-sm text-muted-foreground">Assign this profile before it changes access.</p>
       </div>
     );
   }
@@ -543,7 +543,7 @@ function Assignments({
           </div>
           <Button variant="ghost" size="sm" disabled={archived} onClick={() => onRemove(binding)}>
             <UserMinus className="mr-1.5 h-4 w-4" />
-            移除
+            Remove
           </Button>
         </div>
       ))}
@@ -633,33 +633,33 @@ function ProfileDialogs({
       <Dialog open={open} onOpenChange={(next) => !next && onClose()}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>编辑个人资料</DialogTitle>
-            <DialogDescription>更新配置文件名称和描述。</DialogDescription>
+            <DialogTitle>Edit profile</DialogTitle>
+            <DialogDescription>Update the profile name and description.</DialogDescription>
           </DialogHeader>
           <div className="space-y-3">
             <div className="space-y-1.5">
-              <Label htmlFor="edit-profile-name">名称</Label>
+              <Label htmlFor="edit-profile-name">Name</Label>
               <Input id="edit-profile-name" value={name} onChange={(e) => setName(e.target.value)} />
-              {duplicateName ? <p className="text-xs text-destructive">另一个配置文件已使用此名称。</p> : null}
+              {duplicateName ? <p className="text-xs text-destructive">Another profile already uses this name.</p> : null}
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="edit-profile-description">描述</Label>
+              <Label htmlFor="edit-profile-description">Description</Label>
               <Textarea id="edit-profile-description" value={description} onChange={(e) => setDescription(e.target.value)} rows={3} />
             </div>
             <button type="button" className="text-sm font-medium text-muted-foreground hover:text-foreground" onClick={() => setAdvancedOpen((v) => !v)}>
-              高级
+              Advanced
             </button>
             {advancedOpen ? (
               <div className="space-y-1.5">
-                <Label htmlFor="edit-profile-key">标识符</Label>
+                <Label htmlFor="edit-profile-key">Identifier</Label>
                 <Input id="edit-profile-key" value={profileKey} onChange={(e) => setProfileKey(e.target.value)} className="font-mono text-xs" />
               </div>
             ) : null}
           </div>
           <DialogFooter>
-            <Button variant="ghost" onClick={onClose}>取消</Button>
+            <Button variant="ghost" onClick={onClose}>Cancel</Button>
             <Button disabled={!name.trim() || duplicateName || pending} onClick={() => onUpdate({ name: name.trim(), description: description.trim() || null, profileKey: profileKey.trim() })}>
-              保存
+              Save
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -672,24 +672,24 @@ function ProfileDialogs({
       <Dialog open={open} onOpenChange={(next) => !next && onClose()}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>复制配置文件</DialogTitle>
-            <DialogDescription>除非您也选择复制分配，否则副本开始未分配。</DialogDescription>
+            <DialogTitle>Duplicate profile</DialogTitle>
+            <DialogDescription>The copy starts unassigned unless you choose to copy assignments too.</DialogDescription>
           </DialogHeader>
           <div className="space-y-3">
             <div className="space-y-1.5">
-              <Label htmlFor="copy-profile-name">名称</Label>
+              <Label htmlFor="copy-profile-name">Name</Label>
               <Input id="copy-profile-name" value={copyName} onChange={(e) => setCopyName(e.target.value)} />
-              {duplicateCopyName ? <p className="text-xs text-destructive">另一个配置文件已使用此名称。</p> : null}
+              {duplicateCopyName ? <p className="text-xs text-destructive">Another profile already uses this name.</p> : null}
             </div>
             <label className="flex items-center gap-2 text-sm">
               <input type="checkbox" checked={copyAssignments} onChange={(e) => setCopyAssignments(e.target.checked)} />
-              也复制分配吗？
+              Also copy assignments?
             </label>
           </div>
           <DialogFooter>
-            <Button variant="ghost" onClick={onClose}>取消</Button>
+            <Button variant="ghost" onClick={onClose}>Cancel</Button>
             <Button disabled={!copyName.trim() || duplicateCopyName || pending} onClick={() => onDuplicate({ name: copyName.trim(), includeAssignments: copyAssignments })}>
-              重复
+              Duplicate
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -727,7 +727,7 @@ function RemoveAssignmentDialog({
     <Dialog open={Boolean(binding)} onOpenChange={(next) => !next && onClose()}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>移除分配</DialogTitle>
+          <DialogTitle>Remove assignment</DialogTitle>
           <DialogDescription>
             {binding?.targetType === "company"
               ? "Removing the company default changes access for every agent that relies on it."
@@ -735,8 +735,8 @@ function RemoveAssignmentDialog({
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button variant="ghost" onClick={onClose}>取消</Button>
-          <Button disabled={pending} onClick={onConfirm}>移除</Button>
+          <Button variant="ghost" onClick={onClose}>Cancel</Button>
+          <Button disabled={pending} onClick={onConfirm}>Remove</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

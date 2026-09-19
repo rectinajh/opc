@@ -224,7 +224,7 @@ export function FileViewerMetadataRow({
           ) : null}
         </>
       ) : state ? (
-        <span className="h-3 w-28 rounded bg-muted animate-pulse" aria-label="加载文件详情" />
+        <span className="h-3 w-28 rounded bg-muted animate-pulse" aria-label="Loading file details" />
       ) : null}
     </div>
   );
@@ -275,7 +275,7 @@ export function FileContentViewer({ content, highlightedLine, onLoaded }: FileCo
       return (
         <FileViewerStateView
           icon={<AlertTriangle aria-hidden="true" className="h-6 w-6 text-amber-500" />}
-          title="图片预览不可用"
+          title="Image preview unavailable"
         />
       );
     }
@@ -298,7 +298,7 @@ export function FileContentViewer({ content, highlightedLine, onLoaded }: FileCo
       return (
         <FileViewerStateView
           icon={<AlertTriangle aria-hidden="true" className="h-6 w-6 text-amber-500" />}
-          title="视频预览不可用"
+          title="Video preview unavailable"
         />
       );
     }
@@ -320,7 +320,7 @@ export function FileContentViewer({ content, highlightedLine, onLoaded }: FileCo
     return (
       <FileViewerStateView
         icon={<AlertTriangle aria-hidden="true" className="h-6 w-6 text-amber-500" />}
-        title="不支持此文件类型的预览"
+        title="Preview not supported for this file type"
         body={resource.contentType ? `Content type: ${resource.contentType}` : undefined}
       />
     );
@@ -382,15 +382,15 @@ export function FileContentViewer({ content, highlightedLine, onLoaded }: FileCo
       <div className="absolute right-3 top-3 z-20">
         <div
           role="group"
-          aria-label="Markdown 预览模式"
+          aria-label="Markdown preview mode"
           className="inline-flex rounded-md border border-border bg-background/95 p-0.5 shadow-sm backdrop-blur"
         >
           <Button
             type="button"
             variant={markdownMode === "rendered" ? "secondary" : "ghost"}
             size="icon-sm"
-            aria-label="显示渲染后的 Markdown"
-            title="渲染后的 Markdown"
+            aria-label="Show rendered Markdown"
+            title="Rendered Markdown"
             aria-pressed={markdownMode === "rendered"}
             onClick={() => setMarkdownMode("rendered")}
             className={cn(
@@ -404,8 +404,8 @@ export function FileContentViewer({ content, highlightedLine, onLoaded }: FileCo
             type="button"
             variant={markdownMode === "raw" ? "secondary" : "ghost"}
             size="icon-sm"
-            aria-label="显示原始 Markdown"
-            title="原始 Markdown"
+            aria-label="Show raw Markdown"
+            title="Raw Markdown"
             aria-pressed={markdownMode === "raw"}
             onClick={() => setMarkdownMode("raw")}
             className={cn(
@@ -442,7 +442,7 @@ function LoadingView({ elapsedMs }: { elapsedMs: number }) {
   if (elapsedMs < 400) {
     return (
       <div className="flex-1 space-y-2 p-6" aria-busy="true" aria-live="polite">
-        <span className="sr-only">正在加载文件预览</span>
+        <span className="sr-only">Loading file preview</span>
         {Array.from({ length: 10 }).map((_, index) => (
           <div key={index} className="h-3 rounded bg-muted animate-pulse" style={{ width: `${90 - index * 6}%` }} />
         ))}
@@ -457,7 +457,7 @@ function LoadingView({ elapsedMs }: { elapsedMs: number }) {
     >
       <div className="flex items-center gap-2 text-muted-foreground">
         <Loader2 aria-hidden="true" className="h-4 w-4 animate-spin" />
-        正在加载文件预览...
+        Loading file preview...
       </div>
     </div>
   );
@@ -761,10 +761,10 @@ export function FileViewerSheet({
                   size="sm"
                   onClick={() => viewer.backToFiles()}
                   className="h-7 gap-1 px-2 text-xs"
-                  aria-label="返回文件"
+                  aria-label="Back to files"
                 >
                   <ArrowLeft className="h-3.5 w-3.5" />
-                  返回文件
+                  Back to files
                 </Button>
               ) : null}
               {state ? (
@@ -778,8 +778,8 @@ export function FileViewerSheet({
                     <a
                       href={downloadUrl}
                       download={resolvedResource?.title ?? basename(state.path)}
-                      aria-label="下载文件"
-                      title="下载文件"
+                      aria-label="Download file"
+                      title="Download file"
                     >
                       <Download className="h-4 w-4" />
                     </a>
@@ -830,8 +830,8 @@ export function FileViewerSheet({
                 size="icon-sm"
                 onClick={() => handleOpenChange(false)}
                 className="h-7 w-7"
-                aria-label="关闭文件查看器"
-                title="关闭"
+                aria-label="Close file viewer"
+                title="Close"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -871,7 +871,7 @@ export function FileViewerSheet({
               <div
                 role="separator"
                 aria-orientation="vertical"
-                aria-label="调整文件树大小"
+                aria-label="Resize file tree"
                 aria-valuemin={MIN_FILE_TREE_WIDTH}
                 aria-valuemax={MAX_FILE_TREE_WIDTH}
                 aria-valuenow={fileTreeWidth}
@@ -956,17 +956,17 @@ function FileViewerBody({
       return (
         <FileViewerStateView
           icon={<FileSearch aria-hidden="true" className="h-6 w-6 text-muted-foreground" />}
-          title="文件未找到"
+          title="File not found"
           body="That file was not found in the active workspace."
           actions={
             <>
               {onFallbackToProject ? (
                 <Button type="button" variant="secondary" size="sm" onClick={onFallbackToProject}>
-                  尝试项目工作区
+                  Try project workspace
                 </Button>
               ) : null}
               <Button type="button" variant="ghost" size="sm" onClick={onRetry}>
-                <RefreshCcw aria-hidden="true" className="mr-1 h-3 w-3" /> 重试
+                <RefreshCcw aria-hidden="true" className="mr-1 h-3 w-3" /> Retry
               </Button>
             </>
           }
@@ -977,7 +977,7 @@ function FileViewerBody({
       return (
         <FileViewerStateView
           icon={<FolderOpen aria-hidden="true" className="h-6 w-6 text-muted-foreground" />}
-          title="没有可用的工作区"
+          title="No workspace available"
           body="This issue does not have a workspace that supports preview yet."
         />
       );
@@ -990,7 +990,7 @@ function FileViewerBody({
         body={denial.body}
         actions={
           <Button type="button" variant="ghost" size="sm" onClick={onRetry}>
-            <RefreshCcw aria-hidden="true" className="mr-1 h-3 w-3" /> 重试
+            <RefreshCcw aria-hidden="true" className="mr-1 h-3 w-3" /> Retry
           </Button>
         }
       />
@@ -1004,7 +1004,7 @@ function FileViewerBody({
     return (
       <FileViewerStateView
         icon={<Cloud aria-hidden="true" className="h-6 w-6 text-muted-foreground" />}
-        title="远程工作区预览即将推出"
+        title="Remote workspace preview coming soon"
         body="This workspace is hosted remotely; inline previews are not supported yet."
       />
     );
@@ -1029,7 +1029,7 @@ function FileViewerBody({
         body={denial.body}
         actions={
           <Button type="button" variant="ghost" size="sm" onClick={onRetry}>
-            <RefreshCcw aria-hidden="true" className="mr-1 h-3 w-3" /> 重试
+            <RefreshCcw aria-hidden="true" className="mr-1 h-3 w-3" /> Retry
           </Button>
         }
       />

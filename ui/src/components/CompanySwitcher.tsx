@@ -50,14 +50,14 @@ export function CompanySwitcher({ open: controlledOpen, onOpenChange }: CompanyS
               <span className={`h-2 w-2 rounded-full shrink-0 ${statusDotColor(selectedCompany.status)}`} />
             )}
             <span className="text-sm font-medium truncate">
-              {selectedCompany?.name ?? "选择公司"}
+              {selectedCompany?.name ?? "Select company"}
             </span>
           </div>
           <ChevronsUpDown className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-(--sz-220px)">
-        <DropdownMenuLabel>公司</DropdownMenuLabel>
+        <DropdownMenuLabel>Companies</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {sidebarCompanies.map((company) => (
           <DropdownMenuItem
@@ -75,7 +75,7 @@ export function CompanySwitcher({ open: controlledOpen, onOpenChange }: CompanyS
           // give the customer the way out, since nothing else in the app does.
           companyListUnavailable ? (
             <>
-              <DropdownMenuItem disabled>无法加载公司</DropdownMenuItem>
+              <DropdownMenuItem disabled>Couldn't load companies</DropdownMenuItem>
               <DropdownMenuItem
                 onSelect={(event) => {
                   // Keep the menu open so the result of the retry is visible.
@@ -84,24 +84,24 @@ export function CompanySwitcher({ open: controlledOpen, onOpenChange }: CompanyS
                 }}
               >
                 <RefreshCw className="h-4 w-4 mr-2" />
-                重试
+                Try again
               </DropdownMenuItem>
             </>
           ) : (
-            <DropdownMenuItem disabled>暂无公司</DropdownMenuItem>
+            <DropdownMenuItem disabled>No companies</DropdownMenuItem>
           )
         )}
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link to="/company/settings" className="no-underline text-inherit">
             <Settings className="h-4 w-4 mr-2" />
-            设置
+            Settings
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link to="/companies" className="no-underline text-inherit">
             <Plus className="h-4 w-4 mr-2" />
-            管理公司
+            Manage Companies
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>

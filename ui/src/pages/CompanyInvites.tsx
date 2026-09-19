@@ -160,7 +160,7 @@ export function CompanyInvites() {
   });
 
   if (!selectedCompanyId) {
-    return <div className="text-sm text-muted-foreground">选择公司以管理邀请。</div>;
+    return <div className="text-sm text-muted-foreground">Select a company to manage invites.</div>;
   }
 
   if (invitesQuery.isLoading) {
@@ -182,7 +182,7 @@ export function CompanyInvites() {
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <MailPlus className="h-5 w-5 text-muted-foreground" />
-          <h1 className="text-lg font-semibold">公司邀请</h1>
+          <h1 className="text-lg font-semibold">Company Invites</h1>
         </div>
         <p className="max-w-3xl text-sm text-muted-foreground">
           Invite people to request access to this company. New invite links are copied to your clipboard when they are generated.
@@ -191,14 +191,14 @@ export function CompanyInvites() {
 
       <section className="space-y-4 rounded-xl border border-border p-5">
         <div className="space-y-1">
-          <h2 className="text-sm font-semibold">邀请人员</h2>
+          <h2 className="text-sm font-semibold">Invite a person</h2>
           <p className="text-sm text-muted-foreground">
-            生成人工邀请链接并选择其应请求的默认访问权限。
+            Generate a human invite link and choose the default access it should request.
           </p>
         </div>
 
         <fieldset className="space-y-3">
-          <legend className="text-sm font-medium">选择角色</legend>
+          <legend className="text-sm font-medium">Choose a role</legend>
           <div className="rounded-xl border border-border">
             {inviteRoleOptions.map((option, index) => {
               const checked = humanRole === option.value;
@@ -220,7 +220,7 @@ export function CompanyInvites() {
                       <span className="text-sm font-medium">{option.label}</span>
                       {option.value === "operator" ? (
                         <Badge variant="outline" className="border-border text-muted-foreground">
-                          默认
+                          Default
                         </Badge>
                       ) : null}
                     </span>
@@ -241,27 +241,27 @@ export function CompanyInvites() {
           <Button onClick={() => createInviteMutation.mutate()} disabled={createInviteMutation.isPending}>
             {createInviteMutation.isPending ? "Creating…" : "Create invite"}
           </Button>
-          <span className="text-sm text-muted-foreground">下方的邀请历史保留审计跟踪。</span>
+          <span className="text-sm text-muted-foreground">Invite history below keeps the audit trail.</span>
         </div>
 
         {latestInviteUrl ? (
           <div className="space-y-3 rounded-lg border border-border px-4 py-4">
             <div className="space-y-1">
               <div className="flex items-center justify-between gap-3">
-                <div className="text-sm font-medium">最新邀请链接</div>
+                <div className="text-sm font-medium">Latest invite link</div>
                 {latestInviteCopied ? (
                   <div className="inline-flex items-center gap-1 text-xs font-medium text-foreground">
                     <Check className="h-3.5 w-3.5" />
-                    已复制
+                    Copied
                   </div>
                 ) : null}
               </div>
               <div className="text-sm text-muted-foreground">
-                此 URL 包含服务器返回的当前 Paperclip 域。
+                This URL includes the current Paperclip domain returned by the server.
               </div>
             </div>
             <label className="block space-y-1">
-              <span className="sr-only">最新邀请链接</span>
+              <span className="sr-only">Latest invite URL</span>
               <input
                 ref={latestInviteInputRef}
                 readOnly
@@ -269,7 +269,7 @@ export function CompanyInvites() {
                 onFocus={(event) => event.currentTarget.select()}
                 onClick={(event) => event.currentTarget.select()}
                 className="w-full rounded-md border border-border bg-muted/60 px-3 py-2 text-sm text-foreground outline-none transition-colors selection:bg-primary selection:text-primary-foreground focus:border-ring"
-                aria-label="最新邀请链接"
+                aria-label="Latest invite URL"
               />
             </label>
             <div className="flex flex-wrap gap-2">
@@ -283,12 +283,12 @@ export function CompanyInvites() {
                 }}
               >
                 <Copy className="h-4 w-4" />
-                复制链接
+                Copy link
               </Button>
               <Button size="sm" variant="outline" asChild>
                 <a href={latestInviteUrl} target="_blank" rel="noreferrer">
                   <ExternalLink className="h-4 w-4" />
-                  打开邀请
+                  Open invite
                 </a>
               </Button>
             </div>
@@ -299,19 +299,19 @@ export function CompanyInvites() {
       <section className="rounded-xl border border-border">
         <div className="flex flex-wrap items-center justify-between gap-4 px-5 py-4">
           <div className="space-y-1">
-            <h2 className="text-sm font-semibold">邀请历史</h2>
+            <h2 className="text-sm font-semibold">Invite history</h2>
             <p className="text-sm text-muted-foreground">
-              查看邀请状态、受众、邀请者以及任何关联的加入请求。
+              Review invite status, audience, inviter, and any linked join request.
             </p>
           </div>
           <Link to="/inbox/requests" className="text-sm underline underline-offset-4">
-            打开加入请求队列
+            Open join request queue
           </Link>
         </div>
 
         {inviteHistory.length === 0 ? (
           <div className="border-t border-border px-5 py-8 text-sm text-muted-foreground">
-            尚未为此公司创建邀请。
+            No invites have been created for this company yet.
           </div>
         ) : (
           <div className="border-t border-border">
@@ -319,12 +319,12 @@ export function CompanyInvites() {
               <table className="min-w-full text-left text-sm">
                 <thead>
                   <tr className="border-b border-border">
-                    <th className="px-5 py-3 font-medium text-muted-foreground">状态</th>
-                    <th className="px-5 py-3 font-medium text-muted-foreground">用于</th>
-                    <th className="px-5 py-3 font-medium text-muted-foreground">邀请者</th>
-                    <th className="px-5 py-3 font-medium text-muted-foreground">创建时间</th>
-                    <th className="px-5 py-3 font-medium text-muted-foreground">加入请求</th>
-                    <th className="px-5 py-3 text-right font-medium text-muted-foreground">操作</th>
+                    <th className="px-5 py-3 font-medium text-muted-foreground">State</th>
+                    <th className="px-5 py-3 font-medium text-muted-foreground">For</th>
+                    <th className="px-5 py-3 font-medium text-muted-foreground">Invited by</th>
+                    <th className="px-5 py-3 font-medium text-muted-foreground">Created</th>
+                    <th className="px-5 py-3 font-medium text-muted-foreground">Join request</th>
+                    <th className="px-5 py-3 text-right font-medium text-muted-foreground">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -348,7 +348,7 @@ export function CompanyInvites() {
                       <td className="px-5 py-3 align-top">
                         {invite.relatedJoinRequestId ? (
                           <Link to="/inbox/requests" className="underline underline-offset-4">
-                            查看请求
+                            Review request
                           </Link>
                         ) : (
                           <span className="text-muted-foreground">—</span>
@@ -362,10 +362,10 @@ export function CompanyInvites() {
                             onClick={() => revokeMutation.mutate(invite.id)}
                             disabled={revokeMutation.isPending}
                           >
-                            撤销
+                            Revoke
                           </Button>
                         ) : (
-                          <span className="text-xs text-muted-foreground">不活跃</span>
+                          <span className="text-xs text-muted-foreground">Inactive</span>
                         )}
                       </td>
                     </tr>

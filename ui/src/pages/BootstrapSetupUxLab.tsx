@@ -35,7 +35,7 @@ function CliFallback({ hasActiveInvite }: { hasActiveInvite: boolean }) {
     <div className="mt-6 border-t border-border pt-5">
       <div className="flex items-center gap-2 text-sm font-medium">
         <Terminal className="size-4 text-muted-foreground" aria-hidden />
-        <span>更愿意从主机完成设置？</span>
+        <span>Prefer to finish setup from the host?</span>
       </div>
       <p className="mt-2 text-sm text-muted-foreground">
         {hasActiveInvite
@@ -60,14 +60,14 @@ function StateChrome({ children }: { children: ReactNode }) {
 function SignedOutPrivate() {
   return (
     <StateChrome>
-      <h1 className="text-xl font-semibold">完成此 Paperclip 的设置</h1>
+      <h1 className="text-xl font-semibold">Finish setting up this Paperclip</h1>
       <p className="mt-2 text-sm text-muted-foreground">
         No admin has claimed this instance yet. Sign in or create your Paperclip account to become the first
         admin from this browser.
       </p>
       <div className="mt-5">
         <Button asChild>
-          <a href="/auth?next=/">登录/创建账户</a>
+          <a href="/auth?next=/">Sign in / Create account</a>
         </Button>
       </div>
       <CliFallback hasActiveInvite={false} />
@@ -78,12 +78,12 @@ function SignedOutPrivate() {
 function SignedInPrivate() {
   return (
     <StateChrome>
-      <h1 className="text-xl font-semibold">完成此 Paperclip 的设置</h1>
+      <h1 className="text-xl font-semibold">Finish setting up this Paperclip</h1>
       <p className="mt-2 text-sm text-muted-foreground">
-        尚无管理员认领此实例。立即认领成为首位管理员并开始入门。
+        No admin has claimed this instance yet. Claim it now to become the first admin and start onboarding.
       </p>
       <div className="mt-5 flex flex-wrap items-center gap-3">
-        <Button>认领此实例</Button>
+        <Button>Claim this instance</Button>
         <span className="text-sm text-muted-foreground">
           Signed in as <span className="font-medium text-foreground">jane@appliance.local</span>
         </span>
@@ -91,7 +91,7 @@ function SignedInPrivate() {
       <p className="mt-3 text-xs text-muted-foreground">
         Wrong account?{" "}
         <a href="/auth?next=/" className="underline underline-offset-2">
-          切换账户
+          Switch account
         </a>
         .
       </p>
@@ -103,9 +103,9 @@ function SignedInPrivate() {
 function ClaimingPrivate() {
   return (
     <StateChrome>
-      <h1 className="text-xl font-semibold">完成此 Paperclip 的设置</h1>
+      <h1 className="text-xl font-semibold">Finish setting up this Paperclip</h1>
       <p className="mt-2 text-sm text-muted-foreground">
-        尚无管理员认领此实例。立即认领成为首位管理员并开始入门。
+        No admin has claimed this instance yet. Claim it now to become the first admin and start onboarding.
       </p>
       <div className="mt-5 flex flex-wrap items-center gap-3">
         <Button disabled>
@@ -124,12 +124,12 @@ function ClaimingPrivate() {
 function ClaimErrorPrivate() {
   return (
     <StateChrome>
-      <h1 className="text-xl font-semibold">完成此 Paperclip 的设置</h1>
+      <h1 className="text-xl font-semibold">Finish setting up this Paperclip</h1>
       <p className="mt-2 text-sm text-muted-foreground">
-        尚无管理员认领此实例。立即认领成为首位管理员并开始入门。
+        No admin has claimed this instance yet. Claim it now to become the first admin and start onboarding.
       </p>
       <div className="mt-5 flex flex-wrap items-center gap-3">
-        <Button>认领此实例</Button>
+        <Button>Claim this instance</Button>
         <span className="text-sm text-muted-foreground">
           Signed in as <span className="font-medium text-foreground">jane@appliance.local</span>
         </span>
@@ -140,7 +140,7 @@ function ClaimErrorPrivate() {
       >
         <TriangleAlert className="mt-0.5 size-4 flex-shrink-0" aria-hidden />
         <div>
-          <p className="font-medium">其他人已认领此实例。</p>
+          <p className="font-medium">Someone else has already claimed this instance.</p>
           <p className="mt-1 text-destructive/90">
             Refresh to sign in, or ask the existing admin to invite you from{" "}
             <span className="font-mono">Settings → Access</span>.
@@ -172,7 +172,7 @@ function ClaimSuccess() {
       </div>
       <div className="mt-5">
         <Button asChild variant="outline">
-          <a href="/">继续到仪表板</a>
+          <a href="/">Continue to dashboard</a>
         </Button>
       </div>
     </StateChrome>
@@ -182,7 +182,7 @@ function ClaimSuccess() {
 function PublicInviteOnly() {
   return (
     <StateChrome>
-      <h1 className="text-xl font-semibold">此 Paperclip 正在等待其第一位管理员</h1>
+      <h1 className="text-xl font-semibold">This Paperclip is waiting on its first admin</h1>
       <p className="mt-2 text-sm text-muted-foreground">
         This instance runs in invite‑only mode. The operator must generate a one‑time first‑admin invite URL
         from the host. Once you have the link, open it from this browser to finish setup.
@@ -210,10 +210,10 @@ export function BootstrapSetupUxLab() {
     <div className="bg-background min-h-screen pb-16">
       <header className="border-b border-border bg-muted/20">
         <div className="mx-auto max-w-3xl px-6 py-6">
-          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">UX 实验室</p>
-          <h1 className="mt-1 text-2xl font-semibold">引导待处理设置状态</h1>
+          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">UX Lab</p>
+          <h1 className="mt-1 text-2xl font-semibold">Bootstrap-pending setup states</h1>
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            用于引导待处理屏幕的固定装置 <span className="font-mono">CloudAccessGate</span>. Used
+            Fixtures for the bootstrap-pending screen in <span className="font-mono">CloudAccessGate</span>. Used
             as the UX spec for{" "}
             <a className="underline underline-offset-2" href="/PAP/issues/PAP-10113">
               PAP-10113

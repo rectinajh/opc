@@ -22,7 +22,7 @@ export function SourceResolvedFoldBadge({
         className,
       )}
       title={title}
-      aria-label="源解析的看门狗折叠"
+      aria-label="Source-resolved watchdog fold"
     >
       {showIcon ? <Sparkles className="h-3 w-3 text-emerald-700 dark:text-emerald-300" aria-hidden /> : null}
       Source-resolved

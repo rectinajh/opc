@@ -482,8 +482,8 @@ export function TaskChatComposer({
               type="button"
               onClick={() => fileInputRef.current?.click()}
               disabled={disabled}
-              title="附加文件"
-              aria-label="附加文件"
+              title="Attach file"
+              aria-label="Attach file"
               className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:opacity-50"
               data-testid="task-chat-composer-attach"
             >
@@ -538,7 +538,7 @@ export function TaskChatComposer({
           <InlineEntitySelector
             value={assigneeValue}
             options={reassignOptions ?? []}
-            placeholder="负责人"
+            placeholder="Assignee"
             noneLabel="No assignee"
             searchPlaceholder="Search assignees…"
             emptyMessage="No matches."
@@ -572,7 +572,7 @@ export function TaskChatComposer({
                 ? "Remove the failed attachment to send"
                 : "Send (⌘+Enter)"
           }
-          aria-label="发送"
+          aria-label="Send"
           className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground transition-transform hover:scale-105 disabled:scale-100 disabled:bg-muted disabled:text-muted-foreground"
           data-testid="task-chat-composer-send"
         >

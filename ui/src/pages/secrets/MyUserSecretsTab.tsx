@@ -75,13 +75,13 @@ export function MyUserSecretsTab({ companyId }: { companyId: string }) {
             <AlertCircle className="h-4 w-4" /> Failed to load your secrets:{" "}
             {(mySecretsQuery.error as Error).message}
             <Button variant="ghost" size="sm" onClick={() => mySecretsQuery.refetch()}>
-              重试
+              Retry
             </Button>
           </div>
         ) : entries.length === 0 && !mySecretsQuery.isPending ? (
           <EmptyState
             icon={KeyRound}
-            message="此公司尚未定义用户机密。管理员定义每个成员提供哪些凭据。"
+            message="No user secrets are defined for this company yet. An admin defines which credentials each member supplies."
           />
         ) : (
           <ul className="space-y-2">
@@ -171,7 +171,7 @@ function MyUserSecretRow({
             className="text-muted-foreground hover:text-destructive"
             onClick={onClear}
             disabled={clearing}
-            title="清除我的值"
+            title="Clear my value"
           >
             <Trash2 className="h-3.5 w-3.5" />
           </Button>

@@ -76,7 +76,7 @@ export function MissingUserSecretsBanner({
                   <code className="text-(length:--text-micro) text-muted-foreground">{entry.definition.key}</code>
                 </span>
                 <Button size="sm" onClick={() => setDialogFor(entry)}>
-                  设置值
+                  Set value
                 </Button>
               </li>
             ))}
@@ -86,7 +86,7 @@ export function MissingUserSecretsBanner({
               to={secretsPath}
               className="mt-2 inline-block text-(length:--text-micro) font-medium underline underline-offset-2"
             >
-              管理我的所有机密
+              Manage all my secrets
             </Link>
           ) : null}
         </div>

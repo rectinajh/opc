@@ -138,19 +138,19 @@ export function SearchFilterSheet({
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="bottom" className="max-h-(--sz-85vh) gap-0 rounded-t-xl p-0" data-testid="search-filter-sheet">
         <SheetHeader className="flex-row items-center justify-between border-b border-border">
-          <SheetTitle className="text-base">筛选器</SheetTitle>
+          <SheetTitle className="text-base">Filters</SheetTitle>
           <button
             type="button"
             className={cn("text-xs text-muted-foreground hover:text-foreground", activeCount === 0 && "invisible")}
             onClick={() => update({})}
           >
-            全部清除
+            Clear all
           </button>
         </SheetHeader>
 
         <div className="flex-1 space-y-4 overflow-y-auto p-4">
           <ChipToggleGroup
-            title="状态"
+            title="Status"
             options={options.status}
             selected={draft.status ?? []}
             onToggle={(value) => toggleMulti("status", value)}
@@ -158,38 +158,38 @@ export function SearchFilterSheet({
           {/* PAP-411: Priority filter group hidden behind SHOW_TASK_PRIORITY_UI (search DSL stays intact). */}
           {SHOW_TASK_PRIORITY_UI && (
           <ChipToggleGroup
-            title="优先级"
+            title="Priority"
             options={options.priority}
             selected={draft.priority ?? []}
             onToggle={(value) => toggleMulti("priority", value)}
           />
           )}
           <ChipToggleGroup
-            title="负责人"
+            title="Assignee"
             options={options.assignee}
             selected={selectedAssignee ? [selectedAssignee] : []}
             onToggle={toggleAssignee}
           />
           <ChipToggleGroup
-            title="项目"
+            title="Project"
             options={options.project}
             selected={draft.projectId ? [draft.projectId] : []}
             onToggle={(value) => toggleSingle("projectId", value)}
           />
           <ChipToggleGroup
-            title="标签"
+            title="Label"
             options={options.label}
             selected={draft.labelId ? [draft.labelId] : []}
             onToggle={(value) => toggleSingle("labelId", value)}
           />
           <ChipToggleGroup
-            title="更新时间"
+            title="Updated"
             options={options.updated}
             selected={draft.updatedWithin ? [draft.updatedWithin] : []}
             onToggle={(value) => toggleSingle("updatedWithin", value)}
           />
           <div className="space-y-1.5">
-            <div className="text-xs font-medium text-muted-foreground">排序方式</div>
+            <div className="text-xs font-medium text-muted-foreground">Sort by</div>
             <div className="flex flex-wrap gap-1.5">
               {COMPANY_SEARCH_SORTS.map((value) => (
                 <button
@@ -213,7 +213,7 @@ export function SearchFilterSheet({
         <SheetFooter className="flex-row gap-2 border-t border-border">
           <SheetClose asChild>
             <Button variant="outline" className="flex-1">
-              取消
+              Cancel
             </Button>
           </SheetClose>
           <Button
