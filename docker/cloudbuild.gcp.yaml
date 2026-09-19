@@ -1,0 +1,27 @@
+# GCP Cloud Build for Paperclip (BuildKit required for COPY --parents).
+# Usage:
+#   gcloud builds submit --config=docker/cloudbuild.gcp.yaml .
+substitutions:
+  _IMAGE: asia-east1-docker.pkg.dev/boxwood-scope-364905/paperclip/paperclip:latest
+  _TARGET: production
+
+steps:
+  - name: gcr.io/cloud-builders/docker
+    env:
+      - DOCKER_BUILDKIT=1
+    args:
+      - build
+      - --target=${_TARGET}
+      - -t=${_IMAGE}
+      - --build-arg=PAPERCLIP_BUILD_COMMIT=$COMMIT_SHA
+      - .
+
+images:
+  - ${_IMAGE}
+
+timeout: 3600s
+options:
+  # tsc in server build OOMs on E2_HIGHCPU_8 (8GB); 32GB is required.
+  machineType: E2_HIGHCPU_32
+  diskSizeGb: 200
+  logging: CLOUD_LOGGING_ONLY
