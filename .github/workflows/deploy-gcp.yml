@@ -1,0 +1,63 @@
+name: Deploy to GCP
+
+# Builds the container image from this commit and rolls the GCE instance onto
+# it. Auth uses Workload Identity Federation, so no GCP key is stored here; the
+# identity provider only trusts pushes from this repository (see the attribute
+# condition on the `github-actions` provider in project boxwood-scope-364905).
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+# Never let two deploys race for the same image tag or the same instance.
+concurrency:
+  group: paperclip-deploy
+  cancel-in-progress: false
+
+env:
+  GCP_PROJECT: boxwood-scope-364905
+  GCP_ZONE: asia-east1-b
+  GCP_INSTANCE: paperclip-1
+
+jobs:
+  deploy:
+    # The federated identity only trusts this repository; skip forks.
+    if: github.repository == 'rectinajh/opc'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/606769518273/locations/global/workloadIdentityPools/github/providers/github-actions
+          service_account: paperclip-deployer@boxwood-scope-364905.iam.gserviceaccount.com
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      # Cloud Build does the heavy lifting on a 32GB machine; the server package
+      # needs the raised Node heap the Dockerfile sets for its build stage.
+      - name: Build and push the image
+        run: |
+          gcloud builds submit \
+            --project="${GCP_PROJECT}" \
+            --config=docker/cloudbuild.gcp.yaml \
+            --substitutions=_COMMIT="${{ github.sha }}" \
+            .
+
+      # The instance pulls `:latest` in its startup script, so a reset is what
+      # actually moves it onto the freshly built image. Expect ~2-3 minutes of
+      # downtime while the instance reboots and re-runs that script.
+      - name: Roll the instance onto the new image
+        run: |
+          gcloud compute instances reset "${GCP_INSTANCE}" \
+            --project="${GCP_PROJECT}" \
+            --zone="${GCP_ZONE}" \
+            --quiet

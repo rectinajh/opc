@@ -4,7 +4,7 @@ set -euo pipefail
 
 PROJECT=$(curl -sf -H "Metadata-Flavor: Google" \
   http://metadata.google.internal/computeMetadata/v1/project/project-id)
-IMAGE="${PAPERCLIP_IMAGE:-ghcr.io/paperclipai/paperclip:latest}"
+IMAGE="${PAPERCLIP_IMAGE:-asia-east1-docker.pkg.dev/boxwood-scope-364905/paperclip/paperclip:latest}"
 NAME=paperclip
 DATA_DIR=/var/lib/paperclip
 
@@ -39,6 +39,15 @@ GEMINI_API_KEY=$(fetch_secret paperclip-gemini-api-key)
 BETTER_AUTH_SECRET=$(fetch_secret paperclip-better-auth-secret)
 TOOL_SECRET=$(fetch_secret paperclip-tool-action-signing-secret)
 DATABASE_URL=$(fetch_secret paperclip-database-url)
+
+# Artifact Registry is private, unlike the public GHCR image this replaced, so
+# log Docker in with the instance's own access token before pulling.
+if [[ "$IMAGE" == asia-east1-docker.pkg.dev/* ]]; then
+  REGISTRY_TOKEN=$(curl -sf -H "Metadata-Flavor: Google" \
+    "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token" \
+    | python3 -c 'import sys,json; print(json.load(sys.stdin)["access_token"])')
+  echo "$REGISTRY_TOKEN" | docker login -u oauth2accesstoken --password-stdin "https://asia-east1-docker.pkg.dev"
+fi
 
 docker pull "$IMAGE"
 docker rm -f "$NAME" 2>/dev/null || true

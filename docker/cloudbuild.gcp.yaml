@@ -4,6 +4,7 @@
 substitutions:
   _IMAGE: asia-east1-docker.pkg.dev/boxwood-scope-364905/paperclip/paperclip:latest
   _TARGET: production
+  _COMMIT: unknown
 
 steps:
   - name: gcr.io/cloud-builders/docker
@@ -13,7 +14,7 @@ steps:
       - build
       - --target=${_TARGET}
       - -t=${_IMAGE}
-      - --build-arg=PAPERCLIP_BUILD_COMMIT=$COMMIT_SHA
+      - --build-arg=PAPERCLIP_BUILD_COMMIT=${_COMMIT}
       - .
 
 images:
