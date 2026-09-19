@@ -44,13 +44,37 @@ jobs:
 
       # Cloud Build does the heavy lifting on a 32GB machine; the server package
       # needs the raised Node heap the Dockerfile sets for its build stage.
+      #
+      # Submitted with --async and polled by hand: gcloud only streams build
+      # logs for project Viewer/Owner, and the deploy identity deliberately is
+      # neither.
       - name: Build and push the image
         run: |
-          gcloud builds submit \
+          build_id=$(gcloud builds submit \
             --project="${GCP_PROJECT}" \
             --config=docker/cloudbuild.gcp.yaml \
             --substitutions=_COMMIT="${{ github.sha }}" \
-            .
+            --async \
+            --format='value(id)' \
+            .)
+          echo "Cloud Build ${build_id} submitted."
+          for _ in $(seq 1 120); do
+            status=$(gcloud builds describe "${build_id}" --project="${GCP_PROJECT}" --format='value(status)')
+            case "${status}" in
+              SUCCESS)
+                echo "Cloud Build ${build_id} succeeded."
+                exit 0
+                ;;
+              FAILURE|CANCELLED|TIMEOUT|EXPIRED)
+                echo "Cloud Build ${build_id} ended as ${status}."
+                gcloud builds log "${build_id}" --project="${GCP_PROJECT}" || true
+                exit 1
+                ;;
+            esac
+            sleep 15
+          done
+          echo "Timed out waiting for Cloud Build ${build_id}."
+          exit 1
 
       # The instance pulls `:latest` in its startup script, so a reset is what
       # actually moves it onto the freshly built image. Expect ~2-3 minutes of
