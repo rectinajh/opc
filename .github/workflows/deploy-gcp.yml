@@ -40,7 +40,7 @@ jobs:
           service_account: paperclip-deployer@boxwood-scope-364905.iam.gserviceaccount.com
 
       - name: Set up gcloud
-        uses: google-github-actions/setup-gcloud@v2
+        uses: google-github-actions/setup-gcloud@v3
 
       # Cloud Build does the heavy lifting on a 32GB machine; the server package
       # needs the raised Node heap the Dockerfile sets for its build stage.
