@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
+        uses: google-github-actions/auth@v3
         with:
           workload_identity_provider: projects/606769518273/locations/global/workloadIdentityPools/github/providers/github-actions
           service_account: paperclip-deployer@boxwood-scope-364905.iam.gserviceaccount.com
